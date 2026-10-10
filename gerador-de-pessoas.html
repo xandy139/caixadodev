@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerador de Pessoas Fictícias com Dados Completos | Caixa do Dev</title>
+  <meta name="description" content="Gerador de pessoas e dados fictícios completos para testes e desenvolvimento de software: Nome, CPF, RG, Idade, Endereço, CEP, E-mail, Celular e Tipo Sanguíneo. 100% no navegador e compatível com LGPD.">
+  <meta name="keywords" content="gerador de pessoas, gerador de dados ficticios, gerador de cadastros teste, 4devs pessoas, mock data brasil, gerador de identidade, gerador de dados pessoais">
+  <meta name="author" content="Caixa do Dev">
+  <meta name="robots" content="index, follow">
+
+  <!-- Canonical & Social Meta -->
+  <link rel="canonical" href="https://www.caixadodev.com.br/gerador-de-pessoas">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.caixadodev.com.br/gerador-de-pessoas">
+  <meta property="og:title" content="Gerador de Pessoas Fictícias com Dados Completos | Caixa do Dev">
+  <meta property="og:description" content="Gere cadastros brasileiros completos para testes: Nome, CPF, RG, Endereço, CEP, Celular e E-mail. 100% no navegador.">
+  <meta property="og:image" content="https://www.caixadodev.com.br/assets/og-cover.png">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'><path d='M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/tools.css">
+
+  <!-- Schema.org: WebApplication & FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "Gerador de Pessoas Fictícias - Caixa do Dev",
+        "url": "https://www.caixadodev.com.br/gerador-de-pessoas",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript",
+        "description": "Ferramenta para geração instantânea de massas de testes com cadastros brasileiros fictícios completos, incluindo documentos, endereços reais e contatos em conformidade com a LGPD.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "BRL"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "As pessoas geradas nesta ferramenta existem na vida real?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Não. Todos os nomes, documentos, e-mails e números de telefone são gerados de forma aleatória e combinatória por algoritmos matemáticos no seu navegador. Nenhuma informação pertence a cidadãos reais."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Por que usar dados fictícios para testes em vez de dados reais?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/2018) proíbe rigorosamente o manuseio e clonagem de dados reais de clientes em ambientes de homologação, testes e staging. Utilizar dados fictícios garante conformidade regulatória e previne riscos de vazamento de dados."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Os CEPs e endereços gerados são válidos?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Os CEPs e combinações de bairros e cidades respeitam as faixas postais oficiais do estado selecionado, permitindo validar fluxos de cálculo de frete e preenchimento automático de formulários."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="/" class="brand" title="Caixa do Dev - Página Inicial">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Caixa do Dev</span>
+          <span class="brand-badge">40 Ferramentas</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="/">Início</a></li>
+          <li><a href="/gerador-de-cpf">Gerador de CPF</a></li>
+          <li><a href="/gerador-de-cnpj">Gerador de CNPJ</a></li>
+          <li><a href="/gerador-de-pessoas" class="active">Pessoas</a></li>
+          <li><a href="/calculadora-clt-pj">CLT vs PJ</a></li>
+          <li><a href="/json-para-typescript">JSON &rarr; TS</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Conteúdo Principal -->
+  <main class="container" style="padding-top: 32px; padding-bottom: 60px;">
+    
+    <div class="tool-breadcrumbs">
+      <a href="/">&larr; Início</a> / <span>Gerador de Pessoas</span>
+    </div>
+
+    <div class="privacy-badge">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Processamento 100% Client-Side no Navegador (Privacidade Total)
+    </div>
+
+    <!-- Card da Ferramenta de Gerador de Pessoas -->
+    <div class="tool-interface-card">
+      <div class="tool-header-area">
+        <div class="tool-title-group">
+          <h1>Gerador de Pessoas e Cadastros Fictícios</h1>
+          <p>Gere cadastros completos com nome, documentos, endereço e dados de contato para testes de homologação.</p>
+        </div>
+        <div class="tool-actions-bar">
+          <button id="btn-gen-person" class="btn btn-primary">Gerar Nova Pessoa</button>
+          <button id="btn-copy-all-person" class="btn btn-outline-cyan">Copiar Todos os Dados</button>
+        </div>
+      </div>
+
+      <div class="form-options-row">
+        <div class="form-group" style="margin-bottom: 0;">
+          <label class="form-label">Sexo:</label>
+          <select id="sel-person-gender" class="form-control" style="width: 140px; padding: 8px 12px;">
+            <option value="all">Aleatório</option>
+            <option value="M">Masculino</option>
+            <option value="F">Feminino</option>
+          </select>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 0;">
+          <label class="form-label">Estado de Origem:</label>
+          <select id="sel-person-state" class="form-control" style="width: 170px; padding: 8px 12px;">
+            <option value="SP">São Paulo (SP)</option>
+            <option value="RJ">Rio de Janeiro (RJ)</option>
+            <option value="MG">Minas Gerais (MG)</option>
+            <option value="RS">Rio Grande do Sul (RS)</option>
+            <option value="PR">Paraná (PR)</option>
+            <option value="SC">Santa Catarina (SC)</option>
+            <option value="BA">Bahia (BA)</option>
+            <option value="PE">Pernambuco (PE)</option>
+            <option value="CE">Ceará (CE)</option>
+            <option value="DF">Distrito Federal (DF)</option>
+          </select>
+        </div>
+
+        <label class="checkbox-label" style="margin-top: 24px;">
+          <input type="checkbox" id="check-person-format" checked>
+          <span>Gerar documentos com máscara</span>
+        </label>
+      </div>
+
+      <div class="person-data-grid" style="margin-top: 24px;">
+        <div class="person-field-card">
+          <span class="person-field-label">Nome Completo</span>
+          <span id="pf-name" class="person-field-val">Carregando...</span>
+          <button class="person-field-copy" onclick="copyToClipboard(document.getElementById('pf-name').textContent)">📋</button>
+        </div>
+        <div class="person-field-card">
+          <span class="person-field-label">CPF</span>
+          <span id="pf-cpf" class="person-field-val" style="color: var(--accent-cyan);">Carregando...</span>
+          <button class="person-field-copy" onclick="copyToClipboard(document.getElementById('pf-cpf').textContent)">📋</button>
+        </div>
+        <div class="person-field-card">
+          <span class="person-field-label">RG</span>
+          <span id="pf-rg" class="person-field-val">Carregando...</span>
+          <button class="person-field-copy" onclick="copyToClipboard(document.getElementById('pf-rg').textContent)">📋</button>
+        </div>
+        <div class="person-field-card">
+          <span class="person-field-label">Nascimento (Idade)</span>
+          <span class="person-field-val"><span id="pf-birth">--</span> (<span id="pf-age">--</span>)</span>
+          <button class="person-field-copy" onclick="copyToClipboard(document.getElementById('pf-birth').textContent)">📋</button>
+        </div>
+        <div class="person-field-card">
+          <span class="person-field-label">Sexo</span>
+          <span id="pf-gender" class="person-field-val">Carregando...</span>
+        </div>
+        <div class="person-field-card">
+          <span class="person-field-label">Tipo Sanguíneo</span>
+          <span id="pf-blood" class="person-field-val" style="color: #fb7185;">Carregando...</span>
+        </div>
+        <div class="person-field-card">
+          <span class="person-field-label">E-mail</span>
+          <span id="pf-email" class="person-field-val">Carregando...</span>
+          <button class="person-field-copy" onclick="copyToClipboard(document.getElementById('pf-email').textContent)">📋</button>
+        </div>
+        <div class="person-field-card">
+          <span class="person-field-label">Celular</span>
+          <span id="pf-phone" class="person-field-val">Carregando...</span>
+          <button class="person-field-copy" onclick="copyToClipboard(document.getElementById('pf-phone').textContent)">📋</button>
+        </div>
+        <div class="person-field-card">
+          <span class="person-field-label">CEP</span>
+          <span id="pf-cep" class="person-field-val">Carregando...</span>
+          <button class="person-field-copy" onclick="copyToClipboard(document.getElementById('pf-cep').textContent)">📋</button>
+        </div>
+        <div class="person-field-card">
+          <span class="person-field-label">Endereço & Número</span>
+          <span id="pf-street" class="person-field-val">Carregando...</span>
+          <button class="person-field-copy" onclick="copyToClipboard(document.getElementById('pf-street').textContent)">📋</button>
+        </div>
+        <div class="person-field-card">
+          <span class="person-field-label">Bairro</span>
+          <span id="pf-neighborhood" class="person-field-val">Carregando...</span>
+        </div>
+        <div class="person-field-card">
+          <span class="person-field-label">Cidade & UF</span>
+          <span class="person-field-val"><span id="pf-city">--</span> - <span id="pf-state">--</span></span>
+          <button class="person-field-copy" onclick="copyToClipboard(document.getElementById('pf-city').textContent)">📋</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Guia Completo de SEO & LGPD -->
+    <article class="tool-seo-guide" style="margin-top: 40px;">
+      <h2>Geração Ética de Dados Cadastrais e Conformidade com a LGPD</h2>
+      <p>Durante as fases de desenvolvimento de software, automação de testes de QA e homologação de fluxos de checkout em e-commerces e CRMs, desenvolvedores necessitam frequentemente de dados verossímeis para preencher esteiras e simular jornadas de clientes.</p>
+      
+      <p>A <strong>Lei Geral de Proteção de Dados Pessoais (LGPD - Lei nº 13.709/2018)</strong> estabelece penalidades severas para o uso indevido e vazamento de dados de cidadãos reais. O uso de bases reais de clientes em ambientes de teste não produtivos (sandbox) constitui grave risco de segurança jurídica e técnica.</p>
+
+      <h3>Vantagens da Massa de Testes Sintética:</h3>
+      <ul>
+        <li><strong>Risco Zero de Violação de Dados:</strong> Nenhuma informação gerada pertence a uma pessoa viva ou existente.</li>
+        <li><strong>Validação Fiel de Algoritmos:</strong> Os números de CPF gerados contêm dígitos verificadores válidos pelo algoritmo oficial da Receita Federal.</li>
+        <li><strong>Testes de Geolocalização e Frete:</strong> Os CEPs e cidades respeitam as faixas oficiais de cada Unidade Federativa.</li>
+        <li><strong>Performance Imbatível:</strong> Toda a massa de dados é computada no seu navegador em milissegundos sem chamadas a servidores externos.</li>
+      </ul>
+
+      <h2>Perguntas Frequentes (FAQ)</h2>
+      <div style="display: flex; flex-direction: column; gap: 16px; margin-top: 20px;">
+        <div style="background: var(--bg-card); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+          <h4 style="font-size: 1.05rem; color: var(--text-primary); margin-bottom: 8px;">Posso usar esses cadastros para criar contas reais na internet?</h4>
+          <p style="color: var(--text-secondary); margin: 0; font-size: 0.92rem; line-height: 1.6;">Não. O uso de identidades falsas para abertura de cadastros em serviços bancários, redes sociais ou sites reais pode configurar crime de falsidade ideológica. Esta ferramenta destina-se estritamente ao desenvolvimento e teste de software em ambiente fechado.</p>
+        </div>
+
+        <div style="background: var(--bg-card); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+          <h4 style="font-size: 1.05rem; color: var(--text-primary); margin-bottom: 8px;">Como copiar todos os campos de uma única vez?</h4>
+          <p style="color: var(--text-secondary); margin: 0; font-size: 0.92rem; line-height: 1.6;">Basta clicar no botão <strong>"Copiar Todos os Dados"</strong> no topo da ferramenta. Um resumo estruturado contendo Nome, CPF, RG, Endereço, E-mail e Celular será transferido para a sua área de transferência.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- Outras Ferramentas Recomendadas -->
+    <section style="margin-top: 60px;">
+      <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 20px; color: var(--text-primary);">Explore Mais Ferramentas de Testes e Código</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px;">
+        <a href="/gerador-de-cpf" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Gerador de CPF</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Gere números válidos de CPF com pontuação e detecção de Região Fiscal.</p>
+        </a>
+        <a href="/gerador-de-cnpj" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Gerador de CNPJ</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Gere CNPJs para testes corporativos com padrão matriz.</p>
+        </a>
+        <a href="/calculadora-clt-pj" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Calculadora CLT vs PJ</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Calcule salário líquido, impostos do Simples Nacional e INSS.</p>
+        </a>
+        <a href="/json-para-typescript" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">JSON para TypeScript</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Converta retornos de API em interfaces TypeScript limpas e tipadas.</p>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-grid">
+        <div class="footer-col footer-col-wide">
+          <div class="footer-brand">
+            <span class="footer-brand-title">Caixa do Dev</span>
+            <span class="footer-badge">100% Client-Side</span>
+          </div>
+          <p>O maior canivete suíço gratuito para desenvolvedores, analistas de QA e profissionais de tecnologia do Brasil.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Institucional</h4>
+          <ul>
+            <li><a href="pages/sobre.html">Sobre o Projeto</a></li>
+            <li><a href="pages/contato.html">Fale Conosco</a></li>
+            <li><a href="pages/privacidade.html">Política de Privacidade</a></li>
+            <li><a href="pages/termos.html">Termos de Uso</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Caixa do Dev. Todos os direitos reservados.</span>
+        <span>Processamento local de alta performance com respeito total à LGPD.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
+  <!-- Scripts -->
+  <script src="js/tools/cpf-cnpj.js"></script>
+  <script src="js/tools/person-generator.js"></script>
+  <script>
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      if (!t) return;
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function copyToClipboard(text) {
+      if (!navigator.clipboard) {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+      } else {
+        navigator.clipboard.writeText(text);
+      }
+      showToast('Copiado para a área de transferência! 📋');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const btnGenPerson = document.getElementById('btn-gen-person');
+      const selPersonGender = document.getElementById('sel-person-gender');
+      const selPersonState = document.getElementById('sel-person-state');
+      const checkPersonFormat = document.getElementById('check-person-format');
+      const btnCopyAllPerson = document.getElementById('btn-copy-all-person');
+
+      const setField = (id, val) => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = val;
+      };
+
+      let currentPerson = null;
+
+      const updatePersonUI = () => {
+        if (!window.PERSON_GENERATOR) return;
+        const gender = selPersonGender ? selPersonGender.value : 'all';
+        const state = selPersonState ? selPersonState.value : 'SP';
+        const format = checkPersonFormat ? checkPersonFormat.checked : true;
+        currentPerson = PERSON_GENERATOR.generatePerson({ gender, state, format });
+
+        setField('pf-name', currentPerson.name);
+        setField('pf-gender', currentPerson.gender);
+        setField('pf-age', currentPerson.age);
+        setField('pf-birth', currentPerson.birthDate);
+        setField('pf-cpf', currentPerson.cpf);
+        setField('pf-rg', currentPerson.rg);
+        setField('pf-email', currentPerson.email);
+        setField('pf-phone', currentPerson.phone);
+        setField('pf-cep', currentPerson.cep);
+        setField('pf-street', currentPerson.street);
+        setField('pf-neighborhood', currentPerson.neighborhood);
+        setField('pf-city', currentPerson.city);
+        setField('pf-state', currentPerson.state);
+        setField('pf-blood', currentPerson.blood);
+      };
+
+      if (btnGenPerson) btnGenPerson.addEventListener('click', updatePersonUI);
+      if (selPersonGender) selPersonGender.addEventListener('change', updatePersonUI);
+      if (selPersonState) selPersonState.addEventListener('change', updatePersonUI);
+      if (checkPersonFormat) checkPersonFormat.addEventListener('change', updatePersonUI);
+
+      if (btnCopyAllPerson) {
+        btnCopyAllPerson.addEventListener('click', () => {
+          if (!currentPerson) return;
+          const full = `Nome: ${currentPerson.name}\nCPF: ${currentPerson.cpf}\nRG: ${currentPerson.rg}\nData de Nascimento: ${currentPerson.birthDate} (${currentPerson.age})\nSexo: ${currentPerson.gender}\nE-mail: ${currentPerson.email}\nTelefone: ${currentPerson.phone}\nEndereço: ${currentPerson.street}, ${currentPerson.neighborhood}\nCidade/UF: ${currentPerson.city} - ${currentPerson.state}\nCEP: ${currentPerson.cep}\nTipo Sanguíneo: ${currentPerson.blood}`;
+          copyToClipboard(full);
+        });
+      }
+
+      // Geração inicial
+      updatePersonUI();
+    });
+  </script>
+</body>
+</html>

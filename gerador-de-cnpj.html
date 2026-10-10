@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerador de CNPJ Válido Online e Grátis | Caixa do Dev</title>
+  <meta name="description" content="Gerador e validador de CNPJ online gratuito para desenvolvedores e testes de software. Gere CNPJs válidos com ou sem pontuação, padrão matriz e cálculo oficial da Receita Federal. 100% no navegador.">
+  <meta name="keywords" content="gerador de cnpj, gerar cnpj valido, validador de cnpj, cnpj para testes, cnpj modulo 11, gerador cnpj empresa, 4devs cnpj">
+  <meta name="author" content="Caixa do Dev">
+  <meta name="robots" content="index, follow">
+
+  <!-- Canonical & Social Meta -->
+  <link rel="canonical" href="https://www.caixadodev.com.br/gerador-de-cnpj">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.caixadodev.com.br/gerador-de-cnpj">
+  <meta property="og:title" content="Gerador de CNPJ Válido Online e Grátis | Caixa do Dev">
+  <meta property="og:description" content="Gere e valide números de CNPJ válidos com padrão matriz e cálculo oficial dos dígitos verificadores. 100% no navegador.">
+  <meta property="og:image" content="https://www.caixadodev.com.br/assets/og-cover.png">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'><path d='M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/tools.css">
+
+  <!-- Schema.org: WebApplication & FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "Gerador e Validador de CNPJ - Caixa do Dev",
+        "url": "https://www.caixadodev.com.br/gerador-de-cnpj",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript",
+        "description": "Ferramenta online gratuita para gerar números de CNPJ válidos com algoritmo matemático oficial da Receita Federal e validação em tempo real.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "BRL"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "O que significa o '0001' no CNPJ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Os dígitos '0001' após a barra no CNPJ identificam a filial número um, comumente chamada de matriz da empresa. Caso a empresa possua filiais subsequentes, esse número assume valores como '0002', '0003' e assim por diante."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Como é calculado o dígito verificador do CNPJ?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "O CNPJ possui 14 dígitos, sendo 12 dígitos base e 2 dígitos verificadores finais. Utiliza-se a regra do Módulo 11 com pesos cíclicos de 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 para o primeiro dígito, e pesos começando em 6 para o segundo dígito."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Posso emitir notas fiscais ou abrir conta com CNPJ gerado?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Não. Os números de CNPJ gerados por este aplicativo são matematicamente consistentes para testes em sistemas, mas não estão cadastrados na base real da Receita Federal. Tentar utilizá-los para fins fiscais reais constitui crime."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="/" class="brand" title="Caixa do Dev - Página Inicial">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Caixa do Dev</span>
+          <span class="brand-badge">40 Ferramentas</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="/">Início</a></li>
+          <li><a href="/gerador-de-cpf">Gerador de CPF</a></li>
+          <li><a href="/gerador-de-cnpj" class="active">Gerador de CNPJ</a></li>
+          <li><a href="/gerador-de-pessoas">Pessoas</a></li>
+          <li><a href="/calculadora-clt-pj">CLT vs PJ</a></li>
+          <li><a href="/json-para-typescript">JSON &rarr; TS</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Conteúdo Principal -->
+  <main class="container" style="padding-top: 32px; padding-bottom: 60px;">
+    
+    <div class="tool-breadcrumbs">
+      <a href="/">&larr; Início</a> / <span>Gerador e Validador de CNPJ</span>
+    </div>
+
+    <div class="privacy-badge">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Processamento 100% Client-Side no Navegador (Privacidade Total)
+    </div>
+
+    <!-- Card da Ferramenta de CNPJ -->
+    <div class="tool-interface-card">
+      <div class="tool-header-area">
+        <div class="tool-title-group">
+          <h1>Gerador de CNPJ Válido Online</h1>
+          <p>Gere números válidos de CNPJ para testes de esteiras de checkout, ERPs e cadastros B2B com total rapidez.</p>
+        </div>
+        <div class="tool-actions-bar">
+          <button id="btn-gen-cnpj" class="btn btn-primary">Gerar Novo CNPJ</button>
+          <a href="/gerador-de-cpf" class="btn btn-outline-cyan">Ir para Gerador de CPF &rarr;</a>
+        </div>
+      </div>
+
+      <div class="form-options-row">
+        <label class="checkbox-label">
+          <input type="checkbox" id="check-cnpj-format" checked>
+          <span>Gerar com máscara e pontuação (00.000.000/0001-00)</span>
+        </label>
+      </div>
+
+      <div class="cpf-result-display" style="margin-top: 16px;">
+        <span id="cnpj-display-value" class="cpf-value">00.000.000/0001-00</span>
+        <button id="btn-copy-cnpj" class="btn btn-secondary btn-sm">📋 Copiar CNPJ</button>
+      </div>
+
+      <hr style="border: none; border-top: 1px solid var(--border-subtle); margin: 36px 0 28px;">
+
+      <!-- Validador de CNPJ -->
+      <div class="form-group" style="max-width: 640px; margin: 0 auto;">
+        <label class="form-label" for="input-validate-cnpj">
+          <span>Validar número de CNPJ existente:</span>
+          <span id="badge-validate-cnpj" class="badge-status badge-neutral">Aguardando digitação</span>
+        </label>
+        <input type="text" id="input-validate-cnpj" class="form-control" placeholder="Cole ou digite o CNPJ (ex: 00.000.000/0001-00)" maxlength="18" style="font-size: 1.1rem; text-align: center; letter-spacing: 0.05em;">
+        <div id="text-validate-cnpj-detail" style="font-size: 0.88rem; color: var(--accent-cyan); margin-top: 8px; text-align: center; font-weight: 500;"></div>
+      </div>
+    </div>
+
+    <!-- Guia Completo de SEO & Conteúdo Educativo -->
+    <article class="tool-seo-guide" style="margin-top: 40px;">
+      <h2>Estrutura Oficial do CNPJ (Cadastro Nacional da Pessoa Jurídica)</h2>
+      <p>O CNPJ é o número identificador de empresas e entidades perante a Receita Federal do Brasil. Ele é composto por <strong>14 dígitos numéricos</strong> estruturados no padrão <code>XX.XXX.XXX/YYYY-ZZ</code>:</p>
+
+      <ul>
+        <li><strong>Os 8 primeiros dígitos (XX.XXX.XXX):</strong> Representam a raiz ou número base da inscrição da empresa.</li>
+        <li><strong>Os 4 dígitos seguintes (/YYYY):</strong> Identificam a ordem da unidade empresarial (normalmente <code>0001</code> para a matriz, e sequências como <code>0002</code>, <code>0003</code> para filiais).</li>
+        <li><strong>Os 2 últimos dígitos (-ZZ):</strong> São os dígitos verificadores (DV), calculados por meio do algoritmo do Módulo 11.</li>
+      </ul>
+
+      <h3>Como é Calculado o Dígito Verificador do CNPJ?</h3>
+      <p>O cálculo utiliza uma sequência de multiplicadores que se repetem de 9 a 2 da direita para a esquerda:</p>
+      <pre style="background: var(--bg-card); padding: 16px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); color: #a5b4fc; font-family: 'JetBrains Mono', monospace; font-size: 0.88rem;">// 1º Dígito Verificador:
+Pesos = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]
+Soma = somatório dos 12 primeiros dígitos multiplicados pelos seus respectivos pesos
+Resto = Soma % 11
+Se Resto < 2 então DV1 = 0 senão DV1 = 11 - Resto
+
+// 2º Dígito Verificador:
+Pesos = [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]
+Soma = somatório dos 13 dígitos (incluindo DV1) multiplicados pelos pesos
+Resto = Soma % 11
+Se Resto < 2 então DV2 = 0 senão DV2 = 11 - Resto</pre>
+
+      <h2>Perguntas Frequentes sobre CNPJ</h2>
+      <div style="display: flex; flex-direction: column; gap: 16px; margin-top: 20px;">
+        <div style="background: var(--bg-card); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+          <h4 style="font-size: 1.05rem; color: var(--text-primary); margin-bottom: 8px;">Por que sequências repetidas (ex: 00.000.000/0000-00) são recusadas?</h4>
+          <p style="color: var(--text-secondary); margin: 0; font-size: 0.92rem; line-height: 1.6;">Assim como no CPF, números formados por 14 algarismos idênticos são rejeitados de antemão pelo validador oficial da Receita Federal por serem flagrantemente inválidos.</p>
+        </div>
+
+        <div style="background: var(--bg-card); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+          <h4 style="font-size: 1.05rem; color: var(--text-primary); margin-bottom: 8px;">Qual a utilidade desta ferramenta em desenvolvimento de software?</h4>
+          <p style="color: var(--text-secondary); margin: 0; font-size: 0.92rem; line-height: 1.6;">Ela permite testar cadastros empresariais, regras de faturamento, validações de formulário B2B, emissão simulada de notas e integrações com ERPs sem utilizar dados reais de empresas existentes.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- Outras Ferramentas Recomendadas -->
+    <section style="margin-top: 60px;">
+      <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 20px; color: var(--text-primary);">Explore Mais Ferramentas Corporativas</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px;">
+        <a href="/gerador-de-cpf" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Gerador de CPF</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Gere e valide números de CPF com detecção automática de Região Fiscal.</p>
+        </a>
+        <a href="/gerador-de-pessoas" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Gerador de Pessoas</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Cadastros completos com nome, CPF, RG, endereço e dados de contato.</p>
+        </a>
+        <a href="/calculadora-clt-pj" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Calculadora CLT vs PJ</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Compare propostas com Simples Nacional e tabela progressiva de INSS.</p>
+        </a>
+        <a href="/json-para-typescript" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">JSON para TypeScript</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Transforme retornos JSON de APIs em tipagens TypeScript completas.</p>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-grid">
+        <div class="footer-col footer-col-wide">
+          <div class="footer-brand">
+            <span class="footer-brand-title">Caixa do Dev</span>
+            <span class="footer-badge">100% Client-Side</span>
+          </div>
+          <p>O maior canivete suíço gratuito para desenvolvedores, analistas de QA e profissionais de tecnologia do Brasil.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Institucional</h4>
+          <ul>
+            <li><a href="pages/sobre.html">Sobre o Projeto</a></li>
+            <li><a href="pages/contato.html">Fale Conosco</a></li>
+            <li><a href="pages/privacidade.html">Política de Privacidade</a></li>
+            <li><a href="pages/termos.html">Termos de Uso</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Caixa do Dev. Todos os direitos reservados.</span>
+        <span>Processamento local de alta performance com respeito total à LGPD.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
+  <!-- Scripts -->
+  <script src="js/tools/cpf-cnpj.js"></script>
+  <script>
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      if (!t) return;
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function copyToClipboard(text) {
+      if (!navigator.clipboard) {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+      } else {
+        navigator.clipboard.writeText(text);
+      }
+      showToast('Copiado para a área de transferência! 📋');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const btnGen = document.getElementById('btn-gen-cnpj');
+      const checkFormat = document.getElementById('check-cnpj-format');
+      const displayVal = document.getElementById('cnpj-display-value');
+      const btnCopy = document.getElementById('btn-copy-cnpj');
+      const inputValidate = document.getElementById('input-validate-cnpj');
+      const badgeValidate = document.getElementById('badge-validate-cnpj');
+      const textValidate = document.getElementById('text-validate-cnpj-detail');
+
+      const generate = () => {
+        const formatted = checkFormat ? checkFormat.checked : true;
+        displayVal.textContent = CPF_CNPJ_TOOL.generateCNPJ(formatted);
+      };
+
+      if (btnGen) btnGen.addEventListener('click', generate);
+      if (checkFormat) checkFormat.addEventListener('change', generate);
+      if (btnCopy) btnCopy.addEventListener('click', () => copyToClipboard(displayVal.textContent));
+
+      if (inputValidate) {
+        inputValidate.addEventListener('input', (e) => {
+          const val = e.target.value.trim();
+          if (!val) {
+            badgeValidate.className = 'badge-status badge-neutral';
+            badgeValidate.textContent = 'Aguardando digitação';
+            textValidate.textContent = '';
+            return;
+          }
+          const res = CPF_CNPJ_TOOL.validateCNPJ(val);
+          badgeValidate.className = res.valid ? 'badge-status badge-valid' : 'badge-status badge-invalid';
+          badgeValidate.textContent = res.valid ? 'CNPJ Válido' : 'CNPJ Inválido';
+          textValidate.textContent = res.reason || 'Dígitos verificadores aprovados.';
+        });
+      }
+
+      // Geração inicial
+      generate();
+    });
+  </script>
+</body>
+</html>

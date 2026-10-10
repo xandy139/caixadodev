@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerador de CPF Válido Online e Grátis | Caixa do Dev</title>
+  <meta name="description" content="Gerador e validador de CPF online gratuito para desenvolvedores e testes de software. Gere CPFs válidos com ou sem pontuação e cálculo oficial do Módulo 11 da Receita Federal. 100% no navegador.">
+  <meta name="keywords" content="gerador de cpf, gerar cpf valido, validador de cpf, cpf para testes, cpf modulo 11, gerador de documentos ficticios, 4devs cpf">
+  <meta name="author" content="Caixa do Dev">
+  <meta name="robots" content="index, follow">
+
+  <!-- Canonical & Social Meta -->
+  <link rel="canonical" href="https://www.caixadodev.com.br/gerador-de-cpf">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.caixadodev.com.br/gerador-de-cpf">
+  <meta property="og:title" content="Gerador de CPF Válido Online e Grátis | Caixa do Dev">
+  <meta property="og:description" content="Gere e valide números de CPF com cálculo oficial do Módulo 11 da Receita Federal e identificação de Região Fiscal. Rápido, seguro e 100% client-side.">
+  <meta property="og:image" content="https://www.caixadodev.com.br/assets/og-cover.png">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'><path d='M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/tools.css">
+
+  <!-- Schema.org: WebApplication & FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "Gerador e Validador de CPF - Caixa do Dev",
+        "url": "https://www.caixadodev.com.br/gerador-de-cpf",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript",
+        "description": "Ferramenta online gratuita para gerar números de CPF válidos com algoritmo oficial do Módulo 11 e validar documentos existentes com detecção de Região Fiscal.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "BRL"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Os números de CPF gerados aqui são reais?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Não. Todos os números de CPF gerados pela Caixa do Dev são criados algoritmicamente através de uma combinação aleatória que satisfaz a fórmula matemática oficial do Módulo 11 da Receita Federal. Eles têm finalidade estrita de homologação, testes de formulários e desenvolvimento de software."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Como é feito o cálculo do dígito verificador do CPF?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "O CPF é composto por 9 dígitos base e 2 dígitos verificadores (DV). O primeiro DV é calculado multiplicando-se os primeiros 9 dígitos por pesos regressivos de 10 a 2. O segundo DV inclui o primeiro dígito calculado e utiliza pesos regressivos de 11 a 2, dividindo ambos os somatórios por 11."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "O uso de CPFs gerados para testes é legal e respeita a LGPD?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sim. A Lei Geral de Proteção de Dados (LGPD) veda a utilização de dados de cidadãos reais em ambientes de testes e homologação. O uso de geradores sintéticos como o da Caixa do Dev é a boa prática recomendada para evitar incidentes de segurança e vazamentos."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "O que significa a Região Fiscal do CPF?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "O nono dígito do CPF (o último algarismo antes do hífen) identifica a Unidade Federativa da Receita Federal onde o documento foi emitido. Por exemplo, 8 para São Paulo, 7 para Rio de Janeiro e Espírito Santo, e 9 para Paraná e Santa Catarina."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="/" class="brand" title="Caixa do Dev - Página Inicial">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Caixa do Dev</span>
+          <span class="brand-badge">40 Ferramentas</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="/">Início</a></li>
+          <li><a href="/gerador-de-cpf" class="active">Gerador de CPF</a></li>
+          <li><a href="/gerador-de-cnpj">Gerador de CNPJ</a></li>
+          <li><a href="/gerador-de-pessoas">Pessoas</a></li>
+          <li><a href="/calculadora-clt-pj">CLT vs PJ</a></li>
+          <li><a href="/json-para-typescript">JSON &rarr; TS</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Conteúdo Principal -->
+  <main class="container" style="padding-top: 32px; padding-bottom: 60px;">
+    
+    <div class="tool-breadcrumbs">
+      <a href="/">&larr; Início</a> / <span>Gerador e Validador de CPF</span>
+    </div>
+
+    <div class="privacy-badge">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Processamento 100% Client-Side no Navegador (Privacidade Total)
+    </div>
+
+    <!-- Card da Ferramenta de CPF -->
+    <div class="tool-interface-card">
+      <div class="tool-header-area">
+        <div class="tool-title-group">
+          <h1>Gerador de CPF Válido Online</h1>
+          <p>Gere números válidos de CPF para testes de homologação ou valide a consistência matemática de qualquer documento.</p>
+        </div>
+        <div class="tool-actions-bar">
+          <button id="btn-gen-cpf" class="btn btn-primary">Gerar Novo CPF</button>
+          <a href="/gerador-de-cnpj" class="btn btn-outline-cyan">Ir para Gerador de CNPJ &rarr;</a>
+        </div>
+      </div>
+
+      <div class="form-options-row">
+        <label class="checkbox-label">
+          <input type="checkbox" id="check-cpf-format" checked>
+          <span>Gerar com máscara e pontuação (000.000.000-00)</span>
+        </label>
+      </div>
+
+      <div class="cpf-result-display" style="margin-top: 16px;">
+        <span id="cpf-display-value" class="cpf-value">000.000.000-00</span>
+        <button id="btn-copy-cpf" class="btn btn-secondary btn-sm">📋 Copiar CPF</button>
+      </div>
+
+      <hr style="border: none; border-top: 1px solid var(--border-subtle); margin: 36px 0 28px;">
+
+      <!-- Validador de CPF -->
+      <div class="form-group" style="max-width: 640px; margin: 0 auto;">
+        <label class="form-label" for="input-validate-cpf">
+          <span>Validar número de CPF existente:</span>
+          <span id="badge-validate-result" class="badge-status badge-neutral">Aguardando digitação</span>
+        </label>
+        <input type="text" id="input-validate-cpf" class="form-control" placeholder="Cole ou digite o CPF (ex: 123.456.789-00)" maxlength="18" style="font-size: 1.1rem; text-align: center; letter-spacing: 0.05em;">
+        <div id="text-validate-detail" style="font-size: 0.88rem; color: var(--accent-cyan); margin-top: 8px; text-align: center; font-weight: 500;"></div>
+      </div>
+    </div>
+
+    <!-- Guia Completo de SEO & Conteúdo Educativo -->
+    <article class="tool-seo-guide" style="margin-top: 40px;">
+      <h2>Como Funciona o Algoritmo do Módulo 11 da Receita Federal</h2>
+      <p>O Cadastro de Pessoas Físicas (CPF) emitido pela Receita Federal do Brasil é composto por 11 algarismos decimais no formato <code>XXX.XXX.XXX-YY</code>. Os 9 primeiros dígitos formam a base cadastral e os dois últimos (<code>YY</code>) correspondem aos <strong>dígitos verificadores (DV)</strong>, calculados por meio do algoritmo matemático do Módulo 11.</p>
+
+      <h3>1. Cálculo do Primeiro Dígito Verificador</h3>
+      <p>Multiplica-se cada um dos 9 primeiros dígitos por uma sequência decrescente de pesos de <strong>10 até 2</strong>:</p>
+      <pre style="background: var(--bg-card); padding: 16px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); color: #a5b4fc; font-family: 'JetBrains Mono', monospace; font-size: 0.88rem;">Soma = (D1 * 10) + (D2 * 9) + (D3 * 8) + ... + (D9 * 2)
+Resto = Soma % 11
+Se Resto < 2 então DV1 = 0 senão DV1 = 11 - Resto</pre>
+
+      <h3>2. Cálculo do Segundo Dígito Verificador</h3>
+      <p>O cálculo é repetido adicionando-se o primeiro dígito verificador recém-calculado ao final da sequência, aplicando pesos regressivos de <strong>11 até 2</strong>:</p>
+      <pre style="background: var(--bg-card); padding: 16px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); color: #a5b4fc; font-family: 'JetBrains Mono', monospace; font-size: 0.88rem;">Soma = (D1 * 11) + (D2 * 10) + ... + (D9 * 3) + (DV1 * 2)
+Resto = Soma % 11
+Se Resto < 2 então DV2 = 0 senão DV2 = 11 - Resto</pre>
+
+      <h3>3. Regiões Fiscais do Brasil no CPF</h3>
+      <p>O 9º dígito (o último número antes do hífen) indica a Região Fiscal de emissão do documento:</p>
+      <div style="overflow-x: auto; margin: 20px 0;">
+        <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
+          <thead>
+            <tr style="border-bottom: 2px solid var(--border-subtle); color: var(--text-primary);">
+              <th style="padding: 10px 14px;">9º Dígito</th>
+              <th style="padding: 10px 14px;">Estados Abrangidos</th>
+              <th style="padding: 10px 14px;">Região Fiscal</th>
+            </tr>
+          </thead>
+          <tbody style="color: var(--text-secondary);">
+            <tr style="border-bottom: 1px solid var(--border-subtle);"><td style="padding: 8px 14px; font-weight: 600; color: var(--accent-cyan);">1</td><td style="padding: 8px 14px;">DF, Goiás, Mato Grosso, Mato Grosso do Sul e Tocantins</td><td style="padding: 8px 14px;">1ª Região Fiscal</td></tr>
+            <tr style="border-bottom: 1px solid var(--border-subtle);"><td style="padding: 8px 14px; font-weight: 600; color: var(--accent-cyan);">2</td><td style="padding: 8px 14px;">Acre, Amazonas, Amapá, Pará, Rondônia e Roraima</td><td style="padding: 8px 14px;">2ª Região Fiscal</td></tr>
+            <tr style="border-bottom: 1px solid var(--border-subtle);"><td style="padding: 8px 14px; font-weight: 600; color: var(--accent-cyan);">3</td><td style="padding: 8px 14px;">Ceará, Maranhão e Piauí</td><td style="padding: 8px 14px;">3ª Região Fiscal</td></tr>
+            <tr style="border-bottom: 1px solid var(--border-subtle);"><td style="padding: 8px 14px; font-weight: 600; color: var(--accent-cyan);">4</td><td style="padding: 8px 14px;">Alagoas, Paraíba, Pernambuco e Rio Grande do Norte</td><td style="padding: 8px 14px;">4ª Região Fiscal</td></tr>
+            <tr style="border-bottom: 1px solid var(--border-subtle);"><td style="padding: 8px 14px; font-weight: 600; color: var(--accent-cyan);">5</td><td style="padding: 8px 14px;">Bahia e Sergipe</td><td style="padding: 8px 14px;">5ª Região Fiscal</td></tr>
+            <tr style="border-bottom: 1px solid var(--border-subtle);"><td style="padding: 8px 14px; font-weight: 600; color: var(--accent-cyan);">6</td><td style="padding: 8px 14px;">Minas Gerais</td><td style="padding: 8px 14px;">6ª Região Fiscal</td></tr>
+            <tr style="border-bottom: 1px solid var(--border-subtle);"><td style="padding: 8px 14px; font-weight: 600; color: var(--accent-cyan);">7</td><td style="padding: 8px 14px;">Espírito Santo e Rio de Janeiro</td><td style="padding: 8px 14px;">7ª Região Fiscal</td></tr>
+            <tr style="border-bottom: 1px solid var(--border-subtle);"><td style="padding: 8px 14px; font-weight: 600; color: var(--accent-cyan);">8</td><td style="padding: 8px 14px;">São Paulo</td><td style="padding: 8px 14px;">8ª Região Fiscal</td></tr>
+            <tr style="border-bottom: 1px solid var(--border-subtle);"><td style="padding: 8px 14px; font-weight: 600; color: var(--accent-cyan);">9</td><td style="padding: 8px 14px;">Paraná e Santa Catarina</td><td style="padding: 8px 14px;">9ª Região Fiscal</td></tr>
+            <tr style="border-bottom: 1px solid var(--border-subtle);"><td style="padding: 8px 14px; font-weight: 600; color: var(--accent-cyan);">0</td><td style="padding: 8px 14px;">Rio Grande do Sul</td><td style="padding: 8px 14px;">10ª Região Fiscal</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Perguntas Frequentes sobre Geração e Validação de CPF</h2>
+      
+      <div style="display: flex; flex-direction: column; gap: 16px; margin-top: 20px;">
+        <div style="background: var(--bg-card); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+          <h4 style="font-size: 1.05rem; color: var(--text-primary); margin-bottom: 8px;">Os números de CPF gerados aqui são reais?</h4>
+          <p style="color: var(--text-secondary); margin: 0; font-size: 0.92rem; line-height: 1.6;">Não. Todos os números de CPF gerados pela Caixa do Dev são criados algoritmicamente por meio de combinações aleatórias que atendem à regra matemática do Módulo 11 da Receita Federal. Eles têm finalidade exclusiva para homologação e desenvolvimento de software.</p>
+        </div>
+
+        <div style="background: var(--bg-card); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+          <h4 style="font-size: 1.05rem; color: var(--text-primary); margin-bottom: 8px;">Por que sequências repetidas (ex: 111.111.111-11) são inválidas?</h4>
+          <p style="color: var(--text-secondary); margin: 0; font-size: 0.92rem; line-height: 1.6;">Embora algumas sequências de números repetidos coincidam matematicamente com os dígitos verificadores calculados pelo Módulo 11, a Receita Federal do Brasil desqualifica expressamente qualquer CPF com todos os dígitos iguais como inválido.</p>
+        </div>
+
+        <div style="background: var(--bg-card); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+          <h4 style="font-size: 1.05rem; color: var(--text-primary); margin-bottom: 8px;">O uso deste gerador respeita a LGPD?</h4>
+          <p style="color: var(--text-secondary); margin: 0; font-size: 0.92rem; line-height: 1.6;">Sim! A Lei Geral de Proteção de Dados (Lei nº 13.709/2018) proíbe utilizar bases de dados de cidadãos reais em ambientes de testes e homologação. O uso de dados sintéticos gerados localmente no seu computador é a prática de engenharia recomendada pela comunidade.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- Outras Ferramentas Recomendadas -->
+    <section style="margin-top: 60px;">
+      <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 20px; color: var(--text-primary);">Explore Outras Ferramentas para Desenvolvedores</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px;">
+        <a href="/gerador-de-cnpj" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Gerador de CNPJ</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Gere e valide números de CNPJ válidos com padrão matriz e dígitos verificadores.</p>
+        </a>
+        <a href="/gerador-de-pessoas" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Gerador de Pessoas</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Cadastros completos com nome, CPF, RG, endereço e dados de contato.</p>
+        </a>
+        <a href="/calculadora-clt-pj" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Calculadora CLT vs PJ</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Compare remuneração líquida considerando INSS progressivo, IRPF e Simples Nacional.</p>
+        </a>
+        <a href="/json-para-typescript" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">JSON para TypeScript</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Cole qualquer payload JSON e gere interfaces tipadas instantaneamente.</p>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-grid">
+        <div class="footer-col footer-col-wide">
+          <div class="footer-brand">
+            <span class="footer-brand-title">Caixa do Dev</span>
+            <span class="footer-badge">100% Client-Side</span>
+          </div>
+          <p>O maior canivete suíço gratuito para desenvolvedores, analistas de QA e profissionais de tecnologia do Brasil.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Institucional</h4>
+          <ul>
+            <li><a href="pages/sobre.html">Sobre o Projeto</a></li>
+            <li><a href="pages/contato.html">Fale Conosco</a></li>
+            <li><a href="pages/privacidade.html">Política de Privacidade</a></li>
+            <li><a href="pages/termos.html">Termos de Uso</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Caixa do Dev. Todos os direitos reservados.</span>
+        <span>Processamento local de alta performance com respeito total à LGPD.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast de Notificação -->
+  <div id="toast" class="toast"></div>
+
+  <!-- Scripts -->
+  <script src="js/tools/cpf-cnpj.js"></script>
+  <script>
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      if (!t) return;
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function copyToClipboard(text) {
+      if (!navigator.clipboard) {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+      } else {
+        navigator.clipboard.writeText(text);
+      }
+      showToast('Copiado para a área de transferência! 📋');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const btnGen = document.getElementById('btn-gen-cpf');
+      const checkFormat = document.getElementById('check-cpf-format');
+      const displayVal = document.getElementById('cpf-display-value');
+      const btnCopy = document.getElementById('btn-copy-cpf');
+      const inputValidate = document.getElementById('input-validate-cpf');
+      const badgeValidate = document.getElementById('badge-validate-result');
+      const textValidate = document.getElementById('text-validate-detail');
+
+      const generate = () => {
+        const formatted = checkFormat ? checkFormat.checked : true;
+        displayVal.textContent = CPF_CNPJ_TOOL.generateCPF(formatted);
+      };
+
+      if (btnGen) btnGen.addEventListener('click', generate);
+      if (checkFormat) checkFormat.addEventListener('change', generate);
+      if (btnCopy) btnCopy.addEventListener('click', () => copyToClipboard(displayVal.textContent));
+
+      if (inputValidate) {
+        inputValidate.addEventListener('input', (e) => {
+          const val = e.target.value.trim();
+          if (!val) {
+            badgeValidate.className = 'badge-status badge-neutral';
+            badgeValidate.textContent = 'Aguardando digitação';
+            textValidate.textContent = '';
+            return;
+          }
+          const res = CPF_CNPJ_TOOL.validateCPF(val);
+          badgeValidate.className = res.valid ? 'badge-status badge-valid' : 'badge-status badge-invalid';
+          badgeValidate.textContent = res.valid ? 'CPF Válido' : 'CPF Inválido';
+          textValidate.textContent = res.region || res.reason || '';
+        });
+      }
+
+      // Geração inicial
+      generate();
+    });
+  </script>
+</body>
+</html>

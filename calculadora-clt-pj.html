@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora CLT vs PJ 2026 - Salário Líquido e Simples Nacional | Caixa do Dev</title>
+  <meta name="description" content="Calculadora comparativa CLT vs PJ online para desenvolvedores e profissionais de TI no Brasil. Calcule salário líquido, INSS progressivo, IRPF, Simples Nacional (Fator R 28%), FGTS e 13º. 100% no navegador.">
+  <meta name="keywords" content="calculadora clt pj, clt vs pj, quanto cobrar pj dev, comparativo clt e pj, simples nacional fator r desenvolvedor, salario liquido programador">
+  <meta name="author" content="Caixa do Dev">
+  <meta name="robots" content="index, follow">
+
+  <!-- Canonical & Social Meta -->
+  <link rel="canonical" href="https://www.caixadodev.com.br/calculadora-clt-pj">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.caixadodev.com.br/calculadora-clt-pj">
+  <meta property="og:title" content="Calculadora CLT vs PJ 2026 - Salário Líquido e Simples Nacional | Caixa do Dev">
+  <meta property="og:description" content="Descubra se vale mais a pena trabalhar como CLT ou PJ. Cálculo completo com Simples Nacional Anexo III (Fator R), INSS e benefícios.">
+  <meta property="og:image" content="https://www.caixadodev.com.br/assets/og-cover.png">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'><path d='M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/tools.css">
+
+  <!-- Schema.org: WebApplication & FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "Calculadora Comparativa CLT vs PJ - Caixa do Dev",
+        "url": "https://www.caixadodev.com.br/calculadora-clt-pj",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript",
+        "description": "Calculadora comparativa realista entre regime CLT e contratação PJ para desenvolvedores de software, considerando tabela de INSS progressiva, IRPF, FGTS, 13º salário e Simples Nacional.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "BRL"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Quanto devo cobrar como PJ para igualar meu salário CLT?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A regra prática de mercado recomenda multiplicar o salário bruto CLT por 1,4 a 1,6 para cobrir a ausência de 13º salário, férias remuneradas (+1/3), FGTS (8%), multa rescisória e plano de saúde corporativo."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "O que é o Fator R do Simples Nacional para desenvolvedores?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "O Fator R é um mecanismo fiscal que permite que empresas de desenvolvimento e consultoria de TI tributem no Anexo III (alíquota inicial de 6%) em vez do Anexo V (alíquota de 15,5%), desde que a folha de pagamento (incluindo pró-labore dos sócios) represente ao menos 28% do faturamento da empresa."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "PJ tem direito a férias remuneradas e FGTS?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Não legalmente. A contratação PJ é uma relação comercial B2B entre duas empresas. Qualquer período de recesso ou pagamento extra deve ser negociado contratualmente entre as partes."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="/" class="brand" title="Caixa do Dev - Página Inicial">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Caixa do Dev</span>
+          <span class="brand-badge">40 Ferramentas</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="/">Início</a></li>
+          <li><a href="/gerador-de-cpf">Gerador de CPF</a></li>
+          <li><a href="/gerador-de-cnpj">Gerador de CNPJ</a></li>
+          <li><a href="/gerador-de-pessoas">Pessoas</a></li>
+          <li><a href="/calculadora-clt-pj" class="active">CLT vs PJ</a></li>
+          <li><a href="/json-para-typescript">JSON &rarr; TS</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Conteúdo Principal -->
+  <main class="container" style="padding-top: 32px; padding-bottom: 60px;">
+    
+    <div class="tool-breadcrumbs">
+      <a href="/">&larr; Início</a> / <span>Calculadora Comparativa CLT vs PJ</span>
+    </div>
+
+    <div class="privacy-badge">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Cálculo 100% Local no Navegador (Seus valores salariais não são enviados a servidores)
+    </div>
+
+    <!-- Card da Ferramenta CLT vs PJ -->
+    <div class="tool-interface-card">
+      <div class="tool-header-area">
+        <div class="tool-title-group">
+          <h1>Calculadora Comparativa CLT vs PJ para Programadores</h1>
+          <p>Descubra a melhor opção financeira calculando INSS progressivo, IRPF, Simples Nacional (Fator R 28%) e benefícios anuais.</p>
+        </div>
+        <div class="tool-actions-bar">
+          <button id="btn-calc-clt-pj" class="btn btn-primary">Recalcular Comparativo</button>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="form-group">
+          <label class="form-label" for="calc-salario-clt">Salário Bruto CLT Oferecido (R$/mês)</label>
+          <input type="number" id="calc-salario-clt" class="form-control" value="8000" placeholder="Ex: 8000">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="calc-beneficios-clt">Benefícios Mensais CLT (VR, VA, Saúde em R$)</label>
+          <input type="number" id="calc-beneficios-clt" class="form-control" value="1200" placeholder="Ex: 1200">
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="form-group">
+          <label class="form-label" for="calc-faturamento-pj">Faturamento Mensal PJ Proposto (R$/mês)</label>
+          <input type="number" id="calc-faturamento-pj" class="form-control" value="13000" placeholder="Ex: 13000">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="calc-contador-pj">Custo Mensal de Contabilidade Online (R$)</label>
+          <input type="number" id="calc-contador-pj" class="form-control" value="150" placeholder="Ex: 150">
+        </div>
+      </div>
+
+      <div id="clt-pj-verdict" class="verdict-banner" style="margin-top: 10px;"></div>
+
+      <div class="clt-pj-grid" style="margin-top: 24px;">
+        <!-- Coluna CLT -->
+        <div class="clt-column">
+          <h3 style="color: var(--accent-cyan); display: flex; align-items: center; justify-content: space-between;">
+            <span>Regime CLT</span>
+            <span class="tool-card-badge">Carteira Assinada</span>
+          </h3>
+          <div class="metric-row"><span>Salário Líquido Mensal:</span><strong id="m-clt-liq">R$ 0,00</strong></div>
+          <div class="metric-row"><span>Desconto INSS (Tabela):</span><span id="m-clt-inss" style="color: var(--accent-rose);">R$ 0,00</span></div>
+          <div class="metric-row"><span>Desconto IRPF:</span><span id="m-clt-irpf" style="color: var(--accent-rose);">R$ 0,00</span></div>
+          <div class="metric-row"><span>Depósito FGTS (8%):</span><span id="m-clt-fgts" style="color: var(--accent-emerald);">R$ 0,00/mês</span></div>
+          <div class="metric-row total-row"><span>Total Anual Real (c/ 13º e Férias):</span><strong id="m-clt-anual" style="color: var(--accent-cyan);">R$ 0,00</strong></div>
+        </div>
+
+        <!-- Coluna PJ -->
+        <div class="pj-column">
+          <h3 style="color: var(--accent-emerald); display: flex; align-items: center; justify-content: space-between;">
+            <span>Pessoa Jurídica (PJ)</span>
+            <span class="tool-card-badge" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-emerald);">Simples Nacional</span>
+          </h3>
+          <div class="metric-row"><span>Líquido Mensal em Mãos:</span><strong id="m-pj-liq">R$ 0,00</strong></div>
+          <div class="metric-row"><span>Imposto DAS (Anexo III 6%):</span><span id="m-pj-simples" style="color: var(--accent-rose);">R$ 0,00</span></div>
+          <div class="metric-row"><span>Pró-Labore Recomendado:</span><span id="m-pj-prolabore">R$ 0,00</span></div>
+          <div class="metric-row total-row"><span>Total Anual PJ:</span><strong id="m-pj-anual" style="color: var(--accent-emerald);">R$ 0,00</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Guia Completo de SEO & Carreira -->
+    <article class="tool-seo-guide" style="margin-top: 40px;">
+      <h2>Guia Completo: Vale a Pena Trocar CLT por PJ em Tecnologia?</h2>
+      <p>A dúvida entre aceitar uma vaga CLT ou atuar como prestador de serviços PJ é uma das mais frequentes entre desenvolvedores no Brasil. Para tomar uma decisão financeiramente racional, não basta comparar o salário bruto diretamente com o valor da nota fiscal.</p>
+
+      <h3>1. Os Benefícios Invisíveis da CLT</h3>
+      <p>Um funcionário CLT recebe anualmente o equivalente a aproximadamente <strong>13,3 salários</strong> mais benefícios indiretos:</p>
+      <ul>
+        <li><strong>13º Salário:</strong> Uma remuneração integral extra no fim do ano.</li>
+        <li><strong>Férias Remuneradas:</strong> 30 dias de descanso remunerado acrescido de 1/3 do salário bruto (terço constitucional).</li>
+        <li><strong>FGTS (8% ao mês):</strong> Fundo compulsório depositado pela empresa que rende juros e confere multa de 40% em caso de demissão sem justa causa.</li>
+        <li><strong>Benefícios Indiretos:</strong> Vale Refeição/Alimentação (VR/VA), plano de saúde e odontológico, seguro de vida e previdência privada.</li>
+      </ul>
+
+      <h3>2. Como Reduzir Impostos como PJ: O Fator R do Simples Nacional</h3>
+      <p>Desenvolvedores de software (CNAE 6201-5/01 e similares) são enquadrados originalmente no <strong>Anexo V do Simples Nacional</strong>, cuja alíquota de imposto começa em expressivos <strong>15,5%</strong>.</p>
+      <p>Entretanto, utilizando a regra do <strong>Fator R</strong>, se o valor gasto com folha de pagamento da sua empresa (o que inclui o seu próprio pró-labore e INSS) for igual ou superior a <strong>28% do faturamento</strong>, a tributação cai para o <strong>Anexo III</strong>, onde a alíquota inicial é de apenas <strong>6%</strong>!</p>
+
+      <h3>3. Regra de Conversão Recomendada (Multiplicador de 1.4x a 1.6x)</h3>
+      <p>Para manter o mesmo padrão de vida, custear um plano de saúde próprio e criar uma reserva de segurança para períodos de férias ou rescisão, o valor do contrato PJ deve ser, no mínimo, <strong>40% a 60% superior ao salário bruto CLT</strong>.</p>
+
+      <h2>Perguntas Frequentes (FAQ)</h2>
+      <div style="display: flex; flex-direction: column; gap: 16px; margin-top: 20px;">
+        <div style="background: var(--bg-card); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+          <h4 style="font-size: 1.05rem; color: var(--text-primary); margin-bottom: 8px;">Desenvolvedor de software pode ser MEI?</h4>
+          <p style="color: var(--text-secondary); margin: 0; font-size: 0.92rem; line-height: 1.6;">Não. A atividade de programação, desenvolvimento e desenvolvimento web é considerada profissão intelectual regulamentada e não consta na lista de ocupações permitidas para MEI. O caminho legal é abrir uma ME (Microempresa) tributada pelo Simples Nacional.</p>
+        </div>
+
+        <div style="background: var(--bg-card); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+          <h4 style="font-size: 1.05rem; color: var(--text-primary); margin-bottom: 8px;">O que é Pró-Labore e quanto devo retirar?</h4>
+          <p style="color: var(--text-secondary); margin: 0; font-size: 0.92rem; line-height: 1.6;">Pró-labore é a remuneração pelo trabalho exercido pelo sócio na empresa, sobre a qual incide INSS. Para aproveitar a alíquota reduzida de 6% do Fator R, o pró-labore costuma ser fixado em exatamente 28% do faturamento mensal da empresa.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- Outras Ferramentas Recomendadas -->
+    <section style="margin-top: 60px;">
+      <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 20px; color: var(--text-primary);">Explore Mais Ferramentas Profissionais</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px;">
+        <a href="/gerador-de-cpf" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Gerador de CPF</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Gere números válidos de CPF com pontuação e detecção de Região Fiscal.</p>
+        </a>
+        <a href="/gerador-de-cnpj" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Gerador de CNPJ</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Gere e valide CNPJs com padrão matriz para testes empresariais.</p>
+        </a>
+        <a href="/gerador-de-pessoas" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Gerador de Pessoas</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Cadastros completos fictícios em total conformidade com a LGPD.</p>
+        </a>
+        <a href="/json-para-typescript" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">JSON para TypeScript</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Cole retornos JSON e gere tipos e interfaces tipadas para seu frontend.</p>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-grid">
+        <div class="footer-col footer-col-wide">
+          <div class="footer-brand">
+            <span class="footer-brand-title">Caixa do Dev</span>
+            <span class="footer-badge">100% Client-Side</span>
+          </div>
+          <p>O maior canivete suíço gratuito para desenvolvedores, analistas de QA e profissionais de tecnologia do Brasil.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Institucional</h4>
+          <ul>
+            <li><a href="pages/sobre.html">Sobre o Projeto</a></li>
+            <li><a href="pages/contato.html">Fale Conosco</a></li>
+            <li><a href="pages/privacidade.html">Política de Privacidade</a></li>
+            <li><a href="pages/termos.html">Termos de Uso</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Caixa do Dev. Todos os direitos reservados.</span>
+        <span>Processamento local de alta performance com respeito total à LGPD.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/tools/clt-pj-calculator.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const inputSalarioClt = document.getElementById('calc-salario-clt');
+      const inputBeneficiosClt = document.getElementById('calc-beneficios-clt');
+      const inputFatPj = document.getElementById('calc-faturamento-pj');
+      const inputContadorPj = document.getElementById('calc-contador-pj');
+      const btnCalcCltPj = document.getElementById('btn-calc-clt-pj');
+
+      const cltLiqEl = document.getElementById('m-clt-liq');
+      const cltInssEl = document.getElementById('m-clt-inss');
+      const cltIrpfEl = document.getElementById('m-clt-irpf');
+      const cltFgtsEl = document.getElementById('m-clt-fgts');
+      const cltAnualEl = document.getElementById('m-clt-anual');
+
+      const pjLiqEl = document.getElementById('m-pj-liq');
+      const pjSimplesEl = document.getElementById('m-pj-simples');
+      const pjProLaboreEl = document.getElementById('m-pj-prolabore');
+      const pjAnualEl = document.getElementById('m-pj-anual');
+      const verdictBanner = document.getElementById('clt-pj-verdict');
+
+      const runCalc = () => {
+        if (!window.CLT_PJ_CALCULATOR) return;
+        const sClt = parseFloat(inputSalarioClt.value) || 0;
+        const bClt = parseFloat(inputBeneficiosClt ? inputBeneficiosClt.value : 0) || 0;
+        let fPj = parseFloat(inputFatPj ? inputFatPj.value : 0);
+        if (!fPj || fPj === 0) fPj = sClt * 1.5;
+        const cPj = parseFloat(inputContadorPj ? inputContadorPj.value : 150) || 150;
+
+        const res = CLT_PJ_CALCULATOR.calculate(sClt, bClt, fPj, cPj);
+        const fmt = (v) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+        if (cltLiqEl) cltLiqEl.textContent = fmt(res.clt.liquidoMensal);
+        if (cltInssEl) cltInssEl.textContent = fmt(res.clt.inss);
+        if (cltIrpfEl) cltIrpfEl.textContent = fmt(res.clt.irpf);
+        if (cltFgtsEl) cltFgtsEl.textContent = fmt(res.clt.fgtsMensal);
+        if (cltAnualEl) cltAnualEl.textContent = fmt(res.clt.totalAnual);
+
+        if (pjLiqEl) pjLiqEl.textContent = fmt(res.pj.liquidoMensal);
+        if (pjSimplesEl) pjSimplesEl.textContent = fmt(res.pj.impostoSimples);
+        if (pjProLaboreEl) pjProLaboreEl.textContent = fmt(res.pj.proLabore);
+        if (pjAnualEl) pjAnualEl.textContent = fmt(res.pj.totalAnual);
+
+        if (verdictBanner) {
+          const diff = Math.abs(res.comparativo.diferencaAnual);
+          const melhor = res.comparativo.vantagem;
+          verdictBanner.innerHTML = `
+            <div>
+              <strong style="color: var(--accent-emerald); font-size: 1.1rem;">Veredito: Opção ${melhor} é financeiramente mais vantajosa</strong>
+              <p style="margin-top: 4px; font-size: 0.9rem; color: var(--text-secondary);">
+                Diferença estimada de <strong>${fmt(diff)}</strong> a mais por ano (${fmt(diff / 12)}/mês). Para igualar a proposta CLT, o faturamento PJ ideal seria de aproximadamente <strong>${fmt(res.comparativo.pjEquivalente)}/mês</strong>.
+              </p>
+            </div>
+          `;
+        }
+      };
+
+      if (btnCalcCltPj) btnCalcCltPj.addEventListener('click', runCalc);
+      [inputSalarioClt, inputBeneficiosClt, inputFatPj, inputContadorPj].forEach(el => {
+        if (el) el.addEventListener('input', runCalc);
+      });
+
+      runCalc();
+    });
+  </script>
+</body>
+</html>
