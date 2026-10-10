@@ -440,6 +440,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initToolsHub();
   initToolEvents();
   initFAQ();
+  initCookieConsent();
 });
 
 // ========================
@@ -2184,3 +2185,30 @@ function escapeHtml(str) {
     tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
   );
 }
+
+// ========================
+// CONSENTIMENTO DE COOKIES (LGPD / GOOGLE ADSENSE)
+// ========================
+function initCookieConsent() {
+  const banner = document.getElementById('cookie-consent-banner');
+  const btnAccept = document.getElementById('btn-cookie-accept-all');
+  const btnEssential = document.getElementById('btn-cookie-essential');
+
+  if (!banner) return;
+
+  const consent = localStorage.getItem('caixadodev_cookie_consent');
+  if (!consent) {
+    setTimeout(() => {
+      banner.classList.add('show');
+    }, 800);
+  }
+
+  const closeBanner = (type) => {
+    localStorage.setItem('caixadodev_cookie_consent', type);
+    banner.classList.remove('show');
+  };
+
+  if (btnAccept) btnAccept.addEventListener('click', () => closeBanner('all'));
+  if (btnEssential) btnEssential.addEventListener('click', () => closeBanner('essential'));
+}
+

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fale Conosco | Caixa do Dev</title>
+  <meta name="description" content="Entre em contato com a equipe da Caixa do Dev. Dúvidas, sugestões de novas ferramentas, relatórios de bugs e parcerias.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'><path d='M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/tools.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="../index.html#home" class="brand">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Caixa do Dev</span>
+          <span class="brand-badge">DevTools Brasil</span>
+        </div>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="../index.html#home">&larr; Voltar às Ferramentas</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" style="padding: 40px 20px 80px;">
+    <article class="tool-seo-guide" style="max-width: 860px; margin: 0 auto;">
+      <h2>Fale Conosco</h2>
+      <p>Valorizamos a comunicação direta e transparente com toda a comunidade de desenvolvedores, analistas de testes, designers e estudantes de tecnologia. Seja para sugerir uma nova ferramenta, relatar uma inconsistência técnica ou propor parcerias, ficaremos felizes em ouvir você.</p>
+
+      <div class="grid-2" style="margin-top: 30px; gap: 30px;">
+        <!-- Formulário de Contato -->
+        <div class="tool-interface-card" style="margin-bottom: 0;">
+          <h3 style="margin-top: 0; margin-bottom: 16px; font-size: 1.25rem;">Envie uma Mensagem</h3>
+          <form id="contact-form" onsubmit="event.preventDefault(); document.getElementById('contact-success').style.display='block'; this.reset();">
+            <div class="form-group">
+              <label class="form-label">Seu Nome Completo</label>
+              <input type="text" class="form-control" required placeholder="Ex: Lucas Silva">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Seu E-mail Profissional</label>
+              <input type="email" class="form-control" required placeholder="Ex: lucas@email.com">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Assunto</label>
+              <select class="form-control" required style="padding: 10px 14px;">
+                <option value="sugestao">Sugestão de Nova Ferramenta</option>
+                <option value="bug">Relato de Bug / Inconsistência</option>
+                <option value="privacidade">Dúvidas sobre Privacidade / LGPD</option>
+                <option value="parceria">Parceria / Comercial</option>
+                <option value="outro">Outro Assunto</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Mensagem</label>
+              <textarea class="form-control" rows="5" required placeholder="Descreva sua dúvida, sugestão ou detalhe a ferramenta desejada..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Enviar Mensagem</button>
+            <div id="contact-success" class="alert-box alert-success" style="display: none; margin-top: 14px;">
+              Mensagem enviada com sucesso! Nossa equipe técnica responderá em até 24 horas úteis.
+            </div>
+          </form>
+        </div>
+
+        <!-- Canais Diretos -->
+        <div>
+          <div class="result-box" style="margin-bottom: 20px;">
+            <h4 style="margin-top: 0; color: var(--accent-cyan); font-size: 1.1rem;">E-mails Oficiais</h4>
+            <p style="margin: 8px 0; font-size: 0.92rem;"><strong>Suporte & Sugestões:</strong> <span style="font-family: var(--font-mono); color: var(--text-primary);">contato@caixadodev.com.br</span></p>
+            <p style="margin: 8px 0; font-size: 0.92rem;"><strong>Privacidade & DPO (LGPD):</strong> <span style="font-family: var(--font-mono); color: var(--text-primary);">privacidade@caixadodev.com.br</span></p>
+          </div>
+
+          <div class="result-box">
+            <h4 style="margin-top: 0; color: var(--accent-emerald); font-size: 1.1rem;">Tempo Médio de Atendimento</h4>
+            <p style="margin: 8px 0; font-size: 0.92rem; color: var(--text-secondary);">Nosso compromisso é responder solicitações em até <strong>1 dia útil</strong> (segunda a sexta-feira, das 09h às 18h no horário de Brasília).</p>
+          </div>
+
+          <div class="result-box" style="margin-top: 20px;">
+            <h4 style="margin-top: 0; color: var(--accent-amber); font-size: 1.1rem;">Segurança & Dados Pessoais</h4>
+            <p style="margin: 8px 0; font-size: 0.88rem; color: var(--text-secondary);">Os dados informados no formulário de contato são utilizados estritamente para responder à sua mensagem e não são compartilhados com parceiros comerciais.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-bottom" style="border: none; padding-top: 0;">
+      <span>&copy; 2026 Caixa do Dev. Todos os direitos reservados.</span>
+      <a href="../index.html" style="color: var(--accent-cyan); text-decoration: none;">Ir para a Página Inicial</a>
+    </div>
+  </footer>
+</body>
+</html>

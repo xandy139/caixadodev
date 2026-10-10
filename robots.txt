@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+Allow: /pages/
+Allow: /css/
+Allow: /js/
+
+# AdSense Crawler
+User-agent: Mediapartners-Google
+Allow: /
+
+# Googlebot
+User-agent: Googlebot
+Allow: /
+
+Sitemap: https://caixadodev.com.br/sitemap.xml
