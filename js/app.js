@@ -3,18 +3,120 @@
  * Roteamento por hash, busca rápida (Ctrl+K), catálogo de 27 ferramentas e eventos
  */
 
-// Catálogo Completo de 27 Ferramentas
+// Catálogo Oficial de 40 Ferramentas - Ordenado por Frequência de Uso e Volume de Busca no Brasil
 const TOOLS_CATALOG = [
-  // --- GERADORES & DADOS 4DEVS ---
+  // ==========================================
+  // TIER 1: AS MAIS UTILIZADAS NO DIA A DIA (TOP 12)
+  // ==========================================
+  {
+    id: 'cpf-cnpj',
+    name: 'Gerador e Validador de CPF / CNPJ',
+    category: 'geradores',
+    categoryLabel: 'Documentos & Fiscais',
+    desc: 'Gere e valide números de CPF e CNPJ com algoritmo oficial Módulo 11, pontuação e detecção de Região Fiscal.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
+    color: 'var(--accent-primary)',
+    badge: '🔥 #1 Mais Buscado',
+    isPopular: true
+  },
   {
     id: 'pessoas',
     name: 'Gerador de Pessoas (Dados Fictícios Completos)',
     category: 'geradores',
     categoryLabel: 'Massa de Testes',
-    desc: 'Gere cadastros completos com Nome, CPF, RG, Idade, Data de Nascimento, Sexo, Tipo Sanguíneo, E-mail, Celular e Endereço.',
+    desc: 'Gere cadastros brasileiros completos para testes: Nome, CPF, RG, Idade, Data, Sexo, Sangue, E-mail, Celular e Endereço.',
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`,
     color: 'var(--accent-primary)',
-    badge: 'Popular 4Devs'
+    badge: '⭐ #2 Mais Usado',
+    isPopular: true
+  },
+  {
+    id: 'json',
+    name: 'Formatador e Validador de JSON',
+    category: 'formatadores',
+    categoryLabel: 'Código & APIs',
+    desc: 'Formate, indente (2 ou 4 espaços), minifique e detecte erros de sintaxe em códigos JSON com estatísticas em tempo real.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`,
+    color: 'var(--accent-cyan)',
+    badge: '⚡ Diário',
+    isPopular: true
+  },
+  {
+    id: 'json-ts',
+    name: 'Conversor JSON para TypeScript',
+    category: 'formatadores',
+    categoryLabel: 'TypeScript & Frontend',
+    desc: 'Cole qualquer retorno JSON de API e gere automaticamente interfaces e types tipados em TypeScript.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>`,
+    color: 'var(--accent-cyan)',
+    badge: '💎 TypeScript',
+    isPopular: true
+  },
+  {
+    id: 'clt-pj',
+    name: 'Calculadora Comparativa CLT vs PJ',
+    category: 'conversores',
+    categoryLabel: 'Carreira Dev BR',
+    desc: 'Descubra quanto cobrar como PJ ou compare propostas com tabelas de INSS progressivo, IRPF, FGTS, 13º e Simples Nacional (Fator R).',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>`,
+    color: 'var(--accent-emerald)',
+    badge: '💰 Carreira Dev',
+    isPopular: true
+  },
+  {
+    id: 'sql',
+    name: 'Formatador e Minificador de SQL',
+    category: 'formatadores',
+    categoryLabel: 'Banco de Dados',
+    desc: 'Embeleze e organize queries SQL complexas (SELECT, JOINs, subqueries) ou comprima em uma única linha.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>`,
+    color: 'var(--accent-emerald)',
+    badge: '🗄️ SQL',
+    isPopular: true
+  },
+  {
+    id: 'curl',
+    name: 'Conversor de cURL (Fetch, Axios, Python, PHP)',
+    category: 'formatadores',
+    categoryLabel: 'APIs & HTTP',
+    desc: 'Cole comandos cURL de documentações e converta imediatamente para JavaScript fetch, Axios, Python requests ou PHP.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`,
+    color: 'var(--accent-emerald)',
+    badge: '🌐 APIs',
+    isPopular: true
+  },
+  {
+    id: 'regex',
+    name: 'Testador de Regex (Expressões Regulares)',
+    category: 'formatadores',
+    categoryLabel: 'Expressões Regulares',
+    desc: 'Teste padrões Regex com highlight visual de correspondências em tempo real e presets de e-mail, CPF e URL.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="8" y1="11" x2="14" y2="11"/></svg>`,
+    color: 'var(--accent-purple)',
+    badge: '🔍 Regex',
+    isPopular: true
+  },
+  {
+    id: 'cartao',
+    name: 'Gerador e Validador de Cartão de Crédito',
+    category: 'geradores',
+    categoryLabel: 'Financeiro & E-commerce',
+    desc: 'Gere números válidos para testes de checkout com algoritmo de Luhn (Visa, Mastercard, Amex, Elo, Hipercard) e CVV.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>`,
+    color: 'var(--accent-rose)',
+    badge: '💳 Checkout',
+    isPopular: true
+  },
+  {
+    id: 'cron',
+    name: 'Gerador e Tradutor de Cron Expression',
+    category: 'formatadores',
+    categoryLabel: 'DevOps & Schedulers',
+    desc: 'Traduza expressões cron para português claro, gere agendamentos comuns e veja as próximas 5 execuções calculadas.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>`,
+    color: 'var(--accent-cyan)',
+    badge: '⏰ DevOps',
+    isPopular: true
   },
   {
     id: 'empresa',
@@ -24,17 +126,177 @@ const TOOLS_CATALOG = [
     desc: 'Gere dados empresariais com Razão Social, Nome Fantasia, CNPJ, Inscrição Estadual (IE), CNAE e Capital Social.',
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>`,
     color: 'var(--accent-cyan)',
-    badge: 'Empresarial'
+    badge: '🏢 Empresas',
+    isPopular: true
   },
   {
-    id: 'cpf-cnpj',
-    name: 'Gerador e Validador de CPF / CNPJ',
+    id: 'mock-data',
+    name: 'Gerador de Massa de Testes em Lote (Mock Data)',
     category: 'geradores',
-    categoryLabel: 'Geradores & Validadores',
-    desc: 'Gere e valide CPFs e CNPJs válidos para testes de software com pontuação e detecção de região fiscal.',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
+    categoryLabel: 'Massa de Testes',
+    desc: 'Gere centenas de registros fictícios estruturados de usuários e exporte em JSON, CSV para Excel ou SQL INSERT.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="12" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>`,
+    color: 'var(--accent-cyan)',
+    badge: '📊 Massa em Lote',
+    isPopular: true
+  },
+
+  // ==========================================
+  // TIER 2: UTILIDADES FREQUENTES & DESENVOLVIMENTO
+  // ==========================================
+  {
+    id: 'markdown',
+    name: 'Editor e Visualizador de Markdown',
+    category: 'formatadores',
+    categoryLabel: 'Documentação & Docs',
+    desc: 'Escreva e pré-visualize Markdown com suporte a tabelas GFM, blocos de código e tarefas com conversão para HTML.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>`,
+    color: 'var(--accent-purple)',
+    badge: '📝 GFM Live'
+  },
+  {
+    id: 'diff',
+    name: 'Comparador de Arquivos e Textos (Diff)',
+    category: 'formatadores',
+    categoryLabel: 'Produtividade',
+    desc: 'Compare dois textos ou códigos fonte linha a linha e visualize inserções, deleções e alterações.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>`,
+    color: 'var(--accent-cyan)',
+    badge: 'Diff Checker'
+  },
+  {
+    id: 'jwt',
+    name: 'Decodificador de JWT (JSON Web Token)',
+    category: 'seguranca',
+    categoryLabel: 'Segurança & Auth',
+    desc: 'Decodifique cabeçalho (Header) e dados (Payload) de tokens JWT em tempo real, sem enviar dados a servidores.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>`,
+    color: 'var(--accent-purple)',
+    badge: 'Privado & Seguro'
+  },
+  {
+    id: 'hashes',
+    name: 'Gerador de Hashes (MD5, SHA-256, SHA-512)',
+    category: 'seguranca',
+    categoryLabel: 'Criptografia',
+    desc: 'Calcule instantaneamente os hashes MD5, SHA-1, SHA-256 e SHA-512 de qualquer texto via Web Crypto API nativa.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
+    color: 'var(--accent-rose)',
+    badge: 'Web Crypto'
+  },
+  {
+    id: 'base64',
+    name: 'Codificador e Decodificador Base64 & URL',
+    category: 'conversores',
+    categoryLabel: 'Conversores',
+    desc: 'Codifique e decodifique textos e strings para Base64 (suporte a UTF-8) e codificação de URL.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>`,
+    color: 'var(--accent-rose)',
+    badge: 'UTF-8'
+  },
+  {
+    id: 'uuid',
+    name: 'Gerador de UUID / GUID v4',
+    category: 'geradores',
+    categoryLabel: 'Geradores',
+    desc: 'Crie identificadores únicos universais (UUID v4) criptograficamente seguros individualmente ou em lote.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>`,
+    color: 'var(--accent-cyan)',
+    badge: 'Cripto Seguro'
+  },
+  {
+    id: 'cep',
+    name: 'Gerador e Buscador de CEP',
+    category: 'geradores',
+    categoryLabel: 'Endereços & Correios',
+    desc: 'Gere CEPs válidos por UF a partir de faixas oficiais dos Correios e consulte endereços em tempo real com ViaCEP.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>`,
+    color: 'var(--accent-amber)',
+    badge: 'ViaCEP'
+  },
+  {
+    id: 'rg',
+    name: 'Gerador e Validador de RG',
+    category: 'geradores',
+    categoryLabel: 'Documentos',
+    desc: 'Gere e valide números de Registro Geral (RG) padrão SSP-SP e outros estados com cálculo de dígito verificador.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><line x1="15" y1="8" x2="17" y2="8"/><line x1="15" y1="12" x2="17" y2="12"/><line x1="7" y1="16" x2="17" y2="16"/></svg>`,
+    color: 'var(--accent-cyan)',
+    badge: 'SSP Brasil'
+  },
+  {
+    id: 'bancos',
+    name: 'Gerador de Conta Bancária para Testes',
+    category: 'geradores',
+    categoryLabel: 'Financeiro',
+    desc: 'Gere números válidos de agência e conta corrente para BB, Bradesco, Caixa, Itaú, Santander, Nubank e Inter.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>`,
+    color: 'var(--accent-emerald)',
+    badge: 'Fintech'
+  },
+
+  // ==========================================
+  // TIER 3: DESIGN, FRONTEND & DEVOPS
+  // ==========================================
+  {
+    id: 'css-generator',
+    name: 'Gerador de Box-Shadow & Glassmorphism CSS',
+    category: 'conversores',
+    categoryLabel: 'Design & CSS',
+    desc: 'Ajuste sombras, desfoques e efeito vidro fosco com sliders interativos e copie o código CSS moderno pronto.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>`,
+    color: 'var(--accent-rose)',
+    badge: 'Visual CSS'
+  },
+  {
+    id: 'code-beautifier',
+    name: 'Formatador e Minificador de HTML & CSS',
+    category: 'formatadores',
+    categoryLabel: 'Web & Frontend',
+    desc: 'Indente e organize código HTML e CSS com 2 ou 4 espaços ou comprima em uma linha para carregamento ultrarrápido.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>`,
     color: 'var(--accent-primary)',
-    badge: 'Mais Buscado'
+    badge: 'Minificador'
+  },
+  {
+    id: 'url-parser',
+    name: 'Inspetor e Construtor de URL / Query Params',
+    category: 'formatadores',
+    categoryLabel: 'Web & URLs',
+    desc: 'Decomponha URLs em protocolo, host, caminho e edite query parameters (?chave=valor) com encode/decode.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z"/></svg>`,
+    color: 'var(--accent-cyan)',
+    badge: 'Query Params'
+  },
+  {
+    id: 'timestamp',
+    name: 'Conversor de Timestamp Unix (Epoch)',
+    category: 'conversores',
+    categoryLabel: 'Conversores',
+    desc: 'Converta segundos e milissegundos Unix para horário de Brasília (GMT-3) e UTC, e vice-versa.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
+    color: 'var(--accent-cyan)',
+    badge: 'Tempo Real'
+  },
+  {
+    id: 'json-csv',
+    name: 'Conversor JSON <> CSV',
+    category: 'conversores',
+    categoryLabel: 'Dados & Planilhas',
+    desc: 'Converta arrays JSON para formato de tabela CSV para Excel e transforme arquivos CSV de volta para JSON.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 16V4m0 0L3 8m4-4l4 4m6 4v12m0 0l4-4m-4 4l-4-4"/></svg>`,
+    color: 'var(--accent-amber)',
+    badge: 'Planilhas'
+  },
+  {
+    id: 'storage',
+    name: 'Conversor de Armazenamento & Tempo de Download',
+    category: 'conversores',
+    categoryLabel: 'Infra & Redes',
+    desc: 'Converta entre Bytes, KB, MB, GB, TB, KiB, GiB e calcule tempo exato de transferência por velocidade de banda (Mbps/Gbps).',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>`,
+    color: 'var(--accent-amber)',
+    badge: 'Download Calc'
   },
   {
     id: 'cnh',
@@ -45,6 +307,100 @@ const TOOLS_CATALOG = [
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="10.5" r="2.5"/><line x1="14" y1="9" x2="18" y2="9"/><line x1="14" y1="13" x2="18" y2="13"/></svg>`,
     color: 'var(--accent-emerald)',
     badge: 'Detran'
+  },
+  {
+    id: 'subnet',
+    name: 'Calculadora de Sub-rede IP / CIDR',
+    category: 'conversores',
+    categoryLabel: 'Redes & DevOps',
+    desc: 'Calcule máscara de sub-rede, IP de rede, primeiro/último host útil, broadcast e total de IPs a partir do CIDR.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z"/></svg>`,
+    color: 'var(--accent-cyan)',
+    badge: 'DevOps'
+  },
+  {
+    id: 'http-status',
+    name: 'Catálogo de Códigos de Status HTTP',
+    category: 'conversores',
+    categoryLabel: 'Web & APIs',
+    desc: 'Consulte o significado e boas práticas de uso de todos os códigos HTTP (200, 201, 400, 401, 404, 500) em APIs REST.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`,
+    color: 'var(--accent-emerald)',
+    badge: 'Guia REST'
+  },
+  {
+    id: 'color',
+    name: 'Conversor de Cores (HEX, RGB, HSL)',
+    category: 'conversores',
+    categoryLabel: 'Design & Cores',
+    desc: 'Converta códigos de cores entre HEX, RGB, RGBA e HSL com seletor visual e análise de contraste WCAG.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.563-2.512 5.563-5.563C22 6.5 17.5 2 12 2z"/></svg>`,
+    color: 'var(--accent-rose)',
+    badge: 'Design Tokens'
+  },
+  {
+    id: 'svg',
+    name: 'Otimizador de SVG & Gerador de Data URI para CSS',
+    category: 'conversores',
+    categoryLabel: 'Design & SVGs',
+    desc: 'Minifique vetores SVG e gere background-image: url("data:image/svg+xml...") pronto para incorporar em folhas de estilo.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>`,
+    color: 'var(--accent-purple)',
+    badge: 'SVG to CSS'
+  },
+  {
+    id: 'senhas',
+    name: 'Gerador de Senhas Seguras & Entropia',
+    category: 'geradores',
+    categoryLabel: 'Segurança',
+    desc: 'Crie senhas fortes e aleatórias de 8 a 64 caracteres com medidor visual de força e cálculo de bits de entropia.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>`,
+    color: 'var(--accent-purple)',
+    badge: 'Segurança'
+  },
+  {
+    id: 'case',
+    name: 'Conversor de Formato de Texto (Case)',
+    category: 'conversores',
+    categoryLabel: 'Conversores',
+    desc: 'Converta strings instantaneamente entre camelCase, PascalCase, snake_case, kebab-case e CONSTANT_CASE.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>`,
+    color: 'var(--accent-amber)',
+    badge: 'Refatoração'
+  },
+  {
+    id: 'qrcode',
+    name: 'Gerador de QR Code',
+    category: 'conversores',
+    categoryLabel: 'Utilitários',
+    desc: 'Crie imagens de QR Code em alta definição a partir de textos, URLs ou chaves Pix com download PNG.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>`,
+    color: 'var(--accent-primary)',
+    badge: 'Download'
+  },
+
+  // ==========================================
+  // TIER 4: DOCUMENTOS ESPECÍFICOS & TESTES
+  // ==========================================
+  {
+    id: 'veiculos',
+    name: 'Gerador de Placa de Veículo & RENAVAM',
+    category: 'geradores',
+    categoryLabel: 'Veicular',
+    desc: 'Gere placas no padrão Mercosul (BRA2E19), tradicional (ABC-1234) e números de RENAVAM válidos com Módulo 11.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="22" height="13" rx="2" ry="2"/><polyline points="4 21 8 16 16 16 20 21"/></svg>`,
+    color: 'var(--accent-amber)',
+    badge: 'Detran'
+  },
+  {
+    id: 'certidao',
+    name: 'Gerador de Certidão (Nascimento, Casamento, Óbito)',
+    category: 'geradores',
+    categoryLabel: 'Cartórios CNJ',
+    desc: 'Gere números de certidões civis no padrão unificado do CNJ (32 dígitos) com cálculo de 2 dígitos verificadores (Módulo 11).',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>`,
+    color: 'var(--accent-emerald)',
+    badge: 'Oficial CNJ'
   },
   {
     id: 'pis',
@@ -67,118 +423,6 @@ const TOOLS_CATALOG = [
     badge: 'TSE'
   },
   {
-    id: 'cartao',
-    name: 'Gerador e Validador de Cartão de Crédito',
-    category: 'geradores',
-    categoryLabel: 'Financeiro',
-    desc: 'Gere números válidos para testes de checkout com algoritmo de Luhn (Visa, Mastercard, Amex, Elo, Hipercard) e CVV.',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>`,
-    color: 'var(--accent-rose)',
-    badge: 'E-commerce'
-  },
-  {
-    id: 'bancos',
-    name: 'Gerador de Conta Bancária para Testes',
-    category: 'geradores',
-    categoryLabel: 'Financeiro',
-    desc: 'Gere números válidos de agência e conta corrente para BB, Bradesco, Caixa, Itaú, Santander, Nubank e Inter.',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>`,
-    color: 'var(--accent-emerald)',
-    badge: 'Fintech'
-  },
-  {
-    id: 'veiculos',
-    name: 'Gerador de Placa de Veículo & RENAVAM',
-    category: 'geradores',
-    categoryLabel: 'Veicular',
-    desc: 'Gere placas no padrão Mercosul (BRA2E19), tradicional (ABC-1234) e números de RENAVAM válidos com Módulo 11.',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="22" height="13" rx="2" ry="2"/><polyline points="4 21 8 16 16 16 20 21"/></svg>`,
-    color: 'var(--accent-amber)',
-    badge: 'Detran'
-  },
-  {
-    id: 'senhas',
-    name: 'Gerador de Senhas Seguras & Entropia',
-    category: 'geradores',
-    categoryLabel: 'Segurança',
-    desc: 'Crie senhas fortes e aleatórias de 8 a 64 caracteres com medidor visual de força e cálculo de bits de entropia.',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>`,
-    color: 'var(--accent-purple)',
-    badge: 'Segurança'
-  },
-  {
-    id: 'uuid',
-    name: 'Gerador de UUID / GUID v4',
-    category: 'geradores',
-    categoryLabel: 'Geradores',
-    desc: 'Crie identificadores únicos universais (UUID v4) criptograficamente seguros individualmente ou em lote.',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>`,
-    color: 'var(--accent-cyan)',
-    badge: 'Cripto Seguro'
-  },
-
-  // --- CÓDIGO, TYPESCRIPT & FORMATADORES ---
-  {
-    id: 'json-ts',
-    name: 'Conversor JSON para TypeScript',
-    category: 'formatadores',
-    categoryLabel: 'TypeScript & Code',
-    desc: 'Cole qualquer JSON de API e gere automaticamente interfaces e types tipados em TypeScript.',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>`,
-    color: 'var(--accent-cyan)',
-    badge: 'Frontend'
-  },
-  {
-    id: 'regex',
-    name: 'Testador de Regex (Expressões Regulares)',
-    category: 'formatadores',
-    categoryLabel: 'Expressões Regulares',
-    desc: 'Teste padrões Regex com highlight visual de correspondências em tempo real e presets de e-mail, CPF e URL.',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="8" y1="11" x2="14" y2="11"/></svg>`,
-    color: 'var(--accent-purple)',
-    badge: 'Cheat Sheet'
-  },
-  {
-    id: 'sql',
-    name: 'Formatador e Minificador de SQL',
-    category: 'formatadores',
-    categoryLabel: 'Formatadores',
-    desc: 'Embeleze e organize queries SQL complexas (SELECT, JOINs, subqueries) ou comprima em uma única linha.',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>`,
-    color: 'var(--accent-emerald)',
-    badge: 'SQL'
-  },
-  {
-    id: 'diff',
-    name: 'Comparador de Arquivos e Textos (Diff)',
-    category: 'formatadores',
-    categoryLabel: 'Formatadores',
-    desc: 'Compare dois textos ou códigos fonte linha a linha e visualize inserções, deleções e alterações.',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>`,
-    color: 'var(--accent-cyan)',
-    badge: 'Produtividade'
-  },
-  {
-    id: 'json',
-    name: 'Formatador e Validador de JSON',
-    category: 'formatadores',
-    categoryLabel: 'Formatadores',
-    desc: 'Formate, indente, minifique e encontre erros de sintaxe em códigos JSON com estatísticas de tamanho.',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`,
-    color: 'var(--accent-primary)',
-    badge: 'Essencial'
-  },
-  {
-    id: 'json-csv',
-    name: 'Conversor JSON <> CSV',
-    category: 'conversores',
-    categoryLabel: 'Dados & Planilhas',
-    desc: 'Converta arrays JSON para formato de tabela CSV para Excel e transforme arquivos CSV de volta para JSON.',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 16V4m0 0L3 8m4-4l4 4m6 4v12m0 0l4-4m-4 4l-4-4"/></svg>`,
-    color: 'var(--accent-amber)',
-    badge: 'Planilhas'
-  },
-  {
     id: 'texto',
     name: 'Gerador de Lorem Ipsum & Contador de Texto',
     category: 'formatadores',
@@ -187,234 +431,6 @@ const TOOLS_CATALOG = [
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>`,
     color: 'var(--accent-primary)',
     badge: 'Utilitário'
-  },
-
-  // --- CRIPTOGRAFIA & SEGURANÇA ---
-  {
-    id: 'hashes',
-    name: 'Gerador de Hashes (MD5, SHA-256, SHA-512)',
-    category: 'seguranca',
-    categoryLabel: 'Criptografia',
-    desc: 'Calcule instantaneamente os hashes MD5, SHA-1, SHA-256 e SHA-512 de qualquer texto via Web Crypto API.',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
-    color: 'var(--accent-rose)',
-    badge: 'Criptografia'
-  },
-  {
-    id: 'jwt',
-    name: 'Decodificador de JWT (JSON Web Token)',
-    category: 'seguranca',
-    categoryLabel: 'Segurança & Auth',
-    desc: 'Decodifique cabeçalho (Header) e dados (Payload) de tokens JWT em tempo real, sem enviar dados a servidores.',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>`,
-    color: 'var(--accent-purple)',
-    badge: 'Privado'
-  },
-
-  // --- REDES & DEVOPS ---
-  {
-    id: 'subnet',
-    name: 'Calculadora de Sub-rede IP / CIDR',
-    category: 'conversores',
-    categoryLabel: 'Redes & DevOps',
-    desc: 'Calcule máscara de sub-rede, IP de rede, primeiro/último host útil, broadcast e total de IPs a partir do CIDR.',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`,
-    color: 'var(--accent-cyan)',
-    badge: 'DevOps'
-  },
-  {
-    id: 'http-status',
-    name: 'Catálogo de Códigos de Status HTTP',
-    category: 'conversores',
-    categoryLabel: 'Web & APIs',
-    desc: 'Consulte o significado e boas práticas de uso de todos os códigos HTTP (200, 201, 400, 401, 404, 500) em APIs REST.',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`,
-    color: 'var(--accent-emerald)',
-    badge: 'Guia REST'
-  },
-
-  // --- CONVERSORES CLÁSSICOS ---
-  {
-    id: 'case',
-    name: 'Conversor de Formato de Texto (Case)',
-    category: 'conversores',
-    categoryLabel: 'Conversores',
-    desc: 'Converta strings instantaneamente entre camelCase, PascalCase, snake_case, kebab-case e CONSTANT_CASE.',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>`,
-    color: 'var(--accent-amber)',
-    badge: 'Código'
-  },
-  {
-    id: 'color',
-    name: 'Conversor de Cores (HEX, RGB, HSL)',
-    category: 'conversores',
-    categoryLabel: 'Conversores',
-    desc: 'Converta códigos de cores entre HEX, RGB, RGBA e HSL com seletor visual e análise de contraste.',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.563-2.512 5.563-5.563C22 6.5 17.5 2 12 2z"/></svg>`,
-    color: 'var(--accent-rose)',
-    badge: 'Design'
-  },
-  {
-    id: 'timestamp',
-    name: 'Conversor de Timestamp Unix (Epoch)',
-    category: 'conversores',
-    categoryLabel: 'Conversores',
-    desc: 'Converta segundos e milissegundos Unix para horário de Brasília (GMT-3) e UTC, e vice-versa.',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
-    color: 'var(--accent-cyan)',
-    badge: 'Tempo Real'
-  },
-  {
-    id: 'base64',
-    name: 'Codificador e Decodificador Base64 & URL',
-    category: 'conversores',
-    categoryLabel: 'Conversores',
-    desc: 'Codifique e decodifique textos e strings para Base64 (suporte a UTF-8) e codificação de URL.',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>`,
-    color: 'var(--accent-rose)',
-    badge: 'UTF-8'
-  },
-  {
-    id: 'qrcode',
-    name: 'Gerador de QR Code',
-    category: 'conversores',
-    categoryLabel: 'Utilitários',
-    desc: 'Crie imagens de QR Code em alta definição a partir de textos, URLs ou chaves Pix com download PNG.',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>`,
-    color: 'var(--accent-primary)',
-    badge: 'Download'
-  },
-
-  // --- NOVAS FERRAMENTAS ROBUSTAS (TOTAL: 40) ---
-  {
-    id: 'rg',
-    name: 'Gerador e Validador de RG',
-    category: 'geradores',
-    categoryLabel: 'Documentos',
-    desc: 'Gere e valide números de Registro Geral (RG) padrão SSP-SP e outros estados com cálculo de dígito verificador.',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><line x1="15" y1="8" x2="17" y2="8"/><line x1="15" y1="12" x2="17" y2="12"/><line x1="7" y1="16" x2="17" y2="16"/></svg>`,
-    color: 'var(--accent-cyan)',
-    badge: 'SSP Brasil'
-  },
-  {
-    id: 'certidao',
-    name: 'Gerador de Certidão (Nascimento, Casamento, Óbito)',
-    category: 'geradores',
-    categoryLabel: 'Cartórios CNJ',
-    desc: 'Gere números de certidões civis no padrão unificado do CNJ (32 dígitos) com cálculo de 2 dígitos verificadores (Módulo 11).',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>`,
-    color: 'var(--accent-emerald)',
-    badge: 'Oficial CNJ'
-  },
-  {
-    id: 'cep',
-    name: 'Gerador e Buscador de CEP',
-    category: 'geradores',
-    categoryLabel: 'Endereços & Correios',
-    desc: 'Gere CEPs válidos por UF a partir de faixas oficiais dos Correios e consulte endereços em tempo real com ViaCEP.',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>`,
-    color: 'var(--accent-amber)',
-    badge: 'ViaCEP'
-  },
-  {
-    id: 'cron',
-    name: 'Gerador e Tradutor de Cron Expression',
-    category: 'formatadores',
-    categoryLabel: 'DevOps & Schedulers',
-    desc: 'Traduza expressões cron para português claro, gere agendamentos comuns e veja as próximas 5 execuções calculadas.',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>`,
-    color: 'var(--accent-cyan)',
-    badge: 'Scheduler'
-  },
-  {
-    id: 'markdown',
-    name: 'Editor e Visualizador de Markdown',
-    category: 'formatadores',
-    categoryLabel: 'Documentação & GFM',
-    desc: 'Escreva e pré-visualize Markdown com suporte a tabelas, blocos de código e tarefas com conversão para HTML.',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>`,
-    color: 'var(--accent-purple)',
-    badge: 'GFM Live'
-  },
-  {
-    id: 'curl',
-    name: 'Conversor de cURL (Fetch, Axios, Python, PHP)',
-    category: 'formatadores',
-    categoryLabel: 'APIs & HTTP',
-    desc: 'Cole comandos cURL de documentações e converta imediatamente para JavaScript fetch, Axios, Python requests ou PHP.',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`,
-    color: 'var(--accent-emerald)',
-    badge: 'APIs'
-  },
-  {
-    id: 'code-beautifier',
-    name: 'Formatador e Minificador de HTML & CSS',
-    category: 'formatadores',
-    categoryLabel: 'Web & Frontend',
-    desc: 'Indente e organize código HTML e CSS com 2 ou 4 espaços ou comprima em uma linha para carregamento ultrarrápido.',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/></svg>`,
-    color: 'var(--accent-primary)',
-    badge: 'Minificador'
-  },
-  {
-    id: 'url-parser',
-    name: 'Inspetor e Construtor de URL / Query Params',
-    category: 'formatadores',
-    categoryLabel: 'Web & URLs',
-    desc: 'Decomponha URLs em protocolo, host, caminho e edite query parameters (?chave=valor) com encode/decode.',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`,
-    color: 'var(--accent-cyan)',
-    badge: 'Query Params'
-  },
-  {
-    id: 'css-generator',
-    name: 'Gerador de Box-Shadow & Glassmorphism CSS',
-    category: 'conversores',
-    categoryLabel: 'Design & CSS',
-    desc: 'Ajuste sombras, desfoques e efeito vidro fosco com sliders interativos e copie o código CSS moderno pronto.',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>`,
-    color: 'var(--accent-rose)',
-    badge: 'Visual CSS'
-  },
-  {
-    id: 'clt-pj',
-    name: 'Calculadora Comparativa CLT vs PJ',
-    category: 'conversores',
-    categoryLabel: 'Carreira Dev BR',
-    desc: 'Descubra quanto cobrar como PJ ou compare propostas com tabelas de INSS, IRPF, Simples Nacional (Fator R) e benefícios.',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>`,
-    color: 'var(--accent-emerald)',
-    badge: 'Finanças Dev'
-  },
-  {
-    id: 'storage',
-    name: 'Conversor de Armazenamento & Tempo de Download',
-    category: 'conversores',
-    categoryLabel: 'Infra & Redes',
-    desc: 'Converta entre Bytes, KB, MB, GB, TB, KiB, GiB e calcule tempo exato de transferência por velocidade de banda (Mbps/Gbps).',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>`,
-    color: 'var(--accent-amber)',
-    badge: 'Download Calc'
-  },
-  {
-    id: 'svg',
-    name: 'Otimizador de SVG & Gerador de Data URI para CSS',
-    category: 'conversores',
-    categoryLabel: 'Design & SVGs',
-    desc: 'Minifique vetores SVG e gere background-image: url("data:image/svg+xml...") pronto para incorporar em folhas de estilo.',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>`,
-    color: 'var(--accent-purple)',
-    badge: 'SVG to CSS'
-  },
-  {
-    id: 'mock-data',
-    name: 'Gerador de Massa de Testes em Lote (Mock Data)',
-    category: 'geradores',
-    categoryLabel: 'Massa de Testes',
-    desc: 'Gere centenas de registros fictícios estruturados de usuários e exporte em JSON, CSV para Excel ou SQL INSERT.',
-    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>`,
-    color: 'var(--accent-cyan)',
-    badge: 'JSON / CSV / SQL'
   }
 ];
 
@@ -467,7 +483,9 @@ function initToolsHub() {
     grid.innerHTML = '';
     const filtered = filterCategory === 'all' 
       ? TOOLS_CATALOG 
-      : TOOLS_CATALOG.filter(t => t.category === filterCategory);
+      : filterCategory === 'populares'
+        ? TOOLS_CATALOG.filter(t => t.isPopular)
+        : TOOLS_CATALOG.filter(t => t.category === filterCategory);
 
     filtered.forEach(tool => {
       const card = document.createElement('a');
