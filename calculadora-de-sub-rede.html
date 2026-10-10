@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Sub-rede IP e Notação CIDR (/24, /28) | Caixa do Dev</title>
+  <meta name="description" content="Calcule máscara de sub-rede, IP de rede, primeiro e último host utilizável, broadcast e total de endereços IP a partir da notação CIDR.">
+  <meta name="keywords" content="calculadora de sub-rede, calculadora cidr ip, mascara de rede ipv4, broadcast primeiro host">
+  <meta name="author" content="Caixa do Dev">
+  <meta name="robots" content="index, follow">
+
+  <!-- Canonical & Social Meta -->
+  <link rel="canonical" href="https://www.caixadodev.com.br/calculadora-de-sub-rede">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.caixadodev.com.br/calculadora-de-sub-rede">
+  <meta property="og:title" content="Calculadora de Sub-rede IP e Notação CIDR (/24, /28) | Caixa do Dev">
+  <meta property="og:description" content="Calcule máscara de sub-rede, IP de rede, primeiro e último host utilizável, broadcast e total de endereços IP a partir da notação CIDR.">
+  <meta property="og:image" content="https://www.caixadodev.com.br/assets/og-cover.png">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'><path d='M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/tools.css">
+
+  <!-- Schema.org WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calculadora de Sub-rede IP e Notação CIDR (/24, /28)",
+    "url": "https://www.caixadodev.com.br/calculadora-de-sub-rede",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript",
+    "description": "Calcule máscara de sub-rede, IP de rede, primeiro e último host utilizável, broadcast e total de endereços IP a partir da notação CIDR.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "BRL"
+    }
+  }
+  </script>
+</head>
+<body class="standalone-page">
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="/" class="brand" title="Caixa do Dev - Página Inicial">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Caixa do Dev</span>
+          <span class="brand-badge">40 Ferramentas</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="/">Início</a></li>
+          <li><a href="/gerador-de-cpf">CPF</a></li>
+          <li><a href="/gerador-de-cnpj">CNPJ</a></li>
+          <li><a href="/gerador-de-pessoas">Pessoas</a></li>
+          <li><a href="/calculadora-clt-pj">CLT vs PJ</a></li>
+          <li><a href="/json-para-typescript">JSON &rarr; TS</a></li>
+          <li><a href="pages/sobre.html">Sobre</a></li>
+          <li><a href="pages/contato.html">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Conteúdo Principal -->
+  <main class="container" style="padding-top: 32px; padding-bottom: 60px;">
+    
+    <div class="tool-breadcrumbs">
+      <a href="/">&larr; Início</a> / <span>Calculadora de Sub-rede IP e Notação CIDR (/24, /28)</span>
+    </div>
+
+    <div class="privacy-badge">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Processamento 100% Client-Side no Navegador (Privacidade Total)
+    </div>
+
+    <!-- Conteúdo da Ferramenta -->
+    <section class="tool-view standalone-active" data-tool-id="subnet">
+      
+      
+
+      <div class="tool-interface-card">
+        <div class="tool-header-area">
+          <div class="tool-title-group">
+            <h1>Calculadora de Sub-rede IP e Notação CIDR</h1>
+            <p>Calcule máscara, rede, broadcast, primeiro/último host e total de IPs para redes IPv4.</p>
+          </div>
+          <div class="tool-actions-bar">
+            <button id="btn-calc-subnet" class="btn btn-primary">Calcular Sub-rede</button>
+          </div>
+        </div>
+
+        <div class="split-grid" style="grid-template-columns: 2fr 1fr; max-width: 500px;">
+          <div class="form-group">
+            <label class="form-label">Endereço IP:</label>
+            <input type="text" id="input-subnet-ip" class="form-control" value="192.168.1.0">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Máscara CIDR:</label>
+            <select id="input-subnet-cidr" class="form-control">
+              <option value="24" selected>/24 (255.255.255.0 - 254 hosts)</option>
+              <option value="16">/16 (255.255.0.0 - 65k hosts)</option>
+              <option value="25">/25 (255.255.255.128 - 126 hosts)</option>
+              <option value="26">/26 (255.255.255.192 - 62 hosts)</option>
+              <option value="27">/27 (255.255.255.224 - 30 hosts)</option>
+              <option value="28">/28 (255.255.255.240 - 14 hosts)</option>
+              <option value="29">/29 (255.255.255.248 - 6 hosts)</option>
+              <option value="30">/30 (255.255.255.252 - 2 hosts)</option>
+              <option value="32">/32 (255.255.255.255 - 1 host)</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="subnet-result-container" style="margin-top: 20px;"></div>
+      </div>
+          <article class="tool-seo-guide">
+        <h2>Cálculo de Sub-redes IPv4 em Notação CIDR para Redes e DevOps</h2>
+        <p>A notação CIDR (Classless Inter-Domain Routing) revolucionou o endereçamento IP permitindo a alocação flexível de blocos de rede através de uma máscara de prefixo (ex: /24, /16, /28).</p>
+        <p>Calcular corretamente a quantidade de hosts úteis, o endereço de rede (Network IP) e o endereço de broadcast é etapa obrigatória na arquitetura de nuvem (VPCs na AWS, Google Cloud e Azure), configuração de firewalls e roteamento de clusters Kubernetes.</p>
+      </article>
+    
+    </section>
+
+    <!-- Outras Ferramentas Recomendadas -->
+    <section style="margin-top: 60px;">
+      <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 20px; color: var(--text-primary);">Explore Mais Ferramentas Populares</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px;">
+        <a href="/gerador-de-cpf" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Gerador de CPF</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Gere e valide números de CPF com detecção de Região Fiscal.</p>
+        </a>
+        <a href="/gerador-de-cnpj" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Gerador de CNPJ</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Gere CNPJs para testes corporativos com padrão matriz.</p>
+        </a>
+        <a href="/gerador-de-pessoas" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Gerador de Pessoas</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Cadastros completos com dados fictícios e conformidade LGPD.</p>
+        </a>
+        <a href="/calculadora-clt-pj" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Calculadora CLT vs PJ</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Calcule salário líquido, impostos do Simples e INSS.</p>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-grid">
+        <div class="footer-col footer-col-wide">
+          <div class="footer-brand">
+            <span class="footer-brand-title">Caixa do Dev</span>
+            <span class="footer-badge">100% Client-Side</span>
+          </div>
+          <p>O maior canivete suíço gratuito para desenvolvedores, analistas de QA e profissionais de tecnologia do Brasil.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Institucional</h4>
+          <ul>
+            <li><a href="pages/sobre.html">Sobre o Projeto</a></li>
+            <li><a href="pages/contato.html">Fale Conosco</a></li>
+            <li><a href="pages/privacidade.html">Política de Privacidade</a></li>
+            <li><a href="pages/termos.html">Termos de Uso</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Caixa do Dev. Todos os direitos reservados.</span>
+        <span>Processamento local de alta performance com respeito total à LGPD.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
+  <!-- Scripts -->
+  <script src="js/tools/subnet-calculator.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

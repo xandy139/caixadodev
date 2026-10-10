@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerador de Certidão de Nascimento, Casamento e Óbito (CNJ) | Caixa do Dev</title>
+  <meta name="description" content="Gere e valide números de certidões civis no padrão unificado do CNJ (32 dígitos - Provimento 63/2017) para testes em cartórios, ERPs e registros civis.">
+  <meta name="keywords" content="gerador certidao nascimento cnj, certidao casamento 32 digitos, validador certidao cnj, provimento 63 2017">
+  <meta name="author" content="Caixa do Dev">
+  <meta name="robots" content="index, follow">
+
+  <!-- Canonical & Social Meta -->
+  <link rel="canonical" href="https://www.caixadodev.com.br/gerador-de-certidao">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.caixadodev.com.br/gerador-de-certidao">
+  <meta property="og:title" content="Gerador de Certidão de Nascimento, Casamento e Óbito (CNJ) | Caixa do Dev">
+  <meta property="og:description" content="Gere e valide números de certidões civis no padrão unificado do CNJ (32 dígitos - Provimento 63/2017) para testes em cartórios, ERPs e registros civis.">
+  <meta property="og:image" content="https://www.caixadodev.com.br/assets/og-cover.png">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'><path d='M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/tools.css">
+
+  <!-- Schema.org WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Gerador de Certidão de Nascimento, Casamento e Óbito (CNJ)",
+    "url": "https://www.caixadodev.com.br/gerador-de-certidao",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript",
+    "description": "Gere e valide números de certidões civis no padrão unificado do CNJ (32 dígitos - Provimento 63/2017) para testes em cartórios, ERPs e registros civis.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "BRL"
+    }
+  }
+  </script>
+</head>
+<body class="standalone-page">
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="/" class="brand" title="Caixa do Dev - Página Inicial">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Caixa do Dev</span>
+          <span class="brand-badge">40 Ferramentas</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="/">Início</a></li>
+          <li><a href="/gerador-de-cpf">CPF</a></li>
+          <li><a href="/gerador-de-cnpj">CNPJ</a></li>
+          <li><a href="/gerador-de-pessoas">Pessoas</a></li>
+          <li><a href="/calculadora-clt-pj">CLT vs PJ</a></li>
+          <li><a href="/json-para-typescript">JSON &rarr; TS</a></li>
+          <li><a href="pages/sobre.html">Sobre</a></li>
+          <li><a href="pages/contato.html">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Conteúdo Principal -->
+  <main class="container" style="padding-top: 32px; padding-bottom: 60px;">
+    
+    <div class="tool-breadcrumbs">
+      <a href="/">&larr; Início</a> / <span>Gerador de Certidão de Nascimento, Casamento e Óbito (CNJ)</span>
+    </div>
+
+    <div class="privacy-badge">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Processamento 100% Client-Side no Navegador (Privacidade Total)
+    </div>
+
+    <!-- Conteúdo da Ferramenta -->
+    <section class="tool-view standalone-active" data-tool-id="certidao">
+      
+      
+
+      <div class="tool-interface-card">
+        <div class="tool-header-area">
+          <div class="tool-title-group">
+            <h1>Gerador e Validador de Certidões Civis (CNJ)</h1>
+            <p>Padrão oficial unificado de 32 dígitos (Provimento nº 63/2017) para testes em cartórios, ERPs e registros.</p>
+          </div>
+          <div class="tool-actions-bar">
+            <select id="select-certidao-tipo" class="form-control" style="width: auto; padding: 8px 12px;">
+              <option value="nascimento">Nascimento (Livro 55)</option>
+              <option value="casamento">Casamento (Livro 56)</option>
+              <option value="obito">Óbito (Livro 58)</option>
+            </select>
+            <label class="form-checkbox">
+              <input type="checkbox" id="check-certidao-mask" checked>
+              <span>Com Pontuação</span>
+            </label>
+            <button id="btn-gen-certidao" class="btn btn-primary">Gerar Certidão</button>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div>
+            <span class="pane-title" style="margin-bottom: 8px;">Certidão Gerada</span>
+            <div class="result-box" style="display: flex; flex-direction: column; gap: 8px;">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span id="certidao-display" style="font-family: var(--font-mono); font-size: 1.05rem; font-weight: 700; color: var(--accent-emerald); word-break: break-all;">-</span>
+                <button id="btn-copy-certidao" class="btn btn-secondary btn-sm" style="margin-left: 10px;">Copiar</button>
+              </div>
+              <span id="certidao-extra-info" style="font-size: 0.8rem; color: var(--text-muted);">Tipo: Nascimento | DVs calculados via Módulo 11</span>
+            </div>
+          </div>
+          <div>
+            <span class="pane-title" style="margin-bottom: 8px;">Validar Certidão de 32 Dígitos</span>
+            <div style="display: flex; gap: 8px;">
+              <input type="text" id="input-val-certidao" class="form-control" placeholder="Cole a certidão com ou sem pontos...">
+              <button id="btn-val-certidao" class="btn btn-secondary">Validar</button>
+            </div>
+            <div id="certidao-val-result" style="display: none; margin-top: 10px;"></div>
+          </div>
+        </div>
+      </div>
+
+      <article class="tool-seo-guide">
+        <h2>Entenda a Estrutura da Certidão do CNJ</h2>
+        <p>Desde 2017, o Conselho Nacional de Justiça estabeleceu uma matrícula única nacional com 32 dígitos: 6 dígitos para o Cartório (CNS), 2 para o Acervo, 2 para o Tipo de Livro, 4 para o Ano, 1 para Tipo de Livro, 5 para o Número do Livro, 3 para a Folha, 7 para o Termo e os 2 últimos dígitos para verificação (DV1 e DV2 por Módulo 11).</p>
+      </article>
+    
+    </section>
+
+    <!-- Outras Ferramentas Recomendadas -->
+    <section style="margin-top: 60px;">
+      <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 20px; color: var(--text-primary);">Explore Mais Ferramentas Populares</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px;">
+        <a href="/gerador-de-cpf" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Gerador de CPF</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Gere e valide números de CPF com detecção de Região Fiscal.</p>
+        </a>
+        <a href="/gerador-de-cnpj" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Gerador de CNPJ</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Gere CNPJs para testes corporativos com padrão matriz.</p>
+        </a>
+        <a href="/gerador-de-pessoas" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Gerador de Pessoas</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Cadastros completos com dados fictícios e conformidade LGPD.</p>
+        </a>
+        <a href="/calculadora-clt-pj" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Calculadora CLT vs PJ</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Calcule salário líquido, impostos do Simples e INSS.</p>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-grid">
+        <div class="footer-col footer-col-wide">
+          <div class="footer-brand">
+            <span class="footer-brand-title">Caixa do Dev</span>
+            <span class="footer-badge">100% Client-Side</span>
+          </div>
+          <p>O maior canivete suíço gratuito para desenvolvedores, analistas de QA e profissionais de tecnologia do Brasil.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Institucional</h4>
+          <ul>
+            <li><a href="pages/sobre.html">Sobre o Projeto</a></li>
+            <li><a href="pages/contato.html">Fale Conosco</a></li>
+            <li><a href="pages/privacidade.html">Política de Privacidade</a></li>
+            <li><a href="pages/termos.html">Termos de Uso</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Caixa do Dev. Todos os direitos reservados.</span>
+        <span>Processamento local de alta performance com respeito total à LGPD.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
+  <!-- Scripts -->
+  <script src="js/tools/certidao-tool.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -475,7 +475,8 @@ body {
   padding: 24px 0 60px;
 }
 
-.tool-view.active {
+.tool-view.active,
+.tool-view.standalone-active {
   display: block;
   animation: fadeIn 0.25s ease forwards;
 }

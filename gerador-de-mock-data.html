@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerador de Mock Data em Lote (JSON, CSV, SQL INSERT) | Caixa do Dev</title>
+  <meta name="description" content="Gere de 5 a 100 registros realistas estruturados para popular bancos de dados. Exporte instantaneamente para JSON, CSV e comandos SQL INSERT INTO.">
+  <meta name="keywords" content="gerador de mock data, popular banco de dados, mock data brasil, sql insert generator, json mock data">
+  <meta name="author" content="Caixa do Dev">
+  <meta name="robots" content="index, follow">
+
+  <!-- Canonical & Social Meta -->
+  <link rel="canonical" href="https://www.caixadodev.com.br/gerador-de-mock-data">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.caixadodev.com.br/gerador-de-mock-data">
+  <meta property="og:title" content="Gerador de Mock Data em Lote (JSON, CSV, SQL INSERT) | Caixa do Dev">
+  <meta property="og:description" content="Gere de 5 a 100 registros realistas estruturados para popular bancos de dados. Exporte instantaneamente para JSON, CSV e comandos SQL INSERT INTO.">
+  <meta property="og:image" content="https://www.caixadodev.com.br/assets/og-cover.png">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'><path d='M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/tools.css">
+
+  <!-- Schema.org WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Gerador de Mock Data em Lote (JSON, CSV, SQL INSERT)",
+    "url": "https://www.caixadodev.com.br/gerador-de-mock-data",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript",
+    "description": "Gere de 5 a 100 registros realistas estruturados para popular bancos de dados. Exporte instantaneamente para JSON, CSV e comandos SQL INSERT INTO.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "BRL"
+    }
+  }
+  </script>
+</head>
+<body class="standalone-page">
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="/" class="brand" title="Caixa do Dev - Página Inicial">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Caixa do Dev</span>
+          <span class="brand-badge">40 Ferramentas</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="/">Início</a></li>
+          <li><a href="/gerador-de-cpf">CPF</a></li>
+          <li><a href="/gerador-de-cnpj">CNPJ</a></li>
+          <li><a href="/gerador-de-pessoas">Pessoas</a></li>
+          <li><a href="/calculadora-clt-pj">CLT vs PJ</a></li>
+          <li><a href="/json-para-typescript">JSON &rarr; TS</a></li>
+          <li><a href="pages/sobre.html">Sobre</a></li>
+          <li><a href="pages/contato.html">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Conteúdo Principal -->
+  <main class="container" style="padding-top: 32px; padding-bottom: 60px;">
+    
+    <div class="tool-breadcrumbs">
+      <a href="/">&larr; Início</a> / <span>Gerador de Mock Data em Lote (JSON, CSV, SQL INSERT)</span>
+    </div>
+
+    <div class="privacy-badge">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Processamento 100% Client-Side no Navegador (Privacidade Total)
+    </div>
+
+    <!-- Conteúdo da Ferramenta -->
+    <section class="tool-view standalone-active" data-tool-id="mock-data">
+      
+      
+
+      <div class="tool-interface-card">
+        <div class="tool-header-area">
+          <div class="tool-title-group">
+            <h1>Gerador de Massa de Dados em Lote (Mock Data)</h1>
+            <p>Gere centenas de cadastros fictícios com Nome, CPF, Telefone, Cidade e Status em JSON, CSV ou SQL INSERT.</p>
+          </div>
+          <div class="tool-actions-bar">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <label style="font-size: 0.85rem; color: var(--text-muted);">Qtd:</label>
+              <select id="mock-qty" class="form-control" style="width: 80px; padding: 6px 10px;">
+                <option value="5">5</option>
+                <option value="10" selected>10</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+              </select>
+            </div>
+            <input type="text" id="mock-table-name" class="form-control" style="width: 140px; padding: 6px 10px;" value="usuarios" placeholder="Nome da tabela">
+            <button id="btn-gen-mock" class="btn btn-primary">Gerar Registros</button>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+          <div class="tool-actions-bar">
+            <button id="btn-mock-json" class="btn btn-secondary btn-sm">JSON</button>
+            <button id="btn-mock-csv" class="btn btn-secondary btn-sm">CSV (Excel)</button>
+            <button id="btn-mock-sql" class="btn btn-secondary btn-sm">SQL INSERT</button>
+          </div>
+          <button id="btn-copy-mock" class="btn btn-secondary btn-sm">Copiar Tudo</button>
+        </div>
+
+        <div class="form-group">
+          <textarea id="mock-output-display" class="form-control" style="min-height: 380px; font-size: 0.88rem;" readonly></textarea>
+        </div>
+      </div>
+
+      <article class="tool-seo-guide">
+        <h2>Geração de Massa de Testes Ética em Conformidade com a LGPD</h2>
+        <p>A Lei Geral de Proteção de Dados (Lei nº 13.709/2018) proíbe a utilização de bancos de dados com informações reais de clientes em ambientes de testes e homologação (staging/sandbox). Utilizar ferramentas de Mock Data que geram dados computacionais puramente fictícios garante conformidade regulatória sem risco de vazamentos.</p>
+      </article>
+    
+    </section>
+
+    <!-- Outras Ferramentas Recomendadas -->
+    <section style="margin-top: 60px;">
+      <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 20px; color: var(--text-primary);">Explore Mais Ferramentas Populares</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px;">
+        <a href="/gerador-de-cpf" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Gerador de CPF</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Gere e valide números de CPF com detecção de Região Fiscal.</p>
+        </a>
+        <a href="/gerador-de-cnpj" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Gerador de CNPJ</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Gere CNPJs para testes corporativos com padrão matriz.</p>
+        </a>
+        <a href="/gerador-de-pessoas" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Gerador de Pessoas</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Cadastros completos com dados fictícios e conformidade LGPD.</p>
+        </a>
+        <a href="/calculadora-clt-pj" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Calculadora CLT vs PJ</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Calcule salário líquido, impostos do Simples e INSS.</p>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-grid">
+        <div class="footer-col footer-col-wide">
+          <div class="footer-brand">
+            <span class="footer-brand-title">Caixa do Dev</span>
+            <span class="footer-badge">100% Client-Side</span>
+          </div>
+          <p>O maior canivete suíço gratuito para desenvolvedores, analistas de QA e profissionais de tecnologia do Brasil.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Institucional</h4>
+          <ul>
+            <li><a href="pages/sobre.html">Sobre o Projeto</a></li>
+            <li><a href="pages/contato.html">Fale Conosco</a></li>
+            <li><a href="pages/privacidade.html">Política de Privacidade</a></li>
+            <li><a href="pages/termos.html">Termos de Uso</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Caixa do Dev. Todos os direitos reservados.</span>
+        <span>Processamento local de alta performance com respeito total à LGPD.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
+  <!-- Scripts -->
+  <script src="js/tools/mock-data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

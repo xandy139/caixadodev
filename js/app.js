@@ -525,6 +525,14 @@ function renderRecentTools() {
 // ROTEAMENTO POR HASH
 // ========================
 function initRouter() {
+  if (document.body.classList.contains('standalone-page')) {
+    const standaloneTool = document.querySelector('.tool-view.standalone-active');
+    if (standaloneTool && standaloneTool.dataset.toolId) {
+      recordRecentTool(standaloneTool.dataset.toolId);
+    }
+    return;
+  }
+
   const handleRoute = () => {
     const hash = window.location.hash.replace('#', '') || 'home';
     const hubView = document.getElementById('hub-view');

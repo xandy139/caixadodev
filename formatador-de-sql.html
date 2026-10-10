@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formatador e Minificador de SQL Online (SQL Beautifier) | Caixa do Dev</title>
+  <meta name="description" content="Formate e organize consultas SQL complexas (SELECT, JOIN, WHERE, subqueries) ou comprima para linha única. Palavras-chave em maiúsculas automáticas.">
+  <meta name="keywords" content="formatador de sql, sql beautifier online, embelezer sql query, minificar sql, formatar select join">
+  <meta name="author" content="Caixa do Dev">
+  <meta name="robots" content="index, follow">
+
+  <!-- Canonical & Social Meta -->
+  <link rel="canonical" href="https://www.caixadodev.com.br/formatador-de-sql">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.caixadodev.com.br/formatador-de-sql">
+  <meta property="og:title" content="Formatador e Minificador de SQL Online (SQL Beautifier) | Caixa do Dev">
+  <meta property="og:description" content="Formate e organize consultas SQL complexas (SELECT, JOIN, WHERE, subqueries) ou comprima para linha única. Palavras-chave em maiúsculas automáticas.">
+  <meta property="og:image" content="https://www.caixadodev.com.br/assets/og-cover.png">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'><path d='M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/tools.css">
+
+  <!-- Schema.org WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Formatador e Minificador de SQL Online (SQL Beautifier)",
+    "url": "https://www.caixadodev.com.br/formatador-de-sql",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript",
+    "description": "Formate e organize consultas SQL complexas (SELECT, JOIN, WHERE, subqueries) ou comprima para linha única. Palavras-chave em maiúsculas automáticas.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "BRL"
+    }
+  }
+  </script>
+</head>
+<body class="standalone-page">
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="/" class="brand" title="Caixa do Dev - Página Inicial">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Caixa do Dev</span>
+          <span class="brand-badge">40 Ferramentas</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="/">Início</a></li>
+          <li><a href="/gerador-de-cpf">CPF</a></li>
+          <li><a href="/gerador-de-cnpj">CNPJ</a></li>
+          <li><a href="/gerador-de-pessoas">Pessoas</a></li>
+          <li><a href="/calculadora-clt-pj">CLT vs PJ</a></li>
+          <li><a href="/json-para-typescript">JSON &rarr; TS</a></li>
+          <li><a href="pages/sobre.html">Sobre</a></li>
+          <li><a href="pages/contato.html">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Conteúdo Principal -->
+  <main class="container" style="padding-top: 32px; padding-bottom: 60px;">
+    
+    <div class="tool-breadcrumbs">
+      <a href="/">&larr; Início</a> / <span>Formatador e Minificador de SQL Online (SQL Beautifier)</span>
+    </div>
+
+    <div class="privacy-badge">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Processamento 100% Client-Side no Navegador (Privacidade Total)
+    </div>
+
+    <!-- Conteúdo da Ferramenta -->
+    <section class="tool-view standalone-active" data-tool-id="sql">
+      
+      
+
+      <div class="tool-interface-card">
+        <div class="tool-header-area">
+          <div class="tool-title-group">
+            <h1>Formatador e Minificador de SQL</h1>
+            <p>Indente queries, quebre cláusulas complexas e padronize palavras-chave em maiúsculas.</p>
+          </div>
+          <div class="tool-actions-bar">
+            <button id="btn-format-sql" class="btn btn-primary">Formatar SQL</button>
+            <button id="btn-minify-sql" class="btn btn-outline-cyan">Minificar</button>
+            <button id="btn-sample-sql" class="btn btn-secondary">Exemplo</button>
+            <button id="btn-clear-sql" class="btn btn-danger btn-sm">Limpar</button>
+          </div>
+        </div>
+
+        <div class="form-options-row">
+          <label class="checkbox-label"><input type="checkbox" id="check-sql-upper" checked><span>Palavras-chave em MAIÚSCULAS</span></label>
+        </div>
+
+        <div class="split-grid">
+          <div class="pane"><span class="pane-title" style="margin-bottom: 8px;">Entrada SQL</span><textarea id="sql-input" class="form-control" placeholder="select id, nome from usuarios where ativo = 1..."></textarea></div>
+          <div class="pane"><div class="pane-header"><span class="pane-title">SQL Formatado</span><button id="btn-copy-sql" class="btn btn-secondary btn-sm">Copiar</button></div><pre id="sql-output" class="result-box large"></pre></div>
+        </div>
+      </div>
+          <article class="tool-seo-guide">
+        <h2>Formatação e Minificação de Consultas SQL para Alta Performance</h2>
+        <p>Queries SQL extensas, com múltiplos JOINs, subconsultas e cláusulas condicionais complexas tornam-se rapidamente ilegíveis quando condensadas em uma única linha gerada por ORMs como Hibernate, Prisma ou Entity Framework.</p>
+        <p>Formatar e identar o código SQL facilita revisões de código (code reviews), identificação de gargalos de desempenho e análise de planos de execução (EXPLAIN ANALYZE) em bancos como PostgreSQL, MySQL e SQL Server.</p>
+      </article>
+    
+    </section>
+
+    <!-- Outras Ferramentas Recomendadas -->
+    <section style="margin-top: 60px;">
+      <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 20px; color: var(--text-primary);">Explore Mais Ferramentas Populares</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px;">
+        <a href="/gerador-de-cpf" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Gerador de CPF</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Gere e valide números de CPF com detecção de Região Fiscal.</p>
+        </a>
+        <a href="/gerador-de-cnpj" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Gerador de CNPJ</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Gere CNPJs para testes corporativos com padrão matriz.</p>
+        </a>
+        <a href="/gerador-de-pessoas" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Gerador de Pessoas</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Cadastros completos com dados fictícios e conformidade LGPD.</p>
+        </a>
+        <a href="/calculadora-clt-pj" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Calculadora CLT vs PJ</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Calcule salário líquido, impostos do Simples e INSS.</p>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-grid">
+        <div class="footer-col footer-col-wide">
+          <div class="footer-brand">
+            <span class="footer-brand-title">Caixa do Dev</span>
+            <span class="footer-badge">100% Client-Side</span>
+          </div>
+          <p>O maior canivete suíço gratuito para desenvolvedores, analistas de QA e profissionais de tecnologia do Brasil.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Institucional</h4>
+          <ul>
+            <li><a href="pages/sobre.html">Sobre o Projeto</a></li>
+            <li><a href="pages/contato.html">Fale Conosco</a></li>
+            <li><a href="pages/privacidade.html">Política de Privacidade</a></li>
+            <li><a href="pages/termos.html">Termos de Uso</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Caixa do Dev. Todos os direitos reservados.</span>
+        <span>Processamento local de alta performance com respeito total à LGPD.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
+  <!-- Scripts -->
+  <script src="js/tools/sql-formatter.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
