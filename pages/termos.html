@@ -4,70 +4,137 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Termos de Uso | Caixa do Dev</title>
-  <meta name="description" content="Termos e condições de uso da plataforma Caixa do Dev para desenvolvedores e estudantes de tecnologia.">
+  <meta name="description" content="Termos e condições de uso da plataforma Caixa do Dev para desenvolvedores, analistas de QA e estudantes de tecnologia.">
+  <meta name="author" content="Alexandre Marcelino">
+  <meta name="robots" content="index, follow">
+
+  <link rel="canonical" href="https://www.caixadodev.com.br/pages/termos.html">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'><path d='M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4'/></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/tools.css">
 </head>
-<body>
+<body class="standalone-page">
+
+  <!-- Navbar -->
   <header class="navbar">
     <div class="container nav-container">
-      <a href="../index.html#home" class="brand">
+      <a href="/" class="brand" title="Caixa do Dev - Página Inicial">
         <div class="brand-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
           </svg>
         </div>
         <div class="brand-text">
           <span class="brand-name">Caixa do Dev</span>
-          <span class="brand-badge">DevTools Brasil</span>
+          <span class="brand-badge">Institucional</span>
         </div>
       </a>
+
       <nav>
         <ul class="nav-links">
-          <li><a href="../index.html#home">&larr; Voltar às Ferramentas</a></li>
+          <li><a href="/">Início</a></li>
+          <li><a href="/gerador-de-cpf">CPF</a></li>
+          <li><a href="/gerador-de-cnpj">CNPJ</a></li>
+          <li><a href="/calculadora-clt-pj">CLT vs PJ</a></li>
+          <li><a href="/pages/sobre.html">Sobre</a></li>
+          <li><a href="/pages/contato.html">Contato</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <main class="container" style="padding: 40px 20px 80px;">
-    <article class="tool-seo-guide" style="max-width: 860px; margin: 0 auto;">
-      <h2>Termos de Uso</h2>
-      <p><em>Última atualização: Outubro de 2026</em></p>
+  <!-- Conteúdo Principal -->
+  <main class="container" style="padding-top: 32px; padding-bottom: 80px; max-width: 880px; margin: 0 auto;">
+    
+    <div class="tool-breadcrumbs" style="margin-bottom: 24px;">
+      <a href="/">&larr; Início</a> / <span>Termos de Uso</span>
+    </div>
 
-      <p>Ao acessar e utilizar o site <strong>Caixa do Dev</strong> (caixadodev.com.br), você concorda integralmente com estes Termos de Uso. Caso não concorde com algum dos termos, solicitamos que não utilize os nossos serviços.</p>
+    <article class="tool-seo-guide" style="padding: 36px; border-radius: var(--radius-lg); background: var(--bg-card); border: 1px solid var(--border-subtle);">
+      
+      <header style="margin-bottom: 28px; border-bottom: 1px solid var(--border-subtle); padding-bottom: 20px;">
+        <h1 style="font-size: 2.2rem; font-weight: 800; color: var(--text-primary); margin-bottom: 8px;">Termos de Uso</h1>
+        <p style="color: var(--text-muted); font-size: 0.95rem; margin: 0;">Condições gerais de navegação e utilização da plataforma Caixa do Dev. Atualizado em Outubro de 2026.</p>
+      </header>
 
-      <h3>1. Finalidade das Ferramentas</h3>
-      <p>As ferramentas disponibilizadas na Caixa do Dev são fornecidas gratuitamente para fins <strong>educacionais, desenvolvimento de software, validação técnica e testes em ambientes de homologação</strong>.</p>
-      <p>Os geradores de números (tais como CPF, CNPJ e UUID) criam sequências através de fórmulas matemáticas lógicas e não representam nem se vinculam a cadastros reais perante a órgãos governamentais ou entidades bancárias. É expressamente proibido o uso de dados fictícios para fraudes, falsidade ideológica ou qualquer atividade ilícita prevista na legislação vigente.</p>
+      <section>
+        <p>Ao acessar e utilizar o portal <strong>Caixa do Dev</strong> (disponível em <code>https://www.caixadodev.com.br</code>), você expressa concordância com estes Termos de Uso. Caso discorde de alguma diretriz, solicitamos que não continue a utilização dos serviços.</p>
+      </section>
 
-      <h3>2. Isenção de Garantias e Responsabilidade</h3>
-      <p>Todos os serviços e utilitários são disponibilizados "no estado em que se encontram" (*as is*), sem garantias explícitas ou implícitas de qualquer natureza. Embora envidemos os melhores esforços para garantir a precisão e disponibilidade contínua dos recursos:</p>
-      <ul>
-        <li>Não nos responsabilizamos por perdas, danos diretos ou indiretos decorrentes do uso das ferramentas ou da interpretação incorreta de resultados.</li>
-        <li>O usuário é o único responsável pela validação final dos dados aplicados em seus próprios sistemas de produção.</li>
-      </ul>
+      <section style="margin-top: 30px;">
+        <h2>1. Finalidade Estritamente Técnica e de Homologação</h2>
+        <p>Todas as utilidades e rotinas disponibilizadas na Caixa do Dev são fornecidas gratuitamente para fins <strong>educacionais, desenvolvimento de software, validação de regras de negócio e testes em ambientes de homologação (Sandbox / QA)</strong>.</p>
+        <p>Os números e registros gerados (como CPF, CNPJ, CNH, RG, Título de Eleitor e Contas Bancárias) são <strong>sequências matemáticas sintéticas</strong> criadas a partir de fórmulas de Módulo 10 ou 11. Eles <strong>não possuem vínculo jurídico, civil, cadastral ou financeiro</strong> com pessoas, empresas ou órgãos governamentais reais.</p>
+        <p><strong>É expressamente vedado</strong> o uso de quaisquer dados gerados nesta plataforma para práticas fraudulentas, abertura de contas não autorizadas, simulações ilícitas, estelionato ou qualquer conduta que viole o Código Penal Brasileiro.</p>
+      </section>
 
-      <h3>3. Propriedade Intelectual</h3>
-      <p>A identidade visual, layout, textos explicativos e código estrutural do site Caixa do Dev pertencem aos seus respectivos autores e são protegidos pelas leis de propriedade intelectual. As bibliotecas de código aberto utilizadas respeitam suas respectivas licenças públicas.</p>
+      <section style="margin-top: 30px;">
+        <h2>2. Isenção de Garantias e Limitação de Responsabilidade</h2>
+        <p>Os utilitários são fornecidos "no estado em que se encontram" (*as is*), sem garantias de adequação a fins comerciais específicos. Embora mantenhamos rigor técnico nos cálculos:</p>
+        <ul>
+          <li>Não nos responsabilizamos por decisões empresariais, fiscais ou financeiras tomadas exclusivamente com base nos resultados das calculadoras (como a calculadora CLT vs PJ).</li>
+          <li>Recomenda-se sempre a validação com um contador profissional habilitado perante o CRC para decisões tributárias individuais.</li>
+          <li>O desenvolvedor ou usuário é o único responsável pela validação final dos dados aplicados em seus próprios sistemas de produção.</li>
+        </ul>
+      </section>
 
-      <h3>4. Modificações dos Termos</h3>
-      <p>Estes termos podem ser atualizados periodicamente sem aviso prévio. O uso contínuo da plataforma após alterações pressupõe a aceitação tácita dos novos termos.</p>
+      <section style="margin-top: 30px;">
+        <h2>3. Propriedade Intelectual</h2>
+        <p>A identidade visual, layout, logotipos, textos originais de artigos e estrutura de código pertencem à Caixa do Dev e ao seu criador, Alexandre Marcelino, protegidos pela Lei de Direitos Autorais (Lei nº 9.610/1998). As bibliotecas open-source utilizadas mantêm suas respectivas licenças públicas originais.</p>
+      </section>
 
-      <h3>5. Foro e Legislação Aplicável</h3>
-      <p>Estes Termos de Uso são regidos e interpretados de acordo com a legislação da República Federativa do Brasil.</p>
+      <section style="margin-top: 30px;">
+        <h2>4. Foro e Legislação Aplicável</h2>
+        <p>Estes Termos de Uso são regidos e interpretados de acordo com a legislação da República Federativa do Brasil.</p>
+      </section>
+
     </article>
+
   </main>
 
+  <!-- Footer -->
   <footer class="footer">
-    <div class="container footer-bottom" style="border: none; padding-top: 0;">
-      <span>&copy; 2026 Caixa do Dev. Todos os direitos reservados.</span>
-      <a href="../index.html" style="color: var(--accent-cyan); text-decoration: none;">Ir para a Página Inicial</a>
+    <div class="container footer-content">
+      <div class="footer-grid">
+        <div class="footer-col footer-col-wide">
+          <div class="footer-brand">
+            <span class="footer-brand-title">Caixa do Dev</span>
+            <span class="footer-badge">100% Client-Side</span>
+          </div>
+          <p>O maior canivete suíço gratuito para desenvolvedores, analistas de QA e profissionais de tecnologia do Brasil.</p>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Ferramentas Populares</span>
+          <ul class="footer-links">
+            <li><a href="/gerador-de-cpf">Gerador de CPF</a></li>
+            <li><a href="/gerador-de-cnpj">Gerador de CNPJ</a></li>
+            <li><a href="/gerador-de-pessoas">Gerador de Pessoas</a></li>
+            <li><a href="/calculadora-clt-pj">Calculadora CLT vs PJ</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Institucional</span>
+          <ul class="footer-links">
+            <li><a href="/pages/sobre.html">Sobre o Projeto</a></li>
+            <li><a href="/pages/privacidade.html">Política de Privacidade</a></li>
+            <li><a href="/pages/termos.html">Termos de Uso</a></li>
+            <li><a href="/pages/contato.html">Fale Conosco</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Caixa do Dev. Todos os direitos reservados.</span>
+        <span>Mantido por <a href="https://github.com/xandy139" target="_blank" rel="noopener noreferrer" style="color: var(--accent-cyan);">Alexandre Marcelino</a></span>
+      </div>
     </div>
   </footer>
+
+  <script src="../js/app.js"></script>
 </body>
 </html>

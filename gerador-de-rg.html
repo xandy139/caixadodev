@@ -91,6 +91,11 @@
     </div>
 
     <!-- Conteúdo da Ferramenta -->
+        <!-- Banner Informativo de QA -->
+    <div style="background: rgba(99, 102, 241, 0.08); border: 1px solid rgba(99, 102, 241, 0.25); border-radius: var(--radius-md); padding: 14px 18px; margin: 16px 0 24px; color: var(--text-secondary); font-size: 0.88rem; line-height: 1.5;">
+      <strong style="color: var(--accent-cyan);">Ambiente de Homologação (QA / Testes Técnicos):</strong> Esta ferramenta gera números com algoritmo de validação matemática do padrão SSP para testes de máscaras em formulários de cadastro. Os números são sintéticos, não pertencem a cidadãos reais e não possuem registro perante órgãos de identificação civil.
+    </div>
+
     <section class="tool-view standalone-active" data-tool-id="rg">
       
       
@@ -129,9 +134,66 @@
         </div>
       </div>
 
-      <article class="tool-seo-guide">
-        <h2>Como Funciona a Validação e Emissão de RG no Brasil?</h2>
-        <p>Diferente do CPF, gerido pela Receita Federal, o Registro Geral (RG) é emitido pelos órgãos de segurança de cada estado (como o Instituto de Identificação Félix Pacheco no RJ ou a SSP em SP). Em São Paulo, o RG utiliza 8 dígitos principais multiplicados pelos pesos de 2 a 9, gerando um dígito verificador numérico ou a letra <strong>X</strong> quando o resto é 10.</p>
+            <article class="tool-seo-guide">
+        <h2>Como Funciona a Emissão e Validação de RG no Brasil?</h2>
+        <p>O <strong>Registro Geral (RG)</strong>, formalmente denominado Cédula de Identidade, é historicamente emitido pelas Secretarias de Segurança Pública (SSP) e institutos de identificação de cada um dos estados da federação e do Distrito Federal (como o Instituto de Identificação Félix Pacheco no Rio de Janeiro e o Instituto de Identificação Ricardo Gumbleton Daunt em São Paulo).</p>
+        
+        <p>Ao contrário do CPF — gerido centralizadamente pela Receita Federal —, o RG brasileiro foi descentralizado por mais de sete décadas. Por essa razão, não existia uma base nacional unificada e cada estado adotava regras de formatação, faixas numéricas e algoritmos de dígitos verificadores próprios.</p>
+
+        <h3>1. O Algoritmo de Validação do RG (Padrão São Paulo)</h3>
+        <p>O modelo mais comum de validação adotado por sistemas de software no Brasil toma como base o padrão do estado de São Paulo, composto por <strong>8 dígitos numéricos mais 1 dígito verificador</strong> no formato <code>XX.XXX.XXX-Y</code>:</p>
+
+        <ol>
+          <li>Multiplica-se cada um dos 8 primeiros algarismos por pesos crescentes de <strong>2 até 9</strong>:
+            <pre style="background: var(--bg-surface); padding: 12px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); color: #cbd5e1; font-family: var(--font-mono); font-size: 0.85rem; margin: 10px 0;">Soma = (D1 * 2) + (D2 * 3) + (D3 * 4) + (D4 * 5) + (D5 * 6) + (D6 * 7) + (D7 * 8) + (D8 * 9)</pre>
+          </li>
+          <li>Calcula-se o resto da divisão inteira da soma por 11 (<code>Resto = Soma % 11</code>).</li>
+          <li>Aplica-se a regra do dígito:
+            <ul>
+              <li>Se <code>Resto === 10</code>, o dígito verificador é a letra <strong>X</strong> (ou <strong>x</strong>).</li>
+              <li>Se <code>Resto === 0</code> (ou <code>11</code>), o dígito é <strong>0</strong>.</li>
+              <li>Nos demais casos, o dígito verificador é o próprio <strong>Resto</strong>.</li>
+            </ul>
+          </li>
+        </ol>
+
+        <h3>2. O Fim do RG Tradicional: A Nova Carteira de Identidade Nacional (CIN)</h3>
+        <p>A Lei Federal nº 14.534/2023 determinou uma das maiores modernizações cadastrais da história do Brasil: o <strong>CPF passou a ser o número único e suficiente de identificação do cidadão</strong> em todos os bancos de dados governamentais e certidões.</p>
+        <p>Com a implantação progressiva da <strong>Carteira de Identidade Nacional (CIN)</strong> em todo o país, o número do RG tradicional está sendo gradualmente descontinuado. Os novos documentos emitidos utilizam exclusivamente os 11 dígitos do CPF do cidadão, eliminando a possibilidade de uma mesma pessoa possuir múltiplos registros estaduais distintos.</p>
+
+        <h3>3. Implementação de Validação de RG em JavaScript</h3>
+        <pre style="background: var(--bg-surface); padding: 16px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); color: #f1f5f9; font-family: 'JetBrains Mono', monospace; font-size: 0.86rem; overflow-x: auto;">
+function validarRG_SP(rg) {
+  if (!rg || typeof rg !== 'string') return false;
+  const limpo = rg.toUpperCase().replace(/[^0-9X]/g, '');
+  if (limpo.length !== 9) return false;
+
+  let soma = 0;
+  for (let i = 0; i < 8; i++) {
+    soma += parseInt(limpo.charAt(i), 10) * (i + 2);
+  }
+
+  const resto = soma % 11;
+  const digitoEsperado = resto === 10 ? 'X' : String(resto);
+  return limpo.charAt(8) === digitoEsperado;
+}
+        </pre>
+
+        <h3>Perguntas Frequentes sobre RG (FAQ)</h3>
+        <div class="faq-list" style="margin-top: 16px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>Por que alguns RGs terminam com a letra 'X'?</span><span>+</span></div>
+            <div class="faq-answer">No cálculo do Módulo 11 adotado por estados como São Paulo, quando o resto da divisão da soma ponderada resulta em 10, o algarismo '10' não caberia em uma única casa decimal. Por convenção matemática e padrão de segurança, adota-se o numeral romano 'X' para representar o número 10 no dígito verificador.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>É obrigatório validar RG no backend de aplicações?</span><span>+</span></div>
+            <div class="faq-answer">Devido às disparidades históricas entre os 27 estados emissores (alguns estados possuem RGs de 7 dígitos, outros de 8 ou 9, e alguns não usam dígito verificador), sistemas nacionais costumam validar o RG apenas com uma checagem de tamanho mínimo/máximo (ex: 5 a 14 caracteres alfanuméricos) e priorizam a validação estrita no CPF.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Os números de RG gerados nesta ferramenta são de pessoas reais?</span><span>+</span></div>
+            <div class="faq-answer">Não. Todos os números de RG gerados pela Caixa do Dev são sequências randômicas geradas matematicamente para homologação de software, testes de QA e preenchimento de cadastros em ambientes de teste.</div>
+          </div>
+        </div>
       </article>
     
     </section>

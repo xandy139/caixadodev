@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Como Funciona o Cálculo do Módulo 11 (CPF e CNPJ Passo a Passo) | Caixa do Dev</title>
+  <meta name="description" content="Guia técnico detalhado sobre o algoritmo do Módulo 11 adotado pela Receita Federal do Brasil. Entenda a matemática dos pesos regressivos, tabela de regiões fiscais e implementação em JavaScript e Python.">
+  <meta name="keywords" content="modulo 11, algoritmo modulo 11, calculo cpf, calculo cnpj, digito verificador, regiao fiscal cpf, receita federal algoritmo">
+  <meta name="author" content="Alexandre Marcelino">
+  <meta name="robots" content="index, follow">
+
+  <link rel="canonical" href="https://www.caixadodev.com.br/artigos/algoritmo-modulo-11-cpf-cnpj">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://www.caixadodev.com.br/artigos/algoritmo-modulo-11-cpf-cnpj">
+  <meta property="og:title" content="Como Funciona o Cálculo do Módulo 11 (CPF e CNPJ Passo a Passo) | Caixa do Dev">
+  <meta property="og:description" content="Guia técnico detalhado sobre o algoritmo do Módulo 11 adotado pela Receita Federal do Brasil. Matemática, pesos e códigos explicados.">
+  <meta property="og:image" content="https://www.caixadodev.com.br/assets/og-cover.png">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'><path d='M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/tools.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Como Funciona o Cálculo do Módulo 11 (CPF e CNPJ Passo a Passo)",
+    "description": "Entenda a matemática oficial da Receita Federal por trás dos dígitos verificadores de CPF e CNPJ através do algoritmo Módulo 11.",
+    "author": {
+      "@type": "Person",
+      "name": "Alexandre Marcelino",
+      "url": "https://github.com/xandy139"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Caixa do Dev",
+      "url": "https://www.caixadodev.com.br"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://www.caixadodev.com.br/artigos/algoritmo-modulo-11-cpf-cnpj"
+    },
+    "inLanguage": "pt-BR"
+  }
+  </script>
+</head>
+<body class="standalone-page">
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="/" class="brand" title="Caixa do Dev - Página Inicial">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Caixa do Dev</span>
+          <span class="brand-badge">Artigos & Engenharia</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="/">Início</a></li>
+          <li><a href="/gerador-de-cpf">Gerador de CPF</a></li>
+          <li><a href="/gerador-de-cnpj">Gerador de CNPJ</a></li>
+          <li><a href="/calculadora-clt-pj">CLT vs PJ</a></li>
+          <li><a href="/pages/sobre.html">Sobre</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Conteúdo Principal -->
+  <main class="container" style="padding-top: 32px; padding-bottom: 80px; max-width: 900px; margin: 0 auto;">
+    
+    <div class="tool-breadcrumbs" style="margin-bottom: 24px;">
+      <a href="/">&larr; Início</a> / <a href="/#artigos">Artigos Técnicos</a> / <span>Módulo 11 em CPF e CNPJ</span>
+    </div>
+
+    <article class="tool-seo-guide" style="padding: 36px; border-radius: var(--radius-lg); background: var(--bg-card); border: 1px solid var(--border-subtle);">
+      
+      <header style="margin-bottom: 32px; border-bottom: 1px solid var(--border-subtle); padding-bottom: 24px;">
+        <span style="display: inline-block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--accent-cyan); background: rgba(6, 182, 212, 0.1); padding: 4px 10px; border-radius: 999px; margin-bottom: 12px; border: 1px solid rgba(6, 182, 212, 0.2);">Algoritmos & Regulatório Fiscal</span>
+        <h1 style="font-size: 2.2rem; font-weight: 800; color: var(--text-primary); line-height: 1.25; margin-bottom: 16px;">Como Funciona o Cálculo do Módulo 11 (CPF e CNPJ Passo a Passo)</h1>
+        <div style="display: flex; align-items: center; gap: 16px; color: var(--text-muted); font-size: 0.88rem; flex-wrap: wrap;">
+          <span>Por <strong>Alexandre Marcelino</strong></span>
+          <span>&bull;</span>
+          <span>Tempo de leitura: 8 minutos</span>
+          <span>&bull;</span>
+          <span>Atualizado em Outubro de 2026</span>
+        </div>
+      </header>
+
+      <section>
+        <p>No ecossistema de desenvolvimento de software no Brasil, poucas rotinas de validação são tão frequentes e essenciais quanto a checagem de <strong>CPF (Cadastro de Pessoas Físicas)</strong> e <strong>CNPJ (Cadastro Nacional da Pessoa Jurídica)</strong>. Seja em um formulário de checkout em e-commerce, na abertura de contas digitais em fintechs ou na integração com sistemas ERP, validar a consistência cadastral antes de chamar uma API externa economiza requisições desnecessárias e impede a entrada de dados corrompidos no banco de dados.</p>
+        
+        <p>Ambos os documentos utilizam uma variação da técnica matemática de soma ponderada conhecida como <strong>Módulo 11</strong> para gerar seus dois últimos algarismos: os famosos <em>dígitos verificadores (DV)</em>. Neste guia aprofundado, você entenderá exatamente como essa matemática funciona e como implementá-la em código limpo.</p>
+      </section>
+
+      <section style="margin-top: 36px;">
+        <h2>1. Anatomia do Cadastro de Pessoa Física (CPF)</h2>
+        <p>O CPF é estruturado por exatamente 11 algarismos decimais no formato tradicional <code>XXX.XXX.XXX-YY</code>:</p>
+        <ul>
+          <li><strong>8 primeiros dígitos (Base Cadastral):</strong> Identificam o registro individual do cidadão na base da Receita Federal.</li>
+          <li><strong>9º dígito (Região Fiscal de Origem):</strong> Identifica a Unidade Federativa onde o CPF foi emitido originalmente.</li>
+          <li><strong>2 últimos dígitos (Dígitos Verificadores):</strong> Calculados matematicamente pelos pesos do Módulo 11 sobre os 9 dígitos anteriores.</li>
+        </ul>
+
+        <div style="margin: 24px 0; overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem; text-align: left;">
+            <thead>
+              <tr style="background: rgba(255, 255, 255, 0.05); border-bottom: 1px solid var(--border-subtle);">
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">9º Dígito</th>
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">Região Fiscal</th>
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">Estados Cobertos (UF)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-weight: 700; font-family: var(--font-mono);">1</td>
+                <td style="padding: 10px 14px;">1ª Região Fiscal</td>
+                <td style="padding: 10px 14px;">DF, Goiás (GO), Mato Grosso (MT), Mato Grosso do Sul (MS), Tocantins (TO)</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-weight: 700; font-family: var(--font-mono);">2</td>
+                <td style="padding: 10px 14px;">2ª Região Fiscal</td>
+                <td style="padding: 10px 14px;">Amazonas (AM), Pará (PA), Roraima (RR), Amapá (AP), Acre (AC), Rondônia (RO)</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-weight: 700; font-family: var(--font-mono);">3</td>
+                <td style="padding: 10px 14px;">3ª Região Fiscal</td>
+                <td style="padding: 10px 14px;">Ceará (CE), Maranhão (MA), Piauí (PI)</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-weight: 700; font-family: var(--font-mono);">4</td>
+                <td style="padding: 10px 14px;">4ª Região Fiscal</td>
+                <td style="padding: 10px 14px;">Pernambuco (PE), Rio Grande do Norte (RN), Paraíba (PB), Alagoas (AL)</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-weight: 700; font-family: var(--font-mono);">5</td>
+                <td style="padding: 10px 14px;">5ª Região Fiscal</td>
+                <td style="padding: 10px 14px;">Bahia (BA), Sergipe (SE)</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-weight: 700; font-family: var(--font-mono);">6</td>
+                <td style="padding: 10px 14px;">6ª Região Fiscal</td>
+                <td style="padding: 10px 14px;">Minas Gerais (MG)</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-weight: 700; font-family: var(--font-mono);">7</td>
+                <td style="padding: 10px 14px;">7ª Região Fiscal</td>
+                <td style="padding: 10px 14px;">Rio de Janeiro (RJ), Espírito Santo (ES)</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-weight: 700; font-family: var(--font-mono);">8</td>
+                <td style="padding: 10px 14px;">8ª Região Fiscal</td>
+                <td style="padding: 10px 14px;">São Paulo (SP)</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-weight: 700; font-family: var(--font-mono);">9</td>
+                <td style="padding: 10px 14px;">9ª Região Fiscal</td>
+                <td style="padding: 10px 14px;">Paraná (PR), Santa Catarina (SC)</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px 14px; font-weight: 700; font-family: var(--font-mono);">0</td>
+                <td style="padding: 10px 14px;">10ª Região Fiscal</td>
+                <td style="padding: 10px 14px;">Rio Grande do Sul (RS)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section style="margin-top: 36px;">
+        <h2>2. O Passo a Passo Matemático do Cálculo do CPF</h2>
+        
+        <h3>Passo 1: Primeiro Dígito Verificador (DV1)</h3>
+        <p>Para encontrar o 10º algarismo, multiplicamos cada um dos 9 primeiros dígitos por uma série decrescente de pesos inteiros que se inicia em <strong>10</strong> e termina em <strong>2</strong>:</p>
+        
+        <pre style="background: var(--bg-surface); padding: 16px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); color: #cbd5e1; font-family: 'JetBrains Mono', monospace; font-size: 0.88rem; overflow-x: auto;">
+Soma = (D1 * 10) + (D2 * 9) + (D3 * 8) + (D4 * 7) + (D5 * 6) + 
+       (D6 * 5) + (D7 * 4) + (D8 * 3) + (D9 * 2)
+
+Resto = Soma % 11
+
+Se Resto < 2:
+    DV1 = 0
+Senão:
+    DV1 = 11 - Resto
+        </pre>
+
+        <h3>Passo 2: Segundo Dígito Verificador (DV2)</h3>
+        <p>Agora incluímos o DV1 recém-calculado na sequência de dígitos (totalizando 10 algarismos) e aplicamos nova multiplicação ponderada, desta vez começando com o peso <strong>11</strong> até <strong>2</strong>:</p>
+
+        <pre style="background: var(--bg-surface); padding: 16px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); color: #cbd5e1; font-family: 'JetBrains Mono', monospace; font-size: 0.88rem; overflow-x: auto;">
+Soma = (D1 * 11) + (D2 * 10) + (D3 * 9) + ... + (D9 * 3) + (DV1 * 2)
+
+Resto = Soma % 11
+
+Se Resto < 2:
+    DV2 = 0
+Senão:
+    DV2 = 11 - Resto
+        </pre>
+      </section>
+
+      <section style="margin-top: 36px;">
+        <h2>3. O Caso Crítico dos Dígitos Repetidos</h2>
+        <p>Um erro de implementação clássico em bibliotecas de validação é esquecer o caso de <strong>CPFs com dígitos repetidos</strong>, como <code>111.111.111-11</code>, <code>000.000.000-00</code> ou <code>999.999.999-99</code>.</p>
+        <p>Matematicamente, sequências repetidas satisfazem a fórmula do Módulo 11! Por isso, a Receita Federal do Brasil classifica explicitamente todos os 11 números formados pelo mesmo caractere como <strong>inválidos por convenção</strong>. Qualquer validador deve checar essa condição antes de iniciar as somas ponderadas:</p>
+        
+        <pre style="background: var(--bg-surface); padding: 14px 18px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); color: #38bdf8; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem;">
+if (/^(\d)\1{10}$/.test(cpfLimpo)) {
+    return false; // Rejeita 00000000000, 11111111111, etc.
+}
+        </pre>
+      </section>
+
+      <section style="margin-top: 36px;">
+        <h2>4. Como Funciona no CNPJ (Cadastro Nacional da Pessoa Jurídica)</h2>
+        <p>O CNPJ possui 14 dígitos (<code>XX.XXX.XXX/YYYY-ZZ</code>). A diferença fundamental em relação ao CPF está na distribuição dos pesos: como o CNPJ tem mais dígitos, os pesos variam de <strong>2 a 9</strong> de forma cíclica!</p>
+        
+        <ul>
+          <li><strong>Para o 1º DV (13º dígito):</strong> Multiplica-se os 12 primeiros números pelos pesos <code>[5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]</code>.</li>
+          <li><strong>Para o 2º DV (14º dígito):</strong> Multiplica-se os 13 números (incluindo o DV1) pelos pesos <code>[6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]</code>.</li>
+        </ul>
+
+        <p>A regra de resolução do resto é idêntica: <code>Resto = Soma % 11</code>; se <code>Resto < 2</code> o dígito é <code>0</code>, caso contrário é <code>11 - Resto</code>.</p>
+      </section>
+
+      <section style="margin-top: 36px;">
+        <h2>5. Implementação de Referência em JavaScript Moderno</h2>
+        <p>Abaixo está uma função otimizada e testada para uso em produção no Node.js ou navegador:</p>
+
+        <pre style="background: var(--bg-surface); padding: 18px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); color: #f1f5f9; font-family: 'JetBrains Mono', monospace; font-size: 0.88rem; overflow-x: auto;">
+function validarCPF(cpf) {
+  if (typeof cpf !== 'string') return false;
+  const limpo = cpf.replace(/\D/g, '');
+  
+  if (limpo.length !== 11) return false;
+  if (/^(\d)\1{10}$/.test(limpo)) return false;
+
+  // Cálculo do 1º Dígito Verificador
+  let soma = 0;
+  for (let i = 0; i < 9; i++) {
+    soma += parseInt(limpo.charAt(i), 10) * (10 - i);
+  }
+  let resto = soma % 11;
+  const dv1 = resto < 2 ? 0 : 11 - resto;
+  if (dv1 !== parseInt(limpo.charAt(9), 10)) return false;
+
+  // Cálculo do 2º Dígito Verificador
+  soma = 0;
+  for (let i = 0; i < 10; i++) {
+    soma += parseInt(limpo.charAt(i), 10) * (11 - i);
+  }
+  resto = soma % 11;
+  const dv2 = resto < 2 ? 0 : 11 - resto;
+  return dv2 === parseInt(limpo.charAt(10), 10);
+}
+        </pre>
+      </section>
+
+      <!-- FAQ do Artigo -->
+      <section style="margin-top: 48px; border-top: 1px solid var(--border-subtle); padding-top: 32px;">
+        <h2>Perguntas Frequentes sobre o Algoritmo (FAQ)</h2>
+        <div class="faq-list" style="margin-top: 20px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>Por que o algoritmo se chama Módulo 11?</span><span>+</span></div>
+            <div class="faq-answer">O nome vem da operação aritmética modular (resto da divisão inteira) por 11. O número 11 foi escolhido na teoria de números e detecção de erros porque, sendo um número primo, minimiza as chances de colisões ou falsos positivos em transposições e erros de digitação comuns de operadores humanos.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Um CPF com dígitos verificadores válidos garante que a pessoa existe?</span><span>+</span></div>
+            <div class="faq-answer">Não. O algoritmo do Módulo 11 atesta exclusivamente a conformidade matemática e integridade da sequência. A confirmação de existência jurídica, situação cadastral (Regular, Suspensa, Cancelada) ou titularidade depende de consulta direta às bases da Receita Federal ou via certificados autorizados (SERPRO/Dataprev).</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>O que é a regra da 'matriz' no CNPJ (0001)?</span><span>+</span></div>
+            <div class="faq-answer">Os dígitos 9 a 12 do CNPJ indicam o número de ordem do estabelecimento. A matriz de uma empresa tradicionalmente recebe o sufixo /0001, enquanto as filiais seguintes recebem /0002, /0003 e assim por diante.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Card do Autor E-E-A-T -->
+      <section style="margin-top: 48px; padding: 24px; border-radius: var(--radius-md); background: rgba(99, 102, 241, 0.06); border: 1px solid rgba(99, 102, 241, 0.2); display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
+        <div style="width: 56px; height: 56px; border-radius: 50%; background: var(--accent-primary); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.4rem; color: #fff;">
+          AM
+        </div>
+        <div style="flex: 1; min-width: 250px;">
+          <h4 style="margin: 0 0 6px; font-size: 1.1rem; color: var(--text-primary);">Sobre o Autor: Alexandre Marcelino</h4>
+          <p style="margin: 0; font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5;">
+            Engenheiro de software e criador da plataforma <strong>Caixa do Dev</strong>. Especialista em arquitetura web, integrações de APIs corporativas e soluções de privacidade orientadas ao cliente. Conheça seus projetos no <a href="https://github.com/xandy139" target="_blank" rel="noopener noreferrer" style="color: var(--accent-cyan); font-weight: 600;">GitHub (@xandy139)</a>.
+          </p>
+        </div>
+      </section>
+
+      <!-- Call to Action Ferramentas -->
+      <div style="margin-top: 40px; display: flex; gap: 14px; flex-wrap: wrap;">
+        <a href="/gerador-de-cpf" class="btn btn-primary">Testar no Gerador de CPF &rarr;</a>
+        <a href="/gerador-de-cnpj" class="btn btn-secondary">Testar no Gerador de CNPJ &rarr;</a>
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-grid">
+        <div class="footer-col footer-col-wide">
+          <div class="footer-brand">
+            <span class="footer-brand-title">Caixa do Dev</span>
+            <span class="footer-badge">100% Client-Side</span>
+          </div>
+          <p>O maior canivete suíço gratuito para desenvolvedores, analistas de QA e profissionais de tecnologia do Brasil.</p>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Ferramentas Principais</span>
+          <ul class="footer-links">
+            <li><a href="/gerador-de-cpf">Gerador de CPF</a></li>
+            <li><a href="/gerador-de-cnpj">Gerador de CNPJ</a></li>
+            <li><a href="/gerador-de-pessoas">Gerador de Pessoas</a></li>
+            <li><a href="/calculadora-clt-pj">Calculadora CLT vs PJ</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Institucional</span>
+          <ul class="footer-links">
+            <li><a href="/pages/sobre.html">Sobre o Projeto</a></li>
+            <li><a href="/pages/privacidade.html">Política de Privacidade</a></li>
+            <li><a href="/pages/termos.html">Termos de Uso</a></li>
+            <li><a href="/pages/contato.html">Fale Conosco</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Caixa do Dev. Todos os direitos reservados.</span>
+        <span>Mantido por <a href="https://github.com/xandy139" target="_blank" rel="noopener noreferrer" style="color: var(--accent-cyan);">Alexandre Marcelino</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/app.js"></script>
+</body>
+</html>

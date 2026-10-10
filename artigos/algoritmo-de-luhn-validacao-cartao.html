@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Algoritmo de Luhn (Módulo 10): Validação de Cartões de Pagamento | Caixa do Dev</title>
+  <meta name="description" content="Entenda como funciona o Algoritmo de Luhn (ISO/IEC 7812): história, fórmula matemática passo a passo, tabela de bandeiras (BIN/IIN) e implementação em JavaScript para testes de checkout.">
+  <meta name="keywords" content="algoritmo de luhn, modulo 10 cartao, validacao cartao credito luhn, bandeiras cartao bin iin, iso 7812 algoritmo">
+  <meta name="author" content="Alexandre Marcelino">
+  <meta name="robots" content="index, follow">
+
+  <link rel="canonical" href="https://www.caixadodev.com.br/artigos/algoritmo-de-luhn-validacao-cartao">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://www.caixadodev.com.br/artigos/algoritmo-de-luhn-validacao-cartao">
+  <meta property="og:title" content="Algoritmo de Luhn (Módulo 10): Validação de Cartões de Pagamento | Caixa do Dev">
+  <meta property="og:description" content="Entenda a fórmula matemática de Hans Peter Luhn (ISO/IEC 7812) adotada por gateways de pagamento internacionais.">
+  <meta property="og:image" content="https://www.caixadodev.com.br/assets/og-cover.png">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'><path d='M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/tools.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Algoritmo de Luhn (Módulo 10): Validação de Cartões de Pagamento",
+    "description": "Entenda a fórmula matemática de Hans Peter Luhn (ISO/IEC 7812) utilizada para verificação de somas de controle em sistemas de checkout e gateways.",
+    "author": {
+      "@type": "Person",
+      "name": "Alexandre Marcelino",
+      "url": "https://github.com/xandy139"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Caixa do Dev",
+      "url": "https://www.caixadodev.com.br"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://www.caixadodev.com.br/artigos/algoritmo-de-luhn-validacao-cartao"
+    },
+    "inLanguage": "pt-BR"
+  }
+  </script>
+</head>
+<body class="standalone-page">
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="/" class="brand" title="Caixa do Dev - Página Inicial">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Caixa do Dev</span>
+          <span class="brand-badge">Artigos & Engenharia</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="/">Início</a></li>
+          <li><a href="/gerador-de-cpf">CPF</a></li>
+          <li><a href="/gerador-de-cnpj">CNPJ</a></li>
+          <li><a href="/json-para-typescript">JSON &rarr; TS</a></li>
+          <li><a href="/pages/sobre.html">Sobre</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Conteúdo Principal -->
+  <main class="container" style="padding-top: 32px; padding-bottom: 80px; max-width: 900px; margin: 0 auto;">
+    
+    <div class="tool-breadcrumbs" style="margin-bottom: 24px;">
+      <a href="/">&larr; Início</a> / <a href="/#artigos">Artigos Técnicos</a> / <span>Algoritmo de Luhn</span>
+    </div>
+
+    <article class="tool-seo-guide" style="padding: 36px; border-radius: var(--radius-lg); background: var(--bg-card); border: 1px solid var(--border-subtle);">
+      
+      <header style="margin-bottom: 32px; border-bottom: 1px solid var(--border-subtle); padding-bottom: 24px;">
+        <span style="display: inline-block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--accent-rose); background: rgba(244, 63, 94, 0.1); padding: 4px 10px; border-radius: 999px; margin-bottom: 12px; border: 1px solid rgba(244, 63, 94, 0.2);">Fintech & Algoritmos</span>
+        <h1 style="font-size: 2.2rem; font-weight: 800; color: var(--text-primary); line-height: 1.25; margin-bottom: 16px;">Algoritmo de Luhn (Módulo 10): Validação de Cartões em Sandboxes</h1>
+        <div style="display: flex; align-items: center; gap: 16px; color: var(--text-muted); font-size: 0.88rem; flex-wrap: wrap;">
+          <span>Por <strong>Alexandre Marcelino</strong></span>
+          <span>&bull;</span>
+          <span>Tempo de leitura: 7 minutos</span>
+          <span>&bull;</span>
+          <span>Atualizado em Outubro de 2026</span>
+        </div>
+      </header>
+
+      <section>
+        <p>Ao construir um fluxo de checkout de e-commerce ou integrar gateways de pagamento como Stripe, Adyen, Pagar.me ou Mercado Pago, uma das primeiras linhas de defesa contra erros de digitação é o <strong>Algoritmo de Luhn</strong>, também amplamente conhecido como <strong>Módulo 10</strong>. Criado pelo cientista da IBM Hans Peter Luhn em 1954, o método tornou-se o padrão internacional adotado na especificação <strong>ISO/IEC 7812-1</strong>.</p>
+        
+        <p>Ao contrário de algoritmos criptográficos (como SHA-256 ou AES), o algoritmo de Luhn não tem o propósito de garantir sigilo ou proteção contra adulteração maliciosa. Seu objetivo é puramente matemático e prático: <strong>detectar instantaneamente erros humanos comuns de digitação</strong>, como a troca acidental de um único dígito ou a transposição invertida de dois números adjacentes.</p>
+      </section>
+
+      <section style="margin-top: 36px;">
+        <h2>1. Estrutura do Número de Cartão (PAN - Primary Account Number)</h2>
+        <p>O número gravado em um cartão de pagamento tradicional contém de 13 a 19 dígitos divididos em três blocos principais:</p>
+        
+        <ul>
+          <li><strong>IIN / BIN (Issuer Identification Number):</strong> Os primeiros 6 a 8 dígitos identificam a indústria e a instituição financeira emissora. O primeiro algarismo identifica a indústria principal (MII):
+            <ul>
+              <li><code>4</code> &rarr; Visa (Serviços Bancários / Financeiros)</li>
+              <li><code>5</code> (ou range <code>2221-2720</code>) &rarr; Mastercard (Serviços Bancários)</li>
+              <li><code>3</code> &rarr; American Express (34/37) e Diners (Viagens e Entretenimento)</li>
+              <li><code>5067, 4576, 4011...</code> &rarr; Elo (Bandeira Nacional Brasileira)</li>
+              <li><code>6062</code> &rarr; Hipercard</li>
+            </ul>
+          </li>
+          <li><strong>Número da Conta Individual:</strong> Do 7º dígito até o penúltimo algarismo, identifica a conta do titular junto ao banco emissor.</li>
+          <li><strong>Dígito Verificador (Checksum):</strong> O último dígito à direita, gerado pelo cálculo do Algoritmo de Luhn.</li>
+        </ul>
+      </section>
+
+      <section style="margin-top: 36px;">
+        <h2>2. O Passo a Passo Matemático do Cálculo</h2>
+        <p>Para ilustrar a regra com clareza, vamos acompanhar a validação de um número arbitrário passo a passo:</p>
+
+        <ol>
+          <li>Comece do dígito mais à direita (o dígito verificador) e caminhe em direção à esquerda.</li>
+          <li>Mantenha o dígito verificador inalterado. <strong>Dobre o valor de todos os dígitos em posições alternadas</strong> (a contar da direita para a esquerda: segundo, quarto, sexto, etc.).</li>
+          <li>Se o resultado da multiplicação for maior do que 9 (por exemplo, <code>7 * 2 = 14</code>), some os dois algarismos do resultado (<code>1 + 4 = 5</code>) ou simplesmente subtraia 9 (<code>14 - 9 = 5</code>).</li>
+          <li>Some todos os valores obtidos na sequência.</li>
+          <li>Se o total obtido for divisível por 10 (ou seja, <code>Soma % 10 === 0</code>), o número é matematicamente consistente e válido segundo a norma!</li>
+        </ol>
+
+        <div style="background: var(--bg-surface); padding: 18px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); margin: 20px 0;">
+          <h4 style="margin: 0 0 10px; color: var(--accent-rose); font-size: 1rem;">Exemplo Prático com a Sequência 49927398716:</h4>
+          <p style="margin: 0; font-family: var(--font-mono); font-size: 0.88rem; color: #cbd5e1; line-height: 1.6;">
+            1. Dígitos alternados dobrados da direita p/ esquerda: (1*2=2, 8*2=16 &rarr; 7, 3*2=6, 2*2=4, 9*2=18 &rarr; 9, 4*2=8)<br>
+            2. Soma total = 6 + 2 + 7 + 7 + 9 + 6 + 7 + 4 + 9 + 9 + 8 = 70<br>
+            3. 70 % 10 = 0 &rarr; <strong>Válido pelo Algoritmo de Luhn!</strong>
+          </p>
+        </div>
+      </section>
+
+      <section style="margin-top: 36px;">
+        <h2>3. Implementação Limpa em JavaScript</h2>
+        <p>Abaixo está uma implementação concisa e de alta performance do algoritmo:</p>
+
+        <pre style="background: var(--bg-surface); padding: 18px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); color: #f1f5f9; font-family: 'JetBrains Mono', monospace; font-size: 0.88rem; overflow-x: auto;">
+function validarLuhn(numeroStr) {
+  const limpo = numeroStr.replace(/\D/g, '');
+  if (limpo.length < 12) return false;
+
+  let soma = 0;
+  let deveDobrar = false;
+
+  // Itera da direita para a esquerda
+  for (let i = limpo.length - 1; i >= 0; i--) {
+    let digito = parseInt(limpo.charAt(i), 10);
+
+    if (deveDobrar) {
+      digito *= 2;
+      if (digito > 9) digito -= 9;
+    }
+
+    soma += digito;
+    deveDobrar = !deveDobrar;
+  }
+
+  return (soma % 10) === 0;
+}
+        </pre>
+      </section>
+
+      <section style="margin-top: 36px;">
+        <h2>4. Por Que o Luhn é Crucial em Ambientes Sandbox / QA</h2>
+        <p>No desenvolvimento de gateways, realizar chamadas de rede até o processador adquirente para descobrir que o cliente digitou um número com 15 dígitos incompletos é um desperdício de latência e custo por transação. Validar o Luhn localmente no frontend (via JavaScript assíncrono ou regex) traz três benefícios imediatos:</p>
+        
+        <ul>
+          <li><strong>Feedback Instantâneo no Formulário:</strong> O usuário sabe na hora se errou um algarismo antes mesmo de clicar no botão "Pagar".</li>
+          <li><strong>Detecção Automática de Bandeira:</strong> Inspecionando os primeiros dígitos (IIN) em tempo real, o formulário troca o ícone da bandeira (Visa, Mastercard, Elo) dinamicamente.</li>
+          <li><strong>Proteção Contra Bots:</strong> Impede o envio em massa de cartões gerados aleatoriamente sem conformidade algorítmica.</li>
+        </ul>
+      </section>
+
+      <!-- FAQ do Artigo -->
+      <section style="margin-top: 48px; border-top: 1px solid var(--border-subtle); padding-top: 32px;">
+        <h2>Perguntas Frequentes (FAQ)</h2>
+        <div class="faq-list" style="margin-top: 20px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>Um número que passa no Algoritmo de Luhn pode ser usado para compras?</span><span>+</span></div>
+            <div class="faq-answer">Absolutamente não. O algoritmo de Luhn é unicamente um teste de paridade e consistência matemática. Para que uma transação ocorra, o número precisaria corresponder a uma conta bancária ativa real, com saldo/limite, autorizada por um banco emissor, com data de expiração e criptograma de segurança dinâmico validados na rede de autorização financeira.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>O que significa a sigla BIN e IIN?</span><span>+</span></div>
+            <div class="faq-answer">IIN significa Issuer Identification Number (Número de Identificação do Emissor) e é o termo técnico oficial da norma ISO/IEC 7812. No jargão do mercado de pagamentos, é popularmente chamado de BIN (Bank Identification Number). Corresponde aos 6 a 8 primeiros dígitos do cartão.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Outros documentos usam o Algoritmo de Luhn?</span><span>+</span></div>
+            <div class="faq-answer">Sim! Além dos cartões de crédito internacionais, o algoritmo de Luhn é adotado em números de IMEI de aparelhos celulares (para validação de identificação de hardware em redes GSM), números de segurados sociais em diversos países e na checagem de números de rastreamento logístico.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Card do Autor E-E-A-T -->
+      <section style="margin-top: 48px; padding: 24px; border-radius: var(--radius-md); background: rgba(244, 63, 94, 0.06); border: 1px solid rgba(244, 63, 94, 0.2); display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
+        <div style="width: 56px; height: 56px; border-radius: 50%; background: var(--accent-rose); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.4rem; color: #fff;">
+          AM
+        </div>
+        <div style="flex: 1; min-width: 250px;">
+          <h4 style="margin: 0 0 6px; font-size: 1.1rem; color: var(--text-primary);">Sobre o Autor: Alexandre Marcelino</h4>
+          <p style="margin: 0; font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5;">
+            Engenheiro de software e criador da plataforma <strong>Caixa do Dev</strong>. Especialista em engenharia de pagamentos digitais, arquitetura de microserviços e ferramentas de código aberto para a comunidade de tecnologia. Conheça seus projetos no <a href="https://github.com/xandy139" target="_blank" rel="noopener noreferrer" style="color: var(--accent-cyan); font-weight: 600;">GitHub (@xandy139)</a>.
+          </p>
+        </div>
+      </section>
+
+      <!-- Call to Action Ferramentas -->
+      <div style="margin-top: 40px; display: flex; gap: 14px; flex-wrap: wrap;">
+        <a href="/gerador-de-cpf" class="btn btn-primary">Ver Gerador de CPF (Módulo 11) &rarr;</a>
+        <a href="/gerador-de-cnpj" class="btn btn-secondary">Ver Gerador de CNPJ &rarr;</a>
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-grid">
+        <div class="footer-col footer-col-wide">
+          <div class="footer-brand">
+            <span class="footer-brand-title">Caixa do Dev</span>
+            <span class="footer-badge">100% Client-Side</span>
+          </div>
+          <p>O maior canivete suíço gratuito para desenvolvedores, analistas de QA e profissionais de tecnologia do Brasil.</p>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Ferramentas Principais</span>
+          <ul class="footer-links">
+            <li><a href="/gerador-de-cpf">Gerador de CPF</a></li>
+            <li><a href="/gerador-de-cnpj">Gerador de CNPJ</a></li>
+            <li><a href="/gerador-de-pessoas">Gerador de Pessoas</a></li>
+            <li><a href="/calculadora-clt-pj">Calculadora CLT vs PJ</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Institucional</span>
+          <ul class="footer-links">
+            <li><a href="/pages/sobre.html">Sobre o Projeto</a></li>
+            <li><a href="/pages/privacidade.html">Política de Privacidade</a></li>
+            <li><a href="/pages/termos.html">Termos de Uso</a></li>
+            <li><a href="/pages/contato.html">Fale Conosco</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Caixa do Dev. Todos os direitos reservados.</span>
+        <span>Mantido por <a href="https://github.com/xandy139" target="_blank" rel="noopener noreferrer" style="color: var(--accent-cyan);">Alexandre Marcelino</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/app.js"></script>
+</body>
+</html>

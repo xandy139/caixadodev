@@ -3,18 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gerador de Cartão de Crédito para Teste (Algoritmo de Luhn) | Caixa do Dev</title>
-  <meta name="description" content="Gere números de cartão de crédito para testes de gateway de pagamento (Visa, Mastercard, Elo, Amex, Hipercard) com algoritmo de Luhn (Módulo 10).">
-  <meta name="keywords" content="gerador cartao de credito teste, cartao teste gateway, algoritmo de luhn, visa mastercard teste">
-  <meta name="author" content="Caixa do Dev">
-  <meta name="robots" content="index, follow">
+  <title>Simulador de Algoritmo de Luhn para Gateways de Pagamento (Sandbox) | Caixa do Dev</title>
+  <meta name="description" content="Ferramenta estritamente técnica para testes de validação matemática de checkouts e gateways de pagamento pelo Algoritmo de Luhn (ISO/IEC 7812).">
+  <meta name="author" content="Alexandre Marcelino">
+  <meta name="robots" content="noindex, nofollow">
 
   <!-- Canonical & Social Meta -->
   <link rel="canonical" href="https://www.caixadodev.com.br/gerador-de-cartao-de-credito">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.caixadodev.com.br/gerador-de-cartao-de-credito">
-  <meta property="og:title" content="Gerador de Cartão de Crédito para Teste (Algoritmo de Luhn) | Caixa do Dev">
-  <meta property="og:description" content="Gere números de cartão de crédito para testes de gateway de pagamento (Visa, Mastercard, Elo, Amex, Hipercard) com algoritmo de Luhn (Módulo 10).">
+  <meta property="og:title" content="Simulador de Algoritmo de Luhn para Gateways de Pagamento (Sandbox) | Caixa do Dev">
+  <meta property="og:description" content="Ferramenta técnica de teste do algoritmo de Luhn (Módulo 10) para desenvolvedores e ambientes de homologação.">
   <meta property="og:image" content="https://www.caixadodev.com.br/assets/og-cover.png">
 
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'><path d='M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4'/></svg>">
@@ -24,25 +23,6 @@
   
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/tools.css">
-
-  <!-- Schema.org WebApplication -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Gerador de Cartão de Crédito para Teste (Algoritmo de Luhn)",
-    "url": "https://www.caixadodev.com.br/gerador-de-cartao-de-credito",
-    "applicationCategory": "DeveloperApplication",
-    "operatingSystem": "All",
-    "browserRequirements": "Requires JavaScript",
-    "description": "Gere números de cartão de crédito para testes de gateway de pagamento (Visa, Mastercard, Elo, Amex, Hipercard) com algoritmo de Luhn (Módulo 10).",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "BRL"
-    }
-  }
-  </script>
 </head>
 <body class="standalone-page">
 
@@ -59,7 +39,7 @@
         </div>
         <div class="brand-text">
           <span class="brand-name">Caixa do Dev</span>
-          <span class="brand-badge">40 Ferramentas</span>
+          <span class="brand-badge">Sandbox QA</span>
         </div>
       </a>
 
@@ -68,11 +48,9 @@
           <li><a href="/">Início</a></li>
           <li><a href="/gerador-de-cpf">CPF</a></li>
           <li><a href="/gerador-de-cnpj">CNPJ</a></li>
-          <li><a href="/gerador-de-pessoas">Pessoas</a></li>
           <li><a href="/calculadora-clt-pj">CLT vs PJ</a></li>
-          <li><a href="/json-para-typescript">JSON &rarr; TS</a></li>
-          <li><a href="pages/sobre.html">Sobre</a></li>
-          <li><a href="pages/contato.html">Contato</a></li>
+          <li><a href="/artigos/algoritmo-de-luhn-validacao-cartao">Artigo Luhn</a></li>
+          <li><a href="/pages/sobre.html">Sobre</a></li>
         </ul>
       </nav>
     </div>
@@ -82,82 +60,110 @@
   <main class="container" style="padding-top: 32px; padding-bottom: 60px;">
     
     <div class="tool-breadcrumbs">
-      <a href="/">&larr; Início</a> / <span>Gerador de Cartão de Crédito para Teste (Algoritmo de Luhn)</span>
+      <a href="/">&larr; Início</a> / <span>Simulador do Algoritmo de Luhn (Sandbox de Checkouts)</span>
     </div>
 
-    <div class="privacy-badge">
-      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      Processamento 100% Client-Side no Navegador (Privacidade Total)
+    <!-- Banner de Advertência Legal Estrita -->
+    <div style="background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: var(--radius-md); padding: 18px 22px; margin: 20px 0 28px; color: #fca5a5; font-size: 0.9rem; line-height: 1.55;">
+      <div style="display: flex; align-items: center; gap: 8px; font-weight: 700; color: #f87171; font-size: 1rem; margin-bottom: 6px;">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        Ambiente de Testes para Desenvolvedores de Software (Sandbox & QA)
+      </div>
+      <p style="margin: 0;">
+        Esta ferramenta é disponibilizada exclusivamente para <strong>engenheiros de software, programadores e analistas de qualidade (QA)</strong> que necessitam validar algoritmos de máscaras de entrada (input masks) e rotinas de detecção de erros matemáticos do <strong>Algoritmo de Luhn (ISO/IEC 7812)</strong> em esteiras de homologação e sandbox de gateways de pagamento (ex: Stripe, Pagar.me, Mercado Pago).
+      </p>
+      <p style="margin: 8px 0 0; font-size: 0.85rem; color: #fecaca;">
+        <strong>Aviso:</strong> Os números gerados cumprem unicamente a fórmula matemática do Módulo 10. <strong>Eles NÃO possuem conta corrente associada, NÃO possuem limite financeiro, NÃO efetuam transações e NÃO possuem qualquer valor econômico.</strong> O uso para finalidades ilícitas ou falsidade ideológica é terminantemente proibido pela legislação vigente e pelos nossos Termos de Uso.
+      </p>
     </div>
 
     <!-- Conteúdo da Ferramenta -->
     <section class="tool-view standalone-active" data-tool-id="cartao">
-      
-      
 
       <div class="tool-interface-card">
         <div class="tool-header-area">
           <div class="tool-title-group">
-            <h1>Gerador e Validador de Cartão de Crédito para Testes</h1>
-            <p>Gere números com algoritmo de Luhn (Módulo 10) válido para testar checkouts de pagamento.</p>
+            <h1>Simulador e Validador de Algoritmo de Luhn (Mod 10)</h1>
+            <p>Gere sequências de teste válidas pelo Algoritmo de Luhn ou valide números para checkout de software.</p>
           </div>
           <div class="tool-actions-bar">
-            <button id="btn-gen-card" class="btn btn-primary">Gerar Novo Cartão</button>
-            <button id="btn-copy-card" class="btn btn-secondary">Copiar Dados</button>
+            <button id="btn-gen-card" class="btn btn-primary">Gerar Sequência Luhn</button>
+            <button id="btn-copy-card" class="btn btn-secondary">Copiar Parâmetros</button>
           </div>
         </div>
 
         <div class="form-options-row">
           <div class="form-group" style="margin-bottom: 0;">
-            <label class="form-label">Bandeira:</label>
-            <select id="sel-card-brand" class="form-control" style="width: 170px; padding: 8px 12px;">
-              <option value="visa">Visa</option>
-              <option value="mastercard">Mastercard</option>
-              <option value="amex">American Express</option>
-              <option value="elo">Elo</option>
-              <option value="hipercard">Hipercard</option>
+            <label class="form-label">Prefixo de Rede (IIN/BIN):</label>
+            <select id="sel-card-brand" class="form-control" style="width: 200px; padding: 8px 12px;">
+              <option value="visa">Visa (Prefixo 4)</option>
+              <option value="mastercard">Mastercard (Prefixos 51-55)</option>
+              <option value="amex">American Express (34/37)</option>
+              <option value="elo">Elo (Prefixos 5067, 4576)</option>
+              <option value="hipercard">Hipercard (Prefixo 6062)</option>
             </select>
           </div>
           <label class="checkbox-label" style="margin-top: 24px;">
             <input type="checkbox" id="check-card-format" checked>
-            <span>Formatar com espaços</span>
+            <span>Formatar com blocos de 4 dígitos</span>
           </label>
         </div>
 
-        <div class="credit-card-preview">
-          <div class="card-top-row">
-            <div class="card-chip"></div>
-            <span id="card-preview-brand" class="card-brand-name">VISA</span>
+        <!-- Painel Técnico Sandbox -->
+        <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 24px; margin-top: 20px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+            <span style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--accent-cyan); letter-spacing: 0.06em;">Payload de Teste Sandbox (ISO/IEC 7812)</span>
+            <span id="card-preview-brand" style="font-family: var(--font-mono); font-weight: 700; color: var(--text-primary); background: rgba(255, 255, 255, 0.08); padding: 4px 12px; border-radius: 6px; font-size: 0.85rem;">VISA</span>
           </div>
-          <div id="card-preview-number" class="card-number-display">4000 0000 0000 0000</div>
-          <div class="card-bottom-row">
-            <div><span class="card-meta-label">Titular</span><div class="card-meta-val">TESTE CLIENTE HOMOLOG</div></div>
-            <div><span class="card-meta-label">Validade</span><div id="card-preview-exp" class="card-meta-val">12/28</div></div>
-            <div><span class="card-meta-label">CVV</span><div id="card-preview-cvv" class="card-meta-val">123</div></div>
+
+          <div style="margin-bottom: 20px;">
+            <span style="display: block; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 6px; font-weight: 600;">Número Matemático de Teste (Luhn Válido):</span>
+            <div id="card-preview-number" style="font-family: var(--font-mono); font-size: 1.6rem; font-weight: 800; color: var(--accent-cyan); letter-spacing: 0.06em; word-break: break-all;">4000 0000 0000 0000</div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; background: rgba(0, 0, 0, 0.2); padding: 14px; border-radius: var(--radius-sm);">
+            <div>
+              <span style="display: block; font-size: 0.75rem; color: var(--text-muted);">Data Mock Homologação:</span>
+              <span id="card-preview-exp" style="font-family: var(--font-mono); font-size: 1.05rem; font-weight: 700; color: var(--text-primary);">12/28</span>
+            </div>
+            <div>
+              <span style="display: block; font-size: 0.75rem; color: var(--text-muted);">Código de Verificação Mock:</span>
+              <span id="card-preview-cvv" style="font-family: var(--font-mono); font-size: 1.05rem; font-weight: 700; color: var(--text-primary);">123</span>
+            </div>
+            <div>
+              <span style="display: block; font-size: 0.75rem; color: var(--text-muted);">Status do Checksum:</span>
+              <span style="font-family: var(--font-mono); font-size: 0.95rem; font-weight: 700; color: var(--accent-emerald);">Módulo 10 OK</span>
+            </div>
           </div>
         </div>
 
         <hr style="border: none; border-top: 1px solid var(--border-subtle); margin: 30px 0;">
 
+        <!-- Validador de Números de Luhn -->
         <div class="form-group">
           <label class="form-label" for="input-validate-card">
-            <span>Validar Número de Cartão de Crédito (Luhn):</span>
+            <span>Validar Consistência Matemática de Luhn em Número Existente:</span>
             <span id="badge-validate-card" class="badge-status badge-neutral">Aguardando número</span>
           </label>
-          <input type="text" id="input-validate-card" class="form-control" placeholder="Cole o número do cartão..." maxlength="23">
+          <input type="text" id="input-validate-card" class="form-control" placeholder="Cole ou digite o número para validação matemática de Luhn..." maxlength="23" style="font-family: var(--font-mono); font-size: 1.05rem;">
         </div>
       </div>
-          <article class="tool-seo-guide">
-        <h2>O Algoritmo de Luhn e a Numeração de Cartões de Pagamento</h2>
-        <p>Os números de cartões de crédito e débito das principais bandeiras internacionais (Visa, Mastercard, American Express, Elo e Hipercard) seguem a norma ISO/IEC 7812 e utilizam o <strong>Algoritmo de Luhn (também conhecido como Módulo 10)</strong> para validação estrutural.</p>
-        <p>O algoritmo processa os dígitos da direita para a esquerda, multiplicando dígitos alternados por 2 e somando os algarismos resultantes. Esta ferramenta foi desenvolvida estritamente para homologação de checkouts, testes de integração em gateways de pagamento e ambientes sandbox em conformidade com o padrão PCI-DSS.</p>
+
+      <!-- Guia Técnico Educativo -->
+      <article class="tool-seo-guide">
+        <h2>Entendendo o Algoritmo de Luhn e a Norma ISO/IEC 7812</h2>
+        <p>Criado pelo cientista da computação Hans Peter Luhn na IBM em 1954, o <strong>Algoritmo de Luhn (também chamado de Módulo 10)</strong> é uma das fórmulas de soma de verificação (checksum) mais difundidas globalmente. Ele foi concebido não para segurança criptográfica, mas para verificar a consistência de entrada de dados manuais e prevenir falhas acidentais de digitação.</p>
+        
+        <p>Em esteiras de desenvolvimento e arquiteturas de e-commerce, a validação de Luhn é implementada diretamente no frontend (via JavaScript assíncrono). Isso assegura feedback instantâneo ao usuário e evita que requisições inválidas gerem custos desnecessários em APIs de processadoras de pagamento.</p>
+        
+        <p>Para entender o algoritmo com detalhes matemáticos, pesos e código de implementação, leia o nosso artigo completo: <a href="/artigos/algoritmo-de-luhn-validacao-cartao" style="color: var(--accent-cyan); font-weight: 600;">Como Funciona o Algoritmo de Luhn (Módulo 10) &rarr;</a>.</p>
       </article>
     
     </section>
 
     <!-- Outras Ferramentas Recomendadas -->
     <section style="margin-top: 60px;">
-      <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 20px; color: var(--text-primary);">Explore Mais Ferramentas Populares</h3>
+      <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 20px; color: var(--text-primary);">Explore Ferramentas Recomendadas</h3>
       <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px;">
         <a href="/gerador-de-cpf" class="tool-card" style="text-decoration: none;">
           <h4 style="color: var(--text-primary); margin-bottom: 6px;">Gerador de CPF</h4>
@@ -167,9 +173,9 @@
           <h4 style="color: var(--text-primary); margin-bottom: 6px;">Gerador de CNPJ</h4>
           <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Gere CNPJs para testes corporativos com padrão matriz.</p>
         </a>
-        <a href="/gerador-de-pessoas" class="tool-card" style="text-decoration: none;">
-          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Gerador de Pessoas</h4>
-          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Cadastros completos com dados fictícios e conformidade LGPD.</p>
+        <a href="/decodificador-de-jwt" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Decodificador JWT</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Inspecione claims, timestamps e algoritmo de tokens RFC 7519.</p>
         </a>
         <a href="/calculadora-clt-pj" class="tool-card" style="text-decoration: none;">
           <h4 style="color: var(--text-primary); margin-bottom: 6px;">Calculadora CLT vs PJ</h4>
@@ -194,10 +200,10 @@
         <div class="footer-col">
           <h4>Institucional</h4>
           <ul>
-            <li><a href="pages/sobre.html">Sobre o Projeto</a></li>
-            <li><a href="pages/contato.html">Fale Conosco</a></li>
-            <li><a href="pages/privacidade.html">Política de Privacidade</a></li>
-            <li><a href="pages/termos.html">Termos de Uso</a></li>
+            <li><a href="/pages/sobre.html">Sobre o Projeto</a></li>
+            <li><a href="/pages/contato.html">Fale Conosco</a></li>
+            <li><a href="/pages/privacidade.html">Política de Privacidade</a></li>
+            <li><a href="/pages/termos.html">Termos de Uso</a></li>
           </ul>
         </div>
       </div>
@@ -208,7 +214,6 @@
     </div>
   </footer>
 
-  <!-- Toast -->
   <div id="toast" class="toast"></div>
 
   <!-- Scripts -->

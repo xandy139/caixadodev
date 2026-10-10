@@ -10,6 +10,7 @@ const TOOLS_CATALOG = [
   // ==========================================
   {
     id: 'cpf-cnpj',
+    url: '/gerador-de-cpf',
     name: 'Gerador e Validador de CPF / CNPJ',
     category: 'geradores',
     categoryLabel: 'Documentos & Fiscais',
@@ -21,6 +22,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'pessoas',
+    url: '/gerador-de-pessoas',
     name: 'Gerador de Pessoas Fictícias',
     category: 'geradores',
     categoryLabel: 'Massa de Testes',
@@ -32,6 +34,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'json',
+    url: '/formatador-de-json',
     name: 'Formatador e Validador de JSON',
     category: 'formatadores',
     categoryLabel: 'Código & APIs',
@@ -43,6 +46,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'json-ts',
+    url: '/json-para-typescript',
     name: 'Conversor JSON para TypeScript',
     category: 'formatadores',
     categoryLabel: 'TypeScript & Frontend',
@@ -54,6 +58,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'clt-pj',
+    url: '/calculadora-clt-pj',
     name: 'Calculadora CLT vs PJ',
     category: 'conversores',
     categoryLabel: 'Carreira Dev BR',
@@ -65,6 +70,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'sql',
+    url: '/formatador-de-sql',
     name: 'Formatador e Minificador de SQL',
     category: 'formatadores',
     categoryLabel: 'Banco de Dados',
@@ -76,6 +82,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'curl',
+    url: '/conversor-de-curl',
     name: 'Conversor de cURL para Código',
     category: 'formatadores',
     categoryLabel: 'APIs & HTTP',
@@ -87,6 +94,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'regex',
+    url: '/testador-de-regex',
     name: 'Testador de Regex (RegEx)',
     category: 'formatadores',
     categoryLabel: 'Expressões Regulares',
@@ -98,6 +106,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'cartao',
+    url: '/gerador-de-cartao-de-credito',
     name: 'Gerador e Validador de Cartão de Crédito',
     category: 'geradores',
     categoryLabel: 'Financeiro & E-commerce',
@@ -109,6 +118,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'cron',
+    url: '/gerador-de-cron',
     name: 'Gerador de Expressões Cron',
     category: 'formatadores',
     categoryLabel: 'DevOps & Schedulers',
@@ -120,6 +130,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'empresa',
+    url: '/gerador-de-empresa',
     name: 'Gerador de Empresas (PJ Completa)',
     category: 'geradores',
     categoryLabel: 'Massa de Testes',
@@ -131,6 +142,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'mock-data',
+    url: '/gerador-de-mock-data',
     name: 'Gerador de Mock Data em Lote',
     category: 'geradores',
     categoryLabel: 'Massa de Testes',
@@ -146,6 +158,7 @@ const TOOLS_CATALOG = [
   // ==========================================
   {
     id: 'markdown',
+    url: '/editor-de-markdown',
     name: 'Editor e Visualizador de Markdown',
     category: 'formatadores',
     categoryLabel: 'Documentação & Docs',
@@ -156,6 +169,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'diff',
+    url: '/comparador-de-texto-diff',
     name: 'Comparador de Textos & Arquivos (Diff)',
     category: 'formatadores',
     categoryLabel: 'Produtividade',
@@ -166,6 +180,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'jwt',
+    url: '/decodificador-de-jwt',
     name: 'Decodificador de Token JWT',
     category: 'seguranca',
     categoryLabel: 'Segurança & Auth',
@@ -176,6 +191,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'hashes',
+    url: '/gerador-de-hash',
     name: 'Gerador de Hashes Criptográficos',
     category: 'seguranca',
     categoryLabel: 'Criptografia',
@@ -186,6 +202,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'base64',
+    url: '/conversor-base64',
     name: 'Codificador Base64 & URL',
     category: 'conversores',
     categoryLabel: 'Conversores',
@@ -196,6 +213,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'uuid',
+    url: '/gerador-de-uuid',
     name: 'Gerador de UUID / GUID v4',
     category: 'geradores',
     categoryLabel: 'Geradores',
@@ -206,6 +224,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'cep',
+    url: '/gerador-de-cep',
     name: 'Gerador e Buscador de CEP',
     category: 'geradores',
     categoryLabel: 'Endereços & Correios',
@@ -216,6 +235,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'rg',
+    url: '/gerador-de-rg',
     name: 'Gerador e Validador de RG',
     category: 'geradores',
     categoryLabel: 'Documentos',
@@ -226,6 +246,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'bancos',
+    url: '/gerador-de-conta-bancaria',
     name: 'Gerador de Contas Bancárias',
     category: 'geradores',
     categoryLabel: 'Financeiro',
@@ -240,6 +261,7 @@ const TOOLS_CATALOG = [
   // ==========================================
   {
     id: 'css-generator',
+    url: '/gerador-de-box-shadow',
     name: 'Gerador de Box-Shadow & Glassmorphism',
     category: 'conversores',
     categoryLabel: 'Design & CSS',
@@ -250,6 +272,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'code-beautifier',
+    url: '/formatador-html-css',
     name: 'Formatador de HTML & CSS',
     category: 'formatadores',
     categoryLabel: 'Web & Frontend',
@@ -260,6 +283,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'url-parser',
+    url: '/inspetor-de-url',
     name: 'Inspetor de URL & Query Params',
     category: 'formatadores',
     categoryLabel: 'Web & URLs',
@@ -270,6 +294,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'timestamp',
+    url: '/conversor-timestamp-unix',
     name: 'Conversor de Timestamp Unix',
     category: 'conversores',
     categoryLabel: 'Conversores',
@@ -280,6 +305,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'json-csv',
+    url: '/conversor-json-csv',
     name: 'Conversor JSON para CSV',
     category: 'conversores',
     categoryLabel: 'Dados & Planilhas',
@@ -290,6 +316,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'storage',
+    url: '/conversor-de-armazenamento',
     name: 'Conversor de Bytes & Download',
     category: 'conversores',
     categoryLabel: 'Infra & Redes',
@@ -300,6 +327,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'cnh',
+    url: '/gerador-de-cnh',
     name: 'Gerador e Validador de CNH',
     category: 'geradores',
     categoryLabel: 'Documentos',
@@ -310,6 +338,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'subnet',
+    url: '/calculadora-de-sub-rede',
     name: 'Calculadora de Sub-rede IP (CIDR)',
     category: 'conversores',
     categoryLabel: 'Redes & DevOps',
@@ -320,6 +349,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'http-status',
+    url: '/catalogo-status-http',
     name: 'Catálogo de Códigos HTTP',
     category: 'conversores',
     categoryLabel: 'Web & APIs',
@@ -330,6 +360,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'color',
+    url: '/conversor-de-cores',
     name: 'Conversor de Cores (HEX, RGB, HSL)',
     category: 'conversores',
     categoryLabel: 'Design & Cores',
@@ -340,6 +371,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'svg',
+    url: '/otimizador-de-svg',
     name: 'Otimizador de SVG & Data URI',
     category: 'conversores',
     categoryLabel: 'Design & SVGs',
@@ -350,6 +382,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'senhas',
+    url: '/gerador-de-senhas',
     name: 'Gerador de Senhas Seguras',
     category: 'geradores',
     categoryLabel: 'Segurança',
@@ -360,6 +393,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'case',
+    url: '/conversor-de-case',
     name: 'Conversor de Formatos de Texto (Case)',
     category: 'conversores',
     categoryLabel: 'Conversores',
@@ -370,6 +404,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'qrcode',
+    url: '/gerador-de-qrcode',
     name: 'Gerador de QR Code',
     category: 'conversores',
     categoryLabel: 'Utilitários',
@@ -384,6 +419,7 @@ const TOOLS_CATALOG = [
   // ==========================================
   {
     id: 'veiculos',
+    url: '/gerador-de-placa-e-renavam',
     name: 'Gerador de Placas & RENAVAM',
     category: 'geradores',
     categoryLabel: 'Veicular',
@@ -394,6 +430,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'certidao',
+    url: '/gerador-de-certidao',
     name: 'Gerador de Certidões Civis',
     category: 'geradores',
     categoryLabel: 'Cartórios CNJ',
@@ -404,6 +441,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'pis',
+    url: '/gerador-de-pis',
     name: 'Gerador e Validador de PIS / PASEP',
     category: 'geradores',
     categoryLabel: 'Documentos',
@@ -414,6 +452,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'titulo',
+    url: '/gerador-de-titulo-de-eleitor',
     name: 'Gerador e Validador de Título de Eleitor',
     category: 'geradores',
     categoryLabel: 'Documentos',
@@ -424,6 +463,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'texto',
+    url: '/gerador-de-lorem-ipsum',
     name: 'Gerador de Lorem Ipsum & Contador',
     category: 'formatadores',
     categoryLabel: 'Texto & SEO',
@@ -500,7 +540,7 @@ function renderRecentTools() {
 
   container.style.display = 'block';
   grid.innerHTML = tools.map(t => `
-    <a href="#${t.id}" class="recent-tool-chip">
+    <a href="${t.url || '#' + t.id}" class="recent-tool-chip">
       <div class="recent-chip-icon" style="background: ${t.color};">
         ${t.icon}
       </div>
@@ -578,7 +618,7 @@ function initToolsHub() {
 
     filtered.forEach(tool => {
       const card = document.createElement('a');
-      card.href = `#${tool.id}`;
+      card.href = tool.url || `#${tool.id}`;
       card.className = 'tool-card';
       card.innerHTML = `
         <div class="tool-card-header">
@@ -667,7 +707,7 @@ function initSearchModal() {
     }
 
     resultsContainer.innerHTML = filtered.map((t, idx) => `
-      <a href="#${t.id}" class="modal-result-item ${idx === 0 ? 'selected' : ''}" onclick="document.getElementById('search-modal-overlay').classList.remove('open')">
+      <a href="${t.url || '#' + t.id}" class="modal-result-item ${idx === 0 ? 'selected' : ''}" onclick="document.getElementById('search-modal-overlay').classList.remove('open')">
         <div class="modal-result-info">
           <span class="modal-result-title">${t.name}</span>
           <span class="modal-result-desc">${t.desc}</span>

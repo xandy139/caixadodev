@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Caixa do Dev | 40 Ferramentas Gratuitas e Rápidas para Desenvolvedores</title>
-  <meta name="description" content="O canivete suíço definitivo para desenvolvedores: Gerador de Pessoas, Empresas, CPF, CNPJ, RG, Certidões CNJ, CEP, CNH, PIS, Título, Cartão de Crédito, Contas Bancárias, Placas, Senhas, JSON para TypeScript, Hashes, Regex, SQL, Diff, Markdown, cURL, HTML/CSS, Box-Shadow, CLT vs PJ, Subnet e Status HTTP. 100% no navegador.">
-  <meta name="keywords" content="gerador de pessoas, gerador de empresas, gerador rg, gerador certidao nascimento cnj, gerador cep correios, gerador cpf, gerador cnpj, gerador cnh, gerador pis, titulo de eleitor, gerador cartao credito teste, json para typescript, markdown preview, curl to fetch, formatador html css, calculadora clt pj, regex tester, gerador md5 sha256, formatador sql, calculadora subnet cidr, status http, 4devs alternativa, devtools brasil">
-  <meta name="author" content="Caixa do Dev">
+  <meta name="description" content="O maior canivete suíço de ferramentas online para desenvolvedores do Brasil. Gerador de Pessoas, CPF, CNPJ, RG, CEP, CNH, JSON para TypeScript, Hashes, Regex, SQL, Diff, CLT vs PJ e utilitários. 100% no navegador.">
+  <meta name="keywords" content="ferramentas para desenvolvedores, devtools brasil, gerador de pessoas, gerador cpf, gerador cnpj, formatador json, json para typescript, calculadora clt pj, formatador sql, regex tester">
+  <meta name="author" content="Alexandre Marcelino">
   <meta name="robots" content="index, follow">
   
   <!-- Canonical & Open Graph -->
@@ -15,6 +15,7 @@
   <meta property="og:url" content="https://www.caixadodev.com.br/">
   <meta property="og:title" content="Caixa do Dev | 40 Ferramentas Online Gratuitas para Programadores">
   <meta property="og:description" content="Gere dados fictícios completos para homologação, formate código, gere hashes e converta formatos com privacidade e velocidade máxima.">
+  <meta property="og:image" content="https://www.caixadodev.com.br/assets/og-cover.png">
   
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'><path d='M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4'/></svg>">
   
@@ -26,18 +27,31 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Caixa do Dev",
-    "url": "https://www.caixadodev.com.br",
-    "description": "40 ferramentas gratuitas, rápidas e 100% client-side para desenvolvedores brasileiros.",
-    "applicationCategory": "DeveloperApplication",
-    "operatingSystem": "All",
-    "browserRequirements": "Requires JavaScript",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "BRL"
-    }
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "Caixa do Dev",
+        "url": "https://www.caixadodev.com.br/",
+        "description": "40 ferramentas gratuitas, rápidas e 100% client-side para desenvolvedores brasileiros.",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "BRL"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "name": "Caixa do Dev",
+        "url": "https://www.caixadodev.com.br/",
+        "author": {
+          "@type": "Person",
+          "name": "Alexandre Marcelino"
+        }
+      }
+    ]
   }
   </script>
 
@@ -49,7 +63,7 @@
   <!-- Navbar -->
   <header class="navbar">
     <div class="container nav-container">
-      <a href="#home" class="brand" title="Caixa do Dev - Página Inicial">
+      <a href="/" class="brand" title="Caixa do Dev - Página Inicial">
         <div class="brand-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
@@ -59,7 +73,7 @@
         </div>
         <div class="brand-text">
           <span class="brand-name">Caixa do Dev</span>
-          <span class="brand-badge">40 Ferramentas Online</span>
+          <span class="brand-badge">40 Ferramentas</span>
         </div>
       </a>
 
@@ -76,11 +90,12 @@
         <nav>
           <ul class="nav-links">
             <li><a href="/" class="active">Início</a></li>
-            <li><a href="/gerador-de-cpf">Gerador de CPF</a></li>
-            <li><a href="/gerador-de-cnpj">Gerador de CNPJ</a></li>
+            <li><a href="/gerador-de-cpf">CPF</a></li>
+            <li><a href="/gerador-de-cnpj">CNPJ</a></li>
             <li><a href="/gerador-de-pessoas">Pessoas</a></li>
             <li><a href="/calculadora-clt-pj">CLT vs PJ</a></li>
             <li><a href="/json-para-typescript">JSON &rarr; TS</a></li>
+            <li><a href="#artigos">Artigos</a></li>
             <li><a href="pages/sobre.html">Sobre</a></li>
             <li><a href="pages/contato.html">Contato</a></li>
           </ul>
@@ -92,17 +107,7 @@
   <!-- Container Principal -->
   <main class="container">
 
-    <!-- Espaço para Anúncio Superior (AdSense Top Banner) -->
-    <aside class="ad-slot-wrapper" aria-label="Área de Publicidade">
-      <div class="ad-slot ad-banner-horizontal">
-        <span class="ad-slot-label">Publicidade</span>
-        <span class="ad-slot-notice">Espaço reservado para Google AdSense (Leaderboard 728x90 / Responsivo)</span>
-      </div>
-    </aside>
-
-    <!-- ============================================== -->
-    <!-- HUB PRINCIPAL (VITRINE DE 40 FERRAMENTAS)      -->
-    <!-- ============================================== -->
+    <!-- HUB PRINCIPAL (VITRINE DE 40 FERRAMENTAS) -->
     <section id="hub-view">
       <div class="hero">
         <div class="hero-pill">
@@ -110,16 +115,17 @@
           <span>40 Ferramentas • 100% Client-Side • Privacidade Absoluta</span>
         </div>
         <h1>O Maior Portal de Ferramentas para <span class="gradient">Desenvolvedores</span> do Brasil</h1>
-        <p>Massa de dados para homologação, conversores de código TypeScript, formatadores de banco de dados, criptografia, redes e carreira. Tudo rápido, gratuito e sem recarregar a página.</p>
+        <p>Massa de testes cadastrais para homologação, geradores de interfaces TypeScript, formatadores de banco de dados, criptografia, redes e calculadoras de carreira. Rápido, gratuito e seguro no seu navegador.</p>
 
         <!-- Filtro Rápido de Categorias -->
         <div class="categories-filter">
           <button class="category-btn active" data-category="all">Todas as 40 Ferramentas</button>
           <button class="category-btn" data-category="populares">🔥 Mais Usadas (Top 12)</button>
           <button class="category-btn" data-category="geradores">Massa de Testes (4Devs)</button>
-          <button class="category-btn" data-category="formatadores">Código, TypeScript, SQL & Web</button>
+          <button class="category-btn" data-category="formatadores">Código, TypeScript & SQL</button>
           <button class="category-btn" data-category="seguranca">Criptografia & Auth</button>
-          <button class="category-btn" data-category="conversores">Design, Redes & Calculadoras</button>
+          <button class="category-btn" data-category="conversores">Design, Redes & Carreira</button>
+        </div>
       </div>
 
       <!-- Seção de Ferramentas Recentes (Carregada via localStorage) -->
@@ -134,1922 +140,52 @@
         <div id="recent-tools-grid" class="recent-tools-grid"></div>
       </div>
 
+      <!-- Grid Oficial de Ferramentas (Cards com URLs dedicadas) -->
       <div id="tools-grid" class="tools-grid">
-        <!-- Renderizado dinamicamente via app.js -->
+        <!-- Renderizado dinamicamente via app.js com links para as páginas dedicadas -->
       </div>
     </section>
 
-    <!-- ============================================== -->
-    <!-- 1. VIEW: GERADOR DE PESSOAS                     -->
-    <!-- ============================================== -->
-    <section id="view-pessoas" class="tool-view">
-      <div class="tool-breadcrumbs">
-        <a href="#home">&larr; Início</a> / <span>Gerador de Pessoas</span>
+    <!-- Seção de Artigos & Tutoriais Técnicos (Autoridade Editorial E-E-A-T) -->
+    <section id="artigos" style="margin: 60px 0 40px;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 12px; margin-bottom: 24px;">
+        <div>
+          <span style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--accent-cyan); letter-spacing: 0.08em;">Artigos & Engenharia</span>
+          <h2 style="font-size: 1.8rem; font-weight: 800; color: var(--text-primary); margin-top: 4px;">Guias Técnicos para Desenvolvedores</h2>
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0; max-width: 500px;">Artigos originais sobre arquitetura, algoritmos regulatórios brasileiros, tributação de desenvolvedores e segurança.</p>
       </div>
 
-      <div class="tool-interface-card">
-        <div class="tool-header-area">
-          <div class="tool-title-group">
-            <h1>Gerador de Pessoas e Cadastros Fictícios</h1>
-            <p>Gere cadastros completos com nome, documentos, endereço e dados de contato para testes.</p>
-          </div>
-          <div class="tool-actions-bar">
-            <button id="btn-gen-person" class="btn btn-primary">Gerar Nova Pessoa</button>
-            <button id="btn-copy-all-person" class="btn btn-outline-cyan">Copiar Todos os Dados</button>
-          </div>
-        </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px;">
+        <article class="tool-card" style="display: flex; flex-direction: column;">
+          <div style="font-size: 0.76rem; color: var(--accent-cyan); font-weight: 600; margin-bottom: 8px;">ALGORITMOS & FISCAL</div>
+          <h3 style="font-size: 1.15rem; margin-bottom: 8px;"><a href="/artigos/algoritmo-modulo-11-cpf-cnpj" style="color: var(--text-primary); text-decoration: none;">Como Funciona o Cálculo do Módulo 11 (CPF e CNPJ Passo a Passo)</a></h3>
+          <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5; flex-grow: 1;">Entenda a matemática oficial da Receita Federal por trás dos dígitos verificadores, pesos regressivos e tabela de regiões fiscais com implementação em código.</p>
+          <a href="/artigos/algoritmo-modulo-11-cpf-cnpj" style="color: var(--accent-cyan); font-size: 0.88rem; font-weight: 600; text-decoration: none; margin-top: 14px;">Ler Artigo Completo &rarr;</a>
+        </article>
 
-        <div class="form-options-row">
-          <div class="form-group" style="margin-bottom: 0;">
-            <label class="form-label">Sexo:</label>
-            <select id="sel-person-gender" class="form-control" style="width: 140px; padding: 8px 12px;">
-              <option value="all">Aleatório</option>
-              <option value="M">Masculino</option>
-              <option value="F">Feminino</option>
-            </select>
-          </div>
-          <div class="form-group" style="margin-bottom: 0;">
-            <label class="form-label">Estado de Origem:</label>
-            <select id="sel-person-state" class="form-control" style="width: 170px; padding: 8px 12px;">
-              <option value="SP">São Paulo (SP)</option>
-              <option value="RJ">Rio de Janeiro (RJ)</option>
-              <option value="MG">Minas Gerais (MG)</option>
-              <option value="RS">Rio Grande do Sul (RS)</option>
-              <option value="PR">Paraná (PR)</option>
-              <option value="SC">Santa Catarina (SC)</option>
-              <option value="BA">Bahia (BA)</option>
-              <option value="PE">Pernambuco (PE)</option>
-              <option value="CE">Ceará (CE)</option>
-              <option value="DF">Distrito Federal (DF)</option>
-            </select>
-          </div>
-          <label class="checkbox-label" style="margin-top: 24px;">
-            <input type="checkbox" id="check-person-format" checked>
-            <span>Gerar documentos com máscara</span>
-          </label>
-        </div>
+        <article class="tool-card" style="display: flex; flex-direction: column;">
+          <div style="font-size: 0.76rem; color: var(--accent-emerald); font-weight: 600; margin-bottom: 8px;">CARREIRA & TRIBUTAÇÃO</div>
+          <h3 style="font-size: 1.15rem; margin-bottom: 8px;"><a href="/artigos/clt-vs-pj-guia-tributario-desenvolvedor" style="color: var(--text-primary); text-decoration: none;">Guia Tributário para Desenvolvedores: CLT vs PJ com Fator R</a></h3>
+          <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5; flex-grow: 1;">Aprenda a calcular o líquido real, os custos de contabilidade, pró-labore de 28% para tributar 6% no Simples Nacional e quando vale a pena migrar.</p>
+          <a href="/artigos/clt-vs-pj-guia-tributario-desenvolvedor" style="color: var(--accent-emerald); font-size: 0.88rem; font-weight: 600; text-decoration: none; margin-top: 14px;">Ler Artigo Completo &rarr;</a>
+        </article>
 
-        <div class="person-data-grid">
-          <div class="person-field-card"><span class="person-field-label">Nome Completo</span><span id="pf-name" class="person-field-val">Carregando...</span><button class="person-field-copy" onclick="copyToClipboard(document.getElementById('pf-name').textContent)">📋</button></div>
-          <div class="person-field-card"><span class="person-field-label">CPF</span><span id="pf-cpf" class="person-field-val" style="color: var(--accent-cyan);">Carregando...</span><button class="person-field-copy" onclick="copyToClipboard(document.getElementById('pf-cpf').textContent)">📋</button></div>
-          <div class="person-field-card"><span class="person-field-label">RG</span><span id="pf-rg" class="person-field-val">Carregando...</span><button class="person-field-copy" onclick="copyToClipboard(document.getElementById('pf-rg').textContent)">📋</button></div>
-          <div class="person-field-card"><span class="person-field-label">Nascimento (Idade)</span><span class="person-field-val"><span id="pf-birth">--</span> (<span id="pf-age">--</span>)</span><button class="person-field-copy" onclick="copyToClipboard(document.getElementById('pf-birth').textContent)">📋</button></div>
-          <div class="person-field-card"><span class="person-field-label">Sexo</span><span id="pf-gender" class="person-field-val">Carregando...</span></div>
-          <div class="person-field-card"><span class="person-field-label">Tipo Sanguíneo</span><span id="pf-blood" class="person-field-val" style="color: #fb7185;">Carregando...</span></div>
-          <div class="person-field-card"><span class="person-field-label">E-mail</span><span id="pf-email" class="person-field-val">Carregando...</span><button class="person-field-copy" onclick="copyToClipboard(document.getElementById('pf-email').textContent)">📋</button></div>
-          <div class="person-field-card"><span class="person-field-label">Celular</span><span id="pf-phone" class="person-field-val">Carregando...</span><button class="person-field-copy" onclick="copyToClipboard(document.getElementById('pf-phone').textContent)">📋</button></div>
-          <div class="person-field-card"><span class="person-field-label">CEP</span><span id="pf-cep" class="person-field-val">Carregando...</span><button class="person-field-copy" onclick="copyToClipboard(document.getElementById('pf-cep').textContent)">📋</button></div>
-          <div class="person-field-card"><span class="person-field-label">Endereço & Número</span><span id="pf-street" class="person-field-val">Carregando...</span><button class="person-field-copy" onclick="copyToClipboard(document.getElementById('pf-street').textContent)">📋</button></div>
-          <div class="person-field-card"><span class="person-field-label">Bairro</span><span id="pf-neighborhood" class="person-field-val">Carregando...</span></div>
-          <div class="person-field-card"><span class="person-field-label">Cidade & UF</span><span class="person-field-val"><span id="pf-city">--</span> - <span id="pf-state">--</span></span><button class="person-field-copy" onclick="copyToClipboard(document.getElementById('pf-city').textContent)">📋</button></div>
-        </div>
+        <article class="tool-card" style="display: flex; flex-direction: column;">
+          <div style="font-size: 0.76rem; color: var(--accent-primary); font-weight: 600; margin-bottom: 8px;">SEGURANÇA & WEB</div>
+          <h3 style="font-size: 1.15rem; margin-bottom: 8px;"><a href="/artigos/seguranca-jwt-autenticacao-web" style="color: var(--text-primary); text-decoration: none;">Anatomia e Segurança de Tokens JWT (JSON Web Token)</a></h3>
+          <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5; flex-grow: 1;">Como funciona a estrutura de Header, Payload e Signature (RFC 7519), os riscos do algoritmo 'none' e boas práticas de expiração e refresh tokens.</p>
+          <a href="/artigos/seguranca-jwt-autenticacao-web" style="color: var(--accent-primary); font-size: 0.88rem; font-weight: 600; text-decoration: none; margin-top: 14px;">Ler Artigo Completo &rarr;</a>
+        </article>
+
+        <article class="tool-card" style="display: flex; flex-direction: column;">
+          <div style="font-size: 0.76rem; color: var(--accent-rose); font-weight: 600; margin-bottom: 8px;">FINTECH & GATEWAYS</div>
+          <h3 style="font-size: 1.15rem; margin-bottom: 8px;"><a href="/artigos/algoritmo-de-luhn-validacao-cartao" style="color: var(--text-primary); text-decoration: none;">Algoritmo de Luhn (Módulo 10): Validação de Cartões em Sandboxes</a></h3>
+          <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5; flex-grow: 1;">Entenda a fórmula matemática de Hans Peter Luhn adotada pela ISO/IEC 7812 para checagem de erros de digitação em esteiras de checkout e gateways de pagamento.</p>
+          <a href="/artigos/algoritmo-de-luhn-validacao-cartao" style="color: var(--accent-rose); font-size: 0.88rem; font-weight: 600; text-decoration: none; margin-top: 14px;">Ler Artigo Completo &rarr;</a>
+        </article>
       </div>
-          <article class="tool-seo-guide">
-        <h2>Geração Ética de Dados Cadastrais e Conformidade com a LGPD</h2>
-        <p>Durante as etapas de desenvolvimento de software, homologação de sistemas e garantia de qualidade (QA), desenvolvedores e testadores necessitam frequentemente de dados realistas para simular o comportamento de formulários de checkout, esteiras de cadastro e CRMs.</p>
-        <p>A Lei Geral de Proteção de Dados Pessoais (LGPD - Lei nº 13.709/2018) proíbe rigorosamente o uso de dados de cidadãos reais em ambientes de testes e homologação (staging e sandbox). O Gerador de Pessoas da Caixa do Dev resolve esse desafio gerando dados 100% fictícios através de algoritmos matemáticos e combinatórios, assegurando total conformidade legal sem risco de vazamento de informações sigilosas.</p>
-      </article>
     </section>
-
-    <!-- ============================================== -->
-    <!-- 2. VIEW: GERADOR DE EMPRESAS (PJ)              -->
-    <!-- ============================================== -->
-    <section id="view-empresa" class="tool-view">
-      <div class="tool-breadcrumbs">
-        <a href="#home">&larr; Início</a> / <span>Gerador de Empresa (PJ Completa)</span>
-      </div>
-
-      <div class="tool-interface-card">
-        <div class="tool-header-area">
-          <div class="tool-title-group">
-            <h1>Gerador de Empresa e Dados Fictícios de PJ</h1>
-            <p>Gere cadastros de pessoa jurídica com Razão Social, CNPJ, Inscrição Estadual, CNAE e Endereço.</p>
-          </div>
-          <div class="tool-actions-bar">
-            <button id="btn-gen-company" class="btn btn-primary">Gerar Nova Empresa</button>
-            <button id="btn-copy-company" class="btn btn-outline-cyan">Copiar Dados</button>
-          </div>
-        </div>
-
-        <div class="form-options-row">
-          <div class="form-group" style="margin-bottom: 0;">
-            <label class="form-label">Estado (UF):</label>
-            <select id="sel-company-state" class="form-control" style="width: 170px; padding: 8px 12px;">
-              <option value="SP">São Paulo (SP)</option>
-              <option value="RJ">Rio de Janeiro (RJ)</option>
-              <option value="MG">Minas Gerais (MG)</option>
-              <option value="RS">Rio Grande do Sul (RS)</option>
-              <option value="PR">Paraná (PR)</option>
-              <option value="SC">Santa Catarina (SC)</option>
-              <option value="BA">Bahia (BA)</option>
-              <option value="DF">Distrito Federal (DF)</option>
-            </select>
-          </div>
-          <label class="checkbox-label" style="margin-top: 24px;">
-            <input type="checkbox" id="check-company-format" checked>
-            <span>Gerar com pontuação (máscara de CNPJ e CEP)</span>
-          </label>
-        </div>
-
-        <div class="person-data-grid">
-          <div class="person-field-card"><span class="person-field-label">Razão Social</span><span id="comp-corporate" class="person-field-val">Carregando...</span><button class="person-field-copy" onclick="copyToClipboard(document.getElementById('comp-corporate').textContent)">📋</button></div>
-          <div class="person-field-card"><span class="person-field-label">Nome Fantasia</span><span id="comp-fantasy" class="person-field-val">Carregando...</span><button class="person-field-copy" onclick="copyToClipboard(document.getElementById('comp-fantasy').textContent)">📋</button></div>
-          <div class="person-field-card"><span class="person-field-label">CNPJ</span><span id="comp-cnpj" class="person-field-val" style="color: var(--accent-cyan);">Carregando...</span><button class="person-field-copy" onclick="copyToClipboard(document.getElementById('comp-cnpj').textContent)">📋</button></div>
-          <div class="person-field-card"><span class="person-field-label">Inscrição Estadual (IE)</span><span id="comp-ie" class="person-field-val">Carregando...</span><button class="person-field-copy" onclick="copyToClipboard(document.getElementById('comp-ie').textContent)">📋</button></div>
-          <div class="person-field-card" style="grid-column: span 2;"><span class="person-field-label">Atividade Econômica (CNAE)</span><span id="comp-cnae" class="person-field-val" style="font-size: 0.85rem;">Carregando...</span></div>
-          <div class="person-field-card"><span class="person-field-label">Data de Abertura</span><span id="comp-opening" class="person-field-val">Carregando...</span></div>
-          <div class="person-field-card"><span class="person-field-label">Capital Social</span><span id="comp-capital" class="person-field-val" style="color: var(--accent-emerald);">Carregando...</span></div>
-          <div class="person-field-card"><span class="person-field-label">E-mail Comercial</span><span id="comp-email" class="person-field-val">Carregando...</span><button class="person-field-copy" onclick="copyToClipboard(document.getElementById('comp-email').textContent)">📋</button></div>
-          <div class="person-field-card"><span class="person-field-label">Telefone Fixo</span><span id="comp-phone" class="person-field-val">Carregando...</span><button class="person-field-copy" onclick="copyToClipboard(document.getElementById('comp-phone').textContent)">📋</button></div>
-          <div class="person-field-card"><span class="person-field-label">Endereço Comercial</span><span id="comp-address" class="person-field-val">Carregando...</span></div>
-          <div class="person-field-card"><span class="person-field-label">Cidade & CEP</span><span class="person-field-val"><span id="comp-city">--</span> | <span id="comp-cep">--</span></span></div>
-        </div>
-      </div>
-          <article class="tool-seo-guide">
-        <h2>Estrutura de Dados de Pessoa Jurídica (PJ) no Brasil</h2>
-        <p>Empresas no Brasil possuem identificações fiscais estruturadas como o CNPJ (Cadastro Nacional da Pessoa Jurídica), a Inscrição Estadual (IE) emitida pelas Secretarias de Fazenda de cada estado e o código CNAE (Classificação Nacional de Atividades Econômicas).</p>
-        <p>Para testar emissões de notas fiscais eletrônicas (NF-e, NFS-e), sistemas ERP e integrações B2B, esta ferramenta gera dados empresariais consistentes com cálculo oficial de dígitos verificadores e formato padronizado.</p>
-      </article>
-    </section>
-
-    <!-- ============================================== -->
-    <!-- 3. VIEW: JSON PARA TYPESCRIPT                   -->
-    <!-- ============================================== -->
-    <section id="view-json-ts" class="tool-view">
-      <div class="tool-breadcrumbs">
-        <a href="#home">&larr; Início</a> / <span>Conversor JSON para TypeScript</span>
-      </div>
-
-      <div class="tool-interface-card">
-        <div class="tool-header-area">
-          <div class="tool-title-group">
-            <h1>Conversor de JSON para TypeScript (Interfaces & Types)</h1>
-            <p>Transforme respostas de APIs em código TypeScript tipado automaticamente.</p>
-          </div>
-          <div class="tool-actions-bar">
-            <button id="btn-convert-json-ts" class="btn btn-primary">Gerar TypeScript</button>
-            <button id="btn-sample-json-ts" class="btn btn-secondary">Exemplo</button>
-          </div>
-        </div>
-
-        <div class="form-options-row">
-          <div class="form-group" style="margin-bottom: 0;">
-            <label class="form-label">Nome da Interface Raiz:</label>
-            <input type="text" id="json-ts-root" class="form-control" value="UsuarioResponse" style="width: 200px; padding: 6px 12px;">
-          </div>
-          <label class="checkbox-label" style="margin-top: 24px;">
-            <input type="checkbox" id="check-ts-type">
-            <span>Usar 'type' em vez de 'interface'</span>
-          </label>
-        </div>
-
-        <div class="split-grid">
-          <div class="pane">
-            <span class="pane-title" style="margin-bottom: 8px;">JSON de Entrada</span>
-            <textarea id="json-ts-input" class="form-control" placeholder='Cole seu JSON aqui: {"id": 1, "nome": "Dev"}...'></textarea>
-          </div>
-          <div class="pane">
-            <div class="pane-header">
-              <span class="pane-title">Interfaces TypeScript</span>
-              <button id="btn-copy-json-ts" class="btn btn-secondary btn-sm">Copiar TS</button>
-            </div>
-            <pre id="json-ts-output" class="result-box large"></pre>
-          </div>
-        </div>
-      </div>
-          <article class="tool-seo-guide">
-        <h2>Conversão de Contratos de APIs JSON para Tipagem TypeScript</h2>
-        <p>No ecossistema moderno de frontend e backend com Node.js, Next.js e React, a tipagem estática do TypeScript garante segurança em tempo de compilação e previne erros comuns de tempo de execução como <code>undefined is not an object</code>.</p>
-        <p>Ao consumir APIs REST externas, a conversão manual de payloads JSON complexos para interfaces ou types consome tempo precioso. O conversor da Caixa do Dev inspeciona profundamente as chaves e valores primitivos (strings, números, booleanos, arrays e objetos aninhados), gerando interfaces declarativas limpas em milissegundos diretamente no navegador.</p>
-      </article>
-    </section>
-
-    <!-- ============================================== -->
-    <!-- 4. VIEW: GERADOR DE HASHES                      -->
-    <!-- ============================================== -->
-    <section id="view-hashes" class="tool-view">
-      <div class="tool-breadcrumbs">
-        <a href="#home">&larr; Início</a> / <span>Gerador de Hashes Criptográficos</span>
-      </div>
-
-      <div class="tool-interface-card">
-        <div class="tool-header-area">
-          <div class="tool-title-group">
-            <h1>Gerador de Hashes Criptográficos (MD5, SHA-1, SHA-256, SHA-512)</h1>
-            <p>Calcule os hashes de qualquer texto instantaneamente no cliente via Web Crypto API.</p>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label" for="hash-input">Digite o texto ou senha para calcular os hashes:</label>
-          <input type="text" id="hash-input" class="form-control" value="Caixa do Dev 2026" placeholder="Digite qualquer texto...">
-        </div>
-
-        <div style="display: flex; flex-direction: column; gap: 14px; margin-top: 20px;">
-          <div>
-            <div class="pane-header"><span class="pane-title">MD5 (128-bit)</span><button class="btn btn-secondary btn-sm" onclick="copyToClipboard(document.getElementById('hash-md5').textContent)">Copiar</button></div>
-            <div id="hash-md5" class="result-box">---</div>
-          </div>
-          <div>
-            <div class="pane-header"><span class="pane-title">SHA-1 (160-bit)</span><button class="btn btn-secondary btn-sm" onclick="copyToClipboard(document.getElementById('hash-sha1').textContent)">Copiar</button></div>
-            <div id="hash-sha1" class="result-box">---</div>
-          </div>
-          <div>
-            <div class="pane-header"><span class="pane-title">SHA-256 (256-bit Padrão Owasp / Bitcoin)</span><button class="btn btn-secondary btn-sm" onclick="copyToClipboard(document.getElementById('hash-sha256').textContent)">Copiar</button></div>
-            <div id="hash-sha256" class="result-box" style="color: var(--accent-emerald);">---</div>
-          </div>
-          <div>
-            <div class="pane-header"><span class="pane-title">SHA-512 (512-bit Alta Segurança)</span><button class="btn btn-secondary btn-sm" onclick="copyToClipboard(document.getElementById('hash-sha512').textContent)">Copiar</button></div>
-            <div id="hash-sha512" class="result-box" style="font-size: 0.8rem;">---</div>
-          </div>
-        </div>
-      </div>
-          <article class="tool-seo-guide">
-        <h2>Algoritmos de Hashing Criptográfico: MD5, SHA-1, SHA-256 e SHA-512</h2>
-        <p>Uma função de hash criptográfico é um algoritmo matemático unidirecional que mapeia dados de tamanho arbitrário em uma sequência de tamanho fixo. Características fundamentais de funções de hash incluem determinismo (a mesma entrada sempre gera a mesma saída) e resistência a colisões.</p>
-        <p>Enquanto o algoritmo MD5 é utilizado hoje primordialmente para verificação rápida de integridade de arquivos (checksums), os padrões SHA-256 e SHA-512 são amplamente recomendados para segurança da informação, assinaturas digitais, blockchains e armazenamento seguro de dados com salt.</p>
-      </article>
-    </section>
-
-    <!-- ============================================== -->
-    <!-- 5. VIEW: CNH                                   -->
-    <!-- ============================================== -->
-    <section id="view-cnh" class="tool-view">
-      <div class="tool-breadcrumbs">
-        <a href="#home">&larr; Início</a> / <span>Gerador e Validador de CNH</span>
-      </div>
-
-      <div class="tool-interface-card">
-        <div class="tool-header-area">
-          <div class="tool-title-group">
-            <h1>Gerador e Validador de CNH</h1>
-            <p>Gere e valide números de Carteira Nacional de Habilitação com cálculo oficial do Renach.</p>
-          </div>
-          <div class="tool-actions-bar">
-            <button id="btn-gen-cnh" class="btn btn-primary">Gerar CNH</button>
-            <button id="btn-copy-cnh" class="btn btn-secondary">Copiar</button>
-          </div>
-        </div>
-
-        <div class="cpf-result-display">
-          <span id="cnh-display" class="cpf-value">00000000000</span>
-        </div>
-
-        <hr style="border: none; border-top: 1px solid var(--border-subtle); margin: 30px 0;">
-
-        <div class="form-group">
-          <label class="form-label" for="input-validate-cnh">
-            <span>Validar CNH existente:</span>
-            <span id="badge-validate-cnh" class="badge-status badge-neutral">Aguardando digitação</span>
-          </label>
-          <input type="text" id="input-validate-cnh" class="form-control" placeholder="Digite a CNH de 11 dígitos..." maxlength="11">
-        </div>
-      </div>
-          <article class="tool-seo-guide">
-        <h2>Como Funciona a Validação e Dígitos Verificadores da CNH</h2>
-        <p>A Carteira Nacional de Habilitação (CNH) possui um registro numérico de 11 dígitos gerenciado pelo Registro Nacional de Carteira de Habilitação (Renach), sob responsabilidade da Secretaria Nacional de Trânsito (Senatran).</p>
-        <p>Os primeiros 9 algarismos compõem o número base, e os dois últimos dígitos são calculados por meio do algoritmo oficial do Módulo 11 com pesos decrescentes de 9 a 2. Em sistemas de cadastro, onboarding digital e validação de identidade (KYC), a conferência prévia da CNH no frontend otimiza a experiência do usuário.</p>
-      </article>
-    </section>
-
-    <!-- ============================================== -->
-    <!-- 6. VIEW: PIS / PASEP                           -->
-    <!-- ============================================== -->
-    <section id="view-pis" class="tool-view">
-      <div class="tool-breadcrumbs">
-        <a href="#home">&larr; Início</a> / <span>Gerador e Validador de PIS / PASEP</span>
-      </div>
-
-      <div class="tool-interface-card">
-        <div class="tool-header-area">
-          <div class="tool-title-group">
-            <h1>Gerador e Validador de PIS / PASEP / NIT</h1>
-            <p>Gere e valide números de PIS para testes em sistemas de RH e folha de pagamento.</p>
-          </div>
-          <div class="tool-actions-bar">
-            <button id="btn-gen-pis" class="btn btn-primary">Gerar PIS</button>
-            <button id="btn-copy-pis" class="btn btn-secondary">Copiar</button>
-          </div>
-        </div>
-
-        <div class="form-options-row">
-          <label class="checkbox-label">
-            <input type="checkbox" id="check-pis-format" checked>
-            <span>Gerar com máscara (Ex: 000.00000.00-0)</span>
-          </label>
-        </div>
-
-        <div class="cpf-result-display">
-          <span id="pis-display" class="cpf-value">000.00000.00-0</span>
-        </div>
-
-        <hr style="border: none; border-top: 1px solid var(--border-subtle); margin: 30px 0;">
-
-        <div class="form-group">
-          <label class="form-label" for="input-validate-pis">
-            <span>Validar PIS existente:</span>
-            <span id="badge-validate-pis" class="badge-status badge-neutral">Aguardando digitação</span>
-          </label>
-          <input type="text" id="input-validate-pis" class="form-control" placeholder="Digite o PIS..." maxlength="14">
-        </div>
-      </div>
-          <article class="tool-seo-guide">
-        <h2>O Número do PIS/PASEP/NIT e o Cálculo Módulo 11</h2>
-        <p>O Programa de Integração Social (PIS) e o Programa de Formação do Patrimônio do Servidor Público (PASEP) possuem um número de identificação do trabalhador composto por 11 dígitos numéricos.</p>
-        <p>O 11º dígito é o dígito verificador, obtido através de uma soma ponderada dos 10 primeiros números com os pesos 3, 2, 9, 8, 7, 6, 5, 4, 3 e 2. Esta ferramenta permite a equipes de Recursos Humanos e desenvolvedores de sistemas de folha de pagamento e eSocial testar rotinas de admissão com precisão.</p>
-      </article>
-    </section>
-
-    <!-- ============================================== -->
-    <!-- 7. VIEW: TÍTULO DE ELEITOR                     -->
-    <!-- ============================================== -->
-    <section id="view-titulo" class="tool-view">
-      <div class="tool-breadcrumbs">
-        <a href="#home">&larr; Início</a> / <span>Gerador e Validador de Título de Eleitor</span>
-      </div>
-
-      <div class="tool-interface-card">
-        <div class="tool-header-area">
-          <div class="tool-title-group">
-            <h1>Gerador e Validador de Título de Eleitor</h1>
-            <p>Gere e valide títulos de eleitor de 12 dígitos com verificação da UF do TSE.</p>
-          </div>
-          <div class="tool-actions-bar">
-            <button id="btn-gen-voter" class="btn btn-primary">Gerar Título</button>
-            <button id="btn-copy-voter" class="btn btn-secondary">Copiar</button>
-          </div>
-        </div>
-
-        <div class="form-group" style="max-width: 250px;">
-          <label class="form-label">Estado de Emissão (UF):</label>
-          <select id="sel-voter-uf" class="form-control">
-            <option value="SP">São Paulo (SP)</option>
-            <option value="RJ">Rio de Janeiro (RJ)</option>
-            <option value="MG">Minas Gerais (MG)</option>
-            <option value="RS">Rio Grande do Sul (RS)</option>
-            <option value="PR">Paraná (PR)</option>
-            <option value="BA">Bahia (BA)</option>
-            <option value="PE">Pernambuco (PE)</option>
-            <option value="DF">Distrito Federal (DF)</option>
-          </select>
-        </div>
-
-        <div class="cpf-result-display">
-          <span id="voter-display" class="cpf-value">0000 0000 0000</span>
-        </div>
-
-        <hr style="border: none; border-top: 1px solid var(--border-subtle); margin: 30px 0;">
-
-        <div class="form-group">
-          <label class="form-label" for="input-validate-voter">
-            <span>Validar Título existente:</span>
-            <span id="badge-validate-voter" class="badge-status badge-neutral">Aguardando digitação</span>
-          </label>
-          <input type="text" id="input-validate-voter" class="form-control" placeholder="Digite o Título de 12 dígitos..." maxlength="14">
-        </div>
-      </div>
-          <article class="tool-seo-guide">
-        <h2>Estrutura Oficial do Título de Eleitor no Brasil</h2>
-        <p>O Título de Eleitor brasileiro é composto por 12 dígitos estruturados segundo as normas do Tribunal Superior Eleitoral (TSE). Os primeiros 8 dígitos representam o número sequencial do cidadão.</p>
-        <p>Os dígitos 9 e 10 identificam a Unidade da Federação (UF) em que o título foi emitido (ex: 01 para SP, 02 para MG, 03 para RJ). Por fim, os dígitos 11 e 12 são os dígitos verificadores calculados com base em Módulo 11, assegurando a autenticidade estrutural do documento eleitoral.</p>
-      </article>
-    </section>
-
-    <!-- ============================================== -->
-    <!-- 8. VIEW: TESTADOR DE REGEX                     -->
-    <!-- ============================================== -->
-    <section id="view-regex" class="tool-view">
-      <div class="tool-breadcrumbs">
-        <a href="#home">&larr; Início</a> / <span>Testador de Regex</span>
-      </div>
-
-      <div class="tool-interface-card">
-        <div class="tool-header-area">
-          <div class="tool-title-group">
-            <h1>Testador de Regex (Expressões Regulares) & Presets</h1>
-            <p>Valide padrões de Regex em tempo real com destaque visual e atalhos prontos.</p>
-          </div>
-        </div>
-
-        <!-- Presets Rápidos -->
-        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px;">
-          <span style="font-size: 0.85rem; color: var(--text-muted); align-self: center; margin-right: 4px;">Atalhos:</span>
-          <button class="btn btn-secondary btn-sm btn-regex-preset" data-preset="email">E-mail</button>
-          <button class="btn btn-secondary btn-sm btn-regex-preset" data-preset="cpf">CPF</button>
-          <button class="btn btn-secondary btn-sm btn-regex-preset" data-preset="cep">CEP</button>
-          <button class="btn btn-secondary btn-sm btn-regex-preset" data-preset="url">URL</button>
-          <button class="btn btn-secondary btn-sm btn-regex-preset" data-preset="phone">Celular</button>
-          <button class="btn btn-secondary btn-sm btn-regex-preset" data-preset="date">Data</button>
-        </div>
-
-        <div class="split-grid" style="grid-template-columns: 3fr 1fr;">
-          <div class="form-group">
-            <label class="form-label">Expressão Regular (Pattern):</label>
-            <input type="text" id="regex-pattern" class="form-control" value="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}">
-          </div>
-          <div class="form-group">
-            <label class="form-label">Flags (ex: g, i, m):</label>
-            <input type="text" id="regex-flags" class="form-control" value="gi">
-          </div>
-        </div>
-
-        <div class="split-grid">
-          <div class="pane">
-            <span class="pane-title" style="margin-bottom: 8px;">Texto de Teste</span>
-            <textarea id="regex-text" class="form-control" style="min-height: 160px;">Entre em contato com suporte@caixadodev.com.br ou pelo email comercial@teste.com para dúvidas.</textarea>
-          </div>
-          <div class="pane">
-            <div class="pane-header">
-              <span class="pane-title">Correspondências</span>
-              <span id="regex-match-count" style="font-size: 0.8rem; color: var(--accent-cyan); font-weight: 600;">0 ocorrência(s)</span>
-            </div>
-            <div id="regex-highlight-box" class="regex-highlight-box"></div>
-          </div>
-        </div>
-      </div>
-          <article class="tool-seo-guide">
-        <h2>Expressões Regulares (Regex): Boas Práticas e Segurança</h2>
-        <p>Expressões Regulares são ferramentas fundamentais na engenharia de software para encontrar padrões, validar formatos de e-mails, telefones e documentos, além de higienizar strings de entrada.</p>
-        <p>Ao implementar regex em produção, desenvolvedores devem ter cautela com expressões excessivamente complexas com quantificadores aninhados que possam provocar vulnerabilidades de <strong>ReDoS (Regular Expression Denial of Service)</strong>. Nosso testador permite validar e otimizar padrões de forma visual e segura.</p>
-      </article>
-    </section>
-
-    <!-- ============================================== -->
-    <!-- 9. VIEW: CONVERSOR JSON <> CSV                 -->
-    <!-- ============================================== -->
-    <section id="view-json-csv" class="tool-view">
-      <div class="tool-breadcrumbs">
-        <a href="#home">&larr; Início</a> / <span>Conversor JSON <> CSV</span>
-      </div>
-
-      <div class="tool-interface-card">
-        <div class="tool-header-area">
-          <div class="tool-title-group">
-            <h1>Conversor Bidirecional JSON &harr; CSV</h1>
-            <p>Converta arrays JSON para planilhas CSV e transforme tabelas CSV de volta para JSON.</p>
-          </div>
-          <div class="tool-actions-bar">
-            <button id="btn-json-to-csv" class="btn btn-primary">JSON &rarr; CSV</button>
-            <button id="btn-csv-to-json" class="btn btn-outline-cyan">CSV &rarr; JSON</button>
-            <button id="btn-sample-json-csv" class="btn btn-secondary">Exemplo</button>
-          </div>
-        </div>
-
-        <div class="split-grid">
-          <div class="pane">
-            <span class="pane-title" style="margin-bottom: 8px;">Entrada (JSON ou CSV)</span>
-            <textarea id="json-csv-input" class="form-control" placeholder='Cole seu JSON ou texto CSV aqui...'></textarea>
-          </div>
-          <div class="pane">
-            <div class="pane-header">
-              <span class="pane-title">Resultado</span>
-              <button id="btn-copy-json-csv" class="btn btn-secondary btn-sm">Copiar</button>
-            </div>
-            <textarea id="json-csv-output" class="form-control" readonly placeholder='O resultado convertido aparecerá aqui...'></textarea>
-          </div>
-        </div>
-      </div>
-          <article class="tool-seo-guide">
-        <h2>Conversão de Dados: Arrays JSON para Planilhas CSV</h2>
-        <p>JSON é o padrão absoluto para comunicação entre APIs e microsserviços na web moderna, enquanto o formato CSV (Comma-Separated Values) é o formato preferido por analistas de negócio, contabilidade e marketing para visualização em softwares de planilhas como Excel e Google Sheets.</p>
-        <p>O conversor bidirecional da Caixa do Dev extrai os cabeçalhos de coleções de objetos e converte para CSV tabular com escape automático de aspas, além de permitir o caminho inverso transformando planilhas CSV em arrays de objetos JSON prontos para consumo por código.</p>
-      </article>
-    </section>
-
-    <!-- ============================================== -->
-    <!-- 10. VIEW: CALCULADORA DE SUB-REDE IP / CIDR    -->
-    <!-- ============================================== -->
-    <section id="view-subnet" class="tool-view">
-      <div class="tool-breadcrumbs">
-        <a href="#home">&larr; Início</a> / <span>Calculadora de Sub-rede IP / CIDR</span>
-      </div>
-
-      <div class="tool-interface-card">
-        <div class="tool-header-area">
-          <div class="tool-title-group">
-            <h1>Calculadora de Sub-rede IP e Notação CIDR</h1>
-            <p>Calcule máscara, rede, broadcast, primeiro/último host e total de IPs para redes IPv4.</p>
-          </div>
-          <div class="tool-actions-bar">
-            <button id="btn-calc-subnet" class="btn btn-primary">Calcular Sub-rede</button>
-          </div>
-        </div>
-
-        <div class="split-grid" style="grid-template-columns: 2fr 1fr; max-width: 500px;">
-          <div class="form-group">
-            <label class="form-label">Endereço IP:</label>
-            <input type="text" id="input-subnet-ip" class="form-control" value="192.168.1.0">
-          </div>
-          <div class="form-group">
-            <label class="form-label">Máscara CIDR:</label>
-            <select id="input-subnet-cidr" class="form-control">
-              <option value="24" selected>/24 (255.255.255.0 - 254 hosts)</option>
-              <option value="16">/16 (255.255.0.0 - 65k hosts)</option>
-              <option value="25">/25 (255.255.255.128 - 126 hosts)</option>
-              <option value="26">/26 (255.255.255.192 - 62 hosts)</option>
-              <option value="27">/27 (255.255.255.224 - 30 hosts)</option>
-              <option value="28">/28 (255.255.255.240 - 14 hosts)</option>
-              <option value="29">/29 (255.255.255.248 - 6 hosts)</option>
-              <option value="30">/30 (255.255.255.252 - 2 hosts)</option>
-              <option value="32">/32 (255.255.255.255 - 1 host)</option>
-            </select>
-          </div>
-        </div>
-
-        <div id="subnet-result-container" style="margin-top: 20px;"></div>
-      </div>
-          <article class="tool-seo-guide">
-        <h2>Cálculo de Sub-redes IPv4 em Notação CIDR para Redes e DevOps</h2>
-        <p>A notação CIDR (Classless Inter-Domain Routing) revolucionou o endereçamento IP permitindo a alocação flexível de blocos de rede através de uma máscara de prefixo (ex: /24, /16, /28).</p>
-        <p>Calcular corretamente a quantidade de hosts úteis, o endereço de rede (Network IP) e o endereço de broadcast é etapa obrigatória na arquitetura de nuvem (VPCs na AWS, Google Cloud e Azure), configuração de firewalls e roteamento de clusters Kubernetes.</p>
-      </article>
-    </section>
-
-    <!-- ============================================== -->
-    <!-- 11. VIEW: STATUS HTTP                          -->
-    <!-- ============================================== -->
-    <section id="view-http-status" class="tool-view">
-      <div class="tool-breadcrumbs">
-        <a href="#home">&larr; Início</a> / <span>Catálogo de Códigos de Status HTTP</span>
-      </div>
-
-      <div class="tool-interface-card">
-        <div class="tool-header-area">
-          <div class="tool-title-group">
-            <h1>Catálogo e Guia de Códigos de Status HTTP</h1>
-            <p>Consulte o significado, família e boas práticas de status codes em APIs REST.</p>
-          </div>
-        </div>
-
-        <div class="split-grid" style="grid-template-columns: 2fr 3fr; align-items: center;">
-          <input type="text" id="http-search-input" class="form-control" placeholder="Filtrar por código ou palavra (ex: 404, unauthorized, json)...">
-          <div style="display: flex; gap: 6px; flex-wrap: wrap;">
-            <button class="category-btn http-cat-btn active" data-cat="all">Todos</button>
-            <button class="category-btn http-cat-btn" data-cat="2xx">2xx Sucesso</button>
-            <button class="category-btn http-cat-btn" data-cat="3xx">3xx Redirecionamento</button>
-            <button class="category-btn http-cat-btn" data-cat="4xx">4xx Erro Cliente</button>
-            <button class="category-btn http-cat-btn" data-cat="5xx">5xx Erro Servidor</button>
-          </div>
-        </div>
-
-        <div id="http-cards-grid" class="http-status-grid"></div>
-      </div>
-          <article class="tool-seo-guide">
-        <h2>Boas Práticas de Códigos de Status HTTP em APIs REST</h2>
-        <p>O protocolo HTTP define códigos de resposta padronizados divididos em 5 classes: <code>1xx (Informativos)</code>, <code>2xx (Sucesso)</code>, <code>3xx (Redirecionamento)</code>, <code>4xx (Erro do Cliente)</code> e <code>5xx (Erro do Servidor)</code>.</p>
-        <p>Construir APIs de alto padrão exige semântica correta: utilize <strong>201 Created</strong> ao criar novos recursos via POST, <strong>204 No Content</strong> após exclusões bem-sucedidas via DELETE, <strong>400 Bad Request</strong> ou <strong>422 Unprocessable Entity</strong> para dados de entrada inválidos e <strong>404 Not Found</strong> quando a entidade não existir.</p>
-      </article>
-    </section>
-
-    <!-- ============================================== -->
-    <!-- 12. VIEW: CARTÃO DE CRÉDITO                    -->
-    <!-- ============================================== -->
-    <section id="view-cartao" class="tool-view">
-      <div class="tool-breadcrumbs">
-        <a href="#home">&larr; Início</a> / <span>Gerador e Validador de Cartão de Crédito</span>
-      </div>
-
-      <div class="tool-interface-card">
-        <div class="tool-header-area">
-          <div class="tool-title-group">
-            <h1>Gerador e Validador de Cartão de Crédito para Testes</h1>
-            <p>Gere números com algoritmo de Luhn (Módulo 10) válido para testar checkouts de pagamento.</p>
-          </div>
-          <div class="tool-actions-bar">
-            <button id="btn-gen-card" class="btn btn-primary">Gerar Novo Cartão</button>
-            <button id="btn-copy-card" class="btn btn-secondary">Copiar Dados</button>
-          </div>
-        </div>
-
-        <div class="form-options-row">
-          <div class="form-group" style="margin-bottom: 0;">
-            <label class="form-label">Bandeira:</label>
-            <select id="sel-card-brand" class="form-control" style="width: 170px; padding: 8px 12px;">
-              <option value="visa">Visa</option>
-              <option value="mastercard">Mastercard</option>
-              <option value="amex">American Express</option>
-              <option value="elo">Elo</option>
-              <option value="hipercard">Hipercard</option>
-            </select>
-          </div>
-          <label class="checkbox-label" style="margin-top: 24px;">
-            <input type="checkbox" id="check-card-format" checked>
-            <span>Formatar com espaços</span>
-          </label>
-        </div>
-
-        <div class="credit-card-preview">
-          <div class="card-top-row">
-            <div class="card-chip"></div>
-            <span id="card-preview-brand" class="card-brand-name">VISA</span>
-          </div>
-          <div id="card-preview-number" class="card-number-display">4000 0000 0000 0000</div>
-          <div class="card-bottom-row">
-            <div><span class="card-meta-label">Titular</span><div class="card-meta-val">TESTE CLIENTE HOMOLOG</div></div>
-            <div><span class="card-meta-label">Validade</span><div id="card-preview-exp" class="card-meta-val">12/28</div></div>
-            <div><span class="card-meta-label">CVV</span><div id="card-preview-cvv" class="card-meta-val">123</div></div>
-          </div>
-        </div>
-
-        <hr style="border: none; border-top: 1px solid var(--border-subtle); margin: 30px 0;">
-
-        <div class="form-group">
-          <label class="form-label" for="input-validate-card">
-            <span>Validar Número de Cartão de Crédito (Luhn):</span>
-            <span id="badge-validate-card" class="badge-status badge-neutral">Aguardando número</span>
-          </label>
-          <input type="text" id="input-validate-card" class="form-control" placeholder="Cole o número do cartão..." maxlength="23">
-        </div>
-      </div>
-          <article class="tool-seo-guide">
-        <h2>O Algoritmo de Luhn e a Numeração de Cartões de Pagamento</h2>
-        <p>Os números de cartões de crédito e débito das principais bandeiras internacionais (Visa, Mastercard, American Express, Elo e Hipercard) seguem a norma ISO/IEC 7812 e utilizam o <strong>Algoritmo de Luhn (também conhecido como Módulo 10)</strong> para validação estrutural.</p>
-        <p>O algoritmo processa os dígitos da direita para a esquerda, multiplicando dígitos alternados por 2 e somando os algarismos resultantes. Esta ferramenta foi desenvolvida estritamente para homologação de checkouts, testes de integração em gateways de pagamento e ambientes sandbox em conformidade com o padrão PCI-DSS.</p>
-      </article>
-    </section>
-
-    <!-- ============================================== -->
-    <!-- 13. VIEW: CONTA BANCÁRIA                       -->
-    <!-- ============================================== -->
-    <section id="view-bancos" class="tool-view">
-      <div class="tool-breadcrumbs">
-        <a href="#home">&larr; Início</a> / <span>Gerador de Conta Bancária para Testes</span>
-      </div>
-
-      <div class="tool-interface-card">
-        <div class="tool-header-area">
-          <div class="tool-title-group">
-            <h1>Gerador de Conta Bancária para Testes</h1>
-            <p>Gere números válidos de agência e conta corrente para os principais bancos brasileiros.</p>
-          </div>
-          <div class="tool-actions-bar">
-            <button id="btn-gen-bank" class="btn btn-primary">Gerar Conta</button>
-            <button id="btn-copy-bank" class="btn btn-secondary">Copiar Dados</button>
-          </div>
-        </div>
-
-        <div class="form-group" style="max-width: 320px;">
-          <label class="form-label">Selecione o Banco:</label>
-          <select id="sel-bank" class="form-control">
-            <option value="bb">001 - Banco do Brasil</option>
-            <option value="bradesco">237 - Bradesco</option>
-            <option value="caixa">104 - Caixa Econômica Federal</option>
-            <option value="itau">341 - Itaú Unibanco</option>
-            <option value="santander">033 - Santander</option>
-            <option value="nubank">260 - Nubank</option>
-            <option value="inter">077 - Banco Inter</option>
-          </select>
-        </div>
-
-        <div class="split-grid" style="margin-top: 24px;">
-          <div class="pane"><span class="pane-title" style="margin-bottom: 8px;">Agência</span><div id="bank-agency-val" class="result-box" style="font-size: 1.4rem; font-weight: 700;">0000-0</div></div>
-          <div class="pane"><span class="pane-title" style="margin-bottom: 8px;">Conta Corrente</span><div id="bank-account-val" class="result-box" style="font-size: 1.4rem; font-weight: 700;">0000000-0</div></div>
-        </div>
-        <div style="font-size: 0.9rem; color: var(--text-muted); margin-top: 10px;">Banco Selecionado: <strong id="bank-name-val" style="color: var(--text-primary);">Banco do Brasil</strong></div>
-      </div>
-          <article class="tool-seo-guide">
-        <h2>Estrutura do Sistema Financeiro e Dígitos Verificadores Bancários</h2>
-        <p>No Brasil, as instituições financeiras são identificadas por um código de 3 dígitos regulado pelo Banco Central e pela CIP (Câmara Interbancária de Pagamentos). Cada banco utiliza regras próprias de ponderação e Módulo 10 ou 11 para calcular os dígitos verificadores de suas agências e contas correntes.</p>
-        <p>Testar rotinas de transferência, conciliação de boletos e pagamentos via TED/DOC exige números que respeitem essas regras matemáticas de validação para evitar falhas e rejeições bancárias durante homologação.</p>
-      </article>
-    </section>
-
-    <!-- ============================================== -->
-    <!-- 14. VIEW: VEÍCULOS & RENAVAM                   -->
-    <!-- ============================================== -->
-    <section id="view-veiculos" class="tool-view">
-      <div class="tool-breadcrumbs">
-        <a href="#home">&larr; Início</a> / <span>Gerador de Placa de Veículo & RENAVAM</span>
-      </div>
-
-      <div class="tool-interface-card">
-        <div class="tool-header-area">
-          <div class="tool-title-group">
-            <h1>Gerador de Placa de Veículo e RENAVAM</h1>
-            <p>Gere placas automotivas nos formatos Mercosul e Tradicional, além de código RENAVAM válido.</p>
-          </div>
-          <div class="tool-actions-bar">
-            <button id="btn-gen-plate" class="btn btn-primary">Gerar Placa</button>
-            <button id="btn-copy-plate" class="btn btn-secondary">Copiar Placa</button>
-            <button id="btn-gen-renavam" class="btn btn-outline-cyan">Gerar RENAVAM</button>
-          </div>
-        </div>
-
-        <div class="form-options-row">
-          <label class="checkbox-label"><input type="checkbox" id="check-plate-mercosul" checked><span>Padrão Mercosul (BRA2E19)</span></label>
-        </div>
-
-        <div class="license-plate-preview">
-          <div class="license-plate-header"><span>🇧🇷</span><span id="plate-type-label">BRASIL • MERCOSUL</span><span></span></div>
-          <div id="plate-display" class="license-plate-body">BRA2E19</div>
-        </div>
-
-        <div class="form-group" style="max-width: 400px; margin: 24px auto 0; text-align: center;">
-          <label class="form-label" style="justify-content: center;">RENAVAM Válido Gerado (Módulo 11):</label>
-          <div id="renavam-display" class="result-box" style="justify-content: center; font-size: 1.3rem; font-weight: 700;">00000000000</div>
-        </div>
-      </div>
-          <article class="tool-seo-guide">
-        <h2>Placas Mercosul e Código RENAVAM para Softwares Veiculares</h2>
-        <p>O padrão de placas veiculares Mercosul substituiu o modelo tradicional brasileiro (ABC-1234) pelo formato de quatro letras e três números (ex: BRA2E19), aumentando a quantidade de combinações disponíveis e padronizando a identificação de veículos no bloco comercial.</p>
-        <p>O Registro Nacional de Veículos Automotores (RENAVAM) possui 11 dígitos, sendo o último um dígito verificador calculado com o algoritmo do Módulo 11 oficial da Senatran. Esta ferramenta é essencial para desenvolvedores de sistemas para seguradoras, frotas, concessionárias e despachantes.</p>
-      </article>
-    </section>
-
-    <!-- ============================================== -->
-    <!-- 15. VIEW: GERADOR DE SENHAS                    -->
-    <!-- ============================================== -->
-    <section id="view-senhas" class="tool-view">
-      <div class="tool-breadcrumbs">
-        <a href="#home">&larr; Início</a> / <span>Gerador de Senhas Seguras</span>
-      </div>
-
-      <div class="tool-interface-card">
-        <div class="tool-header-area">
-          <div class="tool-title-group">
-            <h1>Gerador de Senhas Seguras & Entropia</h1>
-            <p>Crie senhas criptograficamente seguras com opções personalizáveis de caracteres.</p>
-          </div>
-          <div class="tool-actions-bar">
-            <button id="btn-gen-pass" class="btn btn-primary">Gerar Nova Senha</button>
-            <button id="btn-copy-pass" class="btn btn-secondary">Copiar Senha</button>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label"><span>Tamanho da Senha: <strong id="pass-len-display" style="color: var(--accent-cyan);">16</strong> caracteres</span></label>
-          <input type="range" id="pass-len-slider" min="8" max="64" value="16" style="width: 100%; accent-color: var(--accent-primary);">
-        </div>
-
-        <div class="form-options-row">
-          <label class="checkbox-label"><input type="checkbox" id="check-pass-upper" checked><span>Maiúsculas (A-Z)</span></label>
-          <label class="checkbox-label"><input type="checkbox" id="check-pass-lower" checked><span>Minúsculas (a-z)</span></label>
-          <label class="checkbox-label"><input type="checkbox" id="check-pass-nums" checked><span>Números (0-9)</span></label>
-          <label class="checkbox-label"><input type="checkbox" id="check-pass-syms" checked><span>Símbolos (!@#$%)</span></label>
-        </div>
-
-        <div style="position: relative; margin-top: 20px;">
-          <div id="pass-display-val" class="result-box" style="font-size: 1.25rem; font-weight: 700; color: #fff;">Gerando...</div>
-          <div class="strength-meter-bar"><div id="pass-strength-fill" class="strength-meter-fill"></div></div>
-          <span id="pass-strength-label" style="font-size: 0.8rem; font-weight: 700; margin-top: 6px; display: block;">Força: Forte</span>
-        </div>
-      </div>
-          <article class="tool-seo-guide">
-        <h2>Entropia de Senhas e Segurança Criptográfica</h2>
-        <p>A força real de uma senha é medida em <strong>bits de entropia</strong>, que calcula a imprevisibilidade matemática da combinação escolhida. Senhas longas que combinam letras maiúsculas, minúsculas, números e caracteres especiais oferecem resistência exponencial contra ataques de dicionário e ataques de força bruta.</p>
-        <p>Segundo as diretrizes mais recentes do NIST (National Institute of Standards and Technology), o comprimento da senha é o fator isolado mais determinante para a sua robustez. Nosso gerador utiliza geração pseudo-aleatória segura para criar senhas de alta entropia.</p>
-      </article>
-    </section>
-
-    <!-- ============================================== -->
-    <!-- 16. VIEW: LOREM IPSUM & TEXTO                  -->
-    <!-- ============================================== -->
-    <section id="view-texto" class="tool-view">
-      <div class="tool-breadcrumbs">
-        <a href="#home">&larr; Início</a> / <span>Gerador de Lorem Ipsum & Contador</span>
-      </div>
-
-      <div class="tool-interface-card">
-        <div class="tool-header-area">
-          <div class="tool-title-group">
-            <h1>Gerador de Lorem Ipsum & Contador de Texto</h1>
-            <p>Gere textos fictícios e visualize estatísticas de contagem de caracteres e palavras.</p>
-          </div>
-          <div class="tool-actions-bar">
-            <select id="sel-lorem-qty" class="form-control" style="width: 140px; padding: 8px 12px;">
-              <option value="1">1 Parágrafo</option>
-              <option value="3" selected>3 Parágrafos</option>
-              <option value="5">5 Parágrafos</option>
-            </select>
-            <button id="btn-gen-lorem" class="btn btn-primary">Gerar Lorem</button>
-            <button id="btn-copy-text" class="btn btn-secondary">Copiar</button>
-          </div>
-        </div>
-
-        <div class="text-stats-badges-row">
-          <div class="text-stat-card"><div id="stat-chars-with-spaces" class="text-stat-num">0</div><div class="text-stat-label">Caracteres</div></div>
-          <div class="text-stat-card"><div id="stat-chars-no-spaces" class="text-stat-num">0</div><div class="text-stat-label">Sem Espaços</div></div>
-          <div class="text-stat-card"><div id="stat-words" class="text-stat-num">0</div><div class="text-stat-label">Palavras</div></div>
-          <div class="text-stat-card"><div id="stat-lines" class="text-stat-num">0</div><div class="text-stat-label">Linhas</div></div>
-          <div class="text-stat-card"><div id="stat-reading-time" class="text-stat-num">0 min</div><div class="text-stat-label">Tempo Leitura</div></div>
-        </div>
-
-        <div class="form-group">
-          <textarea id="text-input-area" class="form-control" style="min-height: 200px;" placeholder="Digite, cole ou gere texto..."></textarea>
-        </div>
-      </div>
-          <article class="tool-seo-guide">
-        <h2>A Origem do Lorem Ipsum e a Análise Métrica de Textos</h2>
-        <p>O texto <em>Lorem Ipsum</em> é utilizado na indústria gráfica e tipográfica desde o século XVI, derivado de trechos da obra clássica de Cícero, <em>De Finibus Bonorum et Malorum</em>. Ele serve para preencher espaços de layout em wireframes e protótipos sem desviar a atenção do observador para o significado do texto.</p>
-        <p>Além da geração de parágrafos fictícios, analisar a contagem exata de caracteres com e sem espaços, quantidade de palavras e o tempo estimado de leitura (baseado na velocidade média humana de 200 a 250 palavras por minuto) é essencial para redatores técnicos e profissionais de SEO.</p>
-      </article>
-    </section>
-
-    <!-- ============================================== -->
-    <!-- 17. VIEW: QR CODE                              -->
-    <!-- ============================================== -->
-    <section id="view-qrcode" class="tool-view">
-      <div class="tool-breadcrumbs">
-        <a href="#home">&larr; Início</a> / <span>Gerador de QR Code</span>
-      </div>
-
-      <div class="tool-interface-card">
-        <div class="tool-header-area">
-          <div class="tool-title-group">
-            <h1>Gerador de QR Code em Alta Resolução</h1>
-            <p>Transforme URLs, chaves Pix e textos em imagens de QR Code prontas para download.</p>
-          </div>
-          <div class="tool-actions-bar">
-            <button id="btn-gen-qrcode" class="btn btn-primary">Gerar QR Code</button>
-            <button id="btn-download-qrcode" class="btn btn-outline-cyan">Baixar Imagem PNG</button>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label" for="qrcode-input">Digite o link ou conteúdo do QR Code:</label>
-          <input type="text" id="qrcode-input" class="form-control" placeholder="https://seusite.com.br..." value="https://caixadodev.com.br">
-        </div>
-
-        <div class="qrcode-canvas-wrapper">
-          <canvas id="qrcode-canvas"></canvas>
-          <span style="font-size: 0.8rem; color: var(--text-muted);">Aponte a câmera do seu celular para testar o QR Code gerado</span>
-        </div>
-      </div>
-          <article class="tool-seo-guide">
-        <h2>Tecnologia QR Code: Correção de Erros e Aplicações em TI</h2>
-        <p>O QR Code (Quick Response Code) é um código de barras bidimensional criado em 1994 pela Denso Wave. Sua grande vantagem técnica reside na tecnologia de <strong>Correção de Erros Reed-Solomon</strong>, que permite que o código seja lido com sucesso mesmo se até 30% de sua superfície estiver danificada ou obstruída.</p>
-        <p>No Brasil, os códigos QR tornaram-se o meio padrão para pagamentos instantâneos através do protocolo Pix (Banco Central), além de autenticação de dois fatores (2FA) e emparelhamento de aplicativos móveis.</p>
-      </article>
-    </section>
-
-    <!-- ============================================== -->
-    <!-- 18. VIEW: SQL                                  -->
-    <!-- ============================================== -->
-    <section id="view-sql" class="tool-view">
-      <div class="tool-breadcrumbs">
-        <a href="#home">&larr; Início</a> / <span>Formatador e Minificador de SQL</span>
-      </div>
-
-      <div class="tool-interface-card">
-        <div class="tool-header-area">
-          <div class="tool-title-group">
-            <h1>Formatador e Minificador de SQL</h1>
-            <p>Indente queries, quebre cláusulas complexas e padronize palavras-chave em maiúsculas.</p>
-          </div>
-          <div class="tool-actions-bar">
-            <button id="btn-format-sql" class="btn btn-primary">Formatar SQL</button>
-            <button id="btn-minify-sql" class="btn btn-outline-cyan">Minificar</button>
-            <button id="btn-sample-sql" class="btn btn-secondary">Exemplo</button>
-            <button id="btn-clear-sql" class="btn btn-danger btn-sm">Limpar</button>
-          </div>
-        </div>
-
-        <div class="form-options-row">
-          <label class="checkbox-label"><input type="checkbox" id="check-sql-upper" checked><span>Palavras-chave em MAIÚSCULAS</span></label>
-        </div>
-
-        <div class="split-grid">
-          <div class="pane"><span class="pane-title" style="margin-bottom: 8px;">Entrada SQL</span><textarea id="sql-input" class="form-control" placeholder="select id, nome from usuarios where ativo = 1..."></textarea></div>
-          <div class="pane"><div class="pane-header"><span class="pane-title">SQL Formatado</span><button id="btn-copy-sql" class="btn btn-secondary btn-sm">Copiar</button></div><pre id="sql-output" class="result-box large"></pre></div>
-        </div>
-      </div>
-          <article class="tool-seo-guide">
-        <h2>Formatação e Minificação de Consultas SQL para Alta Performance</h2>
-        <p>Queries SQL extensas, com múltiplos JOINs, subconsultas e cláusulas condicionais complexas tornam-se rapidamente ilegíveis quando condensadas em uma única linha gerada por ORMs como Hibernate, Prisma ou Entity Framework.</p>
-        <p>Formatar e identar o código SQL facilita revisões de código (code reviews), identificação de gargalos de desempenho e análise de planos de execução (EXPLAIN ANALYZE) em bancos como PostgreSQL, MySQL e SQL Server.</p>
-      </article>
-    </section>
-
-    <!-- ============================================== -->
-    <!-- 19. VIEW: DIFF                                 -->
-    <!-- ============================================== -->
-    <section id="view-diff" class="tool-view">
-      <div class="tool-breadcrumbs">
-        <a href="#home">&larr; Início</a> / <span>Comparador Diff</span>
-      </div>
-
-      <div class="tool-interface-card">
-        <div class="tool-header-area">
-          <div class="tool-title-group">
-            <h1>Comparador de Arquivos e Textos (Diff Checker)</h1>
-            <p>Compare duas versões de código e visualize alterações em verde (+) e vermelho (-).</p>
-          </div>
-          <div class="tool-actions-bar">
-            <button id="btn-run-diff" class="btn btn-primary">Comparar Textos</button>
-            <button id="btn-sample-diff" class="btn btn-secondary">Exemplo</button>
-            <button id="btn-clear-diff" class="btn btn-danger btn-sm">Limpar</button>
-          </div>
-        </div>
-
-        <div class="split-grid">
-          <div class="pane"><span class="pane-title" style="margin-bottom: 8px;">Texto Original (A)</span><textarea id="diff-input-a" class="form-control" style="min-height: 140px;"></textarea></div>
-          <div class="pane"><span class="pane-title" style="margin-bottom: 8px;">Texto Modificado (B)</span><textarea id="diff-input-b" class="form-control" style="min-height: 140px;"></textarea></div>
-        </div>
-
-        <div class="diff-container">
-          <div id="diff-stats-area" class="diff-header-stats"><span style="color: var(--text-muted);">Aguardando comparação...</span></div>
-          <div id="diff-container"><div style="padding: 24px; color: var(--text-muted); text-align: center;">Clique em "Comparar Textos".</div></div>
-        </div>
-      </div>
-          <article class="tool-seo-guide">
-        <h2>Comparação Textual e Algoritmos de Diff em Engenharia de Software</h2>
-        <p>A comparação de arquivos texto e códigos fonte baseia-se em algoritmos de maior subsequência comum (LCS - Longest Common Subsequence). Esta técnica permite comparar duas versões de um arquivo para evidenciar exatamente quais linhas foram inseridas, removidas ou mantidas inalteradas.</p>
-        <p>Utilizar um comparador visual leve no navegador elimina a necessidade de criar commits temporários ou abrir terminais para conferir divergências entre payloads de APIs, arquivos de configuração JSON ou trechos de scripts.</p>
-      </article>
-    </section>
-
-    <!-- ============================================== -->
-    <!-- 20. VIEW: CASE                                 -->
-    <!-- ============================================== -->
-    <section id="view-case" class="tool-view">
-      <div class="tool-breadcrumbs">
-        <a href="#home">&larr; Início</a> / <span>Conversor de Case</span>
-      </div>
-
-      <div class="tool-interface-card">
-        <div class="tool-header-area">
-          <div class="tool-title-group">
-            <h1>Conversor de Formato de Texto (Case)</h1>
-            <p>Digite qualquer texto e veja a conversão simultânea em todos os padrões de nomenclatura.</p>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label" for="case-input">Digite o texto para converter:</label>
-          <input type="text" id="case-input" class="form-control" value="exemplo de variavel no sistema">
-        </div>
-
-        <div class="case-results-grid">
-          <div class="case-card" onclick="copyToClipboard(document.getElementById('val-camel').textContent)"><div class="case-card-header"><span class="case-title">camelCase</span><span class="tool-card-action" style="font-size: 0.75rem;">Copiar</span></div><span id="val-camel" class="case-val">exemploDeVariavelNoSistema</span></div>
-          <div class="case-card" onclick="copyToClipboard(document.getElementById('val-pascal').textContent)"><div class="case-card-header"><span class="case-title">PascalCase</span><span class="tool-card-action" style="font-size: 0.75rem;">Copiar</span></div><span id="val-pascal" class="case-val">ExemploDeVariavelNoSistema</span></div>
-          <div class="case-card" onclick="copyToClipboard(document.getElementById('val-snake').textContent)"><div class="case-card-header"><span class="case-title">snake_case</span><span class="tool-card-action" style="font-size: 0.75rem;">Copiar</span></div><span id="val-snake" class="case-val">exemplo_de_variavel_no_sistema</span></div>
-          <div class="case-card" onclick="copyToClipboard(document.getElementById('val-kebab').textContent)"><div class="case-card-header"><span class="case-title">kebab-case</span><span class="tool-card-action" style="font-size: 0.75rem;">Copiar</span></div><span id="val-kebab" class="case-val">exemplo-de-variavel-no-sistema</span></div>
-          <div class="case-card" onclick="copyToClipboard(document.getElementById('val-constant').textContent)"><div class="case-card-header"><span class="case-title">CONSTANT_CASE</span><span class="tool-card-action" style="font-size: 0.75rem;">Copiar</span></div><span id="val-constant" class="case-val">EXEMPLO_DE_VARIAVEL_NO_SISTEMA</span></div>
-          <div class="case-card" onclick="copyToClipboard(document.getElementById('val-title').textContent)"><div class="case-card-header"><span class="case-title">Title Case</span><span class="tool-card-action" style="font-size: 0.75rem;">Copiar</span></div><span id="val-title" class="case-val">Exemplo De Variavel No Sistema</span></div>
-        </div>
-      </div>
-          <article class="tool-seo-guide">
-        <h2>Convenções de Nomenclatura em Linguagens de Programação</h2>
-        <p>Cada linguagem de programação e ecossistema adota convenções de nomenclatura consagradas para facilitar a legibilidade do código em equipe: <code>camelCase</code> em JavaScript/TypeScript, <code>PascalCase</code> para classes e tipos, <code>snake_case</code> em Python e bancos de dados SQL, e <code>kebab-case</code> em seletores CSS e URLs.</p>
-        <p>Esta ferramenta acelera refatorações de código, permitindo converter instantaneamente nomes de colunas, variáveis e identificadores para o padrão adotado no seu projeto.</p>
-      </article>
-    </section>
-
-    <!-- ============================================== -->
-    <!-- 21. VIEW: CORES                                -->
-    <!-- ============================================== -->
-    <section id="view-color" class="tool-view">
-      <div class="tool-breadcrumbs">
-        <a href="#home">&larr; Início</a> / <span>Conversor de Cores</span>
-      </div>
-
-      <div class="tool-interface-card">
-        <div class="tool-header-area">
-          <div class="tool-title-group">
-            <h1>Conversor de Cores (HEX, RGB, HSL)</h1>
-            <p>Converta códigos de cores instantaneamente com seletor visual e análise de contraste.</p>
-          </div>
-        </div>
-
-        <div class="color-preview-hero">
-          <div id="color-swatch-box" class="color-swatch-box" style="background-color: #6366f1;"><input type="color" id="color-picker-native" value="#6366f1"></div>
-          <div><span style="font-size: 0.85rem; color: var(--text-muted); display: block; margin-bottom: 4px;">Clique no quadrado para abrir a paleta de cores:</span><span id="badge-color-contrast" class="badge-status badge-neutral">Fundo Escuro</span></div>
-        </div>
-
-        <div class="color-inputs-grid">
-          <div class="form-group"><label class="form-label" for="input-color-hex"><span>HEX:</span><span class="tool-card-action" style="cursor: pointer; font-size: 0.75rem;" onclick="copyToClipboard(document.getElementById('input-color-hex').value)">Copiar</span></label><input type="text" id="input-color-hex" class="form-control" value="#6366f1"></div>
-          <div class="form-group"><label class="form-label" for="input-color-rgb"><span>RGB:</span><span class="tool-card-action" style="cursor: pointer; font-size: 0.75rem;" onclick="copyToClipboard(document.getElementById('input-color-rgb').value)">Copiar</span></label><input type="text" id="input-color-rgb" class="form-control" value="rgb(99, 102, 241)"></div>
-          <div class="form-group"><label class="form-label" for="input-color-hsl"><span>HSL:</span><span class="tool-card-action" style="cursor: pointer; font-size: 0.75rem;" onclick="copyToClipboard(document.getElementById('input-color-hsl').value)">Copiar</span></label><input type="text" id="input-color-hsl" class="form-control" value="hsl(239, 84%, 67%)"></div>
-        </div>
-      </div>
-          <article class="tool-seo-guide">
-        <h2>Modelos de Cores Digitais e Acessibilidade Visual (WCAG)</h2>
-        <p>O design de interfaces web utiliza diferentes representações numéricas para cores: o formato hexadecimal (HEX), o modelo aditivo RGB (Red, Green, Blue) e o intuitivo HSL (Hue, Saturation, Lightness), que facilita ajustes de saturação e luminosidade para temas escuros.</p>
-        <p>Garantir o contraste de cores adequado em conformidade com as diretrizes de acessibilidade WCAG 2.1 (níveis AA e AAA) assegura que textos e botões sejam perfeitamente legíveis para pessoas com baixa visão ou daltonismo, além de ser um fator positivo avaliado em auditorias de qualidade do Google.</p>
-      </article>
-    </section>
-
-    <!-- ============================================== -->
-    <!-- 22. VIEW: CPF / CNPJ                           -->
-    <!-- ============================================== -->
-    <section id="view-cpf-cnpj" class="tool-view">
-      <div class="tool-breadcrumbs">
-        <a href="#home">&larr; Início</a> / <span>Gerador e Validador de CPF / CNPJ</span>
-      </div>
-
-      <div class="tool-interface-card">
-        <div class="tool-header-area">
-          <div class="tool-title-group">
-            <h1>Gerador e Validador de CPF / CNPJ</h1>
-            <p>Gere números válidos para testes de homologação ou valide a consistência de documentos.</p>
-          </div>
-          <div class="tool-actions-bar">
-            <button id="btn-gen-cpf" class="btn btn-primary">Gerar CPF</button>
-            <button id="btn-gen-cnpj" class="btn btn-outline-cyan">Gerar CNPJ</button>
-          </div>
-        </div>
-
-        <div class="form-options-row"><label class="checkbox-label"><input type="checkbox" id="check-cpf-format" checked><span>Gerar com pontuação</span></label></div>
-        <div class="cpf-result-display"><span id="cpf-display-value" class="cpf-value">000.000.000-00</span><button id="btn-copy-cpf" class="btn btn-secondary btn-sm">Copiar</button></div>
-
-        <hr style="border: none; border-top: 1px solid var(--border-subtle); margin: 30px 0;">
-
-        <div class="form-group">
-          <label class="form-label" for="input-validate-cpf"><span>Validar CPF ou CNPJ existente:</span><span id="badge-validate-result" class="badge-status badge-neutral">Aguardando digitação</span></label>
-          <input type="text" id="input-validate-cpf" class="form-control" placeholder="Cole ou digite o número..." maxlength="18">
-          <span id="text-validate-detail" style="font-size: 0.84rem; color: var(--accent-cyan); margin-top: 4px;"></span>
-        </div>
-      </div>
-          <article class="tool-seo-guide">
-        <h2>Como Funciona o Cálculo Oficial dos Dígitos do CPF e CNPJ</h2>
-        <p>O Cadastro de Pessoas Físicas (CPF) e o Cadastro Nacional da Pessoa Jurídica (CNPJ) utilizam o algoritmo matemático do Módulo 11 oficial da Receita Federal do Brasil para calcular seus dois dígitos verificadores finais.</p>
-        <p>Para o CPF, os 9 primeiros dígitos são multiplicados por pesos regressivos de 10 a 2 para o primeiro dígito, e de 11 a 2 para o segundo dígito. O penúltimo algarismo do CPF indica a Região Fiscal de origem (ex: 8 para São Paulo, 7 para Rio de Janeiro e Espírito Santo). Todos os números gerados nesta ferramenta são exclusivamente matemáticos e destinados a testes em ambientes de desenvolvimento de software em estrita conformidade com a LGPD.</p>
-      </article>
-    </section>
-
-    <!-- ============================================== -->
-    <!-- 23. VIEW: JSON                                 -->
-    <!-- ============================================== -->
-    <section id="view-json" class="tool-view">
-      <div class="tool-breadcrumbs">
-        <a href="#home">&larr; Início</a> / <span>Formatador e Validador de JSON</span>
-      </div>
-
-      <div class="tool-interface-card">
-        <div class="tool-header-area">
-          <div class="tool-title-group">
-            <h1>Formatador e Validador de JSON</h1>
-            <p>Embeleze, indente, minifique e encontre erros de sintaxe em payloads JSON.</p>
-          </div>
-          <div class="tool-actions-bar">
-            <select id="json-indent-select" class="form-control" style="width: auto; padding: 8px 12px; font-size: 0.85rem;"><option value="2">2 Espaços</option><option value="4">4 Espaços</option></select>
-            <button id="btn-format-json" class="btn btn-primary">Formatar JSON</button>
-            <button id="btn-minify-json" class="btn btn-outline-cyan">Minificar</button>
-            <button id="btn-sample-json" class="btn btn-secondary">Exemplo</button>
-            <button id="btn-clear-json" class="btn btn-danger btn-sm">Limpar</button>
-          </div>
-        </div>
-
-        <div class="split-grid">
-          <div class="pane"><span class="pane-title" style="margin-bottom: 8px;">Entrada</span><textarea id="json-input" class="form-control" placeholder='Cole seu JSON bruto aqui...'></textarea></div>
-          <div class="pane"><div class="pane-header"><span class="pane-title">Saída Formatada</span><div id="json-stats" style="font-size: 0.8rem; color: var(--text-muted);"></div></div><div style="position: relative;"><pre id="json-output" class="result-box large"></pre><button id="btn-copy-json" class="btn btn-secondary btn-sm result-copy-btn">Copiar</button></div></div>
-        </div>
-      </div>
-          <article class="tool-seo-guide">
-        <h2>O Padrão JSON (RFC 8259) e sua Importância na Web Moderna</h2>
-        <p>O formato JSON (JavaScript Object Notation) tornou-se a linguagem universal para intercâmbio de dados na web, superando amplamente o XML em simplicidade, densidade e facilidade de leitura tanto por humanos quanto por máquinas.</p>
-        <p>Garantir que um payload JSON esteja com sintaxe válida, aspas duplas corretas em chaves e tipos primitivos consistentes é essencial para evitar exceções de parsing em servidores de produção. O formatador da Caixa do Dev valida e embeleza estruturas complexas em tempo real com processamento 100% local no navegador.</p>
-      </article>
-    </section>
-
-    <!-- ============================================== -->
-    <!-- 24. VIEW: JWT                                  -->
-    <!-- ============================================== -->
-    <section id="view-jwt" class="tool-view">
-      <div class="tool-breadcrumbs">
-        <a href="#home">&larr; Início</a> / <span>Decodificador de JWT</span>
-      </div>
-
-      <div class="tool-interface-card">
-        <div class="tool-header-area">
-          <div class="tool-title-group">
-            <h1>Decodificador de JWT (JSON Web Token)</h1>
-            <p>Inspecione o Header e Payload do token sem enviar dados para servidores.</p>
-          </div>
-          <div class="tool-actions-bar"><button id="btn-sample-jwt" class="btn btn-secondary">Carregar Exemplo</button></div>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label" for="jwt-input"><span>Cole o Token JWT:</span><span id="jwt-status-badge" class="badge-status badge-neutral">Sem Token</span></label>
-          <textarea id="jwt-input" class="form-control" style="min-height: 90px;" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."></textarea>
-          <span id="jwt-exp-detail" style="font-size: 0.84rem; color: var(--accent-cyan); margin-top: 6px;"></span>
-        </div>
-
-        <div class="jwt-segments-grid">
-          <div class="jwt-block"><div class="jwt-block-header"><span class="jwt-header-color">Cabeçalho (Header)</span></div><pre id="jwt-header-output">// Aguardando token...</pre></div>
-          <div class="jwt-block"><div class="jwt-block-header"><span class="jwt-payload-color">Carga Útil (Payload)</span></div><pre id="jwt-payload-output">// Aguardando token...</pre></div>
-        </div>
-      </div>
-          <article class="tool-seo-guide">
-        <h2>Anatomia e Segurança de Tokens JWT (RFC 7519)</h2>
-        <p>JSON Web Tokens (JWT) são o padrão da indústria para representação compacta e segura de declarações de identidade em fluxos de autenticação stateless (OAuth 2.0 e OpenID Connect). Um token JWT é composto por três partes codificadas em Base64URL e separadas por pontos: <strong>Header</strong>, <strong>Payload</strong> e <strong>Signature</strong>.</p>
-        <p>Inspecionar localmente as claims padrão (como <code>sub</code> para o identificador do usuário, <code>iat</code> para data de emissão e <code>exp</code> para prazo de validade) é indispensável para depurar fluxos de login e permissões sem jamais expor suas chaves secretas ou dados confidenciais a servidores de terceiros.</p>
-      </article>
-    </section>
-
-    <!-- ============================================== -->
-    <!-- 25. VIEW: TIMESTAMP                            -->
-    <!-- ============================================== -->
-    <section id="view-timestamp" class="tool-view">
-      <div class="tool-breadcrumbs">
-        <a href="#home">&larr; Início</a> / <span>Conversor de Timestamp Unix</span>
-      </div>
-
-      <div class="tool-interface-card">
-        <div class="tool-header-area">
-          <div class="tool-title-group">
-            <h1>Conversor de Timestamp Unix (Epoch)</h1>
-            <p>Converta marcas temporais para datas humanas e vice-versa com suporte ao fuso horário de Brasília.</p>
-          </div>
-        </div>
-
-        <div class="timestamp-clock-card">
-          <div class="clock-val-group"><span class="clock-label">Timestamp Atual (s):</span><span id="live-clock-sec" class="clock-value">0</span></div>
-          <div class="clock-val-group"><span class="clock-label">Milissegundos (ms):</span><span id="live-clock-ms" class="clock-value" style="font-size: 1.1rem; color: #a5b4fc;">0</span></div>
-        </div>
-
-        <div class="split-grid">
-          <div class="pane"><span class="pane-title" style="margin-bottom: 8px;">Epoch para Data</span><div class="form-group"><input type="number" id="input-epoch" class="form-control" placeholder="Ex: 1704153600"></div><button id="btn-epoch-to-date" class="btn btn-primary" style="margin-bottom: 14px;">Converter</button><div id="result-epoch-date" class="result-box" style="line-height: 1.6; display: block;">Resultado aqui...</div></div>
-          <div class="pane"><span class="pane-title" style="margin-bottom: 8px;">Data para Epoch</span><div class="form-group"><input type="datetime-local" id="input-datetime" class="form-control"></div><button id="btn-date-to-epoch" class="btn btn-outline-cyan" style="margin-bottom: 14px;">Converter</button><div id="result-date-epoch" class="result-box" style="line-height: 1.6; display: block;">Resultado aqui...</div></div>
-        </div>
-      </div>
-          <article class="tool-seo-guide">
-        <h2>O Padrão Unix Epoch e a Resolução do Horário de Brasília</h2>
-        <p>O Unix Timestamp (ou Epoch Time) representa a contagem ininterrupta de segundos decorridos desde a meia-noite de 1º de janeiro de 1970 em Tempo Universal Coordenado (UTC). Esse padrão independe de fusos horários locais e é utilizado na quase totalidade dos bancos de dados e sistemas operacionais globais.</p>
-        <p>Converter números inteiros de timestamp para datas legíveis no horário oficial de Brasília (GMT-3) e no formato ISO 8601 é rotina fundamental durante a depuração de logs de servidores, auditoria de transações e agendamento de eventos.</p>
-      </article>
-    </section>
-
-    <!-- ============================================== -->
-    <!-- 26. VIEW: UUID                                 -->
-    <!-- ============================================== -->
-    <section id="view-uuid" class="tool-view">
-      <div class="tool-breadcrumbs">
-        <a href="#home">&larr; Início</a> / <span>Gerador de UUID / GUID v4</span>
-      </div>
-
-      <div class="tool-interface-card">
-        <div class="tool-header-area">
-          <div class="tool-title-group">
-            <h1>Gerador de UUID / GUID v4</h1>
-            <p>Identificadores únicos universais criptograficamente seguros gerados via Web Crypto API.</p>
-          </div>
-          <div class="tool-actions-bar"><button id="btn-gen-uuid" class="btn btn-primary">Gerar Novo(s)</button></div>
-        </div>
-
-        <div class="form-options-row">
-          <div class="form-group" style="margin-bottom: 0;"><label class="form-label">Quantidade:</label><select id="uuid-qty" class="form-control" style="width: 110px; padding: 6px 12px;"><option value="1">1 UUID</option><option value="5">5 UUIDs</option><option value="10">10 UUIDs</option><option value="25">25 UUIDs</option></select></div>
-          <label class="checkbox-label" style="margin-top: 22px;"><input type="checkbox" id="check-uuid-hyphens" checked><span>Incluir hífens</span></label>
-          <label class="checkbox-label" style="margin-top: 22px;"><input type="checkbox" id="check-uuid-upper"><span>MAIÚSCULAS</span></label>
-        </div>
-
-        <div style="position: relative; margin-top: 20px;">
-          <pre id="uuid-display" class="result-box large" style="min-height: 110px; font-size: 1.05rem;"></pre>
-          <button id="btn-copy-uuid" class="btn btn-secondary btn-sm result-copy-btn">Copiar UUID(s)</button>
-        </div>
-      </div>
-          <article class="tool-seo-guide">
-        <h2>Identificadores Únicos Universais (UUID / GUID RFC 4122)</h2>
-        <p>Um UUID (Universally Unique Identifier) é uma sequência de 128 bits representada por 32 caracteres hexadecimais divididos por hífens no formato <code>8-4-4-4-12</code>. O UUID versão 4 é gerado utilizando números pseudo-aleatórios criptograficamente seguros.</p>
-        <p>A probabilidade teórica de colisão entre dois identificadores UUID v4 gerados aleatoriamente é de aproximadamente 1 em $10^{36}$, uma probabilidade tão remota que é considerada praticamente impossível no universo computacional, tornando-o o padrão ideal para chaves primárias distribuídas em bancos de dados como PostgreSQL e MongoDB.</p>
-      </article>
-    </section>
-
-    <!-- ============================================== -->
-    <!-- 27. VIEW: BASE64 & URL                         -->
-    <!-- ============================================== -->
-    <section id="view-base64" class="tool-view">
-      <div class="tool-breadcrumbs">
-        <a href="#home">&larr; Início</a> / <span>Codificador & Decodificador Base64 e URL</span>
-      </div>
-
-      <div class="tool-interface-card">
-        <div class="tool-header-area">
-          <div class="tool-title-group">
-            <h1>Codificador e Decodificador Base64 e URL</h1>
-            <p>Converta texto para Base64 com suporte total a acentos e codifique URLs especiais.</p>
-          </div>
-          <div class="tool-actions-bar">
-            <button id="btn-base64-encode" class="btn btn-primary">Base64 Encode</button>
-            <button id="btn-base64-decode" class="btn btn-secondary">Base64 Decode</button>
-            <button id="btn-url-encode" class="btn btn-outline-cyan">URL Encode</button>
-            <button id="btn-url-decode" class="btn btn-secondary">URL Decode</button>
-          </div>
-        </div>
-
-        <div class="split-grid">
-          <div class="pane"><span class="pane-title" style="margin-bottom: 8px;">Entrada</span><textarea id="base64-input" class="form-control" placeholder="Digite ou cole o texto..."></textarea></div>
-          <div class="pane"><div class="pane-header"><span class="pane-title">Resultado</span><button id="btn-copy-base64" class="btn btn-secondary btn-sm">Copiar</button></div><textarea id="base64-output" class="form-control" readonly placeholder="O resultado aparecerá aqui..."></textarea></div>
-        </div>
-      </div>
-          <article class="tool-seo-guide">
-        <h2>Codificação Base64 e Codificação de URL (URL Encoding)</h2>
-        <p>A codificação Base64 (definida na RFC 4648) converte dados binários ou sequências de 8 bits em um alfabeto restrito de 64 caracteres imprimíveis da tabela ASCII. Ela é amplamente utilizada para transmitir imagens embutidas em HTML/CSS, anexos em e-mails (MIME) e credenciais em cabeçalhos HTTP Basic Auth.</p>
-        <p>A codificação de URL (RFC 3986), por sua vez, substitui caracteres reservados ou acentuados pelo símbolo de porcentagem seguido por dois dígitos hexadecimais (como <code>%20</code> para espaços ou <code>%C3%A3</code> para a letra ã), garantindo que dados enviados via query string ou formulários web transitem com total integridade sem sofrer corrupção de protocolo.</p>
-      </article>
-    </section>
-
-    <!-- ============================================== -->
-    <!-- 28. VIEW: GERADOR E VALIDADOR DE RG             -->
-    <!-- ============================================== -->
-    <section id="view-rg" class="tool-view">
-      <div class="tool-breadcrumbs">
-        <a href="#home">&larr; Início</a> / <span>Gerador e Validador de RG</span>
-      </div>
-
-      <div class="tool-interface-card">
-        <div class="tool-header-area">
-          <div class="tool-title-group">
-            <h1>Gerador e Validador de RG (Registro Geral)</h1>
-            <p>Gere e valide números de identidade civil no padrão SSP-SP e nacional para homologação de cadastros.</p>
-          </div>
-          <div class="tool-actions-bar">
-            <label class="form-checkbox">
-              <input type="checkbox" id="check-rg-mask" checked>
-              <span>Máscara (00.000.000-0)</span>
-            </label>
-            <button id="btn-gen-rg" class="btn btn-primary">Gerar Novo RG</button>
-          </div>
-        </div>
-
-        <div class="grid-2">
-          <div>
-            <span class="pane-title" style="margin-bottom: 8px;">RG Gerado para Testes</span>
-            <div class="result-box" style="display: flex; justify-content: space-between; align-items: center;">
-              <span id="rg-display" style="font-family: var(--font-mono); font-size: 1.4rem; font-weight: 700; color: var(--accent-cyan);">-</span>
-              <button id="btn-copy-rg" class="btn btn-secondary btn-sm">Copiar RG</button>
-            </div>
-          </div>
-          <div>
-            <span class="pane-title" style="margin-bottom: 8px;">Validar Número de RG</span>
-            <div style="display: flex; gap: 8px;">
-              <input type="text" id="input-val-rg" class="form-control" placeholder="Digite o RG (com ou sem traço)...">
-              <button id="btn-val-rg" class="btn btn-secondary">Validar</button>
-            </div>
-            <div id="rg-val-result" style="display: none; margin-top: 10px;"></div>
-          </div>
-        </div>
-      </div>
-
-      <article class="tool-seo-guide">
-        <h2>Como Funciona a Validação e Emissão de RG no Brasil?</h2>
-        <p>Diferente do CPF, gerido pela Receita Federal, o Registro Geral (RG) é emitido pelos órgãos de segurança de cada estado (como o Instituto de Identificação Félix Pacheco no RJ ou a SSP em SP). Em São Paulo, o RG utiliza 8 dígitos principais multiplicados pelos pesos de 2 a 9, gerando um dígito verificador numérico ou a letra <strong>X</strong> quando o resto é 10.</p>
-      </article>
-    </section>
-
-    <!-- ============================================== -->
-    <!-- 29. VIEW: CERTIDÃO CNJ (32 DÍGITOS)            -->
-    <!-- ============================================== -->
-    <section id="view-certidao" class="tool-view">
-      <div class="tool-breadcrumbs">
-        <a href="#home">&larr; Início</a> / <span>Gerador de Certidão CNJ</span>
-      </div>
-
-      <div class="tool-interface-card">
-        <div class="tool-header-area">
-          <div class="tool-title-group">
-            <h1>Gerador e Validador de Certidões Civis (CNJ)</h1>
-            <p>Padrão oficial unificado de 32 dígitos (Provimento nº 63/2017) para testes em cartórios, ERPs e registros.</p>
-          </div>
-          <div class="tool-actions-bar">
-            <select id="select-certidao-tipo" class="form-control" style="width: auto; padding: 8px 12px;">
-              <option value="nascimento">Nascimento (Livro 55)</option>
-              <option value="casamento">Casamento (Livro 56)</option>
-              <option value="obito">Óbito (Livro 58)</option>
-            </select>
-            <label class="form-checkbox">
-              <input type="checkbox" id="check-certidao-mask" checked>
-              <span>Com Pontuação</span>
-            </label>
-            <button id="btn-gen-certidao" class="btn btn-primary">Gerar Certidão</button>
-          </div>
-        </div>
-
-        <div class="grid-2">
-          <div>
-            <span class="pane-title" style="margin-bottom: 8px;">Certidão Gerada</span>
-            <div class="result-box" style="display: flex; flex-direction: column; gap: 8px;">
-              <div style="display: flex; justify-content: space-between; align-items: center;">
-                <span id="certidao-display" style="font-family: var(--font-mono); font-size: 1.05rem; font-weight: 700; color: var(--accent-emerald); word-break: break-all;">-</span>
-                <button id="btn-copy-certidao" class="btn btn-secondary btn-sm" style="margin-left: 10px;">Copiar</button>
-              </div>
-              <span id="certidao-extra-info" style="font-size: 0.8rem; color: var(--text-muted);">Tipo: Nascimento | DVs calculados via Módulo 11</span>
-            </div>
-          </div>
-          <div>
-            <span class="pane-title" style="margin-bottom: 8px;">Validar Certidão de 32 Dígitos</span>
-            <div style="display: flex; gap: 8px;">
-              <input type="text" id="input-val-certidao" class="form-control" placeholder="Cole a certidão com ou sem pontos...">
-              <button id="btn-val-certidao" class="btn btn-secondary">Validar</button>
-            </div>
-            <div id="certidao-val-result" style="display: none; margin-top: 10px;"></div>
-          </div>
-        </div>
-      </div>
-
-      <article class="tool-seo-guide">
-        <h2>Entenda a Estrutura da Certidão do CNJ</h2>
-        <p>Desde 2017, o Conselho Nacional de Justiça estabeleceu uma matrícula única nacional com 32 dígitos: 6 dígitos para o Cartório (CNS), 2 para o Acervo, 2 para o Tipo de Livro, 4 para o Ano, 1 para Tipo de Livro, 5 para o Número do Livro, 3 para a Folha, 7 para o Termo e os 2 últimos dígitos para verificação (DV1 e DV2 por Módulo 11).</p>
-      </article>
-    </section>
-
-    <!-- ============================================== -->
-    <!-- 30. VIEW: GERADOR E CONSULTA DE CEP            -->
-    <!-- ============================================== -->
-    <section id="view-cep" class="tool-view">
-      <div class="tool-breadcrumbs">
-        <a href="#home">&larr; Início</a> / <span>Gerador e Consulta de CEP</span>
-      </div>
-
-      <div class="tool-interface-card">
-        <div class="tool-header-area">
-          <div class="tool-title-group">
-            <h1>Gerador e Consulta de CEP</h1>
-            <p>Gere CEPs válidos por UF a partir de faixas oficiais dos Correios e consulte endereços via ViaCEP.</p>
-          </div>
-          <div class="tool-actions-bar">
-            <select id="select-cep-uf" class="form-control" style="width: auto; padding: 8px 12px;">
-              <option value="aleatorio">Qualquer Estado (Aleatório)</option>
-              <option value="SP">São Paulo (SP)</option>
-              <option value="RJ">Rio de Janeiro (RJ)</option>
-              <option value="MG">Minas Gerais (MG)</option>
-              <option value="PR">Paraná (PR)</option>
-              <option value="RS">Rio Grande do Sul (RS)</option>
-              <option value="BA">Bahia (BA)</option>
-              <option value="DF">Distrito Federal (DF)</option>
-              <option value="SC">Santa Catarina (SC)</option>
-              <option value="PE">Pernambuco (PE)</option>
-              <option value="CE">Ceará (CE)</option>
-            </select>
-            <label class="form-checkbox">
-              <input type="checkbox" id="check-cep-mask" checked>
-              <span>Máscara (00000-000)</span>
-            </label>
-            <button id="btn-gen-cep" class="btn btn-primary">Gerar CEP</button>
-          </div>
-        </div>
-
-        <div class="grid-2">
-          <div>
-            <span class="pane-title" style="margin-bottom: 8px;">CEP Gerado</span>
-            <div class="result-box" style="display: flex; justify-content: space-between; align-items: center;">
-              <div>
-                <span id="cep-display" style="font-family: var(--font-mono); font-size: 1.5rem; font-weight: 700; color: var(--accent-amber);">-</span>
-                <div id="cep-state-info" style="font-size: 0.82rem; color: var(--text-muted); margin-top: 4px;">Região oficial dos Correios</div>
-              </div>
-              <button id="btn-copy-cep" class="btn btn-secondary btn-sm">Copiar</button>
-            </div>
-          </div>
-          <div>
-            <span class="pane-title" style="margin-bottom: 8px;">Consultar Endereço por CEP</span>
-            <div style="display: flex; gap: 8px;">
-              <input type="text" id="input-search-cep" class="form-control" placeholder="Digite 8 dígitos (ex: 01001-000)...">
-              <button id="btn-search-cep" class="btn btn-secondary">Buscar Endereço</button>
-            </div>
-            <div id="cep-search-result" style="display: none;"></div>
-          </div>
-        </div>
-      </div>
-
-      <article class="tool-seo-guide">
-        <h2>Regiões Postais e Estrutura de CEPs no Brasil</h2>
-        <p>O Código de Endereçamento Postal (CEP) brasileiro possui 8 algarismos estruturados geograficamente. O primeiro dígito identifica a região postal (ex: 0 e 1 para SP, 2 para RJ/ES, 3 para MG, 4 para BA/SE, etc.). O Caixa do Dev valida as faixas oficiais de todos os 27 estados.</p>
-      </article>
-    </section>
-
-    <!-- ============================================== -->
-    <!-- 31. VIEW: CRON EXPRESSION                      -->
-    <!-- ============================================== -->
-    <section id="view-cron" class="tool-view">
-      <div class="tool-breadcrumbs">
-        <a href="#home">&larr; Início</a> / <span>Cron Expression Generator & Explainer</span>
-      </div>
-
-      <div class="tool-interface-card">
-        <div class="tool-header-area">
-          <div class="tool-title-group">
-            <h1>Gerador e Tradutor de Cron Expression</h1>
-            <p>Traduza expressões cron para português claro e calcule as próximas execuções automáticas.</p>
-          </div>
-          <div class="tool-actions-bar">
-            <span style="font-size: 0.85rem; color: var(--text-muted);">Presets:</span>
-            <button class="btn btn-secondary btn-sm btn-cron-preset" data-cron="*/5 * * * *">5 min</button>
-            <button class="btn btn-secondary btn-sm btn-cron-preset" data-cron="0 * * * *">Toda Hora</button>
-            <button class="btn btn-secondary btn-sm btn-cron-preset" data-cron="0 0 * * *">Meia-noite</button>
-            <button class="btn btn-secondary btn-sm btn-cron-preset" data-cron="0 9 * * 1-5">Dias Úteis 09h</button>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">Expressão Cron (Minuto Hora Dia Mês Dia_Semana)</label>
-          <input type="text" id="cron-input" class="form-control" style="font-size: 1.3rem; letter-spacing: 2px;" value="*/15 * * * *">
-        </div>
-
-        <div class="grid-2" style="margin-top: 20px;">
-          <div>
-            <span class="pane-title" style="margin-bottom: 8px;">Descrição em Português</span>
-            <div id="cron-explanation" class="result-box" style="font-size: 1.05rem; font-weight: 600; color: var(--accent-cyan); line-height: 1.5;">
-              Executa continuamente a cada 15 minutos, todos os dias.
-            </div>
-          </div>
-          <div>
-            <span class="pane-title" style="margin-bottom: 8px;">Próximas 5 Execuções Calculadas</span>
-            <div id="cron-runs-list" class="cron-runs-list"></div>
-          </div>
-        </div>
-      </div>
-
-      <article class="tool-seo-guide">
-        <h2>Sintaxe Padrão de Expressões Cron</h2>
-        <p>A expressão cron consiste em 5 campos separados por espaço: <code>minuto (0-59)</code>, <code>hora (0-23)</code>, <code>dia do mês (1-31)</code>, <code>mês (1-12)</code> e <code>dia da semana (0-6)</code>. O asterisco (*) representa qualquer valor, e a barra (*/N) define o intervalo de repetição.</p>
-      </article>
-    </section>
-
-    <!-- ============================================== -->
-    <!-- 32. VIEW: MARKDOWN PREVIEWER                   -->
-    <!-- ============================================== -->
-    <section id="view-markdown" class="tool-view">
-      <div class="tool-breadcrumbs">
-        <a href="#home">&larr; Início</a> / <span>Editor e Visualizador de Markdown</span>
-      </div>
-
-      <div class="tool-interface-card">
-        <div class="tool-header-area">
-          <div class="tool-title-group">
-            <h1>Editor e Visualizador de Markdown para HTML</h1>
-            <p>Escreva documentações com renderização ao vivo, suporte a GitHub Flavored Markdown (GFM) e tabelas.</p>
-          </div>
-          <div class="tool-actions-bar">
-            <button id="btn-md-sample" class="btn btn-secondary">Carregar Exemplo</button>
-            <button id="btn-copy-md-html" class="btn btn-primary">Copiar HTML</button>
-          </div>
-        </div>
-
-        <div class="split-grid">
-          <div class="pane">
-            <span class="pane-title" style="margin-bottom: 8px;">Markdown de Entrada</span>
-            <textarea id="markdown-input" class="form-control" style="min-height: 380px;" placeholder="Digite seu texto em Markdown..."></textarea>
-          </div>
-          <div class="pane">
-            <span class="pane-title" style="margin-bottom: 8px;">Visualização Renderizada</span>
-            <div id="markdown-preview" class="markdown-preview-container" style="min-height: 380px;"></div>
-            <textarea id="markdown-html-output" style="display: none;"></textarea>
-          </div>
-        </div>
-      </div>
-
-      <article class="tool-seo-guide">
-        <h2>Guia de Sintaxe Markdown (Cheat Sheet)</h2>
-        <p>Use <code># Título</code> para títulos H1, <code>**negrito**</code> para destaque, <code>`código`</code> para blocos inline, e <code>```javascript</code> para trechos de código com destaque sintático. Tabelas são criadas separando colunas com barras verticais <code>| Coluna 1 | Coluna 2 |</code>.</p>
-      </article>
-    </section>
-
-    <!-- ============================================== -->
-    <!-- 33. VIEW: CURL CONVERTER                       -->
-    <!-- ============================================== -->
-    <section id="view-curl" class="tool-view">
-      <div class="tool-breadcrumbs">
-        <a href="#home">&larr; Início</a> / <span>Conversor de cURL</span>
-      </div>
-
-      <div class="tool-interface-card">
-        <div class="tool-header-area">
-          <div class="tool-title-group">
-            <h1>Conversor de cURL para JavaScript, Python & PHP</h1>
-            <p>Cole comandos cURL de documentações de APIs e obtenha o código limpo para fetch, axios, requests ou PHP.</p>
-          </div>
-          <div class="tool-actions-bar">
-            <select id="curl-lang-select" class="form-control" style="width: auto; padding: 8px 12px;">
-              <option value="fetch">JavaScript (fetch)</option>
-              <option value="axios">JavaScript (Axios)</option>
-              <option value="python">Python (requests)</option>
-              <option value="php">PHP (cURL)</option>
-            </select>
-            <button id="btn-curl-sample" class="btn btn-secondary">Exemplo</button>
-            <button id="btn-curl-convert" class="btn btn-primary">Converter</button>
-          </div>
-        </div>
-
-        <div class="split-grid">
-          <div class="pane">
-            <span class="pane-title" style="margin-bottom: 8px;">Comando cURL</span>
-            <textarea id="curl-input" class="form-control" style="min-height: 280px;" placeholder="curl -X POST https://api.exemplo.com -H 'Authorization: Bearer ...' -d '...'"></textarea>
-          </div>
-          <div class="pane">
-            <div class="pane-header">
-              <span class="pane-title">Código Gerado</span>
-              <button id="btn-copy-curl-code" class="btn btn-secondary btn-sm">Copiar Código</button>
-            </div>
-            <pre class="code-preview" style="min-height: 280px;"><code id="curl-code-output" style="font-family: var(--font-mono); color: var(--accent-cyan); font-size: 0.9rem;">// O código gerado aparecerá aqui...</code></pre>
-          </div>
-        </div>
-      </div>
-
-      <article class="tool-seo-guide">
-        <h2>Como Transformar Chamadas cURL em Código de Produção</h2>
-        <p>Documentações de APIs famosas (Stripe, GitHub, OpenAI, PagSeguro) costumam exemplificar requisições com cURL. O conversor extrai método HTTP, cabeçalhos de autenticação e payload JSON para convertê-los em código pronto para sua aplicação.</p>
-      </article>
-    </section>
-
-    <!-- ============================================== -->
-    <!-- 34. VIEW: CODE BEAUTIFIER (HTML & CSS)         -->
-    <!-- ============================================== -->
-    <section id="view-code-beautifier" class="tool-view">
-      <div class="tool-breadcrumbs">
-        <a href="#home">&larr; Início</a> / <span>Formatador e Minificador HTML & CSS</span>
-      </div>
-
-      <div class="tool-interface-card">
-        <div class="tool-header-area">
-          <div class="tool-title-group">
-            <h1>Formatador e Minificador de HTML & CSS</h1>
-            <p>Embeleze códigos desorganizados com indentação de 2 espaços ou minifique em uma linha para acelerar o carregamento.</p>
-          </div>
-          <div class="tool-actions-bar">
-            <button id="btn-fmt-html" class="btn btn-primary">Formatar HTML</button>
-            <button id="btn-min-html" class="btn btn-secondary">Minificar HTML</button>
-            <button id="btn-fmt-css" class="btn btn-outline-cyan">Formatar CSS</button>
-            <button id="btn-min-css" class="btn btn-secondary">Minificar CSS</button>
-            <button id="btn-sample-html" class="btn btn-secondary btn-sm">Exemplo HTML</button>
-            <button id="btn-sample-css" class="btn btn-secondary btn-sm">Exemplo CSS</button>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <div class="pane-header">
-            <span class="pane-title">Código HTML / CSS</span>
-            <button id="btn-copy-beautifier" class="btn btn-secondary btn-sm">Copiar Tudo</button>
-          </div>
-          <textarea id="beautifier-input" class="form-control" style="min-height: 350px;" placeholder="Cole aqui seu código HTML ou folhas de estilo CSS..."></textarea>
-        </div>
-      </div>
-
-      <article class="tool-seo-guide">
-        <h2>A Importância da Minificação para Core Web Vitals e SEO</h2>
-        <p>Minificar arquivos HTML e CSS reduz bytes transferidos na rede, economiza largura de banda do servidor e melhora a métrica de LCP (Largest Contentful Paint) no Google PageSpeed Insights.</p>
-      </article>
-    </section>
-
-    <!-- ============================================== -->
-    <!-- 35. VIEW: URL PARSER & QUERY PARAMS            -->
-    <!-- ============================================== -->
-    <section id="view-url-parser" class="tool-view">
-      <div class="tool-breadcrumbs">
-        <a href="#home">&larr; Início</a> / <span>Inspetor de URL & Query Params</span>
-      </div>
-
-      <div class="tool-interface-card">
-        <div class="tool-header-area">
-          <div class="tool-title-group">
-            <h1>Inspetor e Construtor de URL / Query Params</h1>
-            <p>Decomponha URLs complexas em protocolo, domínio, portas e gerencie query strings (?utm_source=google) visualmente.</p>
-          </div>
-          <div class="tool-actions-bar">
-            <button id="btn-parse-url" class="btn btn-primary">Decompor URL</button>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">URL Completa para Análise</label>
-          <input type="text" id="url-parser-input" class="form-control" placeholder="https://api.site.com:8080/caminho?param1=valor1&param2=valor2#secao">
-        </div>
-
-        <div class="grid-2" style="margin-top: 20px;">
-          <div>
-            <span class="pane-title" style="margin-bottom: 8px;">Componentes da URL</span>
-            <table class="subnet-table">
-              <tr><td>Protocolo:</td><td id="url-part-proto">https:</td></tr>
-              <tr><td>Hostname:</td><td id="url-part-host">api.exemplo.com</td></tr>
-              <tr><td>Porta:</td><td id="url-part-port">443</td></tr>
-              <tr><td>Caminho (Path):</td><td id="url-part-path">/v2/produtos</td></tr>
-            </table>
-          </div>
-          <div>
-            <span class="pane-title" style="margin-bottom: 8px;">Tabela de Parâmetros de Busca (Query Params)</span>
-            <table class="subnet-table">
-              <thead>
-                <tr style="border-bottom: 2px solid var(--border-subtle);"><th style="text-align: left; padding: 8px;">Chave</th><th style="text-align: left; padding: 8px;">Valor</th></tr>
-              </thead>
-              <tbody id="url-params-tbody"></tbody>
-            </table>
-          </div>
-        </div>
-
-        <div style="margin-top: 20px;">
-          <div class="pane-header">
-            <span class="pane-title">URL Final</span>
-            <button id="btn-copy-rebuilt-url" class="btn btn-secondary btn-sm">Copiar URL</button>
-          </div>
-          <div id="url-rebuilt-output" class="result-box" style="font-family: var(--font-mono); color: var(--accent-cyan); word-break: break-all;">-</div>
-        </div>
-      </div>
-
-      <article class="tool-seo-guide">
-        <h2>Como Funciona a Estrutura de uma URL</h2>
-        <p>URLs (Uniform Resource Locators) são a espinha dorsal da web. Elas combinam esquema (https), autoridade (host e porta), caminho de recurso e parâmetros de consulta delimitados por '?' e '&'.</p>
-      </article>
-    </section>
-
-    <!-- ============================================== -->
-    <!-- 36. VIEW: CSS BOX-SHADOW & GLASSMORPHISM       -->
-    <!-- ============================================== -->
-    <section id="view-css-generator" class="tool-view">
-      <div class="tool-breadcrumbs">
-        <a href="#home">&larr; Início</a> / <span>Gerador de Box-Shadow & Glassmorphism</span>
-      </div>
-
-      <div class="tool-interface-card">
-        <div class="tool-header-area">
-          <div class="tool-title-group">
-            <h1>Gerador de Box-Shadow & Glassmorphism CSS</h1>
-            <p>Controle visual de sombras suaves, elevação e efeito vidro fosco com código CSS puro pronto para copiar.</p>
-          </div>
-          <div class="tool-actions-bar">
-            <button id="btn-copy-shadow-css" class="btn btn-primary">Copiar Código CSS</button>
-          </div>
-        </div>
-
-        <div class="grid-2">
-          <div>
-            <div class="shadow-preview-box">
-              <div id="shadow-target-el" class="shadow-target-element">Preview Card</div>
-            </div>
-
-            <div class="pane-header">
-              <span class="pane-title">Código CSS Gerado</span>
-            </div>
-            <pre class="code-preview"><code id="shadow-css-code" style="color: var(--accent-emerald);">box-shadow: 0px 10px 25px -5px rgba(0, 0, 0, 0.15);</code></pre>
-          </div>
-
-          <div>
-            <div class="form-group">
-              <label class="form-label">Deslocamento Horizontal (X)</label>
-              <input type="range" id="shadow-x" min="-50" max="50" value="0" class="form-control" style="padding: 0;">
-            </div>
-            <div class="form-group">
-              <label class="form-label">Deslocamento Vertical (Y)</label>
-              <input type="range" id="shadow-y" min="-50" max="50" value="10" class="form-control" style="padding: 0;">
-            </div>
-            <div class="form-group">
-              <label class="form-label">Desfoque (Blur Radius)</label>
-              <input type="range" id="shadow-blur" min="0" max="100" value="25" class="form-control" style="padding: 0;">
-            </div>
-            <div class="form-group">
-              <label class="form-label">Espalhamento (Spread Radius)</label>
-              <input type="range" id="shadow-spread" min="-25" max="50" value="-5" class="form-control" style="padding: 0;">
-            </div>
-            <div class="grid-2">
-              <div class="form-group">
-                <label class="form-label">Cor da Sombra</label>
-                <input type="color" id="shadow-color" value="#000000" class="form-control" style="height: 40px; padding: 2px;">
-              </div>
-              <div class="form-group">
-                <label class="form-label">Opacidade</label>
-                <input type="range" id="shadow-opacity" min="0" max="1" step="0.05" value="0.25" class="form-control" style="padding: 0;">
-              </div>
-            </div>
-            <label class="form-checkbox" style="margin-top: 10px;">
-              <input type="checkbox" id="shadow-inset">
-              <span>Sombra Interna (inset)</span>
-            </label>
-          </div>
-        </div>
-      </div>
-
-      <article class="tool-seo-guide">
-        <h2>Boas Práticas de Sombras e Profundidade em UI Moderno</h2>
-        <p>Evite sombras duras e escuras no design digital moderno. Utilize raios de desfoque amplos (blur elevado) com baixa opacidade (10% a 25%) para criar uma sensação autêntica de elevação tridimensional conforme o design system de referências como Apple, Vercel e Linear.</p>
-      </article>
-    </section>
-
-    <!-- ============================================== -->
-    <!-- 37. VIEW: CALCULADORA CLT VS PJ                -->
-    <!-- ============================================== -->
-    <section id="view-clt-pj" class="tool-view">
-      <div class="tool-breadcrumbs">
-        <a href="#home">&larr; Início</a> / <span>Calculadora Comparativa CLT vs PJ</span>
-      </div>
-
-      <div class="tool-interface-card">
-        <div class="tool-header-area">
-          <div class="tool-title-group">
-            <h1>Calculadora Comparativa CLT vs PJ para Devs</h1>
-            <p>Descubra a melhor opção financeira calculando INSS progressivo, IRPF, Simples Nacional (Fator R 28%) e benefícios anuais.</p>
-          </div>
-          <div class="tool-actions-bar">
-            <button id="btn-calc-clt-pj" class="btn btn-primary">Recalcular Proposta</button>
-          </div>
-        </div>
-
-        <div class="grid-2">
-          <div class="form-group">
-            <label class="form-label">Salário Bruto CLT (R$)</label>
-            <input type="number" id="calc-salario-clt" class="form-control" value="8000" placeholder="Ex: 8000">
-          </div>
-          <div class="form-group">
-            <label class="form-label">Benefícios Mensais CLT (VR, VA, Saúde em R$)</label>
-            <input type="number" id="calc-beneficios-clt" class="form-control" value="1200" placeholder="Ex: 1200">
-          </div>
-        </div>
-
-        <div class="grid-2">
-          <div class="form-group">
-            <label class="form-label">Faturamento Mensal PJ Oferecido (R$)</label>
-            <input type="number" id="calc-faturamento-pj" class="form-control" value="13000" placeholder="Ex: 13000">
-          </div>
-          <div class="form-group">
-            <label class="form-label">Custo Mensal de Contabilidade (R$)</label>
-            <input type="number" id="calc-contador-pj" class="form-control" value="150" placeholder="Ex: 150">
-          </div>
-        </div>
-
-        <div id="clt-pj-verdict" class="verdict-banner"></div>
-
-        <div class="clt-pj-grid">
-          <!-- Coluna CLT -->
-          <div class="clt-column">
-            <h3 style="color: var(--accent-cyan); display: flex; align-items: center; justify-content: space-between;">
-              <span>Regime CLT</span>
-              <span class="tool-card-badge">Carteira Assinada</span>
-            </h3>
-            <div class="metric-row"><span>Salário Líquido Mensal:</span><strong id="m-clt-liq">R$ 6.150,00</strong></div>
-            <div class="metric-row"><span>Desconto INSS (Tabela):</span><span id="m-clt-inss" style="color: var(--accent-rose);">R$ 900,00</span></div>
-            <div class="metric-row"><span>Desconto IRPF:</span><span id="m-clt-irpf" style="color: var(--accent-rose);">R$ 950,00</span></div>
-            <div class="metric-row"><span>Depósito FGTS (8%):</span><span id="m-clt-fgts" style="color: var(--accent-emerald);">R$ 640,00/mês</span></div>
-            <div class="metric-row total-row"><span>Total Anual Real (c/ 13º e Férias):</span><strong id="m-clt-anual" style="color: var(--accent-cyan);">R$ 98.000,00</strong></div>
-          </div>
-
-          <!-- Coluna PJ -->
-          <div class="pj-column">
-            <h3 style="color: var(--accent-emerald); display: flex; align-items: center; justify-content: space-between;">
-              <span>Pessoa Jurídica (PJ)</span>
-              <span class="tool-card-badge" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-emerald);">Simples Nacional</span>
-            </h3>
-            <div class="metric-row"><span>Líquido Mensal em Mãos:</span><strong id="m-pj-liq">R$ 11.200,00</strong></div>
-            <div class="metric-row"><span>Imposto DAS (Anexo III 6%):</span><span id="m-pj-simples" style="color: var(--accent-rose);">R$ 780,00</span></div>
-            <div class="metric-row"><span>Pró-Labore Recomendado:</span><span id="m-pj-prolabore">R$ 3.640,00</span></div>
-            <div class="metric-row total-row"><span>Total Anual PJ:</span><strong id="m-pj-anual" style="color: var(--accent-emerald);">R$ 134.400,00</strong></div>
-          </div>
-        </div>
-      </div>
-
-      <article class="tool-seo-guide">
-        <h2>Como Funciona o Cálculo CLT vs PJ para Programadores no Brasil</h2>
-        <p>Ao migrar de CLT para PJ, o desenvolvedor deixa de receber FGTS (8%), 13º salário, férias remuneradas (+1/3 constitucional) e seguro-desemprego. Para compensar essa perda de benefícios e garantir reserva para descanso, uma regra de mercado consagrada indica que o faturamento PJ deve ser entre <strong>1,4 a 1,6 vezes maior</strong> que o salário bruto CLT.</p>
-      </article>
-    </section>
-
-    <!-- ============================================== -->
-    <!-- 38. VIEW: CONVERSOR DE ARMAZENAMENTO & BANDA    -->
-    <!-- ============================================== -->
-    <section id="view-storage" class="tool-view">
-      <div class="tool-breadcrumbs">
-        <a href="#home">&larr; Início</a> / <span>Conversor de Armazenamento & Banda</span>
-      </div>
-
-      <div class="tool-interface-card">
-        <div class="tool-header-area">
-          <div class="tool-title-group">
-            <h1>Conversor de Armazenamento e Tempo de Download</h1>
-            <p>Converta bytes, megabytes, gigabytes e calcule o tempo exato de transferência por velocidade de rede.</p>
-          </div>
-          <div class="tool-actions-bar">
-            <button id="btn-calc-storage" class="btn btn-primary">Calcular Conversão</button>
-          </div>
-        </div>
-
-        <div class="grid-2">
-          <div class="form-group">
-            <label class="form-label">Tamanho do Arquivo</label>
-            <div style="display: flex; gap: 8px;">
-              <input type="number" id="storage-val" class="form-control" value="50">
-              <select id="storage-unit" class="form-control" style="width: 140px;">
-                <option value="GB" selected>Gigabytes (GB)</option>
-                <option value="MB">Megabytes (MB)</option>
-                <option value="TB">Terabytes (TB)</option>
-                <option value="GiB">Gibibytes (GiB)</option>
-                <option value="MiB">Mebibytes (MiB)</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Velocidade de Conexão (Mbps)</label>
-            <input type="number" id="storage-speed" class="form-control" value="300" placeholder="Ex: 100, 300, 1000 Mbps">
-          </div>
-        </div>
-
-        <div class="result-box" style="margin-top: 10px; display: flex; align-items: center; justify-content: space-between;">
-          <span id="storage-time-display" style="font-size: 1.15rem; font-weight: 700; color: var(--accent-cyan);">Tempo estimado de transferência: Calculando...</span>
-        </div>
-
-        <div style="margin-top: 20px;">
-          <span class="pane-title" style="margin-bottom: 8px;">Tabela Comparativa em Outras Unidades</span>
-          <table class="subnet-table">
-            <tbody id="storage-results-tbody"></tbody>
-          </table>
-        </div>
-      </div>
-
-      <article class="tool-seo-guide">
-        <h2>Entenda a Diferença entre Megabits (Mbps) e Megabytes (MB/s)</h2>
-        <p>As operadoras de telecomunicação vendem velocidades em <strong>Megabits por segundo (Mbps)</strong>, enquanto os navegadores e discos rígidos medem transferências em <strong>Megabytes por segundo (MB/s)</strong>. Como 1 Byte equivale a 8 Bits, uma internet de 800 Mbps atinge uma taxa máxima teórica de 100 MB/s de download.</p>
-      </article>
-    </section>
-
-    <!-- ============================================== -->
-    <!-- 39. VIEW: SVG OPTIMIZER & DATA URI             -->
-    <!-- ============================================== -->
-    <section id="view-svg" class="tool-view">
-      <div class="tool-breadcrumbs">
-        <a href="#home">&larr; Início</a> / <span>Otimizador de SVG & Data URI para CSS</span>
-      </div>
-
-      <div class="tool-interface-card">
-        <div class="tool-header-area">
-          <div class="tool-title-group">
-            <h1>Otimizador de SVG & Data URI para CSS</h1>
-            <p>Comprima vetores SVG e gere strings de data URI limpas prontas para background-image ou Base64.</p>
-          </div>
-          <div class="tool-actions-bar">
-            <button id="btn-svg-opt" class="btn btn-secondary">Minificar SVG</button>
-            <button id="btn-svg-css-uri" class="btn btn-primary">Gerar Data URI para CSS</button>
-            <button id="btn-svg-b64" class="btn btn-outline-cyan">Gerar Base64</button>
-          </div>
-        </div>
-
-        <div class="split-grid">
-          <div class="pane">
-            <span class="pane-title" style="margin-bottom: 8px;">Código SVG de Entrada</span>
-            <textarea id="svg-input" class="form-control" style="min-height: 250px;" placeholder="<svg ...>...</svg>"></textarea>
-          </div>
-          <div class="pane">
-            <div class="pane-header">
-              <span class="pane-title">Resultado / Data URI</span>
-              <button id="btn-copy-svg-output" class="btn btn-secondary btn-sm">Copiar</button>
-            </div>
-            <textarea id="svg-output" class="form-control" style="min-height: 250px;" readonly placeholder="O código Data URI gerado aparecerá aqui..."></textarea>
-          </div>
-        </div>
-
-        <div style="margin-top: 20px;">
-          <span class="pane-title" style="margin-bottom: 8px;">Pré-visualização Gráfica</span>
-          <div id="svg-preview-box" class="result-box" style="display: flex; align-items: center; justify-content: center; height: 120px; background: #090d16;"></div>
-        </div>
-      </div>
-
-      <article class="tool-seo-guide">
-        <h2>Como Usar SVGs em Folhas de Estilo CSS sem Arquivos Externos</h2>
-        <p>Incorporar ícones em formato SVG como Data URIs em atributos <code>background-image: url('data:image/svg+xml,...')</code> evita roundtrips de rede HTTP adicionais, elimina problemas de flash of unstyled content (FOUC) e otimiza a performance de renderização.</p>
-      </article>
-    </section>
-
-    <!-- ============================================== -->
-    <!-- 40. VIEW: MOCK DATA BATCH GENERATOR            -->
-    <!-- ============================================== -->
-    <section id="view-mock-data" class="tool-view">
-      <div class="tool-breadcrumbs">
-        <a href="#home">&larr; Início</a> / <span>Gerador de Massa de Testes em Lote</span>
-      </div>
-
-      <div class="tool-interface-card">
-        <div class="tool-header-area">
-          <div class="tool-title-group">
-            <h1>Gerador de Massa de Dados em Lote (Mock Data)</h1>
-            <p>Gere centenas de cadastros fictícios com Nome, CPF, Telefone, Cidade e Status em JSON, CSV ou SQL INSERT.</p>
-          </div>
-          <div class="tool-actions-bar">
-            <div style="display: flex; align-items: center; gap: 8px;">
-              <label style="font-size: 0.85rem; color: var(--text-muted);">Qtd:</label>
-              <select id="mock-qty" class="form-control" style="width: 80px; padding: 6px 10px;">
-                <option value="5">5</option>
-                <option value="10" selected>10</option>
-                <option value="25">25</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
-              </select>
-            </div>
-            <input type="text" id="mock-table-name" class="form-control" style="width: 140px; padding: 6px 10px;" value="usuarios" placeholder="Nome da tabela">
-            <button id="btn-gen-mock" class="btn btn-primary">Gerar Registros</button>
-          </div>
-        </div>
-
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-          <div class="tool-actions-bar">
-            <button id="btn-mock-json" class="btn btn-secondary btn-sm">JSON</button>
-            <button id="btn-mock-csv" class="btn btn-secondary btn-sm">CSV (Excel)</button>
-            <button id="btn-mock-sql" class="btn btn-secondary btn-sm">SQL INSERT</button>
-          </div>
-          <button id="btn-copy-mock" class="btn btn-secondary btn-sm">Copiar Tudo</button>
-        </div>
-
-        <div class="form-group">
-          <textarea id="mock-output-display" class="form-control" style="min-height: 380px; font-size: 0.88rem;" readonly></textarea>
-        </div>
-      </div>
-
-      <article class="tool-seo-guide">
-        <h2>Geração de Massa de Testes Ética em Conformidade com a LGPD</h2>
-        <p>A Lei Geral de Proteção de Dados (Lei nº 13.709/2018) proíbe a utilização de bancos de dados com informações reais de clientes em ambientes de testes e homologação (staging/sandbox). Utilizar ferramentas de Mock Data que geram dados computacionais puramente fictícios garante conformidade regulatória sem risco de vazamentos.</p>
-      </article>
-    </section>
-
-    <!-- Espaço para Anúncio Inferior (AdSense In-Feed) -->
-    <aside class="ad-slot-wrapper" aria-label="Área de Publicidade">
-      <div class="ad-slot ad-banner-horizontal">
-        <span class="ad-slot-label">Publicidade</span>
-        <span class="ad-slot-notice">Espaço reservado para Google AdSense (Banner Inferior / Responsivo)</span>
-      </div>
-    </aside>
 
     <!-- FAQ Global -->
     <section class="tool-seo-guide" style="margin-bottom: 60px;">
@@ -2057,15 +193,15 @@
       <div class="faq-list">
         <div class="faq-item">
           <div class="faq-question"><span>A Caixa do Dev armazena ou salva os meus dados digitados?</span><span>+</span></div>
-          <div class="faq-answer">Não! Absolutamente nenhum dado, token, código SQL ou documento é enviado para servidores externos. Todo o processamento (geração de pessoas, cálculo de CPF/CNPJ, formatação de JSON, hashes) é executado localmente na memória do seu próprio navegador (Client-Side).</div>
+          <div class="faq-answer">Não! Absolutamente nenhum dado, token, código SQL ou documento é enviado para servidores externos. Todo o processamento (geração de cadastros, cálculo de CPF/CNPJ, formatação de JSON, hashes) é executado localmente na memória do seu próprio navegador (Client-Side).</div>
         </div>
         <div class="faq-item">
-          <div class="faq-question"><span>Os dados de pessoas, empresas e cartões são reais?</span><span>+</span></div>
-          <div class="faq-answer">Não. Todos os dados são gerados aleatoriamente com algoritmos matemáticos oficiais para testes técnicos em ambientes de desenvolvimento e homologação (QA/Sandbox). Não pertencem a pessoas ou empresas reais.</div>
+          <div class="faq-question"><span>Os dados de pessoas, empresas e documentos são reais?</span><span>+</span></div>
+          <div class="faq-answer">Não. Todos os dados são gerados algoritmicamente através de fórmulas matemáticas oficiais para testes técnicos em ambientes de desenvolvimento e homologação (QA/Sandbox). Não pertencem a pessoas ou empresas reais e não possuem validade civil ou financeira.</div>
         </div>
         <div class="faq-item">
           <div class="faq-question"><span>As ferramentas da Caixa do Dev são gratuitas?</span><span>+</span></div>
-          <div class="faq-answer">Sim, 100% gratuitas e sem limite de uso para toda a comunidade de desenvolvedores, analistas e estudantes.</div>
+          <div class="faq-answer">Sim, 100% gratuitas e sem limite de uso para toda a comunidade de desenvolvedores, analistas de qualidade, estudantes e profissionais de tecnologia.</div>
         </div>
       </div>
     </section>
@@ -2085,7 +221,7 @@
 
   <div id="toast-container" class="toast-container"></div>
 
-  <!-- Rodapé Institucional -->
+  <!-- Rodapé Institucional Completo com URLs Dedicadas -->
   <footer class="footer">
     <div class="container">
       <div class="footer-content">
@@ -2096,7 +232,7 @@
             </div>
             <span class="brand-name">Caixa do Dev</span>
           </div>
-          <p>O conjunto definitivo de 40 utilitários rápidos, privados e essenciais para simplificar o fluxo de trabalho de desenvolvedores e profissionais de tecnologia em todo o Brasil.</p>
+          <p>O conjunto definitivo de 40 utilitários rápidos, privados e essenciais para simplificar o fluxo de trabalho de desenvolvedores e profissionais de tecnologia em todo o Brasil. Mantido por Alexandre Marcelino.</p>
         </div>
 
         <div class="footer-col">
@@ -2105,13 +241,15 @@
             <li><a href="/gerador-de-cpf">Gerador de CPF</a></li>
             <li><a href="/gerador-de-cnpj">Gerador de CNPJ</a></li>
             <li><a href="/gerador-de-pessoas">Gerador de Pessoas</a></li>
-            <li><a href="#empresa">Gerador de Empresas</a></li>
-            <li><a href="#mock-data">Massa em Lote (Mock)</a></li>
-            <li><a href="#rg">Gerador de RG</a></li>
-            <li><a href="#cep">Gerador de CEP</a></li>
-            <li><a href="#certidao">Certidões CNJ</a></li>
-            <li><a href="#cartao">Cartão de Crédito</a></li>
-            <li><a href="#bancos">Contas Bancárias</a></li>
+            <li><a href="/gerador-de-empresa">Gerador de Empresas</a></li>
+            <li><a href="/gerador-de-mock-data">Massa em Lote (Mock)</a></li>
+            <li><a href="/gerador-de-rg">Gerador de RG</a></li>
+            <li><a href="/gerador-de-cep">Gerador de CEP</a></li>
+            <li><a href="/gerador-de-certidao">Certidões CNJ</a></li>
+            <li><a href="/gerador-de-cnh">Gerador de CNH</a></li>
+            <li><a href="/gerador-de-pis">Gerador de PIS/PASEP</a></li>
+            <li><a href="/gerador-de-titulo-de-eleitor">Título de Eleitor</a></li>
+            <li><a href="/gerador-de-placa-e-renavam">Placas & RENAVAM</a></li>
           </ul>
         </div>
 
@@ -2120,19 +258,27 @@
           <ul>
             <li><a href="/calculadora-clt-pj">Calculadora CLT vs PJ</a></li>
             <li><a href="/json-para-typescript">JSON para TypeScript</a></li>
-            <li><a href="#markdown">Editor Markdown</a></li>
-            <li><a href="#curl">Conversor de cURL</a></li>
-            <li><a href="#cron">Cron Expression</a></li>
-            <li><a href="#sql">Formatador SQL</a></li>
-            <li><a href="#code-beautifier">HTML & CSS Beautifier</a></li>
-            <li><a href="#css-generator">Box-Shadow & Glass</a></li>
+            <li><a href="/formatador-de-json">Formatador de JSON</a></li>
+            <li><a href="/formatador-de-sql">Formatador SQL</a></li>
+            <li><a href="/conversor-de-curl">Conversor de cURL</a></li>
+            <li><a href="/editor-de-markdown">Editor Markdown</a></li>
+            <li><a href="/testador-de-regex">Testador de Regex</a></li>
+            <li><a href="/decodificador-de-jwt">Decodificador JWT</a></li>
+            <li><a href="/gerador-de-hash">Gerador de Hashes</a></li>
+            <li><a href="/gerador-de-senhas">Gerador de Senhas</a></li>
+            <li><a href="/gerador-de-uuid">Gerador de UUID</a></li>
+            <li><a href="/gerador-de-cron">Cron Expression</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
-          <h4>Institucional</h4>
+          <h4>Institucional & Conteúdo</h4>
           <ul>
-            <li><a href="pages/sobre.html">Sobre o Projeto</a></li>
+            <li><a href="/artigos/algoritmo-modulo-11-cpf-cnpj">Guia Módulo 11</a></li>
+            <li><a href="/artigos/clt-vs-pj-guia-tributario-desenvolvedor">Guia CLT vs PJ</a></li>
+            <li><a href="/artigos/seguranca-jwt-autenticacao-web">Segurança JWT</a></li>
+            <li><a href="/artigos/algoritmo-de-luhn-validacao-cartao">Algoritmo de Luhn</a></li>
+            <li><a href="pages/sobre.html">Sobre o Autor & Projeto</a></li>
             <li><a href="pages/contato.html">Fale Conosco</a></li>
             <li><a href="pages/privacidade.html">Política de Privacidade</a></li>
             <li><a href="pages/termos.html">Termos de Uso</a></li>
@@ -2141,8 +287,8 @@
       </div>
 
       <div class="footer-bottom">
-        <span>&copy; 2026 Caixa do Dev. Todos os direitos reservados.</span>
-        <span>Desenvolvido com foco em velocidade máxima e privacidade total.</span>
+        <span>&copy; 2026 Caixa do Dev • Criado e mantido por Alexandre Marcelino.</span>
+        <span>Processamento local de alta performance em estrita conformidade com a LGPD.</span>
       </div>
     </div>
   </footer>
@@ -2150,7 +296,7 @@
   <!-- Banner de Consentimento de Cookies (LGPD & Google AdSense) -->
   <aside id="cookie-consent-banner" class="cookie-consent-banner" aria-label="Consentimento de Cookies">
     <div class="cookie-consent-text">
-      <strong>🍪 Valorizamos sua privacidade:</strong> Utilizamos cookies para análise de tráfego e personalização de anúncios através do Google AdSense, em conformidade com a LGPD. Consulte nossa <a href="pages/privacidade.html">Política de Privacidade</a>.
+      <strong>🍪 Valorizamos sua privacidade:</strong> Utilizamos cookies para preferências de navegação e exibição de anúncios contextuais parceiros, em conformidade com a LGPD. Consulte nossa <a href="pages/privacidade.html">Política de Privacidade</a>.
     </div>
     <div class="cookie-consent-actions">
       <button id="btn-cookie-essential" class="btn btn-secondary btn-sm">Apenas Essenciais</button>
@@ -2158,47 +304,7 @@
     </div>
   </aside>
 
-  <!-- Scripts das 40 Ferramentas -->
-  <script src="js/tools/cpf-cnpj.js"></script>
-  <script src="js/tools/person-generator.js"></script>
-  <script src="js/tools/company-generator.js"></script>
-  <script src="js/tools/credit-card.js"></script>
-  <script src="js/tools/bank-account.js"></script>
-  <script src="js/tools/vehicles.js"></script>
-  <script src="js/tools/cnh-tool.js"></script>
-  <script src="js/tools/pis-tool.js"></script>
-  <script src="js/tools/voter-id.js"></script>
-  <script src="js/tools/password-generator.js"></script>
-  <script src="js/tools/json-to-ts.js"></script>
-  <script src="js/tools/regex-tester.js"></script>
-  <script src="js/tools/hash-generator.js"></script>
-  <script src="js/tools/json-csv.js"></script>
-  <script src="js/tools/subnet-calculator.js"></script>
-  <script src="js/tools/http-status.js"></script>
-  <script src="js/tools/text-tools.js"></script>
-  <script src="js/tools/qrcode-tool.js"></script>
-  <script src="js/tools/json-tool.js"></script>
-  <script src="js/tools/sql-formatter.js"></script>
-  <script src="js/tools/diff-checker.js"></script>
-  <script src="js/tools/case-converter.js"></script>
-  <script src="js/tools/color-converter.js"></script>
-  <script src="js/tools/jwt-tool.js"></script>
-  <script src="js/tools/timestamp.js"></script>
-  <script src="js/tools/uuid-tool.js"></script>
-  <script src="js/tools/base64-tool.js"></script>
-  <script src="js/tools/rg-tool.js"></script>
-  <script src="js/tools/certidao-tool.js"></script>
-  <script src="js/tools/cep-tool.js"></script>
-  <script src="js/tools/cron-tool.js"></script>
-  <script src="js/tools/markdown-tool.js"></script>
-  <script src="js/tools/curl-converter.js"></script>
-  <script src="js/tools/code-beautifier.js"></script>
-  <script src="js/tools/url-parser.js"></script>
-  <script src="js/tools/css-generator.js"></script>
-  <script src="js/tools/clt-pj-calculator.js"></script>
-  <script src="js/tools/storage-calc.js"></script>
-  <script src="js/tools/svg-tool.js"></script>
-  <script src="js/tools/mock-data.js"></script>
+  <!-- Script Principal do Hub -->
   <script src="js/app.js"></script>
 </body>
 </html>

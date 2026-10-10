@@ -115,10 +115,66 @@
           <div class="pane"><div class="pane-header"><span class="pane-title">Saída Formatada</span><div id="json-stats" style="font-size: 0.8rem; color: var(--text-muted);"></div></div><div style="position: relative;"><pre id="json-output" class="result-box large"></pre><button id="btn-copy-json" class="btn btn-secondary btn-sm result-copy-btn">Copiar</button></div></div>
         </div>
       </div>
-          <article class="tool-seo-guide">
-        <h2>O Padrão JSON (RFC 8259) e sua Importância na Web Moderna</h2>
-        <p>O formato JSON (JavaScript Object Notation) tornou-se a linguagem universal para intercâmbio de dados na web, superando amplamente o XML em simplicidade, densidade e facilidade de leitura tanto por humanos quanto por máquinas.</p>
-        <p>Garantir que um payload JSON esteja com sintaxe válida, aspas duplas corretas em chaves e tipos primitivos consistentes é essencial para evitar exceções de parsing em servidores de produção. O formatador da Caixa do Dev valida e embeleza estruturas complexas em tempo real com processamento 100% local no navegador.</p>
+                <article class="tool-seo-guide">
+        <h2>O Padrão JSON (RFC 8259) e Boas Práticas em APIs Modernas</h2>
+        <p>O formato <strong>JSON (JavaScript Object Notation)</strong>, formalmente especificado pelas normas <strong>RFC 8259</strong> e <strong>ECMA-404</strong>, consolidou-se como o padrão universal para tráfego e intercâmbio de dados na web, superando o XML por sua sintaxe compacta, alta velocidade de serialização/desserialização e compatibilidade nativa com quase todas as linguagens de programação contemporâneas (JavaScript, Python, Go, Java, C#, Rust, PHP).</p>
+
+        <h3>1. Regras Sintáticas Rígidas do JSON</h3>
+        <p>Diferente de literais de objeto em JavaScript (onde aspas nas chaves são opcionais e funções são permitidas), o JSON é uma especificação estrita de texto puro:</p>
+        <ul>
+          <li><strong>Chaves sempre entre Aspas Duplas:</strong> Todas as chaves de objetos devem obrigatoriamente estar envolvidas por aspas duplas (<code>"nome": "valor"</code>). Aspas simples (<code>'chave'</code>) ou chaves sem aspas causam erro imediato de sintaxe (<code>SyntaxError</code>).</li>
+          <li><strong>Proibição de Trailing Commas (Vírgulas Sobrando):</strong> Uma vírgula após o último elemento de um array ou objeto (ex: <code>{"a": 1, "b": 2,}</code>) é proibida pela RFC e rejeitada por parsers estritos.</li>
+          <li><strong>Tipos Primitivos Permitidos:</strong> Strings (entre aspas duplas), Números (inteiros ou ponto flutuante), Booleanos (<code>true</code> / <code>false</code>), <code>null</code>, Objetos (<code>{}</code>) e Arrays (<code>[]</code>). Valores como <code>undefined</code>, <code>NaN</code>, <code>Infinity</code> ou funções não existem em JSON.</li>
+        </ul>
+
+        <h3>2. Erros Mais Comuns de Parsing em APIs (e Como Evitá-los)</h3>
+        <div style="margin: 16px 0; overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+            <thead>
+              <tr style="background: rgba(255, 255, 255, 0.05); border-bottom: 1px solid var(--border-subtle); text-align: left;">
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">Código do Erro</th>
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">Causa Raiz Mais Provável</th>
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">Solução</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-family: var(--font-mono); color: #f87171;">Unexpected token &lt; in JSON at position 0</td>
+                <td style="padding: 10px 14px;">O backend retornou uma página de erro HTML (ex: 500 Internal Server Error ou 404) em vez de JSON.</td>
+                <td style="padding: 10px 14px;">Verificar o status HTTP e cabeçalho <code>Content-Type: application/json</code> da resposta.</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-family: var(--font-mono); color: #f87171;">Unexpected token ' in JSON</td>
+                <td style="padding: 10px 14px;">Payload gerado com aspas simples copiadas de prints de console Python/JavaScript.</td>
+                <td style="padding: 10px 14px;">Substituir todas as aspas simples por aspas duplas válidas.</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px 14px; font-family: var(--font-mono); color: #f87171;">Unexpected end of JSON input</td>
+                <td style="padding: 10px 14px;">Chaves ou colchetes não fechados, ou payload truncado por limite de tamanho de buffer.</td>
+                <td style="padding: 10px 14px;">Usar o formatador da Caixa do Dev para identificar a linha e coluna exatas do fechamento pendente.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>3. Dicas de Otimização: Prettify vs Minify</h3>
+        <p>No ambiente de depuração local e documentação técnica, um JSON formatado com recuo (indented / beautified com 2 espaços) melhora drasticamente a legibilidade humana. Já em ambientes de produção e alta volumetria de rede, <strong>minificar o JSON</strong> (removendo quebras de linha e espaços desnecessários) pode reduzir o payload em <strong>15% a 35%</strong>, economizando largura de banda e acelerando o tempo de resposta em conexões móveis.</p>
+
+        <h3>Perguntas Frequentes sobre Formatação JSON (FAQ)</h3>
+        <div class="faq-list" style="margin-top: 16px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>JSON suporta comentários de código?</span><span>+</span></div>
+            <div class="faq-answer">Não. A especificação oficial RFC 8259 intencionalmente não suporta comentários (// ou /* */) para impedir que diferentes parsers criassem regras conflitantes de interpretação. Caso precise de comentários em arquivos de configuração, formatos alternativos como JSONC, YAML ou TOML são recomendados.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>O formatador da Caixa do Dev salva ou monitora meu JSON?</span><span>+</span></div>
+            <div class="faq-answer">Não. A validação e o embelezamento de JSON ocorrem 100% no navegador do usuário utilizando o motor nativo JSON.parse() e JSON.stringify() do V8/JavaScript. Nenhum dado ou payload trafega para servidores externos.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Como converter JSON para tipagem TypeScript automaticamente?</span><span>+</span></div>
+            <div class="faq-answer">Você pode utilizar nossa ferramenta dedicada <a href="/json-para-typescript" style="color: var(--accent-cyan); font-weight: 600;">JSON para TypeScript</a>, que analisa a estrutura do seu objeto e gera interfaces tipadas completas em segundos.</div>
+          </div>
+        </div>
       </article>
     
     </section>

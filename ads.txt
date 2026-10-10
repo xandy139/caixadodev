@@ -1,0 +1,5 @@
+# Caixa do Dev - Authorized Digital Sellers (ads.txt)
+# https://www.caixadodev.com.br
+#
+# Quando aprovado pelo Google AdSense, descomente e preencha com seu ID de editor:
+# google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
