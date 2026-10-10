@@ -120,9 +120,31 @@
         </div>
       </div>
 
-      <article class="tool-seo-guide">
-        <h2>A Importância da Minificação para Core Web Vitals e SEO</h2>
-        <p>Minificar arquivos HTML e CSS reduz bytes transferidos na rede, economiza largura de banda do servidor e melhora a métrica de LCP (Largest Contentful Paint) no Google PageSpeed Insights.</p>
+            <article class="tool-seo-guide">
+        <h2>Organização Estrutural e Padronização de Código HTML5 e CSS3</h2>
+        <p>A qualidade de um código web não é medida apenas por seu funcionamento no navegador, mas pela facilidade de manutenção por outros membros do time de desenvolvimento. Arquivos HTML desorganizados com tags órfãs, fechamentos fora de ordem e arquivos CSS com propriedades agrupadas sem critério aumentam o tempo de depuração e introduzem bugs visuais sutis em diferentes navegadores.</p>
+
+        <h3>1. Regras de Boas Práticas em HTML Semântico</h3>
+        <ul>
+          <li><strong>Utilize Tags Semânticas:</strong> Prefira <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;section&gt;</code> e <code>&lt;footer&gt;</code> em vez de dezenas de <code>&lt;div&gt;</code> genéricas. Isso melhora a acessibilidade para leitores de tela e o rankeamento em motores de busca (SEO).</li>
+          <li><strong>Indentação Hierárquica Consistente:</strong> Cada elemento filho deve ter um recuo de 2 ou 4 espaços em relação ao elemento pai.</li>
+          <li><strong>Atributos em Ordem Lógica:</strong> Mantenha uma convenção padronizada de ordem de atributos (ex: <code>class</code>, <code>id</code>, <code>name</code>, <code>data-*</code>, <code>src/href</code>).</li>
+        </ul>
+
+        <h3>2. Prettify vs Minify: Quando Usar Cada Um?</h3>
+        <p>Durante a fase de desenvolvimento local, o código deve ser formatado de forma espaçada e legível (Prettify) para permitir inspeção rápida e revisões em Pull Requests. Já na esteira de deploy e produção (CI/CD), ferramentas de minificação removem quebras de linha, comentários e espaços em branco desnecessários para reduzir os bytes transferidos pela rede e acelerar o tempo de carregamento da página (First Contentful Paint).</p>
+
+        <h3>Perguntas Frequentes sobre Formatação Web (FAQ)</h3>
+        <div class="faq-list" style="margin-top: 16px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>A ferramenta remove comentários do meu código?</span><span>+</span></div>
+            <div class="faq-answer">No modo de embelezamento e formatação, todos os comentários úteis são rigorosamente preservados. Apenas espaços e quebras de linhas inconsistentes são corrigidos.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>O processamento é feito localmente?</span><span>+</span></div>
+            <div class="faq-answer">Sim! Toda a análise sintática de HTML e CSS é executada 100% no motor JavaScript do seu próprio navegador, sem enviar nenhuma linha de código aos nossos servidores.</div>
+          </div>
+        </div>
       </article>
     
     </section>

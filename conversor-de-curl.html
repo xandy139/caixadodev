@@ -128,9 +128,33 @@
         </div>
       </div>
 
-      <article class="tool-seo-guide">
-        <h2>Como Transformar Chamadas cURL em Código de Produção</h2>
-        <p>Documentações de APIs famosas (Stripe, GitHub, OpenAI, PagSeguro) costumam exemplificar requisições com cURL. O conversor extrai método HTTP, cabeçalhos de autenticação e payload JSON para convertê-los em código pronto para sua aplicação.</p>
+            <article class="tool-seo-guide">
+        <h2>Como Funciona a Sintaxe do cURL e Sua Conversão para Código de APIs</h2>
+        <p>O <strong>cURL (Client URL)</strong>, desenvolvido pelo engenheiro sueco Daniel Stenberg em 1997, é a ferramenta de linha de comando mais popular do mundo para transferência de dados através de protocolos de rede (HTTP, HTTPS, FTP, WebSocket). No fluxo de desenvolvimento web, a funcionalidade de <strong>"Copy as cURL"</strong> presente nas ferramentas de desenvolvedor (DevTools) de navegadores como Chrome, Firefox e Edge tornou-se o método padrão para capturar e replicar requisições de rede completas.</p>
+
+        <h3>1. Parâmetros Mais Importantes do cURL</h3>
+        <ul>
+          <li><code>-X / --request</code>: Define explicitamente o método HTTP da requisição (<code>GET</code>, <code>POST</code>, <code>PUT</code>, <code>PATCH</code>, <code>DELETE</code>).</li>
+          <li><code>-H / --header</code>: Adiciona cabeçalhos HTTP à chamada, como <code>Content-Type: application/json</code> ou <code>Authorization: Bearer token</code>.</li>
+          <li><code>-d / --data</code>: Especifica a carga útil (payload) enviada no corpo da requisição POST/PUT.</li>
+          <li><code>-L / --location</code>: Instrui o cURL a seguir redirecionamentos automáticos (status 301, 302, 308).</li>
+          <li><code>-i / --include</code>: Inclui os cabeçalhos de resposta HTTP na saída padrão do terminal para depuração.</li>
+        </ul>
+
+        <h3>2. Por que Converter cURL para JavaScript, Python e PHP?</h3>
+        <p>Ao integrar uma API de terceiros que fornece exemplos apenas em cURL em sua documentação, reproduzir manualmente os cabeçalhos, parâmetros de URL e corpo da requisição em código idiomático consome tempo. A ferramenta da Caixa do Dev analisa o comando cURL e gera blocos de código prontos para copiar utilizando <strong>Fetch API / Axios (JavaScript/Node.js)</strong>, <strong>Requests (Python)</strong> ou <strong>cURL nativo (PHP)</strong> com tratamento de erros integrado.</p>
+
+        <h3>Perguntas Frequentes sobre cURL (FAQ)</h3>
+        <div class="faq-list" style="margin-top: 16px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>Como capturar um comando cURL direto pelo navegador?</span><span>+</span></div>
+            <div class="faq-answer">Abra o DevTools (F12) no navegador, vá para a aba 'Rede' (Network), realize a ação desejada no site, clique com o botão direito na requisição desejada, selecione 'Copiar' e clique em 'Copiar como cURL (bash)'. Depois basta colar aqui para gerar o código equivalente na sua linguagem favorita.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>A ferramenta executa a requisição cURL na internet?</span><span>+</span></div>
+            <div class="faq-answer">Não. A ferramenta realiza apenas a análise sintática (parsing) do comando no seu navegador e traduz os parâmetros para código fonte da linguagem escolhida. Nenhuma requisição real é disparada.</div>
+          </div>
+        </div>
       </article>
     
     </section>

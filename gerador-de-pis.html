@@ -128,10 +128,34 @@
           <input type="text" id="input-validate-pis" class="form-control" placeholder="Digite o PIS..." maxlength="14">
         </div>
       </div>
-          <article class="tool-seo-guide">
-        <h2>O Número do PIS/PASEP/NIT e o Cálculo Módulo 11</h2>
-        <p>O Programa de Integração Social (PIS) e o Programa de Formação do Patrimônio do Servidor Público (PASEP) possuem um número de identificação do trabalhador composto por 11 dígitos numéricos.</p>
-        <p>O 11º dígito é o dígito verificador, obtido através de uma soma ponderada dos 10 primeiros números com os pesos 3, 2, 9, 8, 7, 6, 5, 4, 3 e 2. Esta ferramenta permite a equipes de Recursos Humanos e desenvolvedores de sistemas de folha de pagamento e eSocial testar rotinas de admissão com precisão.</p>
+                <article class="tool-seo-guide">
+        <h2>Como Funciona a Validação do PIS/PASEP e o Algoritmo do Módulo 11</h2>
+        <p>O <strong>PIS (Programa de Integração Social)</strong> e o <strong>PASEP (Programa de Formação do Patrimônio do Servidor Público)</strong>, unificados sob o Número de Identificação Social (NIS) e o NIT perante a Previdência Social, identificam os trabalhadores do setor privado (via Caixa Econômica Federal) e servidores públicos (via Banco do Brasil). No ecossistema de folha de pagamento, sistemas de ponto eletrônico e eSocial, a validação da sequência numérica do PIS é obrigatória.</p>
+
+        <h3>1. O Algoritmo de Cálculo do Dígito Verificador</h3>
+        <p>O número do PIS é composto por <strong>11 algarismos decimais</strong> no formato tradicional <code>XXX.XXXXX.XX-D</code>, onde os 10 primeiros dígitos formam o registro base e o último é o dígito verificador calculado por uma variação do Módulo 11 com pesos de <strong>3 a 2 e 9 a 2</strong>:</p>
+
+        <ol>
+          <li>Multiplicam-se os 10 primeiros dígitos pela sequência fixa de pesos: <code>[3, 2, 9, 8, 7, 6, 5, 4, 3, 2]</code>.</li>
+          <li>Calcula-se a soma total dos produtos.</li>
+          <li>Aplica-se o resto da divisão por 11 (<code>Resto = Soma % 11</code>).</li>
+          <li>Se <code>Resto < 2</code>, o dígito verificador é <strong>0</strong>. Caso contrário, o dígito é <strong>11 - Resto</strong>.</li>
+        </ol>
+
+        <h3>2. Aviso de Ambiente de Testes Sandbox</h3>
+        <p>Esta ferramenta foi construída exclusivamente para <strong>desenvolvedores de software e testadores de sistemas de RH e folha de pagamento</strong> para validação de esteiras e testes de máscaras em formulários. Os números gerados são matematicamente consistentes, mas de caráter estritamente sintético e randômico, sem registro perante a Caixa Econômica ou Ministério do Trabalho.</p>
+
+        <h3>Perguntas Frequentes sobre PIS (FAQ)</h3>
+        <div class="faq-list" style="margin-top: 16px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>PIS, PASEP, NIS e NIT são o mesmo número?</span><span>+</span></div>
+            <div class="faq-answer">Sim! Embora tenham finalidades históricas e origens administrativas distintas, todos utilizam a mesma base cadastral unificada de 11 dígitos e o mesmo algoritmo de validação matemática perante a Previdência Social.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>A ferramenta armazena os números gerados?</span><span>+</span></div>
+            <div class="faq-answer">Não! A geração e validação de PIS ocorrem 100% no motor JavaScript do seu navegador com respeito absoluto à sua privacidade.</div>
+          </div>
+        </div>
       </article>
     
     </section>

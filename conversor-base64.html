@@ -114,10 +114,36 @@
           <div class="pane"><div class="pane-header"><span class="pane-title">Resultado</span><button id="btn-copy-base64" class="btn btn-secondary btn-sm">Copiar</button></div><textarea id="base64-output" class="form-control" readonly placeholder="O resultado aparecerá aqui..."></textarea></div>
         </div>
       </div>
-          <article class="tool-seo-guide">
-        <h2>Codificação Base64 e Codificação de URL (URL Encoding)</h2>
-        <p>A codificação Base64 (definida na RFC 4648) converte dados binários ou sequências de 8 bits em um alfabeto restrito de 64 caracteres imprimíveis da tabela ASCII. Ela é amplamente utilizada para transmitir imagens embutidas em HTML/CSS, anexos em e-mails (MIME) e credenciais em cabeçalhos HTTP Basic Auth.</p>
-        <p>A codificação de URL (RFC 3986), por sua vez, substitui caracteres reservados ou acentuados pelo símbolo de porcentagem seguido por dois dígitos hexadecimais (como <code>%20</code> para espaços ou <code>%C3%A3</code> para a letra ã), garantindo que dados enviados via query string ou formulários web transitem com total integridade sem sofrer corrupção de protocolo.</p>
+                <article class="tool-seo-guide">
+        <h2>Como Funciona a Codificação Base64 (RFC 4648)</h2>
+        <p>O <strong>Base64</strong> é um algoritmo de codificação de dados binários para texto ASCII padronizado pela especificação <strong>RFC 4648</strong> da IETF. Ele foi concebido para viabilizar a transmissão confiável de dados binários (como imagens, arquivos executáveis, chaves criptográficas e certificados digitais) através de canais de comunicação desenvolvidos historicamente para trafegar exclusivamente caracteres de texto legível de 7 bits, como o protocolo de e-mail (SMTP) e cabeçalhos HTTP.</p>
+
+        <h3>1. A Matemática por Trás do Base64</h3>
+        <p>A codificação opera agrupando blocos de <strong>3 bytes de entrada (24 bits no total)</strong> e dividindo-os em <strong>4 blocos de 6 bits</strong> cada. Como <code>2^6 = 64</code>, cada bloco de 6 bits é mapeado diretamente para um caractere de uma tabela fixa de 64 símbolos:</p>
+        <ul>
+          <li>Letras maiúsculas de <code>A</code> a <code>Z</code> (índices 0 a 25)</li>
+          <li>Letras minúsculas de <code>a</code> a <code>z</code> (índices 26 a 51)</li>
+          <li>Dígitos numéricos de <code>0</code> a <code>9</code> (índices 52 a 61)</li>
+          <li>Símbolos especiais <code>+</code> e <code>/</code> (índices 62 e 63)</li>
+          <li>Caractere de preenchimento (padding): o símbolo de igual <code>=</code> no final, utilizado quando a entrada de bytes não é múltipla exata de 3.</li>
+        </ul>
+
+        <p>Como consequência matemática da expansão de 3 para 4 caracteres, uma string ou arquivo codificado em Base64 torna-se aproximadamente <strong>33% maior</strong> do que seu tamanho original em bytes brutos.</p>
+
+        <h3>2. O Que É o Base64 URL-Safe?</h3>
+        <p>Em URLs e tokens JWT, os caracteres <code>+</code> e <code>/</code> do Base64 tradicional causam problemas de parsing e conflito com parâmetros de query string. A variante <strong>Base64Url</strong> substitui o sinal de mais por hífen (<code>+</code> &rarr; <code>-</code>) e a barra por sublinhado (<code>/</code> &rarr; <code>_</code>), além de omitir o preenchimento com <code>=</code>.</p>
+
+        <h3>Perguntas Frequentes sobre Base64 (FAQ)</h3>
+        <div class="faq-list" style="margin-top: 16px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>Base64 é um método de criptografia ou segurança?</span><span>+</span></div>
+            <div class="faq-answer">Não! Base64 é estritamente uma codificação de representação de dados, não possuindo chaves nem segredo criptográfico. Qualquer pessoa ou software pode decodificar uma string Base64 instantaneamente. Nunca utilize Base64 para ocultar senhas ou dados confidenciais sem antes criptografá-los com algoritmos como AES ou RSA.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>O que é um Data URI em HTML/CSS?</span><span>+</span></div>
+            <div class="faq-answer">É uma forma de incorporar pequenas imagens, ícones ou fontes diretamente dentro do código HTML ou folha de estilo CSS sem precisar de requisições HTTP adicionais, no formato: 'data:image/png;base64,iVBORw0KGgo...'.</div>
+          </div>
+        </div>
       </article>
     
     </section>

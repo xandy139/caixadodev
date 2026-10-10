@@ -115,10 +115,66 @@
           <div class="jwt-block"><div class="jwt-block-header"><span class="jwt-payload-color">Carga Útil (Payload)</span></div><pre id="jwt-payload-output">// Aguardando token...</pre></div>
         </div>
       </div>
-          <article class="tool-seo-guide">
-        <h2>Anatomia e Segurança de Tokens JWT (RFC 7519)</h2>
-        <p>JSON Web Tokens (JWT) são o padrão da indústria para representação compacta e segura de declarações de identidade em fluxos de autenticação stateless (OAuth 2.0 e OpenID Connect). Um token JWT é composto por três partes codificadas em Base64URL e separadas por pontos: <strong>Header</strong>, <strong>Payload</strong> e <strong>Signature</strong>.</p>
-        <p>Inspecionar localmente as claims padrão (como <code>sub</code> para o identificador do usuário, <code>iat</code> para data de emissão e <code>exp</code> para prazo de validade) é indispensável para depurar fluxos de login e permissões sem jamais expor suas chaves secretas ou dados confidenciais a servidores de terceiros.</p>
+                <article class="tool-seo-guide">
+        <h2>Entenda a Arquitetura de Tokens JWT (RFC 7519)</h2>
+        <p>O <strong>JSON Web Token (JWT)</strong> é o padrão industrial estabelecido pela RFC 7519 da IETF para transmissão compacta e independente de declarações de segurança (claims) entre duas partes. Em arquiteturas contemporâneas de APIs REST, microsserviços e OAuth 2.0 / OpenID Connect, o JWT é a principal credencial de autenticação e autorização sem estado (stateless).</p>
+
+        <h3>1. Estrutura dos 3 Componentes</h3>
+        <p>Um JWT é formado por três partes codificadas em Base64Url unidas por pontos (<code>Header.Payload.Signature</code>):</p>
+        <ul>
+          <li><strong>Header:</strong> Contém o tipo do token (<code>typ: "JWT"</code>) e o algoritmo criptográfico de assinatura (ex: <code>alg: "HS256"</code> ou <code>alg: "RS256"</code>).</li>
+          <li><strong>Payload:</strong> Contém as declarações (claims) de identidade do usuário e contexto da sessão. O payload <em>não é criptografado por padrão</em>; ele é apenas codificado. Portanto, nunca armazene segredos de estado ou senhas no payload.</li>
+          <li><strong>Signature:</strong> O hash criptográfico gerado com a chave privada ou chave secreta compartilhada do servidor, garantindo que o token não foi adulterado durante o transporte.</li>
+        </ul>
+
+        <h3>2. Claims Padronizadas Mais Relevantes</h3>
+        <div style="margin: 16px 0; overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+            <thead>
+              <tr style="background: rgba(255, 255, 255, 0.05); border-bottom: 1px solid var(--border-subtle); text-align: left;">
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">Claim</th>
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">Nome Completo</th>
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">Descrição Técnica</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-family: var(--font-mono); color: var(--accent-cyan);">sub</td>
+                <td style="padding: 10px 14px;">Subject (Assunto)</td>
+                <td style="padding: 10px 14px;">Identificador único do usuário no banco de dados (ex: UUID ou ID numérico).</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-family: var(--font-mono); color: var(--accent-cyan);">exp</td>
+                <td style="padding: 10px 14px;">Expiration Time</td>
+                <td style="padding: 10px 14px;">Timestamp UNIX em segundos a partir do qual o token perde a validade.</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-family: var(--font-mono); color: var(--accent-cyan);">iat</td>
+                <td style="padding: 10px 14px;">Issued At</td>
+                <td style="padding: 10px 14px;">Timestamp UNIX exato em que o token foi emitido pelo servidor de autenticação.</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px 14px; font-family: var(--font-mono); color: var(--accent-cyan);">iss</td>
+                <td style="padding: 10px 14px;">Issuer (Emissor)</td>
+                <td style="padding: 10px 14px;">Identificador do serviço que emitiu o token (ex: 'https://auth.caixadodev.com.br').</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>Para aprender mais sobre falhas de segurança críticas como o algoritmo 'none' e armazenamento de tokens em cookies HttpOnly, leia nosso artigo completo: <a href="/artigos/seguranca-jwt-autenticacao-web" style="color: var(--accent-cyan); font-weight: 600;">Anatomia e Segurança de Tokens JWT &rarr;</a>.</p>
+
+        <h3>Perguntas Frequentes sobre JWT (FAQ)</h3>
+        <div class="faq-list" style="margin-top: 16px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>O decodificador da Caixa do Dev valida a assinatura criptográfica?</span><span>+</span></div>
+            <div class="faq-answer">O decodificador inspeciona visualmente os dados contidos no Header e no Payload e converte os timestamps UNIX de expiração para datas legíveis em horário local. A validação criptográfica da assinatura depende da chave secreta privada, que só existe no servidor da sua aplicação.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>É seguro colar tokens de autenticação corporativos nesta ferramenta?</span><span>+</span></div>
+            <div class="faq-answer">Sim! Todo o processamento é 100% Client-Side. O código de decodificação roda exclusivamente na engine JavaScript do seu próprio navegador, sem enviar nenhuma requisição de rede para nossos servidores.</div>
+          </div>
+        </div>
       </article>
     
     </section>

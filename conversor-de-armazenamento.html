@@ -138,9 +138,64 @@
         </div>
       </div>
 
-      <article class="tool-seo-guide">
-        <h2>Entenda a Diferença entre Megabits (Mbps) e Megabytes (MB/s)</h2>
-        <p>As operadoras de telecomunicação vendem velocidades em <strong>Megabits por segundo (Mbps)</strong>, enquanto os navegadores e discos rígidos medem transferências em <strong>Megabytes por segundo (MB/s)</strong>. Como 1 Byte equivale a 8 Bits, uma internet de 800 Mbps atinge uma taxa máxima teórica de 100 MB/s de download.</p>
+            <article class="tool-seo-guide">
+        <h2>Entenda as Unidades Digitais: Bytes, Kilobytes, Megabytes e Padrão IEC</h2>
+        <p>A quantificação de dados na ciência da computação possui uma histórica dualidade que frequentemente confunde desenvolvedores e consumidores: a diferença entre o sistema <strong>Decimal (base 10)</strong> do Sistema Internacional de Unidades (SI) e o sistema <strong>Binário (base 2)</strong> padronizado pela Comissão Eletrotécnica Internacional (IEC). Compreender essa distinção é fundamental ao calcular cotas de armazenamento em nuvem, limites de upload em APIs e dimensionamento de bancos de dados.</p>
+
+        <h3>1. Padrão SI (Base 10) vs Padrão IEC (Base 2)</h3>
+        <div style="margin: 16px 0; overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+            <thead>
+              <tr style="background: rgba(255, 255, 255, 0.05); border-bottom: 1px solid var(--border-subtle); text-align: left;">
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">Unidade SI (Decimal)</th>
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">Valor em Bytes</th>
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">Unidade IEC (Binária)</th>
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">Valor em Bytes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-weight: 600;">1 KB (Kilobyte)</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">1.000 bytes (10^3)</td>
+                <td style="padding: 10px 14px; font-weight: 600;">1 KiB (Kibibyte)</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">1.024 bytes (2^10)</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-weight: 600;">1 MB (Megabyte)</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">1.000.000 bytes (10^6)</td>
+                <td style="padding: 10px 14px; font-weight: 600;">1 MiB (Mebibyte)</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">1.048.576 bytes (2^20)</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-weight: 600;">1 GB (Gigabyte)</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">1.000.000.000 bytes (10^9)</td>
+                <td style="padding: 10px 14px; font-weight: 600;">1 GiB (Gibibyte)</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">1.073.741.824 bytes (2^30)</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px 14px; font-weight: 600;">1 TB (Terabyte)</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">10^12 bytes</td>
+                <td style="padding: 10px 14px; font-weight: 600;">1 TiB (Tebibyte)</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">2^40 bytes</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>2. Por Que um HD ou SSD de 1 TB Aparece com 931 GB no Windows?</h3>
+        <p>Essa é uma das dúvidas mais clássicas da tecnologia. Fabricantes de discos rígidos e SSDs vendem seus produtos utilizando o padrão decimal do SI (1 TB = 1.000.000.000.000 bytes). No entanto, o sistema operacional Windows calcula o espaço utilizando a base binária de 1.024 bytes (GiB), mas ainda exibe a sigla 'GB': <code>1.000.000.000.000 / (1024^3) ≈ 931,32 GiB</code>. Não há nenhum espaço perdido; trata-se apenas de sistemas de unidades diferentes!</p>
+
+        <h3>Perguntas Frequentes sobre Unidades Digitais (FAQ)</h3>
+        <div class="faq-list" style="margin-top: 16px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>Qual a diferença entre bit (b) e Byte (B)?</span><span>+</span></div>
+            <div class="faq-answer">1 Byte (com B maiúsculo) é composto por exatamente 8 bits (com b minúsculo). Velocidades de conexão de internet são comumente comercializadas em Megabits por segundo (Mbps), enquanto o tamanho de arquivos é medido em Megabytes (MB). Uma conexão de 100 Mbps baixa no máximo cerca de 12,5 MB por segundo.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>O que é um Petabyte (PB)?</span><span>+</span></div>
+            <div class="faq-answer">1 Petabyte equivale a 1.000 Terabytes (ou 1.024 TiB). É a escala utilizada por data centers globais de nuvem e grandes modelos de linguagem de Inteligência Artificial para mensurar volumes gigantescos de dados.</div>
+          </div>
+        </div>
       </article>
     
     </section>

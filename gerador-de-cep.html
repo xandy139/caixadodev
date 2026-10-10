@@ -145,9 +145,35 @@
         </div>
       </div>
 
-      <article class="tool-seo-guide">
-        <h2>Regiões Postais e Estrutura de CEPs no Brasil</h2>
-        <p>O Código de Endereçamento Postal (CEP) brasileiro possui 8 algarismos estruturados geograficamente. O primeiro dígito identifica a região postal (ex: 0 e 1 para SP, 2 para RJ/ES, 3 para MG, 4 para BA/SE, etc.). O Caixa do Dev valida as faixas oficiais de todos os 27 estados.</p>
+            <article class="tool-seo-guide">
+        <h2>A Estrutura do Código de Endereçamento Postal Brasileiro (CEP)</h2>
+        <p>Criado pela Empresa Brasileira de Correios e Telégrafos (ECT) em 1971 e expandido em 1992 para o formato atual de <strong>8 dígitos numéricos (XXXXX-YYY)</strong>, o <strong>CEP (Código de Endereçamento Postal)</strong> é o identificador logístico padronizado que organiza a distribuição e triagem de correspondências e encomendas em todo o território nacional.</p>
+
+        <h3>1. A Anatomia dos 8 Dígitos do CEP</h3>
+        <p>Ao contrário do que muitos pensam, os números de um CEP não são aleatórios; eles seguem uma rígida divisão geográfica hierárquica:</p>
+        <ul>
+          <li><strong>1º Dígito (Região Postal):</strong> O Brasil é dividido em 10 regiões postais (de 0 a 9). A região 0 representa a Grande São Paulo; região 1 representa o Interior de SP; região 2 representa RJ e ES; região 3 representa MG, e assim sucessivamente.</li>
+          <li><strong>2º Dígito (Sub-região Postal):</strong> Refina a localização geográfica dentro do estado.</li>
+          <li><strong>3º Dígito (Setor Postal):</strong> Determina a microrregião de entrega.</li>
+          <li><strong>4º Dígito (Subsetor Postal):</strong> Identifica a zona urbana ou polo municipal.</li>
+          <li><strong>5º Dígito (Divisor de Subsetor):</strong> Encerra o bloco base de 5 dígitos (o CEP genérico de pequenas cidades).</li>
+          <li><strong>3 Últimos Dígitos (Sufixo de Distribuição):</strong> Identificam logradouros específicos (ruas, avenidas, praças), grandes condomínios ou centros de triagem postal de alta volumetria.</li>
+        </ul>
+
+        <h3>2. O Uso de CEPs em Testes de Homologação de E-commerce</h3>
+        <p>No desenvolvimento de lojas virtuais e esteiras de frete, testar o cálculo de frete com APIs dos Correios, Melhor Envio ou Jadlog exige números de CEP válidos para simular prazos de entrega e precificação de envio por região. Esta ferramenta gera CEPs de teste cobrindo todas as 10 regiões postais do país.</p>
+
+        <h3>Perguntas Frequentes sobre CEP (FAQ)</h3>
+        <div class="faq-list" style="margin-top: 16px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>Por que cidades pequenas possuem apenas um CEP terminado em -000?</span><span>+</span></div>
+            <div class="faq-answer">Municípios com população menor e número reduzido de logradouros adotam o chamado CEP único (ex: 13860-000), onde todas as correspondências da cidade compartilham o mesmo código e a diferenciação é feita pelo nome da rua na etiqueta.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Qual a diferença entre validação de máscara de CEP e consulta de endereço?</span><span>+</span></div>
+            <div class="faq-answer">A validação de máscara no frontend apenas checa se a string possui 8 números no formato correto (regex /^\d{5}-?\d{3}$/). A consulta de existência real e preenchimento automático de rua e bairro depende de chamadas a serviços de API como ViaCEP ou BrasilAPI.</div>
+          </div>
+        </div>
       </article>
     
     </section>

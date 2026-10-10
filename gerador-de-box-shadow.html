@@ -153,9 +153,40 @@
         </div>
       </div>
 
-      <article class="tool-seo-guide">
-        <h2>Boas Práticas de Sombras e Profundidade em UI Moderno</h2>
-        <p>Evite sombras duras e escuras no design digital moderno. Utilize raios de desfoque amplos (blur elevado) com baixa opacidade (10% a 25%) para criar uma sensação autêntica de elevação tridimensional conforme o design system de referências como Apple, Vercel e Linear.</p>
+            <article class="tool-seo-guide">
+        <h2>Como Funciona a Propriedade CSS Box-Shadow e Efeitos Modernos de Profundidade</h2>
+        <p>A propriedade <strong>box-shadow</strong> do CSS3 permite adicionar efeitos de sombra ao redor do contorno de elementos HTML, criando ilusão de elevação, profundidade espacial (Z-index visual) e hierarquia de interface em design systems modernos. Utilizada desde o Material Design do Google até estilos contemporâneos de <em>Glassmorphism</em> e <em>Neumorphism</em>, dominar seus parâmetros é essencial para desenvolvedores frontend.</p>
+
+        <h3>1. A Anatomia dos 5 Parâmetros do Box-Shadow</h3>
+        <pre style="background: var(--bg-surface); padding: 14px 18px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); color: #38bdf8; font-family: 'JetBrains Mono', monospace; font-size: 0.88rem;">
+box-shadow: [inset] &lt;offset-x&gt; &lt;offset-y&gt; &lt;blur-radius&gt; &lt;spread-radius&gt; &lt;color&gt;;
+        </pre>
+        <ul>
+          <li><strong>Offset-X:</strong> Deslocamento horizontal da sombra. Valores positivos movem a sombra para a direita; negativos para a esquerda.</li>
+          <li><strong>Offset-Y:</strong> Deslocamento vertical. Valores positivos projetam a sombra para baixo (simulando luz vinda de cima).</li>
+          <li><strong>Blur Radius (Desfoque):</strong> Quanto maior o valor, mais suave e dispersa a sombra se torna. Se for 0, a sombra fica nítida como um bloco sólido.</li>
+          <li><strong>Spread Radius (Espalhamento):</strong> Expande ou contrai o tamanho geral da sombra antes de aplicar o desfoque.</li>
+          <li><strong>Inset:</strong> Palavra-chave opcional que inverte a sombra, fazendo-a aparecer dentro do elemento (efeito de botão pressionado ou campo afundado).</li>
+        </ul>
+
+        <h3>2. O Segredo das Sombras Naturais e Realistas</h3>
+        <p>Sombras com cor preta pura opaca (ex: <code>rgba(0, 0, 0, 0.5)</code>) tendem a parecer artificiais e sujas em interfaces limpas. Designers profissionais utilizam duas técnicas:</p>
+        <ol>
+          <li><strong>Múltiplas Camadas (Layered Shadows):</strong> Combinar duas ou três sombras menores empilhadas no mesmo elemento produz um degradê suave muito mais próximo da difusão de luz real.</li>
+          <li><strong>Tonalização com a Cor de Fundo:</strong> Utilizar um tom escuro sutil da mesma cor do fundo em vez de preto puro traz harmonia cromática à tela.</li>
+        </ol>
+
+        <h3>Perguntas Frequentes sobre Box-Shadow (FAQ)</h3>
+        <div class="faq-list" style="margin-top: 16px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>Qual a diferença entre box-shadow e drop-shadow em CSS?</span><span>+</span></div>
+            <div class="faq-answer">O box-shadow projeta a sombra ao redor da caixa retangular do elemento (mesmo que ele tenha fundo transparente). Já o filtro 'filter: drop-shadow()' respeita os contornos e transparências reais da imagem ou ícone SVG interno.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>O uso excessivo de box-shadow afeta a performance da página?</span><span>+</span></div>
+            <div class="faq-answer">Sim! Sombras com raios de desfoque muito altos em elementos animados ou que sofrem scroll frequente exigem recálculo de pintura da GPU (Paint). Para animações a 60 FPS, prefira animar propriedades como transform e opacity.</div>
+          </div>
+        </div>
       </article>
     
     </section>

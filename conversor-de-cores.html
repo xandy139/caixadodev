@@ -114,10 +114,35 @@
           <div class="form-group"><label class="form-label" for="input-color-hsl"><span>HSL:</span><span class="tool-card-action" style="cursor: pointer; font-size: 0.75rem;" onclick="copyToClipboard(document.getElementById('input-color-hsl').value)">Copiar</span></label><input type="text" id="input-color-hsl" class="form-control" value="hsl(239, 84%, 67%)"></div>
         </div>
       </div>
-          <article class="tool-seo-guide">
-        <h2>Modelos de Cores Digitais e Acessibilidade Visual (WCAG)</h2>
-        <p>O design de interfaces web utiliza diferentes representações numéricas para cores: o formato hexadecimal (HEX), o modelo aditivo RGB (Red, Green, Blue) e o intuitivo HSL (Hue, Saturation, Lightness), que facilita ajustes de saturação e luminosidade para temas escuros.</p>
-        <p>Garantir o contraste de cores adequado em conformidade com as diretrizes de acessibilidade WCAG 2.1 (níveis AA e AAA) assegura que textos e botões sejam perfeitamente legíveis para pessoas com baixa visão ou daltonismo, além de ser um fator positivo avaliado em auditorias de qualidade do Google.</p>
+                <article class="tool-seo-guide">
+        <h2>Modelos de Cor no Desenvolvimento Web: HEX, RGB, HSL e CSS Moderno</h2>
+        <p>A representação visual de cores no desenvolvimento frontend e design de interfaces evoluiu consideravelmente desde os primórdios da web. Enquanto os monitores utilizam o modelo aditivo de emissão de luz vermelha, verde e azul (RGB), a especificação <strong>CSS Color Module Level 4 e 5</strong> do consórcio W3C trouxe novos espaços de cor que facilitam o design de temas dinâmicos, paletas acessíveis e modos escuros (dark mode).</p>
+
+        <h3>1. Comparativo dos Formatos Tradicionais</h3>
+        <ul>
+          <li><strong>HEX (#RRGGBB):</strong> Notação hexadecimal tradicional compacta de 6 dígitos (ou 8 dígitos com canal alfa para transparência). Muito utilizada por designers no Figma e em tokens CSS estáticos.</li>
+          <li><strong>RGB / RGBA (rgb(r, g, b)):</strong> Especifica a intensidade de cada canal de 0 a 255. Permite controle direto da síntese aditiva de monitores.</li>
+          <li><strong>HSL (hsl(hue, saturação, luminosidade)):</strong> É o formato mais ergonômico para humanos e desenvolvedores. O matiz (Hue) é um círculo de 0 a 360 graus, enquanto a Saturação e a Luminosidade são porcentagens de 0% a 100%. Mudar a luminosidade de <code>hsl(220, 90%, 50%)</code> para <code>hsl(220, 90%, 15%)</code> cria instantaneamente a versão escura da mesma cor.</li>
+        </ul>
+
+        <h3>2. Acessibilidade e Contraste WCAG</h3>
+        <p>As diretrizes de acessibilidade na web <strong>WCAG 2.1</strong> recomendam taxas mínimas de contraste para garantir que textos sejam legíveis por pessoas com baixa visão ou daltonismo:</p>
+        <ul>
+          <li><strong>Nível AA (Mínimo recomendado):</strong> Proporção de contraste de pelo menos <strong>4.5:1</strong> para textos normais e <strong>3:1</strong> para textos grandes (acima de 18pt).</li>
+          <li><strong>Nível AAA (Máxima conformidade):</strong> Proporção de contraste de pelo menos <strong>7:1</strong> para textos normais.</li>
+        </ul>
+
+        <h3>Perguntas Frequentes sobre Cores na Web (FAQ)</h3>
+        <div class="faq-list" style="margin-top: 16px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>O que são espaços de cor Wide Gamut como Display P3?</span><span>+</span></div>
+            <div class="faq-answer">Espaços tradicionais como sRGB cobrem apenas uma fração das cores que o olho humano enxerga. Telas modernas (OLED, Retina Displays) suportam o espaço Display P3, capaz de exibir tons de verde, vermelho e ciano cerca de 50% mais vibrantes do que o sRGB antigo.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Por que usar HSL em design systems de modo escuro?</span><span>+</span></div>
+            <div class="faq-answer">Porque o modelo HSL desacopla a cor (matiz) da luminosidade. Para criar variações de foco, hover e temas claros/escuros, basta ajustar a variável de luminosidade mantendo o matiz da marca inalterado.</div>
+          </div>
+        </div>
       </article>
     
     </section>

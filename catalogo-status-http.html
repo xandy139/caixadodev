@@ -116,10 +116,37 @@
 
         <div id="http-cards-grid" class="http-status-grid"></div>
       </div>
-          <article class="tool-seo-guide">
-        <h2>Boas Práticas de Códigos de Status HTTP em APIs REST</h2>
-        <p>O protocolo HTTP define códigos de resposta padronizados divididos em 5 classes: <code>1xx (Informativos)</code>, <code>2xx (Sucesso)</code>, <code>3xx (Redirecionamento)</code>, <code>4xx (Erro do Cliente)</code> e <code>5xx (Erro do Servidor)</code>.</p>
-        <p>Construir APIs de alto padrão exige semântica correta: utilize <strong>201 Created</strong> ao criar novos recursos via POST, <strong>204 No Content</strong> após exclusões bem-sucedidas via DELETE, <strong>400 Bad Request</strong> ou <strong>422 Unprocessable Entity</strong> para dados de entrada inválidos e <strong>404 Not Found</strong> quando a entidade não existir.</p>
+                <article class="tool-seo-guide">
+        <h2>Guia de Referência dos Códigos de Status HTTP (RFC 9110)</h2>
+        <p>Os <strong>Códigos de Status HTTP (HTTP Status Codes)</strong> são respostas padronizadas pela <strong>RFC 9110 da IETF</strong> e mantidos pela autoridade global <strong>IANA</strong>. Quando um navegador, aplicativo móvel ou microsserviço envia uma requisição a um servidor web, o servidor responde com um código numérico de 3 dígitos agrupado em cinco classes lógicas que descrevem o desfecho da comunicação.</p>
+
+        <h3>1. As Cinco Classes de Códigos HTTP</h3>
+        <ul>
+          <li><strong>1xx (Informativo):</strong> A requisição foi recebida e o processo continua (ex: <code>101 Switching Protocols</code> em conexões WebSocket).</li>
+          <li><strong>2xx (Sucesso):</strong> A ação foi compreendida, aceita e executada com êxito (ex: <code>200 OK</code>, <code>201 Created</code> ao inserir registros, <code>204 No Content</code> ao deletar).</li>
+          <li><strong>3xx (Redirecionamento):</strong> Ações adicionais são necessárias para completar a requisição (ex: <code>301 Moved Permanently</code>, <code>308 Permanent Redirect</code>).</li>
+          <li><strong>4xx (Erro do Cliente):</strong> A requisição possui sintaxe incorreta, falta de autenticação ou solicitou recurso inexistente (ex: <code>400 Bad Request</code>, <code>401 Unauthorized</code>, <code>403 Forbidden</code>, <code>404 Not Found</code>, <code>422 Unprocessable Entity</code>).</li>
+          <li><strong>5xx (Erro do Servidor):</strong> O servidor encontrou uma condição inesperada ao tentar processar a solicitação (ex: <code>500 Internal Server Error</code>, <code>502 Bad Gateway</code>, <code>503 Service Unavailable</code>).</li>
+        </ul>
+
+        <h3>2. Diferenças Sutis Cruciais em APIs REST</h3>
+        <p>Erros de semântica comuns entre desenvolvedores backend:</p>
+        <ul>
+          <li><strong>401 Unauthorized vs 403 Forbidden:</strong> O <code>401</code> significa falta de autenticação ("quem é você? Faça login"). Já o <code>403</code> significa que o usuário está autenticado com sucesso, mas não tem permissão para acessar aquele recurso específico ("sei quem é você, mas você não é administrador").</li>
+          <li><strong>400 Bad Request vs 422 Unprocessable Entity:</strong> O <code>400</code> indica erro de sintaxe bruta (ex: JSON mal formatado que nem pôde ser lido). O <code>422</code> indica que o JSON é sintaticamente válido, mas falhou nas regras de validação semântica de negócio (ex: campo 'idade' com número negativo).</li>
+        </ul>
+
+        <h3>Perguntas Frequentes sobre HTTP (FAQ)</h3>
+        <div class="faq-list" style="margin-top: 16px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>O que significa o código HTTP 418 I'm a teapot?</span><span>+</span></div>
+            <div class="faq-answer">O código 418 é um Easter Egg tradicional da IETF definido na RFC 2324 (Hyper Text Coffee Pot Control Protocol) em 1º de abril de 1998, indicando que uma cafeteira recusa-se a passar café por ser um bule de chá. Tornou-se um clássico da cultura hacker de padrões de rede.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Por que o erro 502 Bad Gateway acontece frequentemente?</span><span>+</span></div>
+            <div class="faq-answer">Ocorre quando um servidor proxy reverso (como Nginx, Cloudflare ou Vercel) tenta se comunicar com a aplicação backend (Node.js, Python, Go) por trás dele, mas a aplicação travou, não respondeu a tempo ou reiniciou de forma inesperada.</div>
+          </div>
+        </div>
       </article>
     
     </section>

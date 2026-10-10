@@ -125,10 +125,33 @@
           <span id="pass-strength-label" style="font-size: 0.8rem; font-weight: 700; margin-top: 6px; display: block;">Força: Forte</span>
         </div>
       </div>
-          <article class="tool-seo-guide">
-        <h2>Entropia de Senhas e Segurança Criptográfica</h2>
-        <p>A força real de uma senha é medida em <strong>bits de entropia</strong>, que calcula a imprevisibilidade matemática da combinação escolhida. Senhas longas que combinam letras maiúsculas, minúsculas, números e caracteres especiais oferecem resistência exponencial contra ataques de dicionário e ataques de força bruta.</p>
-        <p>Segundo as diretrizes mais recentes do NIST (National Institute of Standards and Technology), o comprimento da senha é o fator isolado mais determinante para a sua robustez. Nosso gerador utiliza geração pseudo-aleatória segura para criar senhas de alta entropia.</p>
+                <article class="tool-seo-guide">
+        <h2>Entropia Criptográfica e Diretrizes do NIST para Senhas Seguras</h2>
+        <p>A criação de credenciais fortes é a primeira barreira de contenção contra ataques de força bruta, dicionário e vazamentos de credenciais. Historicamente, políticas corporativas forçavam regras antiquadas como troca obrigatória a cada 30 dias e inclusão compulsória de símbolos aleatórios, gerando senhas fracas e previsíveis anotadas em papéis de mesa. A publicação especial <strong>NIST SP 800-63B</strong> do Instituto Nacional de Padrões e Tecnologia dos EUA revolucionou essas diretrizes.</p>
+
+        <h3>1. O Que É Entropia em Bits?</h3>
+        <p>A força de uma senha não é medida pela sua complexidade visual, mas pela sua <strong>entropia em bits de informação</strong>. A fórmula básica é dada por: <code>Entropia = Comprimento × log2(Tamanho do Alfabeto)</code>.</p>
+        <ul>
+          <li>Apenas dígitos numéricos (0-9): alfabeto de 10 caracteres (~3,32 bits por dígito).</li>
+          <li>Letras minúsculas e maiúsculas (a-z, A-Z): alfabeto de 52 caracteres (~5,70 bits por caractere).</li>
+          <li>Alfanuméricos com símbolos especiais (!@#$...): alfabeto de 94 caracteres (~6,55 bits por caractere).</li>
+        </ul>
+        <p>Uma senha com <strong>mais de 80 bits de entropia</strong> exigiria séculos de processamento em supercomputadores para ser decifrada por tentativas de força bruta offline.</p>
+
+        <h3>2. CSPRNG: Por que Math.random() é Proibido para Senhas</h3>
+        <p>Funções padrão como <code>Math.random()</code> em JavaScript são geradores pseudoaleatórios determinísticos baseados no algoritmo xorshift128+. Se um atacante observar algumas saídas sequenciais, ele pode prever com exatidão matemática quais serão as próximas senhas geradas! O gerador da Caixa do Dev utiliza exclusivamente <code>window.crypto.getRandomValues()</code>, que coleta entropia de hardware do sistema operacional para geração verdadeiramente imprevisível.</p>
+
+        <h3>Perguntas Frequentes sobre Senhas (FAQ)</h3>
+        <div class="faq-list" style="margin-top: 16px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>O que é melhor: uma senha curta complexa ou uma frase longa simples?</span><span>+</span></div>
+            <div class="faq-answer">Segundo o NIST, o comprimento supera a complexidade. Uma 'passphrase' de 4 ou 5 palavras comuns encadeadas (ex: 'bateria-cavalo-grampo-correto') possui mais de 60 bits de entropia, é imensamente mais difícil de quebrar por força bruta do que 'P@ss1!' e é muito mais fácil de memorizar por humanos.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>A Caixa do Dev salva as senhas geradas nesta página?</span><span>+</span></div>
+            <div class="faq-answer">Nunca! Toda a geração ocorre na memória volátil do seu próprio navegador via Web Crypto API. Nenhuma senha, parâmetro ou informação trafega para servidores remotos.</div>
+          </div>
+        </div>
       </article>
     
     </section>

@@ -117,10 +117,33 @@
           <div class="case-card" onclick="copyToClipboard(document.getElementById('val-title').textContent)"><div class="case-card-header"><span class="case-title">Title Case</span><span class="tool-card-action" style="font-size: 0.75rem;">Copiar</span></div><span id="val-title" class="case-val">Exemplo De Variavel No Sistema</span></div>
         </div>
       </div>
-          <article class="tool-seo-guide">
-        <h2>Convenções de Nomenclatura em Linguagens de Programação</h2>
-        <p>Cada linguagem de programação e ecossistema adota convenções de nomenclatura consagradas para facilitar a legibilidade do código em equipe: <code>camelCase</code> em JavaScript/TypeScript, <code>PascalCase</code> para classes e tipos, <code>snake_case</code> em Python e bancos de dados SQL, e <code>kebab-case</code> em seletores CSS e URLs.</p>
-        <p>Esta ferramenta acelera refatorações de código, permitindo converter instantaneamente nomes de colunas, variáveis e identificadores para o padrão adotado no seu projeto.</p>
+                <article class="tool-seo-guide">
+        <h2>Convenções de Nomenclatura no Código: camelCase, PascalCase, snake_case e kebab-case</h2>
+        <p>A legibilidade e consistência na nomenclatura de variáveis, funções, classes, arquivos e rotas de API é um dos pilares mais respeitados da engenharia de software profissional. Diferentes linguagens de programação e ecossistemas técnicos estabeleceram guias de estilo (style guides) próprios para padronizar como múltiplos termos devem ser agrupados sem espaços em branco.</p>
+
+        <h3>1. As Principais Convenções da Indústria</h3>
+        <ul>
+          <li><strong>camelCase:</strong> A primeira letra é minúscula e as palavras subsequentes iniciam com maiúscula (ex: <code>buscarUsuarioPorId</code>). É a convenção padrão para nomes de variáveis e métodos em JavaScript, TypeScript e Java.</li>
+          <li><strong>PascalCase:</strong> Todas as palavras iniciam com letra maiúscula (ex: <code>UsuarioController</code>). Utilizado universalmente para nomes de classes, tipos, interfaces e componentes em React e C#.</li>
+          <li><strong>snake_case:</strong> Todas as palavras em minúsculas separadas por sublinhado (ex: <code>usuario_id</code>). É o padrão idiomático para variáveis e funções em Python, Ruby e colunas de bancos de dados relacionais SQL.</li>
+          <li><strong>SCREAMING_SNAKE_CASE:</strong> Todas as letras maiúsculas separadas por sublinhado (ex: <code>API_KEY_SECRET</code>). Reservado universalmente para constantes imutáveis e variáveis de ambiente (.env).</li>
+          <li><strong>kebab-case:</strong> Todas as palavras em minúsculas separadas por hifens (ex: <code>menu-lateral-ativo</code>). Padrão oficial para classes CSS, slugs de URLs amigáveis e nomes de pacotes no npm.</li>
+        </ul>
+
+        <h3>2. Por que Usar um Conversor de Nomenclatura Automático?</h3>
+        <p>Ao realizar refatorações ou integrar sistemas legados (por exemplo, transformando um modelo de banco de dados em snake_case em propriedades de um DTO em camelCase), converter manualmente dezenas de identificadores é tedioso. Nossa ferramenta converte qualquer texto instantaneamente no seu navegador com respeito estrito a acentuações e caracteres especiais.</p>
+
+        <h3>Perguntas Frequentes sobre Convenções de Nomenclatura (FAQ)</h3>
+        <div class="faq-list" style="margin-top: 16px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>Qual a convenção recomendada para rotas de APIs REST?</span><span>+</span></div>
+            <div class="faq-answer">As melhores práticas de arquitetura REST recomendam o uso exclusivo de kebab-case em minúsculas com substantivos no plural para rotas de endpoints (ex: /api/v1/usuarios-ativos e /pedidos-recentes).</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>O conversor altera acentos em palavras em português?</span><span>+</span></div>
+            <div class="faq-answer">Para convenções de código como camelCase, snake_case e kebab-case, a ferramenta normaliza e remove diacríticos (acentos e cedilhas) para gerar identificadores válidos em compiladores de linguagens de programação.</div>
+          </div>
+        </div>
       </article>
     
     </section>

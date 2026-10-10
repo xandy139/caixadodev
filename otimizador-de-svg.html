@@ -128,9 +128,33 @@
         </div>
       </div>
 
-      <article class="tool-seo-guide">
-        <h2>Como Usar SVGs em Folhas de Estilo CSS sem Arquivos Externos</h2>
-        <p>Incorporar ícones em formato SVG como Data URIs em atributos <code>background-image: url('data:image/svg+xml,...')</code> evita roundtrips de rede HTTP adicionais, elimina problemas de flash of unstyled content (FOUC) e otimiza a performance de renderização.</p>
+            <article class="tool-seo-guide">
+        <h2>Otimização de Arquivos SVG e a Especificação W3C de Gráficos Vetoriais</h2>
+        <p>O <strong>SVG (Scalable Vector Graphics)</strong> é a especificação padrão do W3C para gráficos bidimensionais baseados em XML. Ao contrário de formatos rasterizados matriciais (como PNG, JPEG ou WebP) compostos por pixels que perdem nitidez ao serem ampliados, o SVG armazena coordenadas matemáticas, caminhos (<code>paths</code>), formas geométricas e curvas de Bézier, mantendo resolução infinita e peso reduzido em qualquer densidade de tela (telas Retina e 4K).</p>
+
+        <h3>1. Por que Softwares de Design Geram SVGs Pesados?</h3>
+        <p>Editores gráficos populares (como Figma, Adobe Illustrator, Inkscape e Sketch) inserem dezenas de metadados auxiliares proprietários que não têm utilidade para o navegador web final:</p>
+        <ul>
+          <li>Metadados de autoria e comentários do programa (<code>&lt;metadata&gt;</code>, tags XML legadas).</li>
+          <li>IDs e classes redundantes que aumentam o tamanho do arquivo em bytes.</li>
+          <li>Grupos vazios ou desnecessários (<code>&lt;g&gt;</code>) aninhados sem atributos de estilo.</li>
+          <li>Coordenadas de pontos flutuantes com precisão excessiva (ex: <code>d="M12.348918239 45.1298319..."</code>), onde 2 ou 3 casas decimais produzem exatamente o mesmo resultado visual humano.</li>
+        </ul>
+
+        <h3>2. Ganhos de Performance em Core Web Vitals</h3>
+        <p>Otimizar SVGs inline ou externos reduz o tamanho do payload em <strong>30% a 70%</strong>. Em páginas ricas em ícones, isso se traduz em menor tempo de download, menor consumo de memória de parsing XML pelo navegador e melhora direta na métrica <strong>Largest Contentful Paint (LCP)</strong> do Google.</p>
+
+        <h3>Perguntas Frequentes sobre SVG (FAQ)</h3>
+        <div class="faq-list" style="margin-top: 16px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>O que é a tag viewBox em um SVG?</span><span>+</span></div>
+            <div class="faq-answer">O atributo viewBox define o sistema de coordenadas interno do desenho através de quatro valores: min-x, min-y, largura e altura (ex: viewBox="0 0 24 24"). Ele permite que o gráfico seja redimensionado proporcionalmente para qualquer tamanho via CSS sem distorção.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Otimizar o SVG pode distorcer a imagem?</span><span>+</span></div>
+            <div class="faq-answer">Não. A otimização limpa apenas tags e metadados mortos do XML e simplifica casas decimais imperceptíveis. A integridade visual das curvas e contornos do desenho original permanece 100% idêntica.</div>
+          </div>
+        </div>
       </article>
     
     </section>

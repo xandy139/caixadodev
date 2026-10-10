@@ -118,10 +118,81 @@
           <div class="pane"><div class="pane-header"><span class="pane-title">SQL Formatado</span><button id="btn-copy-sql" class="btn btn-secondary btn-sm">Copiar</button></div><pre id="sql-output" class="result-box large"></pre></div>
         </div>
       </div>
-          <article class="tool-seo-guide">
-        <h2>Formatação e Minificação de Consultas SQL para Alta Performance</h2>
-        <p>Queries SQL extensas, com múltiplos JOINs, subconsultas e cláusulas condicionais complexas tornam-se rapidamente ilegíveis quando condensadas em uma única linha gerada por ORMs como Hibernate, Prisma ou Entity Framework.</p>
-        <p>Formatar e identar o código SQL facilita revisões de código (code reviews), identificação de gargalos de desempenho e análise de planos de execução (EXPLAIN ANALYZE) em bancos como PostgreSQL, MySQL e SQL Server.</p>
+                <article class="tool-seo-guide">
+        <h2>Como Funciona a Formatação de SQL e Padrões de Código para Bancos de Dados</h2>
+        <p>A escrita de consultas estruturadas em SQL (Structured Query Language) é parte da rotina diária de desenvolvedores backend, engenheiros de dados e analistas de BI. No entanto, queries complexas com múltiplos subselects, junções (<code>INNER JOIN</code>, <code>LEFT JOIN</code>) e cláusulas <code>WHERE</code> com dezenas de filtros frequentemente tornam-se ilegíveis quando acumuladas em uma única linha ou sem recuos padronizados.</p>
+        
+        <p>O <strong>Formatador de SQL da Caixa do Dev</strong> organiza e embeleza consultas instantaneamente no seu navegador, suportando a sintaxe dos principais sistemas de gerenciamento de banco de dados (SGBDs), incluindo PostgreSQL, MySQL, SQL Server (T-SQL), SQLite, Oracle e MariaDB.</p>
+
+        <h3>1. Boas Práticas de Legibilidade em SQL Moderno</h3>
+        <ul>
+          <li><strong>Palavras-chave em Caixa Alta (UPPERCASE):</strong> Escrever comandos como <code>SELECT</code>, <code>FROM</code>, <code>WHERE</code>, <code>GROUP BY</code> e <code>ORDER BY</code> em maiúsculas destaca a estrutura lógica da consulta em relação aos nomes de tabelas e colunas.</li>
+          <li><strong>Alinhamento e Indentação de Cláusulas:</strong> Cada cláusula principal deve começar em uma nova linha com recuo consistente de 2 ou 4 espaços.</li>
+          <li><strong>Vírgulas no Início ou Final de Colunas:</strong> Manter uma coluna por linha na cláusula <code>SELECT</code> facilita revisões em Pull Requests (Git diffs limpos) e evita erros ao comentar campos temporariamente.</li>
+          <li><strong>Preferência por CTEs (Common Table Expressions) sobre Subqueries Aninhadas:</strong> Utilizar cláusulas <code>WITH cte_name AS (...)</code> melhora a legibilidade linear do fluxo de transformação de dados.</li>
+        </ul>
+
+        <h3>2. Tabela de Cláusulas SQL e Ordem Lógica de Execução</h3>
+        <p>Um dos conceitos mais importantes na depuração de queries é compreender que a ordem que você escreve o SQL é diferente da ordem que o banco o executa internamente:</p>
+        <div style="margin: 16px 0; overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+            <thead>
+              <tr style="background: rgba(255, 255, 255, 0.05); border-bottom: 1px solid var(--border-subtle); text-align: left;">
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">Ordem de Execução</th>
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">Cláusula</th>
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">Objetivo / O Que Faz</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-weight: 700;">1º</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">FROM / JOIN</td>
+                <td style="padding: 10px 14px;">Identifica as tabelas de origem e realiza as combinações cartesianas.</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-weight: 700;">2º</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">WHERE</td>
+                <td style="padding: 10px 14px;">Filtra os registros individuais antes de qualquer agrupamento.</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-weight: 700;">3º</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">GROUP BY</td>
+                <td style="padding: 10px 14px;">Agrupa os dados pelas chaves especificadas para cálculos agregados.</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-weight: 700;">4º</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">HAVING</td>
+                <td style="padding: 10px 14px;">Filtra os grupos gerados (ao contrário do WHERE, que filtra linhas).</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-weight: 700;">5º</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">SELECT</td>
+                <td style="padding: 10px 14px;">Calcula as expressões, funções e projeta as colunas solicitadas.</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px 14px; font-weight: 700;">6º</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">ORDER BY / LIMIT</td>
+                <td style="padding: 10px 14px;">Ordena o conjunto final e limita a quantidade de registros retornados.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Perguntas Frequentes sobre Formatação SQL (FAQ)</h3>
+        <div class="faq-list" style="margin-top: 16px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>Minha query SQL é enviada para algum servidor externo?</span><span>+</span></div>
+            <div class="faq-answer">Não! A formatação ocorre 100% no seu navegador através de um parser léxico local em JavaScript. Nenhuma estrutura de tabelas, nomes de colunas ou filtros confidenciais trafega pela internet.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Qual a diferença entre WHERE e HAVING?</span><span>+</span></div>
+            <div class="faq-answer">A cláusula WHERE filtra linhas individuais antes do agrupamento por GROUP BY e não aceita funções de agregação (como SUM, COUNT ou AVG). Já o HAVING atua exclusivamente após os dados terem sido agrupados, permitindo filtrar por condições como 'HAVING COUNT(*) > 5'.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>O que significa CTE em SQL?</span><span>+</span></div>
+            <div class="faq-answer">CTE significa Common Table Expression. É uma tabela temporária nomeada dentro do escopo de execução de uma única instrução SELECT, INSERT, UPDATE ou DELETE, declarada com o comando 'WITH', que simplifica queries complexas e substitui subconsultas aninhadas difíceis de ler.</div>
+          </div>
+        </div>
       </article>
     
     </section>

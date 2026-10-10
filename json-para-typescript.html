@@ -163,28 +163,58 @@
     </div>
 
     <!-- Guia Completo de SEO & Boas Práticas -->
-    <article class="tool-seo-guide" style="margin-top: 40px;">
-      <h2>Por Que Tipar Payloads de API com TypeScript?</h2>
-      <p>No desenvolvimento frontend moderno com frameworks como React, Next.js, Vue e Angular, consumir APIs REST sem tipagem estrita é uma das principais fontes de bugs silenciosos em produção (os temidos erros <code>TypeError: Cannot read properties of undefined</code>).</p>
+        <article class="tool-seo-guide" style="margin-top: 40px;">
+      <h2>Como Funciona a Inferência de Tipos de JSON para Interfaces TypeScript</h2>
+      <p>A transição de JavaScript para <strong>TypeScript</strong> revolucionou a confiabilidade de aplicações modernas ao trazer tipagem estática em tempo de compilação. No entanto, ao integrar novas APIs REST ou consumir dados externos que retornam respostas JSON complexas e aninhadas, criar manualmente cada <code>interface</code> ou <code>type</code> com dezenas de propriedades é um processo repetitivo e suscetível a erros humanos.</p>
 
-      <h3>Vantagens de Gerar Interfaces TypeScript Automaticamente:</h3>
+      <h3>1. Princípios da Inferência de Tipos Automática</h3>
+      <p>O conversor da Caixa do Dev analisa recursivamente cada chave e valor do payload JSON fornecido e mapeia os tipos primitivos e estruturas complexas:</p>
       <ul>
-        <li><strong>Autocompletar Inteligente no VS Code:</strong> O editor passa a sugerir campos exatos, prevenindo erros de digitação em chaves como <code>created_at</code> vs <code>createdAt</code>.</li>
-        <li><strong>Refatorações Seguras:</strong> Ao alterar campos no backend, o compilador do TypeScript avisa exatamente onde o frontend precisa ser atualizado.</li>
-        <li><strong>Documentação Viva:</strong> As interfaces funcionam como a especificação formal do contrato entre frontend e backend.</li>
-        <li><strong>Economia de Tempo:</strong> Em vez de escrever manualmente dezenas de linhas de tipagem para objetos grandes, a ferramenta deduz tipos de strings, números, datas, arrays e objetos aninhados em 1 clique.</li>
+        <li><strong>Strings, Números e Booleanos:</strong> Mapeados nativamente para os tipos primitivos <code>string</code>, <code>number</code> e <code>boolean</code>.</li>
+        <li><strong>Arrays Homogêneos e Heterogêneos:</strong> Listas de objetos ou primitivos geram tipos como <code>string[]</code> ou arrays de interfaces específicas (<code>Item[]</code>).</li>
+        <li><strong>Campos Opcionais e Nullable:</strong> Chaves com valor <code>null</code> são inferidas com união de tipos (ex: <code>string | null</code>) ou marcadas como opcionais (<code>campo?: string</code>).</li>
+        <li><strong>Objetos Aninhados:</strong> Sub-objetos geram interfaces filhas separadas com nomenclatura semântica em PascalCase.</li>
       </ul>
 
-      <h2>Perguntas Frequentes sobre TypeScript</h2>
-      <div style="display: flex; flex-direction: column; gap: 16px; margin-top: 20px;">
-        <div style="background: var(--bg-card); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
-          <h4 style="font-size: 1.05rem; color: var(--text-primary); margin-bottom: 8px;">Como a ferramenta lida com objetos aninhados?</h4>
-          <p style="color: var(--text-secondary); margin: 0; font-size: 0.92rem; line-height: 1.6;">Quando um campo do JSON contém outro objeto (por exemplo, <code>endereco: { rua: "...", cep: "..." }</code>), o algoritmo cria automaticamente uma nova interface auxiliar correspondente (ex: <code>Endereco</code>) e referencia na interface principal.</p>
-        </div>
+      <h3>2. Interfaces vs Types: Qual Escolher no TypeScript?</h3>
+      <div style="margin: 16px 0; overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+          <thead>
+            <tr style="background: rgba(255, 255, 255, 0.05); border-bottom: 1px solid var(--border-subtle); text-align: left;">
+              <th style="padding: 10px 14px; color: var(--accent-cyan);">Critério</th>
+              <th style="padding: 10px 14px; color: var(--accent-cyan);">Interface (interface User)</th>
+              <th style="padding: 10px 14px; color: var(--accent-cyan);">Type Alias (type User =)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+              <td style="padding: 10px 14px; font-weight: 600;">Extensibilidade</td>
+              <td style="padding: 10px 14px;">Suporta herança com <code>extends</code> e Declaration Merging.</td>
+              <td style="padding: 10px 14px;">Utiliza interseções (<code>&amp;</code>) e uniões (<code>|</code>).</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+              <td style="padding: 10px 14px; font-weight: 600;">Casos de Uso Ideais</td>
+              <td style="padding: 10px 14px;">Definição de formato de dados de APIs, DTOs e entidades de domínio.</td>
+              <td style="padding: 10px 14px;">Tipos primitivos, tuplas, tipos utilitários e uniões discriminadas.</td>
+            </tr>
+            <tr>
+              <td style="padding: 10px 14px; font-weight: 600;">Performance do Compilador</td>
+              <td style="padding: 10px 14px; color: var(--accent-emerald);">Otimizado com cache de tipos no tsc.</td>
+              <td style="padding: 10px 14px;">Pode ser mais pesado em uniões profundamente aninhadas.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-        <div style="background: var(--bg-card); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
-          <h4 style="font-size: 1.05rem; color: var(--text-primary); margin-bottom: 8px;">Como a ferramenta lida com listas e arrays?</h4>
-          <p style="color: var(--text-secondary); margin: 0; font-size: 0.92rem; line-height: 1.6;">A ferramenta inspeciona os itens do array. Se for uma lista de objetos homogêneos, ela gera a interface do item e atribui o tipo <code>ItemName[]</code>, garantindo segurança total de tipos.</p>
+      <h3>Perguntas Frequentes sobre TypeScript (FAQ)</h3>
+      <div class="faq-list" style="margin-top: 16px;">
+        <div class="faq-item">
+          <div class="faq-question"><span>Como a ferramenta lida com chaves JSON que possuem hifens ou espaços?</span><span>+</span></div>
+          <div class="faq-answer">Chaves que violam identificadores padrão do JavaScript (como 'user-id' ou 'primeiro nome') são automaticamente envolvidas entre aspas nas interfaces TypeScript geradas (ex: 'user-id': string;).</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question"><span>O conversor envia meus dados para servidores remotos?</span><span>+</span></div>
+          <div class="faq-answer">Não! A análise estrutural do JSON e a geração do código TypeScript rodam 100% no motor JavaScript do seu próprio navegador web, garantindo total sigilo de payloads corporativos.</div>
         </div>
       </div>
     </article>

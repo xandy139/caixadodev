@@ -127,10 +127,64 @@
           </div>
         </div>
       </div>
-          <article class="tool-seo-guide">
-        <h2>Algoritmos de Hashing Criptográfico: MD5, SHA-1, SHA-256 e SHA-512</h2>
-        <p>Uma função de hash criptográfico é um algoritmo matemático unidirecional que mapeia dados de tamanho arbitrário em uma sequência de tamanho fixo. Características fundamentais de funções de hash incluem determinismo (a mesma entrada sempre gera a mesma saída) e resistência a colisões.</p>
-        <p>Enquanto o algoritmo MD5 é utilizado hoje primordialmente para verificação rápida de integridade de arquivos (checksums), os padrões SHA-256 e SHA-512 são amplamente recomendados para segurança da informação, assinaturas digitais, blockchains e armazenamento seguro de dados com salt.</p>
+                <article class="tool-seo-guide">
+        <h2>Guia de Funções Hash Criptográficas: MD5, SHA-1, SHA-256 e SHA-512</h2>
+        <p>Uma <strong>Função Hash Criptográfica</strong> é um algoritmo matemático determinístico que mapeia dados de tamanho arbitrário (uma palavra, um parágrafo ou um arquivo de vários gigabytes) para uma saída de tamanho fixo em formato hexadecimal (chamada de digest ou hash). Propriedades fundamentais definem um hash seguro: é uma função de sentido único (unidirecional / one-way) e resistente a colisões (onde duas entradas diferentes nunca devem produzir a mesma saída).</p>
+
+        <h3>1. Comparativo de Algoritmos Hash Populares</h3>
+        <div style="margin: 16px 0; overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+            <thead>
+              <tr style="background: rgba(255, 255, 255, 0.05); border-bottom: 1px solid var(--border-subtle); text-align: left;">
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">Algoritmo</th>
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">Tamanho do Digest</th>
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">Status de Segurança</th>
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">Aplicação Recomendada</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-weight: 700; font-family: var(--font-mono);">MD5</td>
+                <td style="padding: 10px 14px;">128 bits (32 hex)</td>
+                <td style="padding: 10px 14px; color: #f87171; font-weight: 700;">Inseguro (Vulnerável)</td>
+                <td style="padding: 10px 14px;">Apenas para somas de verificação rápida contra corrupção acidental.</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-weight: 700; font-family: var(--font-mono);">SHA-1</td>
+                <td style="padding: 10px 14px;">160 bits (40 hex)</td>
+                <td style="padding: 10px 14px; color: #f87171; font-weight: 700;">Depreciado (Colisões provadas)</td>
+                <td style="padding: 10px 14px;">Legado histórico (Git internals v1, compatibilidade antiga).</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-weight: 700; font-family: var(--font-mono);">SHA-256</td>
+                <td style="padding: 10px 14px;">256 bits (64 hex)</td>
+                <td style="padding: 10px 14px; color: var(--accent-emerald); font-weight: 700;">Seguro (Padrão ouro)</td>
+                <td style="padding: 10px 14px;">Assinaturas digitais, certificados TLS/SSL, blockchain e integridade.</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px 14px; font-weight: 700; font-family: var(--font-mono);">SHA-512</td>
+                <td style="padding: 10px 14px;">512 bits (128 hex)</td>
+                <td style="padding: 10px 14px; color: var(--accent-emerald); font-weight: 700;">Altíssima Segurança</td>
+                <td style="padding: 10px 14px;">Aplicações de defesa, criptografia militar e sistemas financeiros.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>2. Por que SHA-256 Não Deve Ser Usado para Senhas Sem Salt</h3>
+        <p>Embora o SHA-256 seja matematicamente seguro contra colisões, ele foi projetado por engenharia para ser extremamente rápido. Por isso, placas de vídeo (GPUs) modernas conseguem calcular bilhões de hashes SHA-256 por segundo em ataques com tabelas Rainbow. Para salvar senhas de usuários em bancos de dados, utilize algoritmos deliberadamente lentos com fator de custo e salt automático, como <strong>bcrypt, Argon2id ou PBKDF2</strong>.</p>
+
+        <h3>Perguntas Frequentes sobre Hashes (FAQ)</h3>
+        <div class="faq-list" style="margin-top: 16px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>É possível reverter um hash para descobrir o texto original?</span><span>+</span></div>
+            <div class="faq-answer">Matematicamente não, pois o hash descarta informações durante a compressão de bits. No entanto, se o texto original for uma senha comum (como '123456'), invasores podem consultar bancos de dados pré-computados (Rainbow Tables) onde o hash já foi associado à palavra original.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>A ferramenta utiliza bibliotecas externas ou a API nativa do navegador?</span><span>+</span></div>
+            <div class="faq-answer">Para a família SHA (SHA-1, SHA-256, SHA-512), a ferramenta utiliza a Web Crypto API nativa do navegador (crypto.subtle.digest()), garantindo velocidade de hardware e segurança local sem tráfego de rede.</div>
+          </div>
+        </div>
       </article>
     
     </section>

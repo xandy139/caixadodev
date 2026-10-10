@@ -129,10 +129,70 @@
 
         <div id="subnet-result-container" style="margin-top: 20px;"></div>
       </div>
-          <article class="tool-seo-guide">
-        <h2>Cálculo de Sub-redes IPv4 em Notação CIDR para Redes e DevOps</h2>
-        <p>A notação CIDR (Classless Inter-Domain Routing) revolucionou o endereçamento IP permitindo a alocação flexível de blocos de rede através de uma máscara de prefixo (ex: /24, /16, /28).</p>
-        <p>Calcular corretamente a quantidade de hosts úteis, o endereço de rede (Network IP) e o endereço de broadcast é etapa obrigatória na arquitetura de nuvem (VPCs na AWS, Google Cloud e Azure), configuração de firewalls e roteamento de clusters Kubernetes.</p>
+                <article class="tool-seo-guide">
+        <h2>Fundamentos de Sub-redes IPv4 e Notação CIDR (RFC 4632)</h2>
+        <p>O endereçamento em redes de computadores sob o protocolo <strong>IPv4</strong> é baseado em números binários de 32 bits divididos em 4 octetos decimais separados por pontos (de <code>0.0.0.0</code> a <code>255.255.255.255</code>). A técnica de divisão de sub-redes (Subnetting) e a introdução da notação <strong>CIDR (Classless Inter-Domain Routing - RFC 4632)</strong> permitiram otimizar o uso do espaço de endereçamento IP global, eliminando a antiga rigidez das classes A, B e C.</p>
+
+        <h3>1. Anatomia de uma Máscara de Sub-rede</h3>
+        <p>A máscara de rede divide o endereço IP em duas porções cruciais:</p>
+        <ul>
+          <li><strong>ID de Rede (Network Prefix):</strong> Identifica a sub-rede específica no roteador. É indicada pela quantidade de bits ligados (1s) na notação de barra (ex: <code>/24</code> significa 24 bits 1 e 8 bits 0, ou seja, máscara <code>255.255.255.0</code>).</li>
+          <li><strong>ID de Host:</strong> Os bits restantes (0s) identificam as máquinas e dispositivos individuais conectados dentro daquela sub-rede.</li>
+        </ul>
+
+        <h3>2. Tabela de Máscaras CIDR Mais Utilizadas</h3>
+        <div style="margin: 16px 0; overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+            <thead>
+              <tr style="background: rgba(255, 255, 255, 0.05); border-bottom: 1px solid var(--border-subtle); text-align: left;">
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">CIDR</th>
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">Máscara Decimal</th>
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">Total de IPs</th>
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">Hosts Utilizáveis (Válidos)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-weight: 700; font-family: var(--font-mono);">/30</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">255.255.255.252</td>
+                <td style="padding: 10px 14px;">4</td>
+                <td style="padding: 10px 14px;">2 (Links ponto a ponto entre roteadores)</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-weight: 700; font-family: var(--font-mono);">/28</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">255.255.255.240</td>
+                <td style="padding: 10px 14px;">16</td>
+                <td style="padding: 10px 14px;">14 hosts</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-weight: 700; font-family: var(--font-mono);">/24</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">255.255.255.0</td>
+                <td style="padding: 10px 14px;">256</td>
+                <td style="padding: 10px 14px;">254 hosts (Redes locais LAN corporativas)</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px 14px; font-weight: 700; font-family: var(--font-mono);">/16</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">255.255.0.0</td>
+                <td style="padding: 10px 14px;">65.536</td>
+                <td style="padding: 10px 14px;">65.534 hosts (VPCs em nuvens AWS / GCP)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p><strong>A Regra dos Dois Endereços Reservados:</strong> Em qualquer sub-rede IPv4 padrão, subtraem-se sempre 2 endereços do total: o <em>primeiro IP</em> é reservado para identificação da rede e o <em>último IP</em> é reservado para o endereço de difusão geral (Broadcast).</p>
+
+        <h3>Perguntas Frequentes sobre Redes (FAQ)</h3>
+        <div class="faq-list" style="margin-top: 16px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>Quais são os intervalos de IPs privados da RFC 1918?</span><span>+</span></div>
+            <div class="faq-answer">São três blocos não roteáveis na internet pública: 10.0.0.0/8 (Classe A), 172.16.0.0/12 (Classe B) e 192.168.0.0/16 (Classe C residencial e empresarial comum).</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>O que é Wildcard Mask (Máscara Curinga)?</span><span>+</span></div>
+            <div class="faq-answer">É o inverso binário exato da máscara de sub-rede, calculada subtraindo cada octeto de 255.255.255.255. É amplamente utilizada em tabelas de rotas e listas de controle de acesso (ACLs) em equipamentos Cisco e OSPF.</div>
+          </div>
+        </div>
       </article>
     
     </section>

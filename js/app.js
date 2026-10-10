@@ -1156,7 +1156,7 @@ function initToolEvents() {
 
   if (btnCopyCard) {
     btnCopyCard.addEventListener('click', () => {
-      const full = `Número: ${cardPreviewNumber.textContent} | Validade: ${cardPreviewExp.textContent} | CVV: ${cardPreviewCvv.textContent} (${cardPreviewBrand.textContent})`;
+      const full = `Número de Teste (Luhn): ${cardPreviewNumber.textContent} (${cardPreviewBrand.textContent})`;
       copyToClipboard(full);
     });
   }

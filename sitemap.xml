@@ -73,31 +73,13 @@
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://www.caixadodev.com.br/gerador-de-certidao</loc>
-    <lastmod>2026-10-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
     <loc>https://www.caixadodev.com.br/gerador-de-cep</loc>
     <lastmod>2026-10-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://www.caixadodev.com.br/gerador-de-cnh</loc>
-    <lastmod>2026-10-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
     <loc>https://www.caixadodev.com.br/gerador-de-pis</loc>
-    <lastmod>2026-10-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.caixadodev.com.br/gerador-de-titulo-de-eleitor</loc>
     <lastmod>2026-10-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -265,25 +247,25 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.caixadodev.com.br/pages/sobre.html</loc>
+    <loc>https://www.caixadodev.com.br/pages/sobre</loc>
     <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.caixadodev.com.br/pages/contato.html</loc>
+    <loc>https://www.caixadodev.com.br/pages/contato</loc>
     <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.caixadodev.com.br/pages/privacidade.html</loc>
+    <loc>https://www.caixadodev.com.br/pages/privacidade</loc>
     <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.caixadodev.com.br/pages/termos.html</loc>
+    <loc>https://www.caixadodev.com.br/pages/termos</loc>
     <lastmod>2026-10-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

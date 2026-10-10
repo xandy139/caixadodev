@@ -118,10 +118,35 @@
           <div id="diff-container"><div style="padding: 24px; color: var(--text-muted); text-align: center;">Clique em "Comparar Textos".</div></div>
         </div>
       </div>
-          <article class="tool-seo-guide">
-        <h2>Comparação Textual e Algoritmos de Diff em Engenharia de Software</h2>
-        <p>A comparação de arquivos texto e códigos fonte baseia-se em algoritmos de maior subsequência comum (LCS - Longest Common Subsequence). Esta técnica permite comparar duas versões de um arquivo para evidenciar exatamente quais linhas foram inseridas, removidas ou mantidas inalteradas.</p>
-        <p>Utilizar um comparador visual leve no navegador elimina a necessidade de criar commits temporários ou abrir terminais para conferir divergências entre payloads de APIs, arquivos de configuração JSON ou trechos de scripts.</p>
+                <article class="tool-seo-guide">
+        <h2>Como Funciona a Comparação de Textos e o Algoritmo Diff de Myers</h2>
+        <p>A identificação de alterações entre versões de textos, scripts e códigos-fonte é a base dos sistemas de controle de versão como o <strong>Git</strong> e ferramentas de Code Review. O utilitário <code>diff</code> original foi desenvolvido em 1974 por Douglas McIlroy e James W. Hunt no Unix. Em 1986, Eugene W. Myers publicou o clássico artigo <em>"An O(ND) Difference Algorithm and Its Variations"</em>, que se tornou a base algorítmica de comparação adotada universalmente por plataformas como GitHub e GitLab.</p>
+
+        <h3>1. A Busca pelo Menor Caminho de Edição (SES)</h3>
+        <p>O algoritmo de Myers modela o problema de comparação como uma busca em grafo em uma grade bidimensional, procurando a <strong>Sequência Mais Curta de Edições (Shortest Edit Script - SES)</strong> para transformar o Texto A no Texto B através de apenas duas operações fundamentais:</p>
+        <ul>
+          <li><strong>Inserções (Adições):</strong> Linhas ou caracteres presentes no novo texto e ausentes no original (destacadas em verde com sinal de <code>+</code>).</li>
+          <li><strong>Deleções (Exclusões):</strong> Linhas ou caracteres que existiam no texto original e foram removidos (destacadas em vermelho com sinal de <code>-</code>).</li>
+          <li><strong>Inalteradas:</strong> Linhas mantidas idênticas que servem como âncoras de contexto para legibilidade.</li>
+        </ul>
+
+        <h3>2. Dicas para Revisão Limpa de Código e Textos</h3>
+        <ul>
+          <li><strong>Evite Alterações Desnecessárias de Espaços em Branco:</strong> Alterações em tabs ou espaços no final da linha (trailing whitespace) poluem o diff e dificultam a visualização da mudança lógica real.</li>
+          <li><strong>Mantenha Commits Pequenos e Atômicos:</strong> Diffs focados em uma única funcionalidade reduzem drasticamente as chances de bugs passarem despercebidos em revisões por pares.</li>
+        </ul>
+
+        <h3>Perguntas Frequentes sobre Diff (FAQ)</h3>
+        <div class="faq-list" style="margin-top: 16px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>O comparador armazena meus textos ou códigos?</span><span>+</span></div>
+            <div class="faq-answer">Não! A computação do diff opera estritamente na memória volátil do seu navegador web em JavaScript. Seus códigos confidenciais, contratos ou textos nunca são enviados a servidores externos.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>O que é um arquivo patch (.patch)?</span><span>+</span></div>
+            <div class="faq-answer">É um arquivo de texto que contém a saída padronizada do algoritmo diff (Unified Diff Format), registrando exatamente as adições e exclusões necessárias para que o utilitário 'patch' aplique as mesmas alterações em outro arquivo.</div>
+          </div>
+        </div>
       </article>
     
     </section>

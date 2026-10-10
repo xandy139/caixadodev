@@ -141,9 +141,34 @@
         </div>
       </div>
 
-      <article class="tool-seo-guide">
-        <h2>Como Funciona a Estrutura de uma URL</h2>
-        <p>URLs (Uniform Resource Locators) são a espinha dorsal da web. Elas combinam esquema (https), autoridade (host e porta), caminho de recurso e parâmetros de consulta delimitados por '?' e '&'.</p>
+            <article class="tool-seo-guide">
+        <h2>A Anatomia de uma URL e o Padrão URI da RFC 3986</h2>
+        <p>A <strong>URL (Uniform Resource Locator)</strong>, padronizada pela <strong>RFC 3986</strong> da IETF, é o endereço global que identifica qualquer recurso na internet. Embora pareça uma simples linha de texto, uma URL é composta por múltiplos blocos hierárquicos com regras rígidas de codificação percentual (URL Encoding / Percent-Encoding) para garantir a segurança no transporte de parâmetros.</p>
+
+        <h3>1. Os Componentes Estruturais de uma URL</h3>
+        <ul>
+          <li><strong>Protocolo / Esquema (Scheme):</strong> Define o protocolo de comunicação (<code>https://</code>, <code>http://</code>, <code>ftp://</code>, <code>ws://</code>).</li>
+          <li><strong>Host / Domínio:</strong> O endereço do servidor de destino (ex: <code>www.caixadodev.com.br</code> ou endereço IP).</li>
+          <li><strong>Porta (Port):</strong> O canal de conexão TCP (padrão 80 para HTTP e 443 para HTTPS, frequentemente omitidos).</li>
+          <li><strong>Caminho (Path):</strong> A rota hierárquica do recurso dentro do servidor (ex: <code>/artigos/seguranca-jwt</code>).</li>
+          <li><strong>Parâmetros de Consulta (Query String):</strong> Conjunto de pares chave-valor iniciados por <code>?</code> e separados por <code>&amp;</code> (ex: <code>?origem=google&amp;utm_campaign=dev</code>).</li>
+          <li><strong>Fragmento / Âncora (Hash):</strong> Indicado por <code>#</code>, aponta para uma seção específica na página interpretada exclusivamente pelo navegador cliente.</li>
+        </ul>
+
+        <h3>2. O Que É Codificação Percentual (URL Encoding)?</h3>
+        <p>A especificação da internet reserva caracteres especiais como <code>/</code>, <code>?</code>, <code>&amp;</code>, <code>=</code> e espaços para funções sintáticas. Quando dados do usuário contêm esses símbolos, eles devem ser convertidos para seu equivalente hexadecimal precedido por <code>%</code> (por exemplo, um espaço torna-se <code>%20</code> ou <code>+</code>, e um acento <code>é</code> torna-se <code>%C3%A9</code> em UTF-8).</p>
+
+        <h3>Perguntas Frequentes sobre URLs (FAQ)</h3>
+        <div class="faq-list" style="margin-top: 16px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>Qual o tamanho máximo permitido para uma URL?</span><span>+</span></div>
+            <div class="faq-answer">Embora a especificação HTTP não defina um limite formal rígido, a grande maioria dos navegadores e servidores web modernos (como Nginx, Apache e Cloudflare) impõe um limite prático de segurança de aproximadamente 2.048 caracteres para URLs do tipo GET. Para cargas maiores, utilize requisições POST com corpo JSON.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>O que são parâmetros UTM em URLs?</span><span>+</span></div>
+            <div class="faq-answer">UTMs (Urchin Tracking Modules) são 5 parâmetros padronizados de query string (utm_source, utm_medium, utm_campaign, utm_term e utm_content) usados por ferramentas analíticas como o Google Analytics para rastrear a origem e eficácia de campanhas de tráfego.</div>
+          </div>
+        </div>
       </article>
     
     </section>

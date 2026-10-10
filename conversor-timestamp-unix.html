@@ -113,10 +113,31 @@
           <div class="pane"><span class="pane-title" style="margin-bottom: 8px;">Data para Epoch</span><div class="form-group"><input type="datetime-local" id="input-datetime" class="form-control"></div><button id="btn-date-to-epoch" class="btn btn-outline-cyan" style="margin-bottom: 14px;">Converter</button><div id="result-date-epoch" class="result-box" style="line-height: 1.6; display: block;">Resultado aqui...</div></div>
         </div>
       </div>
-          <article class="tool-seo-guide">
-        <h2>O Padrão Unix Epoch e a Resolução do Horário de Brasília</h2>
-        <p>O Unix Timestamp (ou Epoch Time) representa a contagem ininterrupta de segundos decorridos desde a meia-noite de 1º de janeiro de 1970 em Tempo Universal Coordenado (UTC). Esse padrão independe de fusos horários locais e é utilizado na quase totalidade dos bancos de dados e sistemas operacionais globais.</p>
-        <p>Converter números inteiros de timestamp para datas legíveis no horário oficial de Brasília (GMT-3) e no formato ISO 8601 é rotina fundamental durante a depuração de logs de servidores, auditoria de transações e agendamento de eventos.</p>
+                <article class="tool-seo-guide">
+        <h2>O Que É o Unix Epoch Time e Como Funcionam os Timestamps em Sistemas</h2>
+        <p>O <strong>Unix Timestamp</strong> (também denominado Epoch Time ou POSIX Time) é o padrão universal para contagem e sincronização de tempo na computação moderna. Ele representa a quantidade exata de <strong>segundos transcorridos desde as 00:00:00 UTC de 1º de janeiro de 1970</strong> (o instante zero convencionado como a era Unix), sem considerar anos bissextos na contagem bruta.</p>
+
+        <h3>1. Por que Sistemas Utilizam Timestamps em Vez de Datas Formatadas?</h3>
+        <ul>
+          <li><strong>Independência de Fuso Horário (Timezones):</strong> Um timestamp de 10 dígitos é exatamente o mesmo número em São Paulo, Tóquio ou Londres naquele instante, eliminando ambiguidades em logs de servidores globais.</li>
+          <li><strong>Eficiência em Bancos de Dados:</strong> Armazenar e ordenar um número inteiro de 64 bits em índices é ordens de grandeza mais rápido do que comparar strings de texto de data.</li>
+          <li><strong>Operações Matemáticas Triviais:</strong> Calcular o intervalo entre dois eventos resume-se a uma simples subtração aritmética (<code>fim - inicio</code>).</li>
+        </ul>
+
+        <h3>2. O Famoso Bug do Ano 2038 (Year 2038 Problem)</h3>
+        <p>Em sistemas operacionais antigos de 32 bits, o timestamp Unix era armazenado como um inteiro com sinal de 32 bits (<code>int32_t</code>). O valor máximo que este tipo comporta é <code>2.147.483.647</code>, que será atingido exatamente às <strong>03:14:07 UTC de 19 de janeiro de 2038</strong>. No segundo seguinte, o número estoura (overflow) e torna-se negativo (<code>-2.147.483.648</code>), fazendo o sistema acreditar que voltou para 1901! Sistemas modernos já migraram integralmente para inteiros de 64 bits, garantindo estabilidade pelos próximos 292 bilhões de anos.</p>
+
+        <h3>Perguntas Frequentes sobre Timestamps (FAQ)</h3>
+        <div class="faq-list" style="margin-top: 16px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>Qual a diferença entre timestamp em segundos e em milissegundos?</span><span>+</span></div>
+            <div class="faq-answer">Linguagens como C, Python e PHP utilizam timestamps tradicionais em segundos (10 dígitos, ex: 1781636400). Já ambientes como JavaScript (Date.now()) e Java trabalham nativamente com milissegundos (13 dígitos). Multiplicar ou dividir por 1000 converte entre os dois formatos.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>O que é a norma ISO 8601?</span><span>+</span></div>
+            <div class="faq-answer">É o padrão internacional para representação textual de datas e horas no formato 'AAAA-MM-DDTHH:MM:SSZ', permitindo especificar a data em ordem hierárquica clara acompanhada do indicador de fuso horário UTC ('Z') ou offset ('-03:00').</div>
+          </div>
+        </div>
       </article>
     
     </section>

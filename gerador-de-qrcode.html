@@ -117,10 +117,38 @@
           <span style="font-size: 0.8rem; color: var(--text-muted);">Aponte a câmera do seu celular para testar o QR Code gerado</span>
         </div>
       </div>
-          <article class="tool-seo-guide">
-        <h2>Tecnologia QR Code: Correção de Erros e Aplicações em TI</h2>
-        <p>O QR Code (Quick Response Code) é um código de barras bidimensional criado em 1994 pela Denso Wave. Sua grande vantagem técnica reside na tecnologia de <strong>Correção de Erros Reed-Solomon</strong>, que permite que o código seja lido com sucesso mesmo se até 30% de sua superfície estiver danificada ou obstruída.</p>
-        <p>No Brasil, os códigos QR tornaram-se o meio padrão para pagamentos instantâneos através do protocolo Pix (Banco Central), além de autenticação de dois fatores (2FA) e emparelhamento de aplicativos móveis.</p>
+                <article class="tool-seo-guide">
+        <h2>Como Funciona a Tecnologia dos Códigos QR (ISO/IEC 18004)</h2>
+        <p>O <strong>QR Code (Quick Response Code)</strong> é um código de barras bidimensional (2D) criado em 1994 pela empresa japonesa Denso Wave (subsidiária da Toyota) pelo engenheiro Masahiro Hara. Projetado inicialmente para rastreamento de peças na indústria automobilística, o padrão foi internacionalizado pela norma <strong>ISO/IEC 18004</strong> e tornou-se onipresente em pagamentos instantâneos (como o PIX no Brasil), conexões Wi-Fi, autenticação em dois fatores (2FA) e marketing digital.</p>
+
+        <h3>1. Correção de Erros Reed-Solomon</h3>
+        <p>Uma das inovações mais brilhantes do QR Code é a capacidade de ser lido perfeitamente mesmo quando danificado, rasgado ou manchado. O algoritmo suporta quatro níveis de redundância matemática de Reed-Solomon:</p>
+        <ul>
+          <li><strong>Nível L (Low):</strong> Recupera até <strong>7%</strong> de dados corrompidos (ideal para códigos com densidade máxima de caracteres).</li>
+          <li><strong>Nível M (Medium):</strong> Recupera até <strong>15%</strong> de dados (padrão mais comum da indústria).</li>
+          <li><strong>Nível Q (Quartile):</strong> Recupera até <strong>25%</strong> de dados danificados.</li>
+          <li><strong>Nível H (High):</strong> Recupera até <strong>30%</strong> de dados danificados (recomendado para quando logotipos são inseridos no centro do código).</li>
+        </ul>
+
+        <h3>2. Anatomia Estrutural de um QR Code</h3>
+        <p>Um código QR possui elementos geométricos padronizados reconhecíveis por qualquer câmera de smartphone:</p>
+        <ul>
+          <li><strong>Padrões de Localização (Position Patterns):</strong> Os três quadrados concêntricos nos cantos superior esquerdo, superior direito e inferior esquerdo que orientam a câmera sobre o ângulo e rotação da imagem.</li>
+          <li><strong>Padrão de Alinhamento (Alignment Pattern):</strong> Quadrados menores em versões com muitos dados para corrigir distorções em superfícies curvas.</li>
+          <li><strong>Padrão de Temporização (Timing Patterns):</strong> Linhas de pontos alternados em preto e branco que determinam a grade de coordenadas dos módulos.</li>
+        </ul>
+
+        <h3>Perguntas Frequentes sobre QR Code (FAQ)</h3>
+        <div class="faq-list" style="margin-top: 16px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>Os QR Codes gerados aqui têm prazo de validade?</span><span>+</span></div>
+            <div class="faq-answer">Não! São QR Codes estáticos: os dados digitados são codificados diretamente na matriz geométrica de pontos pretos e brancos. Eles funcionarão para sempre sem depender de servidores intermediários ou redirecionamentos de terceiros.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Qual o tamanho ideal para impressão de um QR Code?</span><span>+</span></div>
+            <div class="faq-answer">A recomendação técnica para leitura sem atrito é uma proporção de distância de 10:1 (por exemplo, para ser escaneado a 1 metro de distância, o QR Code impresso deve ter pelo menos 10 cm de largura e altura).</div>
+          </div>
+        </div>
       </article>
     
     </section>

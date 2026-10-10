@@ -140,9 +140,22 @@
         <div style="background: var(--bg-surface); padding: 18px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); margin: 20px 0;">
           <h4 style="margin: 0 0 10px; color: var(--accent-rose); font-size: 1rem;">Exemplo Prático com a Sequência 49927398716:</h4>
           <p style="margin: 0; font-family: var(--font-mono); font-size: 0.88rem; color: #cbd5e1; line-height: 1.6;">
-            1. Dígitos alternados dobrados da direita p/ esquerda: (1*2=2, 8*2=16 &rarr; 7, 3*2=6, 2*2=4, 9*2=18 &rarr; 9, 4*2=8)<br>
-            2. Soma total = 6 + 2 + 7 + 7 + 9 + 6 + 7 + 4 + 9 + 9 + 8 = 70<br>
-            3. 70 % 10 = 0 &rarr; <strong>Válido pelo Algoritmo de Luhn!</strong>
+            1. Dígitos da direita para a esquerda:
+            <ul style="margin: 6px 0 10px 20px; padding: 0;">
+              <li>Posição 1 (dígito 6): ímpar &rarr; mantém <strong>6</strong></li>
+              <li>Posição 2 (dígito 1): par &rarr; 1 * 2 = <strong>2</strong></li>
+              <li>Posição 3 (dígito 7): ímpar &rarr; mantém <strong>7</strong></li>
+              <li>Posição 4 (dígito 8): par &rarr; 8 * 2 = 16 &rarr; (1+6) = <strong>7</strong></li>
+              <li>Posição 5 (dígito 9): ímpar &rarr; mantém <strong>9</strong></li>
+              <li>Posição 6 (dígito 3): par &rarr; 3 * 2 = <strong>6</strong></li>
+              <li>Posição 7 (dígito 7): ímpar &rarr; mantém <strong>7</strong></li>
+              <li>Posição 8 (dígito 2): par &rarr; 2 * 2 = <strong>4</strong></li>
+              <li>Posição 9 (dígito 9): ímpar &rarr; mantém <strong>9</strong></li>
+              <li>Posição 10 (dígito 9): par &rarr; 9 * 2 = 18 &rarr; (1+8) = <strong>9</strong></li>
+              <li>Posição 11 (dígito 4): ímpar &rarr; mantém <strong>4</strong></li>
+            </ul>
+            2. Soma total = 6 + 2 + 7 + 7 + 9 + 6 + 7 + 4 + 9 + 9 + 4 = <strong>70</strong><br>
+            3. 70 % 10 === 0 &rarr; <strong>Válido pelo Algoritmo de Luhn!</strong>
           </p>
         </div>
       </section>
@@ -214,9 +227,7 @@ function validarLuhn(numeroStr) {
         </div>
         <div style="flex: 1; min-width: 250px;">
           <h4 style="margin: 0 0 6px; font-size: 1.1rem; color: var(--text-primary);">Sobre o Autor: Alexandre Marcelino</h4>
-          <p style="margin: 0; font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5;">
-            Engenheiro de software e criador da plataforma <strong>Caixa do Dev</strong>. Especialista em engenharia de pagamentos digitais, arquitetura de microserviços e ferramentas de código aberto para a comunidade de tecnologia. Conheça seus projetos no <a href="https://github.com/xandy139" target="_blank" rel="noopener noreferrer" style="color: var(--accent-cyan); font-weight: 600;">GitHub (@xandy139)</a>.
-          </p>
+          <p style="margin: 0; font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5;">Desenvolvedor de software e criador da plataforma Caixa do Dev. Entusiasta de código aberto, ferramentas web e utilitários para a comunidade de tecnologia. Conheça seus projetos no <a href="https://github.com/xandy139" target="_blank" rel="noopener noreferrer" style="color: var(--accent-cyan); font-weight: 600;">GitHub (@xandy139)</a>.</p>
         </div>
       </section>
 

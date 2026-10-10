@@ -115,10 +115,30 @@
           <button id="btn-copy-uuid" class="btn btn-secondary btn-sm result-copy-btn">Copiar UUID(s)</button>
         </div>
       </div>
-          <article class="tool-seo-guide">
-        <h2>Identificadores Únicos Universais (UUID / GUID RFC 4122)</h2>
-        <p>Um UUID (Universally Unique Identifier) é uma sequência de 128 bits representada por 32 caracteres hexadecimais divididos por hífens no formato <code>8-4-4-4-12</code>. O UUID versão 4 é gerado utilizando números pseudo-aleatórios criptograficamente seguros.</p>
-        <p>A probabilidade teórica de colisão entre dois identificadores UUID v4 gerados aleatoriamente é de aproximadamente 1 em $10^{36}$, uma probabilidade tão remota que é considerada praticamente impossível no universo computacional, tornando-o o padrão ideal para chaves primárias distribuídas em bancos de dados como PostgreSQL e MongoDB.</p>
+                <article class="tool-seo-guide">
+        <h2>O Que É um UUID e as Diferenças Entre as Versões 4 e 7 (RFC 9562)</h2>
+        <p>Um <strong>UUID (Universally Unique Identifier)</strong>, também chamado no ecossistema Microsoft de <strong>GUID (Globally Unique Identifier)</strong>, é uma sequência de 128 bits padronizada pela RFC 4122 e atualizada recentemente pela <strong>RFC 9562</strong> em 2024. Seu formato canônico consiste em 32 dígitos hexadecimais organizados em 5 grupos separados por hifens: <code>8-4-4-4-12</code> (totalizando 36 caracteres).</p>
+
+        <h3>1. Comparativo das Versões Mais Populares</h3>
+        <ul>
+          <li><strong>UUID v4 (Totalmente Aleatório):</strong> É a versão mais amplamente utilizada na história do software. Utiliza 122 bits de pura entropia pseudoaleatória gerada por geradores criptograficamente seguros (CSPRNG). A probabilidade matemática de gerar duas chaves duplicadas é astronomicamente próxima de zero.</li>
+          <li><strong>UUID v7 (Ordenável no Tempo):</strong> Introduzido pela nova RFC 9562, o UUID v7 combina um carimbo de data/hora (timestamp UNIX em milissegundos) nos primeiros 48 bits seguido por 74 bits de entropia aleatória. Isso resolve o maior problema histórico do UUID v4: a degradação de performance por fragmentação de índices B-Tree em bancos de dados relacionais como PostgreSQL e MySQL.</li>
+        </ul>
+
+        <h3>2. Probabilidade de Colisão: Quão Seguro É o UUID v4?</h3>
+        <p>Para que ocorra uma única chance em um bilhão de colisão (duplicação acidental) em UUIDs versão 4, seria necessário gerar <strong>mais de 1 bilhão de UUIDs por segundo ao longo de 100 anos ininterruptos</strong>. Por esse motivo, sistemas distribuídos globais adotam UUIDs sem necessidade de consultar um servidor central de coordenação para geração de chaves primárias.</p>
+
+        <h3>Perguntas Frequentes sobre UUID (FAQ)</h3>
+        <div class="faq-list" style="margin-top: 16px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>Qual a diferença entre UUID e chaves autoincrementais (SERIAL / AUTO_INCREMENT)?</span><span>+</span></div>
+            <div class="faq-answer">Chaves sequenciais são vulneráveis a ataques de enumeração (onde usuários adivinham URLs como /pedidos/1001 e /pedidos/1002) e causam gargalos de concorrência em bancos distribuídos ou sharded. O UUID permite gerar IDs únicos localmente em qualquer microsserviço ou cliente frontend de forma assíncrona e segura.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Os UUIDs gerados aqui utilizam geradores criptográficos reais?</span><span>+</span></div>
+            <div class="faq-answer">Sim! A Caixa do Dev utiliza nativamente a API Web Crypto do navegador (crypto.randomUUID() ou crypto.getRandomValues()), garantindo sementes de entropia de nível criptográfico exigidas pela RFC.</div>
+          </div>
+        </div>
       </article>
     
     </section>

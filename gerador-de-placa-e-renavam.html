@@ -122,10 +122,33 @@
           <div id="renavam-display" class="result-box" style="justify-content: center; font-size: 1.3rem; font-weight: 700;">00000000000</div>
         </div>
       </div>
-          <article class="tool-seo-guide">
-        <h2>Placas Mercosul e Código RENAVAM para Softwares Veiculares</h2>
-        <p>O padrão de placas veiculares Mercosul substituiu o modelo tradicional brasileiro (ABC-1234) pelo formato de quatro letras e três números (ex: BRA2E19), aumentando a quantidade de combinações disponíveis e padronizando a identificação de veículos no bloco comercial.</p>
-        <p>O Registro Nacional de Veículos Automotores (RENAVAM) possui 11 dígitos, sendo o último um dígito verificador calculado com o algoritmo do Módulo 11 oficial da Senatran. Esta ferramenta é essencial para desenvolvedores de sistemas para seguradoras, frotas, concessionárias e despachantes.</p>
+                <article class="tool-seo-guide">
+        <h2>Padrão de Placas Mercosul e Algoritmo do RENAVAM no Brasil</h2>
+        <p>No desenvolvimento de sistemas de gestão de frotas, seguros automotivos, concessionárias e despachantes, validar dados veiculares é fundamental. O Brasil adotou o <strong>Padrão de Placas Mercosul</strong> regulamentado pela Resolução CONTRAN nº 780/2019, que substituiu o antigo modelo cinza de três letras e quatro números, e utiliza o <strong>RENAVAM (Registro Nacional de Veículos Automotores)</strong> como identificador unificado junto à Senatran.</p>
+
+        <h3>1. Estrutura das Placas Mercosul (ABC1D23)</h3>
+        <p>O padrão Mercosul brasileiro possui 7 caracteres alfanuméricos organizados na sequência <code>LLLNLNN</code> (3 letras, 1 número, 1 letra e 2 números):</p>
+        <ul>
+          <li>Na transição de placas cinzas antigas para o padrão Mercosul, o 2º algarismo numérico foi substituído por uma letra correspondente segundo uma tabela direta (0 = A, 1 = B, 2 = C ... 9 = J). Por exemplo, a placa <code>ABC-1234</code> converte-se para <code>ABC1C34</code>.</li>
+          <li>As placas Mercosul eliminam a tarja com o nome da cidade e estado, utilizando um QR Code oficial gravado na chapa para fiscalização eletrônica.</li>
+        </ul>
+
+        <h3>2. O Cálculo do Dígito Verificador do RENAVAM (11 Dígitos)</h3>
+        <p>O RENAVAM possui 11 dígitos, sendo os 10 primeiros o identificador base e o 11º o dígito verificador. O algoritmo multiplica os 10 primeiros dígitos por pesos regressivos de <strong>3 a 2 e 9 a 2</strong>, aplicando a fórmula do Módulo 11 para apuração do dígito final.</p>
+
+        <p><strong>Aviso de Homologação:</strong> Dados gerados sinteticamente para testes técnicos de software em ambientes de homologação e QA, sem vínculo com veículos reais ou cadastros do Detran.</p>
+
+        <h3>Perguntas Frequentes sobre Veículos (FAQ)</h3>
+        <div class="faq-list" style="margin-top: 16px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>Como diferenciar a categoria do veículo na placa Mercosul?</span><span>+</span></div>
+            <div class="faq-answer">A categoria é indicada pela cor da fonte dos caracteres: preto para veículos particulares, vermelho para veículos comerciais e de aluguel (táxis, ônibus), azul para veículos oficiais e verde para testes de montadoras.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>A ferramenta realiza consultas de multas ou débitos no Detran?</span><span>+</span></div>
+            <div class="faq-answer">Não. Esta é uma ferramenta geradora de dados sintéticos para desenvolvedores testarem máscaras de formulários em sistemas em desenvolvimento. Não realizamos consultas a bases governamentais.</div>
+          </div>
+        </div>
       </article>
     
     </section>

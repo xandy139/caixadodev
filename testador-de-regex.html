@@ -139,10 +139,78 @@
           </div>
         </div>
       </div>
-          <article class="tool-seo-guide">
-        <h2>Expressões Regulares (Regex): Boas Práticas e Segurança</h2>
-        <p>Expressões Regulares são ferramentas fundamentais na engenharia de software para encontrar padrões, validar formatos de e-mails, telefones e documentos, além de higienizar strings de entrada.</p>
-        <p>Ao implementar regex em produção, desenvolvedores devem ter cautela com expressões excessivamente complexas com quantificadores aninhados que possam provocar vulnerabilidades de <strong>ReDoS (Regular Expression Denial of Service)</strong>. Nosso testador permite validar e otimizar padrões de forma visual e segura.</p>
+                <article class="tool-seo-guide">
+        <h2>Guia Completo de Expressões Regulares (Regex) para Desenvolvedores</h2>
+        <p>As <strong>Expressões Regulares (Regular Expressions ou Regex)</strong> são sequências de caracteres que definem um padrão de busca textual formal. Criadas originalmente pelo matemático Stephen Cole Kleene na década de 1950, as expressões regulares tornaram-se uma das ferramentas mais poderosas da ciência da computação para validação de dados, sanitização de entradas, parsing de arquivos de log e substituições avançadas em código.</p>
+
+        <h3>1. Metacaracteres Fundamentais e Seus Significados</h3>
+        <div style="margin: 16px 0; overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+            <thead>
+              <tr style="background: rgba(255, 255, 255, 0.05); border-bottom: 1px solid var(--border-subtle); text-align: left;">
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">Padrão</th>
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">Significado</th>
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">Exemplo de Casamento</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-family: var(--font-mono); color: var(--accent-cyan);">^ e $</td>
+                <td style="padding: 10px 14px;">Início (^) e Fim ($) da linha ou string inteira.</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">^abc$ &rarr; exatamente "abc"</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-family: var(--font-mono); color: var(--accent-cyan);">. (Ponto)</td>
+                <td style="padding: 10px 14px;">Qualquer caractere individual (exceto quebra de linha).</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">c.rro &rarr; "carro", "corro"</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-family: var(--font-mono); color: var(--accent-cyan);">\d e \D</td>
+                <td style="padding: 10px 14px;">Dígito numérico [0-9] e Não-dígito [^0-9].</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">\d{4} &rarr; ano "2026"</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-family: var(--font-mono); color: var(--accent-cyan);">\w e \W</td>
+                <td style="padding: 10px 14px;">Caractere alfanumérico [a-zA-Z0-9_] e Não-alfanumérico.</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">\w+ &rarr; palavras sem acento</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-family: var(--font-mono); color: var(--accent-cyan);">* , + , ?</td>
+                <td style="padding: 10px 14px;">Quantificadores: 0 ou mais (*), 1 ou mais (+), opcional (?).</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">https? &rarr; "http" ou "https"</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px 14px; font-family: var(--font-mono); color: var(--accent-cyan);">{min,max}</td>
+                <td style="padding: 10px 14px;">Intervalo explícito de repetições.</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">[0-9]{2,4} &rarr; de 2 a 4 números</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>2. Modificadores (Flags) Mais Utilizados</h3>
+        <ul>
+          <li><strong>g (Global):</strong> Não interrompe a busca após encontrar o primeiro resultado; busca todas as ocorrências no texto.</li>
+          <li><strong>i (Case Insensitive):</strong> Ignora distinções entre letras maiúsculas e minúsculas (ex: <code>/teste/i</code> casa com "Teste", "TESTE" e "teste").</li>
+          <li><strong>m (Multiline):</strong> Faz os metacaracteres <code>^</code> e <code>$</code> casarem com o início e fim de cada linha individual, em vez do documento inteiro.</li>
+          <li><strong>s (DotAll):</strong> Permite que o metacaractere ponto (<code>.</code>) case também com quebras de linha (<code>\n</code>).</li>
+        </ul>
+
+        <h3>Perguntas Frequentes sobre Regex (FAQ)</h3>
+        <div class="faq-list" style="margin-top: 16px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>O que significa ReDoS (Regular Expression Denial of Service)?</span><span>+</span></div>
+            <div class="faq-answer">ReDoS é uma vulnerabilidade de segurança causada por expressões regulares mal formuladas contendo quantificadores aninhados (backtracking catastrófico). Quando submetidas a strings específicas com muitas repetições, o motor de regex tenta milhões de combinações exponenciais, travando o uso de CPU do servidor. Sempre teste suas expressões contra entradas longas.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Qual a diferença entre quantificadores gulosos (greedy) e preguiçosos (lazy)?</span><span>+</span></div>
+            <div class="faq-answer">Por padrão, os quantificadores (+, *) são gulosos: eles tentam capturar o maior trecho possível de texto antes de encerrar. Adicionar uma interrogação após o quantificador (ex: +? ou *?) torna a correspondência preguiçosa (lazy), capturando apenas a menor quantidade de caracteres necessária para validar o padrão.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Regex é segura para validação estrita de e-mails em produção?</span><span>+</span></div>
+            <div class="faq-answer">A especificação formal RFC 5322 para e-mails é tão ampla que uma regex 100% perfeita teria centenas de caracteres. Na prática, a indústria utiliza regex simples para checar a estrutura básica (usuario@dominio.tld) e confia no envio de e-mails de confirmação com link temporário para comprovar a existência real da caixa postal.</div>
+          </div>
+        </div>
       </article>
     
     </section>

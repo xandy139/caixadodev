@@ -122,10 +122,31 @@
           </div>
         </div>
       </div>
-          <article class="tool-seo-guide">
-        <h2>Conversão de Dados: Arrays JSON para Planilhas CSV</h2>
-        <p>JSON é o padrão absoluto para comunicação entre APIs e microsserviços na web moderna, enquanto o formato CSV (Comma-Separated Values) é o formato preferido por analistas de negócio, contabilidade e marketing para visualização em softwares de planilhas como Excel e Google Sheets.</p>
-        <p>O conversor bidirecional da Caixa do Dev extrai os cabeçalhos de coleções de objetos e converte para CSV tabular com escape automático de aspas, além de permitir o caminho inverso transformando planilhas CSV em arrays de objetos JSON prontos para consumo por código.</p>
+                <article class="tool-seo-guide">
+        <h2>Como Funciona a Conversão entre JSON e CSV (RFC 4180)</h2>
+        <p>No fluxo de trabalho de desenvolvedores, cientistas de dados e analistas de negócio, a troca entre formatos hierárquicos e tabulares é uma necessidade diária. Enquanto o <strong>JSON (RFC 8259)</strong> é o formato padrão para comunicação assíncrona entre clientes web e servidores de API, o <strong>CSV (Comma-Separated Values - RFC 4180)</strong> é a linguagem universal de planilhas eletrônicas (Microsoft Excel, Google Sheets) e bancos de dados analíticos para exportação e importação de relatórios.</p>
+
+        <h3>1. O Desafio dos Objetos Aninhados na Conversão</h3>
+        <p>Transformar uma estrutura bidimensional tabular plana em JSON é direto. No entanto, o caminho inverso (JSON para CSV) apresenta desafios técnicos quando o payload contém objetos aninhados ou arrays:</p>
+        <ul>
+          <li><strong>Achatamento de Chaves (Flattening):</strong> Propriedades dentro de sub-objetos (ex: <code>{"cliente": {"nome": "Lucas", "cidade": "SP"}}</code>) são achatadas para colunas com notação de ponto (<code>cliente.nome</code> e <code>cliente.cidade</code>).</li>
+          <li><strong>Escapamento de Vírgulas e Quebras de Linha:</strong> Segundo a RFC 4180, qualquer campo que contenha vírgulas, quebras de linha ou aspas duplas deve ser envolvido por aspas duplas (<code>"texto, com vírgula"</code>).</li>
+        </ul>
+
+        <h3>2. Codificação UTF-8 e Delimitadores Internacionais</h3>
+        <p>Em países de língua portuguesa que utilizam a vírgula como separador decimal para moeda (como o Brasil com R$ 10,50), programas como o Excel em português frequentemente adotam o <strong>ponto e vírgula (;)</strong> como delimitador padrão de colunas em vez da vírgula (,). A ferramenta da Caixa do Dev formata saídas limpas prontas para importação direta.</p>
+
+        <h3>Perguntas Frequentes sobre JSON e CSV (FAQ)</h3>
+        <div class="faq-list" style="margin-top: 16px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>A conversão envia meus relatórios para servidores externos?</span><span>+</span></div>
+            <div class="faq-answer">Não! A transformação entre JSON e CSV é processada integralmente na memória local do seu navegador em JavaScript. Nenhum dado financeiro ou lista de clientes trafega pela internet.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>O que é o caractere BOM (Byte Order Mark) em arquivos CSV?</span><span>+</span></div>
+            <div class="faq-answer">É uma sequência de bytes no início do arquivo (EF BB BF em UTF-8) que instrui o Microsoft Excel a abrir o arquivo interpretando corretamente acentos e caracteres especiais da língua portuguesa sem corromper a codificação.</div>
+          </div>
+        </div>
       </article>
     
     </section>
