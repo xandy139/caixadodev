@@ -292,7 +292,7 @@ body {
 /* Tool Grid (Hub) */
 .tools-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 20px;
   margin-bottom: 50px;
 }
@@ -309,6 +309,7 @@ body {
   transition: var(--transition);
   position: relative;
   overflow: hidden;
+  min-width: 0;
 }
 
 .tool-card::before {
@@ -339,6 +340,7 @@ body {
   align-items: flex-start;
   justify-content: space-between;
   margin-bottom: 14px;
+  gap: 12px;
 }
 
 .tool-card-icon {
@@ -349,6 +351,7 @@ body {
   align-items: center;
   justify-content: center;
   color: #fff;
+  flex-shrink: 0;
 }
 
 .tool-card-icon svg {
@@ -358,14 +361,16 @@ body {
 
 .tool-card-badge {
   font-size: 0.72rem;
-  padding: 3px 8px;
+  padding: 4px 10px;
   border-radius: var(--radius-full);
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   background: rgba(255, 255, 255, 0.05);
   color: var(--text-muted);
   border: 1px solid var(--border-subtle);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .tool-card h3 {
@@ -373,14 +378,21 @@ body {
   font-weight: 700;
   margin-bottom: 8px;
   color: var(--text-primary);
+  line-height: 1.35;
+  word-break: normal;
+  overflow-wrap: break-word;
+  text-wrap: balance;
 }
 
 .tool-card p {
   font-size: 0.88rem;
   color: var(--text-secondary);
-  line-height: 1.5;
+  line-height: 1.55;
   margin-bottom: 16px;
   flex-grow: 1;
+  word-break: normal;
+  overflow-wrap: break-word;
+  text-wrap: pretty;
 }
 
 .tool-card-footer {
@@ -391,6 +403,15 @@ body {
   padding-top: 12px;
   font-size: 0.8rem;
   color: var(--text-muted);
+  gap: 12px;
+  min-width: 0;
+}
+
+.tool-card-footer > span:first-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
 }
 
 .tool-card-action {
@@ -400,6 +421,8 @@ body {
   align-items: center;
   gap: 4px;
   transition: var(--transition);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .tool-card:hover .tool-card-action {
@@ -641,6 +664,7 @@ body {
   color: var(--text-primary);
   cursor: pointer;
   transition: var(--transition);
+  gap: 12px;
 }
 
 .modal-result-item:hover, .modal-result-item.selected {
@@ -650,16 +674,23 @@ body {
 .modal-result-info {
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 .modal-result-title {
   font-weight: 600;
   font-size: 0.95rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .modal-result-desc {
   font-size: 0.8rem;
   color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Toast Notifications */
@@ -763,13 +794,13 @@ body {
 /* Responsividade */
 @media (max-width: 900px) {
   .hero h1 { font-size: 2.2rem; }
-  .tools-grid { grid-template-columns: 1fr; }
   .footer-content { grid-template-columns: 1fr 1fr; gap: 30px; }
   .nav-links { display: none; }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 640px) {
   .hero h1 { font-size: 1.8rem; }
+  .tools-grid { grid-template-columns: 1fr; }
   .footer-content { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
   .tool-seo-guide { padding: 20px; }

@@ -21,7 +21,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'pessoas',
-    name: 'Gerador de Pessoas (Dados Fictícios Completos)',
+    name: 'Gerador de Pessoas Fictícias',
     category: 'geradores',
     categoryLabel: 'Massa de Testes',
     desc: 'Gere cadastros brasileiros completos para testes: Nome, CPF, RG, Idade, Data, Sexo, Sangue, E-mail, Celular e Endereço.',
@@ -54,7 +54,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'clt-pj',
-    name: 'Calculadora Comparativa CLT vs PJ',
+    name: 'Calculadora CLT vs PJ',
     category: 'conversores',
     categoryLabel: 'Carreira Dev BR',
     desc: 'Descubra quanto cobrar como PJ ou compare propostas com tabelas de INSS progressivo, IRPF, FGTS, 13º e Simples Nacional (Fator R).',
@@ -76,7 +76,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'curl',
-    name: 'Conversor de cURL (Fetch, Axios, Python, PHP)',
+    name: 'Conversor de cURL para Código',
     category: 'formatadores',
     categoryLabel: 'APIs & HTTP',
     desc: 'Cole comandos cURL de documentações e converta imediatamente para JavaScript fetch, Axios, Python requests ou PHP.',
@@ -87,7 +87,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'regex',
-    name: 'Testador de Regex (Expressões Regulares)',
+    name: 'Testador de Regex (RegEx)',
     category: 'formatadores',
     categoryLabel: 'Expressões Regulares',
     desc: 'Teste padrões Regex com highlight visual de correspondências em tempo real e presets de e-mail, CPF e URL.',
@@ -109,7 +109,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'cron',
-    name: 'Gerador e Tradutor de Cron Expression',
+    name: 'Gerador de Expressões Cron',
     category: 'formatadores',
     categoryLabel: 'DevOps & Schedulers',
     desc: 'Traduza expressões cron para português claro, gere agendamentos comuns e veja as próximas 5 execuções calculadas.',
@@ -120,7 +120,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'empresa',
-    name: 'Gerador de Empresa (PJ Completa)',
+    name: 'Gerador de Empresas (PJ Completa)',
     category: 'geradores',
     categoryLabel: 'Massa de Testes',
     desc: 'Gere dados empresariais com Razão Social, Nome Fantasia, CNPJ, Inscrição Estadual (IE), CNAE e Capital Social.',
@@ -131,7 +131,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'mock-data',
-    name: 'Gerador de Massa de Testes em Lote (Mock Data)',
+    name: 'Gerador de Mock Data em Lote',
     category: 'geradores',
     categoryLabel: 'Massa de Testes',
     desc: 'Gere centenas de registros fictícios estruturados de usuários e exporte em JSON, CSV para Excel ou SQL INSERT.',
@@ -156,7 +156,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'diff',
-    name: 'Comparador de Arquivos e Textos (Diff)',
+    name: 'Comparador de Textos & Arquivos (Diff)',
     category: 'formatadores',
     categoryLabel: 'Produtividade',
     desc: 'Compare dois textos ou códigos fonte linha a linha e visualize inserções, deleções e alterações.',
@@ -166,7 +166,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'jwt',
-    name: 'Decodificador de JWT (JSON Web Token)',
+    name: 'Decodificador de Token JWT',
     category: 'seguranca',
     categoryLabel: 'Segurança & Auth',
     desc: 'Decodifique cabeçalho (Header) e dados (Payload) de tokens JWT em tempo real, sem enviar dados a servidores.',
@@ -176,7 +176,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'hashes',
-    name: 'Gerador de Hashes (MD5, SHA-256, SHA-512)',
+    name: 'Gerador de Hashes Criptográficos',
     category: 'seguranca',
     categoryLabel: 'Criptografia',
     desc: 'Calcule instantaneamente os hashes MD5, SHA-1, SHA-256 e SHA-512 de qualquer texto via Web Crypto API nativa.',
@@ -186,7 +186,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'base64',
-    name: 'Codificador e Decodificador Base64 & URL',
+    name: 'Codificador Base64 & URL',
     category: 'conversores',
     categoryLabel: 'Conversores',
     desc: 'Codifique e decodifique textos e strings para Base64 (suporte a UTF-8) e codificação de URL.',
@@ -226,7 +226,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'bancos',
-    name: 'Gerador de Conta Bancária para Testes',
+    name: 'Gerador de Contas Bancárias',
     category: 'geradores',
     categoryLabel: 'Financeiro',
     desc: 'Gere números válidos de agência e conta corrente para BB, Bradesco, Caixa, Itaú, Santander, Nubank e Inter.',
@@ -240,7 +240,7 @@ const TOOLS_CATALOG = [
   // ==========================================
   {
     id: 'css-generator',
-    name: 'Gerador de Box-Shadow & Glassmorphism CSS',
+    name: 'Gerador de Box-Shadow & Glassmorphism',
     category: 'conversores',
     categoryLabel: 'Design & CSS',
     desc: 'Ajuste sombras, desfoques e efeito vidro fosco com sliders interativos e copie o código CSS moderno pronto.',
@@ -250,7 +250,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'code-beautifier',
-    name: 'Formatador e Minificador de HTML & CSS',
+    name: 'Formatador de HTML & CSS',
     category: 'formatadores',
     categoryLabel: 'Web & Frontend',
     desc: 'Indente e organize código HTML e CSS com 2 ou 4 espaços ou comprima em uma linha para carregamento ultrarrápido.',
@@ -260,7 +260,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'url-parser',
-    name: 'Inspetor e Construtor de URL / Query Params',
+    name: 'Inspetor de URL & Query Params',
     category: 'formatadores',
     categoryLabel: 'Web & URLs',
     desc: 'Decomponha URLs em protocolo, host, caminho e edite query parameters (?chave=valor) com encode/decode.',
@@ -270,7 +270,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'timestamp',
-    name: 'Conversor de Timestamp Unix (Epoch)',
+    name: 'Conversor de Timestamp Unix',
     category: 'conversores',
     categoryLabel: 'Conversores',
     desc: 'Converta segundos e milissegundos Unix para horário de Brasília (GMT-3) e UTC, e vice-versa.',
@@ -280,7 +280,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'json-csv',
-    name: 'Conversor JSON <> CSV',
+    name: 'Conversor JSON para CSV',
     category: 'conversores',
     categoryLabel: 'Dados & Planilhas',
     desc: 'Converta arrays JSON para formato de tabela CSV para Excel e transforme arquivos CSV de volta para JSON.',
@@ -290,7 +290,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'storage',
-    name: 'Conversor de Armazenamento & Tempo de Download',
+    name: 'Conversor de Bytes & Download',
     category: 'conversores',
     categoryLabel: 'Infra & Redes',
     desc: 'Converta entre Bytes, KB, MB, GB, TB, KiB, GiB e calcule tempo exato de transferência por velocidade de banda (Mbps/Gbps).',
@@ -310,7 +310,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'subnet',
-    name: 'Calculadora de Sub-rede IP / CIDR',
+    name: 'Calculadora de Sub-rede IP (CIDR)',
     category: 'conversores',
     categoryLabel: 'Redes & DevOps',
     desc: 'Calcule máscara de sub-rede, IP de rede, primeiro/último host útil, broadcast e total de IPs a partir do CIDR.',
@@ -320,7 +320,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'http-status',
-    name: 'Catálogo de Códigos de Status HTTP',
+    name: 'Catálogo de Códigos HTTP',
     category: 'conversores',
     categoryLabel: 'Web & APIs',
     desc: 'Consulte o significado e boas práticas de uso de todos os códigos HTTP (200, 201, 400, 401, 404, 500) em APIs REST.',
@@ -340,7 +340,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'svg',
-    name: 'Otimizador de SVG & Gerador de Data URI para CSS',
+    name: 'Otimizador de SVG & Data URI',
     category: 'conversores',
     categoryLabel: 'Design & SVGs',
     desc: 'Minifique vetores SVG e gere background-image: url("data:image/svg+xml...") pronto para incorporar em folhas de estilo.',
@@ -350,7 +350,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'senhas',
-    name: 'Gerador de Senhas Seguras & Entropia',
+    name: 'Gerador de Senhas Seguras',
     category: 'geradores',
     categoryLabel: 'Segurança',
     desc: 'Crie senhas fortes e aleatórias de 8 a 64 caracteres com medidor visual de força e cálculo de bits de entropia.',
@@ -360,7 +360,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'case',
-    name: 'Conversor de Formato de Texto (Case)',
+    name: 'Conversor de Formatos de Texto (Case)',
     category: 'conversores',
     categoryLabel: 'Conversores',
     desc: 'Converta strings instantaneamente entre camelCase, PascalCase, snake_case, kebab-case e CONSTANT_CASE.',
@@ -384,7 +384,7 @@ const TOOLS_CATALOG = [
   // ==========================================
   {
     id: 'veiculos',
-    name: 'Gerador de Placa de Veículo & RENAVAM',
+    name: 'Gerador de Placas & RENAVAM',
     category: 'geradores',
     categoryLabel: 'Veicular',
     desc: 'Gere placas no padrão Mercosul (BRA2E19), tradicional (ABC-1234) e números de RENAVAM válidos com Módulo 11.',
@@ -394,7 +394,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'certidao',
-    name: 'Gerador de Certidão (Nascimento, Casamento, Óbito)',
+    name: 'Gerador de Certidões Civis',
     category: 'geradores',
     categoryLabel: 'Cartórios CNJ',
     desc: 'Gere números de certidões civis no padrão unificado do CNJ (32 dígitos) com cálculo de 2 dígitos verificadores (Módulo 11).',
@@ -424,7 +424,7 @@ const TOOLS_CATALOG = [
   },
   {
     id: 'texto',
-    name: 'Gerador de Lorem Ipsum & Contador de Texto',
+    name: 'Gerador de Lorem Ipsum & Contador',
     category: 'formatadores',
     categoryLabel: 'Texto & SEO',
     desc: 'Gere parágrafos de texto Lorem Ipsum e conte caracteres, palavras, linhas e tempo de leitura em tempo real.',
@@ -565,7 +565,8 @@ function initSearchModal() {
     const filtered = TOOLS_CATALOG.filter(t => 
       t.name.toLowerCase().includes(q) || 
       t.desc.toLowerCase().includes(q) ||
-      t.category.toLowerCase().includes(q)
+      t.category.toLowerCase().includes(q) ||
+      t.categoryLabel.toLowerCase().includes(q)
     );
 
     if (filtered.length === 0) {
