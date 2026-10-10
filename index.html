@@ -95,7 +95,7 @@
             <li><a href="/gerador-de-pessoas">Pessoas</a></li>
             <li><a href="/calculadora-clt-pj">CLT vs PJ</a></li>
             <li><a href="/json-para-typescript">JSON &rarr; TS</a></li>
-            <li><a href="#artigos">Artigos</a></li>
+            <li><a href="/artigos">Artigos</a></li>
             <li><a href="pages/sobre.html">Sobre</a></li>
             <li><a href="pages/contato.html">Contato</a></li>
           </ul>
@@ -147,16 +147,52 @@
     </section>
 
     <!-- Seção de Artigos & Tutoriais Técnicos (Autoridade Editorial E-E-A-T) -->
+    <!-- Seção de Artigos & Tutoriais Técnicos (Autoridade Editorial E-E-A-T) -->
     <section id="artigos" style="margin: 60px 0 40px;">
-      <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 12px; margin-bottom: 24px;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 16px; margin-bottom: 24px;">
         <div>
           <span style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--accent-cyan); letter-spacing: 0.08em;">Artigos & Engenharia</span>
           <h2 style="font-size: 1.8rem; font-weight: 800; color: var(--text-primary); margin-top: 4px;">Guias Técnicos para Desenvolvedores</h2>
         </div>
-        <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0; max-width: 500px;">Artigos originais sobre arquitetura, algoritmos regulatórios brasileiros, tributação de desenvolvedores e segurança.</p>
+        <a href="/artigos" class="btn btn-secondary btn-sm" style="display: inline-flex; align-items: center; gap: 8px;">
+          Ver Portal com os 8 Artigos &rarr;
+        </a>
       </div>
 
       <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px;">
+        <!-- Artigo 1: UUID v4 vs v7 -->
+        <article class="tool-card" style="display: flex; flex-direction: column;">
+          <div style="font-size: 0.76rem; color: var(--accent-cyan); font-weight: 600; margin-bottom: 8px;">BANCOS DE DADOS & RFC 9562</div>
+          <h3 style="font-size: 1.15rem; margin-bottom: 8px;"><a href="/artigos/uuid-v4-vs-uuid-v7-banco-de-dados" style="color: var(--text-primary); text-decoration: none;">UUID v4 vs UUID v7: Por Que o Novo Padrão Revolucionou Bancos de Dados</a></h3>
+          <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5; flex-grow: 1;">Como o UUID v7 resolve a fragmentação severa de páginas em árvores B-Tree mantendo ordenação temporal por milissegundo e alta entropia.</p>
+          <a href="/artigos/uuid-v4-vs-uuid-v7-banco-de-dados" style="color: var(--accent-cyan); font-size: 0.88rem; font-weight: 600; text-decoration: none; margin-top: 14px;">Ler Artigo Completo &rarr;</a>
+        </article>
+
+        <!-- Artigo 2: ReDoS -->
+        <article class="tool-card" style="display: flex; flex-direction: column;">
+          <div style="font-size: 0.76rem; color: var(--accent-amber); font-weight: 600; margin-bottom: 8px;">SEGURANÇA & CWE-1333</div>
+          <h3 style="font-size: 1.15rem; margin-bottom: 8px;"><a href="/artigos/redos-vulnerabilidade-regex-catastrofica" style="color: var(--text-primary); text-decoration: none;">Vulnerabilidades ReDoS: Como Regex Insegura Trava Servidores Node.js</a></h3>
+          <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5; flex-grow: 1;">A teoria dos autômatos NFA, backtracking catastrófico exponencial O(2^n), lições do incidente do Cloudflare e prevenção com motores lineares.</p>
+          <a href="/artigos/redos-vulnerabilidade-regex-catastrofica" style="color: var(--accent-amber); font-size: 0.88rem; font-weight: 600; text-decoration: none; margin-top: 14px;">Ler Artigo Completo &rarr;</a>
+        </article>
+
+        <!-- Artigo 3: CIDR Subnets -->
+        <article class="tool-card" style="display: flex; flex-direction: column;">
+          <div style="font-size: 0.76rem; color: var(--accent-purple); font-weight: 600; margin-bottom: 8px;">DEVOPS & REDES</div>
+          <h3 style="font-size: 1.15rem; margin-bottom: 8px;"><a href="/artigos/calculo-sub-redes-cidr-ipv4" style="color: var(--text-primary); text-decoration: none;">Cálculo de Sub-Redes CIDR: Divisão de Blocos IPv4 para Cloud e DevOps</a></h3>
+          <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5; flex-grow: 1;">Operações bitwise, tabelas de referência de prefixos e a regra essencial dos 5 endereços IP reservados em sub-redes da AWS VPC e GCP.</p>
+          <a href="/artigos/calculo-sub-redes-cidr-ipv4" style="color: var(--accent-purple); font-size: 0.88rem; font-weight: 600; text-decoration: none; margin-top: 14px;">Ler Artigo Completo &rarr;</a>
+        </article>
+
+        <!-- Artigo 4: Base64 Overhead -->
+        <article class="tool-card" style="display: flex; flex-direction: column;">
+          <div style="font-size: 0.76rem; color: var(--accent-emerald); font-weight: 600; margin-bottom: 8px;">WEB PERFORMANCE & RFC 4648</div>
+          <h3 style="font-size: 1.15rem; margin-bottom: 8px;"><a href="/artigos/base64-encoding-data-uri-web-performance" style="color: var(--text-primary); text-decoration: none;">Codificação Base64 e Data URIs: O Impacto Real de 33% de Overhead</a></h3>
+          <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5; flex-grow: 1;">A matemática da conversão de 6 bits, riscos no First Contentful Paint (FCP), destruição de cache de navegador e trade-offs práticos.</p>
+          <a href="/artigos/base64-encoding-data-uri-web-performance" style="color: var(--accent-emerald); font-size: 0.88rem; font-weight: 600; text-decoration: none; margin-top: 14px;">Ler Artigo Completo &rarr;</a>
+        </article>
+
+        <!-- Artigo 5: Modulo 11 -->
         <article class="tool-card" style="display: flex; flex-direction: column;">
           <div style="font-size: 0.76rem; color: var(--accent-cyan); font-weight: 600; margin-bottom: 8px;">ALGORITMOS & FISCAL</div>
           <h3 style="font-size: 1.15rem; margin-bottom: 8px;"><a href="/artigos/algoritmo-modulo-11-cpf-cnpj" style="color: var(--text-primary); text-decoration: none;">Como Funciona o Cálculo do Módulo 11 (CPF e CNPJ Passo a Passo)</a></h3>
@@ -164,6 +200,7 @@
           <a href="/artigos/algoritmo-modulo-11-cpf-cnpj" style="color: var(--accent-cyan); font-size: 0.88rem; font-weight: 600; text-decoration: none; margin-top: 14px;">Ler Artigo Completo &rarr;</a>
         </article>
 
+        <!-- Artigo 6: CLT vs PJ -->
         <article class="tool-card" style="display: flex; flex-direction: column;">
           <div style="font-size: 0.76rem; color: var(--accent-emerald); font-weight: 600; margin-bottom: 8px;">CARREIRA & TRIBUTAÇÃO</div>
           <h3 style="font-size: 1.15rem; margin-bottom: 8px;"><a href="/artigos/clt-vs-pj-guia-tributario-desenvolvedor" style="color: var(--text-primary); text-decoration: none;">Guia Tributário para Desenvolvedores: CLT vs PJ com Fator R</a></h3>
@@ -171,6 +208,7 @@
           <a href="/artigos/clt-vs-pj-guia-tributario-desenvolvedor" style="color: var(--accent-emerald); font-size: 0.88rem; font-weight: 600; text-decoration: none; margin-top: 14px;">Ler Artigo Completo &rarr;</a>
         </article>
 
+        <!-- Artigo 7: JWT -->
         <article class="tool-card" style="display: flex; flex-direction: column;">
           <div style="font-size: 0.76rem; color: var(--accent-primary); font-weight: 600; margin-bottom: 8px;">SEGURANÇA & WEB</div>
           <h3 style="font-size: 1.15rem; margin-bottom: 8px;"><a href="/artigos/seguranca-jwt-autenticacao-web" style="color: var(--text-primary); text-decoration: none;">Anatomia e Segurança de Tokens JWT (JSON Web Token)</a></h3>
@@ -178,6 +216,7 @@
           <a href="/artigos/seguranca-jwt-autenticacao-web" style="color: var(--accent-primary); font-size: 0.88rem; font-weight: 600; text-decoration: none; margin-top: 14px;">Ler Artigo Completo &rarr;</a>
         </article>
 
+        <!-- Artigo 8: Luhn -->
         <article class="tool-card" style="display: flex; flex-direction: column;">
           <div style="font-size: 0.76rem; color: var(--accent-rose); font-weight: 600; margin-bottom: 8px;">FINTECH & GATEWAYS</div>
           <h3 style="font-size: 1.15rem; margin-bottom: 8px;"><a href="/artigos/algoritmo-de-luhn-validacao-cartao" style="color: var(--text-primary); text-decoration: none;">Algoritmo de Luhn (Módulo 10): Validação de Cartões em Sandboxes</a></h3>
@@ -274,6 +313,7 @@
         <div class="footer-col">
           <h4>Institucional & Conteúdo</h4>
           <ul>
+            <li><a href="/artigos" style="color: var(--accent-cyan); font-weight: 600;">Todos os 8 Artigos Técnicos</a></li>
             <li><a href="/artigos/algoritmo-modulo-11-cpf-cnpj">Guia Módulo 11</a></li>
             <li><a href="/artigos/clt-vs-pj-guia-tributario-desenvolvedor">Guia CLT vs PJ</a></li>
             <li><a href="/artigos/seguranca-jwt-autenticacao-web">Segurança JWT</a></li>

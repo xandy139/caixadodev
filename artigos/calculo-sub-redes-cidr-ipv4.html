@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cálculo de Sub-Redes CIDR: Divisão de Blocos IPv4 para Cloud e DevOps | Caixa do Dev</title>
+  <meta name="description" content="Guia definitivo de notação CIDR (RFC 4632): operações bitwise com máscaras de rede, faixas RFC 1918 e particularidades de IPs reservados em VPCs da AWS e GCP.">
+  <meta name="keywords" content="calculo de sub-rede cidr, mascara de rede ipv4, ips reservados aws vpc gcp, divisao de blocos cidr, rfc 4632 rfc 1918">
+  <meta name="author" content="Alexandre Marcelino">
+  <meta name="robots" content="index, follow">
+
+  <link rel="canonical" href="https://www.caixadodev.com.br/artigos/calculo-sub-redes-cidr-ipv4">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://www.caixadodev.com.br/artigos/calculo-sub-redes-cidr-ipv4">
+  <meta property="og:title" content="Cálculo de Sub-Redes CIDR: Divisão de Blocos IPv4 para Cloud e DevOps | Caixa do Dev">
+  <meta property="og:description" content="Entenda como funciona o particionamento de endereços IPv4 em notação CIDR e por que nuvens como AWS e GCP reservam 5 IPs em cada sub-rede.">
+  <meta property="og:image" content="https://www.caixadodev.com.br/assets/og-cover.png">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'><path d='M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/tools.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Cálculo de Sub-Redes CIDR: Divisão de Blocos IPv4 para Cloud e DevOps",
+    "description": "Explicação passo a passo da matemática de sub-redes em notação CIDR (RFC 4632) com tabelas de referência e regras de alocação em arquiteturas de nuvem.",
+    "author": {
+      "@type": "Person",
+      "name": "Alexandre Marcelino",
+      "url": "https://github.com/xandy139"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Caixa do Dev",
+      "url": "https://www.caixadodev.com.br"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://www.caixadodev.com.br/artigos/calculo-sub-redes-cidr-ipv4"
+    },
+    "inLanguage": "pt-BR"
+  }
+  </script>
+</head>
+<body class="standalone-page">
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="/" class="brand" title="Caixa do Dev - Página Inicial">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Caixa do Dev</span>
+          <span class="brand-badge">Artigos & Engenharia</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="/">Início</a></li>
+          <li><a href="/artigos" class="active">Artigos</a></li>
+          <li><a href="/calculadora-de-sub-rede">Calculadora de Sub-rede</a></li>
+          <li><a href="/pages/sobre.html">Sobre</a></li>
+          <li><a href="/pages/contato.html">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Conteúdo Principal -->
+  <main class="container" style="padding-top: 32px; padding-bottom: 80px; max-width: 900px; margin: 0 auto;">
+    
+    <div class="tool-breadcrumbs" style="margin-bottom: 24px;">
+      <a href="/">&larr; Início</a> / <a href="/artigos">Artigos Técnicos</a> / <span>Cálculo de Sub-Redes CIDR</span>
+    </div>
+
+    <article class="tool-seo-guide" style="padding: 36px; border-radius: var(--radius-lg); background: var(--bg-card); border: 1px solid var(--border-subtle);">
+      
+      <header style="margin-bottom: 32px; border-bottom: 1px solid var(--border-subtle); padding-bottom: 24px;">
+        <span style="display: inline-block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--accent-purple); background: rgba(168, 85, 247, 0.1); padding: 4px 10px; border-radius: 999px; margin-bottom: 12px; border: 1px solid rgba(168, 85, 247, 0.2);">DevOps, Redes & RFC 4632</span>
+        <h1 style="font-size: 2.2rem; font-weight: 800; color: var(--text-primary); line-height: 1.25; margin-bottom: 16px;">Cálculo de Sub-Redes CIDR: Divisão de Blocos IPv4 para Cloud e DevOps</h1>
+        <div style="display: flex; align-items: center; gap: 16px; color: var(--text-muted); font-size: 0.88rem; flex-wrap: wrap;">
+          <span>Por <strong>Alexandre Marcelino</strong></span>
+          <span>&bull;</span>
+          <span>Tempo de leitura: 8 minutos</span>
+          <span>&bull;</span>
+          <span>Atualizado em Outubro de 2026</span>
+        </div>
+      </header>
+
+      <section>
+        <p>Configurar uma infraestrutura de nuvem moderna — seja provisionando uma <strong>Virtual Private Cloud (VPC)</strong> na AWS, um cluster Kubernetes (EKS/GKE) ou configurando regras de firewall corporativas — exige domínio absoluto sobre o particionamento de endereços IP. No centro dessa engenharia está a notação <strong>CIDR (Classless Inter-Domain Routing)</strong>, formalizada pela <strong>RFC 4632</strong>.</p>
+        
+        <p>Antes do CIDR (introduzido em 1993), a internet utilizava o rígido sistema de "Classes" (Classe A com 16 milhões de hosts, Classe B com 65 mil e Classe C com 254). Se uma empresa precisava de 500 IPs, recebia um bloco Classe B inteiro, desperdiçando 64.500 endereços e acelerando o esgotamento do IPv4. O CIDR eliminou essas fronteiras fixas, permitindo fatiar redes com precisão cirúrgica de bits.</p>
+      </section>
+
+      <section style="margin-top: 36px;">
+        <h2>1. A Anatomia de um Endereço IPv4 e Notação CIDR</h2>
+        <p>Um endereço IPv4 é composto por <strong>32 bits</strong> agrupados em 4 octetos de 8 bits cada (ex: <code>192.168.1.0</code>). A barra seguida por um número (ex: <code>/24</code>) representa o <strong>tamanho do prefixo de rede</strong>, ou seja, quantos bits da esquerda para a direita identificam a rede, enquanto os bits restantes identificam os hosts individuais.</p>
+
+        <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 18px; margin: 18px 0; font-family: 'JetBrains Mono', monospace; font-size: 0.88rem; color: #cbd5e1;">
+          <p style="margin: 0 0 6px; color: var(--accent-cyan);">Exemplo: 192.168.1.0/24</p>
+          <p style="margin: 0 0 6px;">IP em Binário: 11000000.10101000.00000001.00000000</p>
+          <p style="margin: 0 0 6px;">Máscara /24:  11111111.11111111.11111111.00000000 (255.255.255.0)</p>
+          <p style="margin: 0; color: #a78bfa;">Bits de Host:  32 - 24 = 8 bits &rarr; 2^8 = 256 endereços totais</p>
+        </div>
+
+        <p>A fórmula fundamental para calcular a capacidade de qualquer bloco CIDR é:</p>
+        <pre style="background: var(--bg-surface); padding: 12px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); color: #4ade80; font-family: var(--font-mono); font-size: 0.9rem;">Total de IPs = 2^(32 - Prefixo)</pre>
+      </section>
+
+      <section style="margin-top: 36px;">
+        <h2>2. A Pegadinha dos Provedores de Cloud (AWS e GCP Reservam 5 IPs!)</h2>
+        <p>Em uma rede física tradicional (on-premises), você perde apenas 2 endereços por sub-rede: o primeiro (<strong>Network ID</strong>) e o último (<strong>Broadcast</strong>). Por exemplo, em um <code>/24</code> com 256 IPs, restam 254 utilizáveis.</p>
+        
+        <p>No entanto, em nuvens como a <strong>Amazon Web Services (AWS VPC)</strong> e no <strong>Google Cloud Platform (GCP)</strong>, o provedor reserva obrigatoriamente <strong>5 endereços IP</strong> por sub-rede para serviços internos de orquestração:</p>
+
+        <div style="overflow-x: auto; margin: 18px 0;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+            <thead>
+              <tr style="background: var(--bg-surface); border-bottom: 2px solid var(--border-subtle);">
+                <th style="padding: 10px 14px; color: var(--text-primary);">IP de Exemplo (10.0.0.0/24)</th>
+                <th style="padding: 10px 14px; color: var(--accent-purple);">Finalidade Reservada na AWS VPC</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--border-subtle);">
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">10.0.0.0</td>
+                <td style="padding: 10px 14px;"><strong>Endereço de Rede:</strong> Primeiro endereço do bloco.</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-subtle);">
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">10.0.0.1</td>
+                <td style="padding: 10px 14px;"><strong>Roteador da VPC:</strong> Gateway interno da sub-rede.</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-subtle);">
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">10.0.0.2</td>
+                <td style="padding: 10px 14px;"><strong>Servidor DNS da AWS:</strong> AmazonProvidedDNS / Route 53 Resolver.</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-subtle);">
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">10.0.0.3</td>
+                <td style="padding: 10px 14px;"><strong>Uso Futuro da AWS:</strong> Reservado pela infraestrutura da nuvem.</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">10.0.0.255</td>
+                <td style="padding: 10px 14px;"><strong>Broadcast de Rede:</strong> A AWS não suporta broadcast, mas mantém o IP reservado.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p><em>Importante:</em> Isso significa que criar uma sub-rede <code>/28</code> (16 IPs totais) na AWS fornece apenas <strong>11 endereços utilizáveis</strong> (16 - 5 = 11) para instâncias EC2, Load Balancers ou pods.</p>
+      </section>
+
+      <section style="margin-top: 36px;">
+        <h2>3. Tabela de Referência Rápida CIDR</h2>
+        <div style="overflow-x: auto; margin: 20px 0;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+            <thead>
+              <tr style="background: var(--bg-surface); border-bottom: 2px solid var(--border-subtle);">
+                <th style="padding: 10px 14px; color: var(--text-primary);">Prefixo</th>
+                <th style="padding: 10px 14px; color: var(--text-primary);">Máscara Decimal</th>
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">IPs Totais</th>
+                <th style="padding: 10px 14px; color: var(--accent-rose);">IPs Úteis (Padrão)</th>
+                <th style="padding: 10px 14px; color: var(--accent-purple);">IPs Úteis (AWS VPC)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--border-subtle);">
+                <td style="padding: 10px 14px; font-weight: 700;">/16</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">255.255.0.0</td>
+                <td style="padding: 10px 14px;">65.536</td>
+                <td style="padding: 10px 14px;">65.534</td>
+                <td style="padding: 10px 14px;">65.531</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-subtle);">
+                <td style="padding: 10px 14px; font-weight: 700;">/24</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">255.255.255.0</td>
+                <td style="padding: 10px 14px;">256</td>
+                <td style="padding: 10px 14px;">254</td>
+                <td style="padding: 10px 14px;">251</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-subtle);">
+                <td style="padding: 10px 14px; font-weight: 700;">/26</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">255.255.255.192</td>
+                <td style="padding: 10px 14px;">64</td>
+                <td style="padding: 10px 14px;">62</td>
+                <td style="padding: 10px 14px;">59</td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-subtle);">
+                <td style="padding: 10px 14px; font-weight: 700;">/28</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">255.255.255.240</td>
+                <td style="padding: 10px 14px;">16</td>
+                <td style="padding: 10px 14px;">14</td>
+                <td style="padding: 10px 14px;">11</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px 14px; font-weight: 700;">/32</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">255.255.255.255</td>
+                <td style="padding: 10px 14px;">1</td>
+                <td style="padding: 10px 14px;">1 (Host único)</td>
+                <td style="padding: 10px 14px;">N/A (Não particionável)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section style="margin-top: 36px;">
+        <h2>4. Algoritmo em JavaScript para Cálculo de Sub-rede</h2>
+        <pre style="background: var(--bg-surface); padding: 16px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); color: #f1f5f9; font-family: 'JetBrains Mono', monospace; font-size: 0.86rem; overflow-x: auto;">
+function calcularSubrede(ipStr, prefixo) {
+  // Converte IP string em inteiro de 32 bits sem sinal
+  const ipInt = ipStr.split('.').reduce((acc, oct) => (acc << 8) + parseInt(oct, 10), 0) >>> 0;
+  
+  // Cria a máscara de rede
+  const maskInt = prefixo === 0 ? 0 : (~0 << (32 - prefixo)) >>> 0;
+  
+  // Operação Bitwise AND para achar o Network ID
+  const networkInt = (ipInt & maskInt) >>> 0;
+  const broadcastInt = (networkInt | (~maskInt >>> 0)) >>> 0;
+  
+  const intParaIp = (num) => [
+    (num >>> 24) & 255,
+    (num >>> 16) & 255,
+    (num >>> 8) & 255,
+    num & 255
+  ].join('.');
+
+  return {
+    rede: intParaIp(networkInt),
+    mascara: intParaIp(maskInt),
+    broadcast: intParaIp(broadcastInt),
+    primeiroHost: intParaIp(networkInt + 1),
+    ultimoHost: intParaIp(broadcastInt - 1),
+    totalIps: Math.pow(2, 32 - prefixo)
+  };
+}
+
+console.log(calcularSubrede("172.16.10.45", 24));
+        </pre>
+      </section>
+
+      <section style="margin-top: 36px;">
+        <h2>Perguntas Frequentes (FAQ)</h2>
+        <div class="faq-list" style="margin-top: 16px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>O que são as faixas de IP privadas da RFC 1918?</span><span>+</span></div>
+            <div class="faq-answer">São três blocos não-roteáveis na internet pública reservados exclusivamente para redes internas e VPCs: <code>10.0.0.0/8</code> (16M de IPs), <code>172.16.0.0/12</code> (1M de IPs) e <code>192.168.0.0/16</code> (65k IPs).</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>O que significa a rota 0.0.0.0/0?</span><span>+</span></div>
+            <div class="faq-answer">Em tabelas de roteamento, <code>0.0.0.0/0</code> representa a <em>Default Route</em> (Rota Padrão) ou "toda a internet". Qualquer tráfego cujo IP de destino não case com nenhuma rota específica da VPC é enviado para o Internet Gateway (IGW).</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Qual o menor prefixo de sub-rede permitido na AWS VPC?</span><span>+</span></div>
+            <div class="faq-answer">A AWS permite sub-redes com prefixos entre <code>/16</code> (máximo de 65.536 IPs) e <code>/28</code> (mínimo de 16 IPs, com 11 utilizáveis). Prefixos como <code>/29</code> ou <code>/30</code> não são suportados para sub-redes de VPC.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Card do Autor E-E-A-T -->
+      <section style="margin-top: 48px; padding: 24px; border-radius: var(--radius-md); background: rgba(168, 85, 247, 0.06); border: 1px solid rgba(168, 85, 247, 0.2); display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
+        <div style="width: 56px; height: 56px; border-radius: 50%; background: var(--accent-purple); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.4rem; color: #fff;">
+          AM
+        </div>
+        <div style="flex: 1; min-width: 250px;">
+          <h4 style="margin: 0 0 6px; font-size: 1.1rem; color: var(--text-primary);">Sobre o Autor: Alexandre Marcelino</h4>
+          <p style="margin: 0; font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5;">Formado em Engenharia de Software, pós-graduando em Arquitetura de Software e com mais de 6 anos de experiência na área de tecnologia. Criador e mantenedor da Caixa do Dev. Conheça seus projetos no <a href="https://github.com/xandy139" target="_blank" rel="noopener noreferrer" style="color: var(--accent-cyan); font-weight: 600;">GitHub (@xandy139)</a>.</p>
+        </div>
+      </section>
+
+      <!-- Call to Action Ferramentas -->
+      <div style="margin-top: 40px; display: flex; gap: 14px; flex-wrap: wrap;">
+        <a href="/calculadora-de-sub-rede" class="btn btn-primary" style="background: var(--accent-purple); border-color: var(--accent-purple);">Usar a Calculadora de Sub-rede CIDR &rarr;</a>
+        <a href="/artigos" class="btn btn-secondary">&larr; Ver Todos os Artigos</a>
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-grid">
+        <div class="footer-col footer-col-wide">
+          <div class="footer-brand">
+            <span class="footer-brand-title">Caixa do Dev</span>
+            <span class="footer-badge">100% Client-Side</span>
+          </div>
+          <p>O maior canivete suíço gratuito para desenvolvedores, analistas de QA e profissionais de tecnologia do Brasil.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Institucional</h4>
+          <ul>
+            <li><a href="/pages/sobre.html">Sobre o Projeto</a></li>
+            <li><a href="/artigos">Artigos Técnicos</a></li>
+            <li><a href="/pages/contato.html">Fale Conosco</a></li>
+            <li><a href="/pages/privacidade.html">Política de Privacidade</a></li>
+            <li><a href="/pages/termos.html">Termos de Uso</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Caixa do Dev. Todos os direitos reservados.</span>
+        <span>Mantido por <a href="https://github.com/xandy139" target="_blank" rel="noopener noreferrer" style="color: var(--accent-cyan);">Alexandre Marcelino</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/app.js"></script>
+</body>
+</html>

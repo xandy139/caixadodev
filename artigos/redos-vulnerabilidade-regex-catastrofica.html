@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vulnerabilidades ReDoS: Como Regex Insegura Trava Servidores Node.js | Caixa do Dev</title>
+  <meta name="description" content="Entenda o perigo do ReDoS (Regular Expression Denial of Service): teoria de autômatos NFA, backtracking catastrófico O(2^n), padrões perigosos e como proteger sua aplicação.">
+  <meta name="keywords" content="redos vulnerabilidade, regex backtracking catastrofico, regular expression denial of service, cwe 1333, re2 linear time regex">
+  <meta name="author" content="Alexandre Marcelino">
+  <meta name="robots" content="index, follow">
+
+  <link rel="canonical" href="https://www.caixadodev.com.br/artigos/redos-vulnerabilidade-regex-catastrofica">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://www.caixadodev.com.br/artigos/redos-vulnerabilidade-regex-catastrofica">
+  <meta property="og:title" content="Vulnerabilidades ReDoS: Como Regex Insegura Trava Servidores Node.js | Caixa do Dev">
+  <meta property="og:description" content="Entenda como expressões regulares mal projetadas podem congelar a Event Loop do Node.js ou consumir 100% de CPU com backtracking catastrófico.">
+  <meta property="og:image" content="https://www.caixadodev.com.br/assets/og-cover.png">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'><path d='M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/tools.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Vulnerabilidades ReDoS: Como Regex Insegura Trava Servidores Node.js",
+    "description": "Análise técnica de segurança demonstrando como padrões ambíguos de expressões regulares causam complexidade de tempo exponencial e esgotamento de CPU.",
+    "author": {
+      "@type": "Person",
+      "name": "Alexandre Marcelino",
+      "url": "https://github.com/xandy139"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Caixa do Dev",
+      "url": "https://www.caixadodev.com.br"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://www.caixadodev.com.br/artigos/redos-vulnerabilidade-regex-catastrofica"
+    },
+    "inLanguage": "pt-BR"
+  }
+  </script>
+</head>
+<body class="standalone-page">
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="/" class="brand" title="Caixa do Dev - Página Inicial">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Caixa do Dev</span>
+          <span class="brand-badge">Artigos & Engenharia</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="/">Início</a></li>
+          <li><a href="/artigos" class="active">Artigos</a></li>
+          <li><a href="/testador-de-regex">Testador de Regex</a></li>
+          <li><a href="/pages/sobre.html">Sobre</a></li>
+          <li><a href="/pages/contato.html">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Conteúdo Principal -->
+  <main class="container" style="padding-top: 32px; padding-bottom: 80px; max-width: 900px; margin: 0 auto;">
+    
+    <div class="tool-breadcrumbs" style="margin-bottom: 24px;">
+      <a href="/">&larr; Início</a> / <a href="/artigos">Artigos Técnicos</a> / <span>Vulnerabilidades ReDoS</span>
+    </div>
+
+    <article class="tool-seo-guide" style="padding: 36px; border-radius: var(--radius-lg); background: var(--bg-card); border: 1px solid var(--border-subtle);">
+      
+      <header style="margin-bottom: 32px; border-bottom: 1px solid var(--border-subtle); padding-bottom: 24px;">
+        <span style="display: inline-block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--accent-amber); background: rgba(245, 158, 11, 0.1); padding: 4px 10px; border-radius: 999px; margin-bottom: 12px; border: 1px solid rgba(245, 158, 11, 0.2);">Segurança Web & CWE-1333</span>
+        <h1 style="font-size: 2.2rem; font-weight: 800; color: var(--text-primary); line-height: 1.25; margin-bottom: 16px;">Vulnerabilidades ReDoS: Como Regex Insegura Trava Servidores Node.js</h1>
+        <div style="display: flex; align-items: center; gap: 16px; color: var(--text-muted); font-size: 0.88rem; flex-wrap: wrap;">
+          <span>Por <strong>Alexandre Marcelino</strong></span>
+          <span>&bull;</span>
+          <span>Tempo de leitura: 9 minutos</span>
+          <span>&bull;</span>
+          <span>Atualizado em Outubro de 2026</span>
+        </div>
+      </header>
+
+      <section>
+        <p>Expressões Regulares (Regex) são ferramentas indispensáveis no kit de qualquer desenvolvedor. Elas validam formulários, limpam logs, realizam buscas e roteiam URLs com extrema concisão. No entanto, quando escritas sem rigor algorítmico, uma única linha de regex pode se tornar um dos vetores de ataque de negação de serviço mais destrutivos do ecossistema web: o <strong>ReDoS (Regular Expression Denial of Service)</strong>, catalogado como <strong>CWE-1333</strong>.</p>
+        
+        <p>Em ambientes single-threaded assíncronos como o <strong>Node.js</strong>, o impacto é devastador. Como o motor V8 processa expressões regulares de forma síncrona na thread principal, uma chamada ReDoS bloqueia a <em>Event Loop</em> por minutos ou até horas, fazendo com que 100% das requisições de todos os outros usuários fiquem congeladas.</p>
+      </section>
+
+      <section style="margin-top: 36px;">
+        <h2>1. A Mecânica do Backtracking Catastrófico</h2>
+        <p>Para entender por que o ReDoS acontece, precisamos compreender como a maioria dos motores de regex modernos (em linguagens como JavaScript, Python, Java, PHP e .NET) funciona. Eles utilizam <strong>Autômatos Finitos Não-Determinísticos (NFA)</strong> com algoritmo de <em>backtracking</em> recursivo.</p>
+        
+        <p>Considere a clássica expressão ambígua:</p>
+        <pre style="background: var(--bg-surface); padding: 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); color: #f87171; font-family: var(--font-mono); font-size: 0.9rem;">/^(a+)+$/</pre>
+
+        <p>Quando testada contra a string <code>"aaaaa"</code>, o casamento ocorre em microssegundos. Porém, o que acontece se o atacante enviar a string <code>"aaaaaaaaaaaaaaaaaaaaaaaaaaaa!"</code> (28 caracteres 'a' seguidos de uma exclamação que falha a correspondência)?</p>
+
+        <div style="background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.25); border-radius: var(--radius-md); padding: 20px; margin: 20px 0;">
+          <h4 style="margin: 0 0 8px; color: #fbbf24;">A Explosão Combinatória:</h4>
+          <p style="margin: 0; color: var(--text-secondary); line-height: 1.6;">
+            O motor consome todos os 'a's, chega ao '!' e percebe que o casamento falhou. Em vez de simplesmente rejeitar, o motor NFA começa a testar <strong>todas as combinações possíveis</strong> de agrupar esses caracteres entre o <code>+</code> interno e o <code>+</code> externo: (1 e 27), (2 e 26), (1, 1 e 26)... Para uma string de comprimento <em>n</em>, o número de caminhos testados é proporcional a <strong>2<sup>n</sup> (complexidade exponencial)</strong>. Com apenas 30 caracteres, são mais de 1 bilhão de passos computacionais!
+          </p>
+        </div>
+      </section>
+
+      <section style="margin-top: 36px;">
+        <h2>2. O Caso Real do Cloudflare em 2019</h2>
+        <p>Em 2 de julho de 2019, o Cloudflare sofreu uma interrupção global massiva que derrubou milhões de sites na internet por 27 minutos. A causa raiz? Uma nova regra de firewall (WAF) implantada para detectar ataques XSS continha a seguinte sub-expressão regular:</p>
+        
+        <pre style="background: var(--bg-surface); padding: 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); color: #cbd5e1; font-family: var(--font-mono); font-size: 0.88rem;">(?:(?:\"|'|\]|\}|\\d|(?:nan|infinity))\s*?:[\s\S]*?[\{\[])</pre>
+
+        <p>A presença de <code>.*</code> repetido em conjunto com operadores não-gananciosos causou backtracking severo nos nós centrais da CDN, levando o consumo de CPU a 100% simultaneamente em dezenas de datacenters mundiais.</p>
+      </section>
+
+      <section style="margin-top: 36px;">
+        <h2>3. Os Padrões Mais Perigosos (Evil Regex)</h2>
+        <p>Identificar padrões vulneráveis no código é a melhor forma de blindar sua aplicação:</p>
+
+        <div style="overflow-x: auto; margin: 20px 0;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem; text-align: left;">
+            <thead>
+              <tr style="background: var(--bg-surface); border-bottom: 2px solid var(--border-subtle);">
+                <th style="padding: 12px 16px; color: var(--text-primary);">Padrão Vulnerável</th>
+                <th style="padding: 12px 16px; color: var(--accent-rose);">Exemplo de Evil Regex</th>
+                <th style="padding: 12px 16px; color: var(--accent-cyan);">Payload Malicioso</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid var(--border-subtle);">
+                <td style="padding: 12px 16px; font-weight: 600;">Agrupamento Aninhado</td>
+                <td style="padding: 12px 16px; font-family: var(--font-mono); font-size: 0.82rem;"><code>(a+)+$</code></td>
+                <td style="padding: 12px 16px; font-family: var(--font-mono); font-size: 0.82rem;"><code>"aaaaaaaaaaaaaaaaa!"</code></td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-subtle);">
+                <td style="padding: 12px 16px; font-weight: 600;">Alternância Sobreposta</td>
+                <td style="padding: 12px 16px; font-family: var(--font-mono); font-size: 0.82rem;"><code>(a|aa)+$</code></td>
+                <td style="padding: 12px 16px; font-family: var(--font-mono); font-size: 0.82rem;"><code>"aaaaaaaaaaaaaaaaa!"</code></td>
+              </tr>
+              <tr style="border-bottom: 1px solid var(--border-subtle);">
+                <td style="padding: 12px 16px; font-weight: 600;">Validação Ingênua de Email</td>
+                <td style="padding: 12px 16px; font-family: var(--font-mono); font-size: 0.82rem;"><code>^([a-zA-Z0-9_\.-]+)+@</code></td>
+                <td style="padding: 12px 16px; font-family: var(--font-mono); font-size: 0.82rem;"><code>"a.a.a.a.a.a.a.a.a.a.a!"</code></td>
+              </tr>
+              <tr>
+                <td style="padding: 12px 16px; font-weight: 600;">Prefixos Repetidos Opcionais</td>
+                <td style="padding: 12px 16px; font-family: var(--font-mono); font-size: 0.82rem;"><code>(a|a?)+$</code></td>
+                <td style="padding: 12px 16px; font-family: var(--font-mono); font-size: 0.82rem;"><code>"aaaaaaaaaaaaaaaaa!"</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section style="margin-top: 36px;">
+        <h2>4. Como Proteger sua Aplicação contra ReDoS</h2>
+        
+        <h3>A. Limite o Comprimento das Entradas (Input Length Capping)</h3>
+        <p>A grande maioria dos ataques ReDoS exige strings com 30 a 200 caracteres para causar congelamento perceptível. Se você está validando um nome de usuário, aplique um limite estrito <em>antes</em> de invocar a regex:</p>
+        <pre style="background: var(--bg-surface); padding: 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); color: #f1f5f9; font-family: 'JetBrains Mono', monospace; font-size: 0.86rem; overflow-x: auto;">
+if (input.length > 50) {
+  throw new Error("Tamanho de entrada excedido.");
+}
+        </pre>
+
+        <h3>B. Utilize Motores com Complexidade Linear (Google RE2)</h3>
+        <p>O motor <strong>RE2</strong> do Google substitui NFAs com backtracking por autômatos que garantem execução em <strong>tempo linear O(n)</strong> em relação ao tamanho da string de entrada, tornando ataques ReDoS matematicamente impossíveis:</p>
+        <pre style="background: var(--bg-surface); padding: 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); color: #f1f5f9; font-family: 'JetBrains Mono', monospace; font-size: 0.86rem; overflow-x: auto;">
+// No Node.js (via pacote re2)
+const RE2 = require('re2');
+const regexSegura = new RE2('^([a-zA-Z0-9_.-]+)@([a-zA-Z0-9_.-]+)$');
+console.log(regexSegura.test("usuario@empresa.com.br")); // Seguro contra DoS
+        </pre>
+      </section>
+
+      <section style="margin-top: 36px;">
+        <h2>Perguntas Frequentes sobre ReDoS (FAQ)</h2>
+        <div class="faq-list" style="margin-top: 16px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>O JavaScript no navegador também sofre com ReDoS?</span><span>+</span></div>
+            <div class="faq-answer">Sim. Uma regex maliciosa ou mal formatada rodando no navegador trava a aba do usuário, causando o congelamento da interface até que o navegador exiba a mensagem de alerta para interromper a execução do script.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Ferramentas de SAST detectam ReDoS automaticamente?</span><span>+</span></div>
+            <div class="faq-answer">Sim. Ferramentas como SonarQube, Snyk, Semgrep e linters como <code>eslint-plugin-security</code> analisam a árvore sintática da regex e alertam sobre padrões ambíguos propensos a backtracking exponencial.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Por que nem todo motor de regex usa tempo linear como o RE2?</span><span>+</span></div>
+            <div class="faq-answer">Porque motores lineares não suportam recursos avançados como <em>backreferences</em> (ex: <code>\1</code> para casar a mesma tag HTML de abertura e fechamento) e <em>lookaround</em> arbitrário, que dependem formalmente de backtracking.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Card do Autor E-E-A-T -->
+      <section style="margin-top: 48px; padding: 24px; border-radius: var(--radius-md); background: rgba(245, 158, 11, 0.06); border: 1px solid rgba(245, 158, 11, 0.2); display: flex; gap: 20px; align-items: center; flex-wrap: wrap;">
+        <div style="width: 56px; height: 56px; border-radius: 50%; background: var(--accent-amber); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.4rem; color: #000;">
+          AM
+        </div>
+        <div style="flex: 1; min-width: 250px;">
+          <h4 style="margin: 0 0 6px; font-size: 1.1rem; color: var(--text-primary);">Sobre o Autor: Alexandre Marcelino</h4>
+          <p style="margin: 0; font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5;">Formado em Engenharia de Software, pós-graduando em Arquitetura de Software e com mais de 6 anos de experiência na área de tecnologia. Criador e mantenedor da Caixa do Dev. Conheça seus projetos no <a href="https://github.com/xandy139" target="_blank" rel="noopener noreferrer" style="color: var(--accent-cyan); font-weight: 600;">GitHub (@xandy139)</a>.</p>
+        </div>
+      </section>
+
+      <!-- Call to Action Ferramentas -->
+      <div style="margin-top: 40px; display: flex; gap: 14px; flex-wrap: wrap;">
+        <a href="/testador-de-regex" class="btn btn-primary" style="background: var(--accent-amber); border-color: var(--accent-amber); color: #000;">Testar Padrões no Testador de Regex &rarr;</a>
+        <a href="/artigos" class="btn btn-secondary">&larr; Ver Todos os Artigos</a>
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-grid">
+        <div class="footer-col footer-col-wide">
+          <div class="footer-brand">
+            <span class="footer-brand-title">Caixa do Dev</span>
+            <span class="footer-badge">100% Client-Side</span>
+          </div>
+          <p>O maior canivete suíço gratuito para desenvolvedores, analistas de QA e profissionais de tecnologia do Brasil.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Institucional</h4>
+          <ul>
+            <li><a href="/pages/sobre.html">Sobre o Projeto</a></li>
+            <li><a href="/artigos">Artigos Técnicos</a></li>
+            <li><a href="/pages/contato.html">Fale Conosco</a></li>
+            <li><a href="/pages/privacidade.html">Política de Privacidade</a></li>
+            <li><a href="/pages/termos.html">Termos de Uso</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Caixa do Dev. Todos os direitos reservados.</span>
+        <span>Mantido por <a href="https://github.com/xandy139" target="_blank" rel="noopener noreferrer" style="color: var(--accent-cyan);">Alexandre Marcelino</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/app.js"></script>
+</body>
+</html>
