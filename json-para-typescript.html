@@ -321,6 +321,15 @@
       // Inicia com o exemplo preenchido
       jsonTsInput.value = sampleJson;
       runConvert();
+
+      // Gravar nos recentes do navegador
+      try {
+        const k = 'caixadodev_recent_tools';
+        let r = JSON.parse(localStorage.getItem(k) || '[]').filter(id => id !== 'json-ts');
+        r.unshift('json-ts');
+        if (r.length > 6) r = r.slice(0, 6);
+        localStorage.setItem(k, JSON.stringify(r));
+      } catch(e) {}
     });
   </script>
 </body>

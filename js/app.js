@@ -443,6 +443,84 @@ document.addEventListener('DOMContentLoaded', () => {
   initCookieConsent();
 });
 
+// ==========================================
+// GERENCIADOR DE FERRAMENTAS RECENTES (LOCALSTORAGE)
+// ==========================================
+const RECENTS_STORAGE_KEY = 'caixadodev_recent_tools';
+
+function getRecentTools() {
+  try {
+    const raw = localStorage.getItem(RECENTS_STORAGE_KEY);
+    return raw ? JSON.parse(raw) : [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function recordRecentTool(toolId) {
+  if (!toolId || toolId === 'home') return;
+  try {
+    let recents = getRecentTools().filter(id => id !== toolId);
+    recents.unshift(toolId);
+    if (recents.length > 6) recents = recents.slice(0, 6);
+    localStorage.setItem(RECENTS_STORAGE_KEY, JSON.stringify(recents));
+    renderRecentTools();
+  } catch (e) {
+    console.warn('Erro ao registrar ferramenta recente:', e);
+  }
+}
+
+function clearRecentTools() {
+  try {
+    localStorage.removeItem(RECENTS_STORAGE_KEY);
+    renderRecentTools();
+    if (typeof showToast === 'function') showToast('Histórico de recentes limpo!');
+  } catch (e) {}
+}
+
+function renderRecentTools() {
+  const container = document.getElementById('recent-tools-section');
+  const grid = document.getElementById('recent-tools-grid');
+  if (!container || !grid) return;
+
+  const recents = getRecentTools();
+  if (recents.length === 0) {
+    container.style.display = 'none';
+    return;
+  }
+
+  const tools = recents
+    .map(id => TOOLS_CATALOG.find(t => t.id === id))
+    .filter(Boolean);
+
+  if (tools.length === 0) {
+    container.style.display = 'none';
+    return;
+  }
+
+  container.style.display = 'block';
+  grid.innerHTML = tools.map(t => `
+    <a href="#${t.id}" class="recent-tool-chip">
+      <div class="recent-chip-icon" style="background: ${t.color};">
+        ${t.icon}
+      </div>
+      <div class="recent-chip-info">
+        <span class="recent-chip-name">${t.name}</span>
+        <span class="recent-chip-category">${t.categoryLabel}</span>
+      </div>
+      <span class="recent-chip-arrow">&rarr;</span>
+    </a>
+  `).join('');
+
+  const btnClear = document.getElementById('btn-clear-recents');
+  if (btnClear) {
+    btnClear.onclick = (e) => {
+      e.preventDefault();
+      clearRecentTools();
+    };
+  }
+}
+
 // ========================
 // ROTEAMENTO POR HASH
 // ========================
@@ -455,6 +533,7 @@ function initRouter() {
     if (hash === 'home') {
       if (hubView) hubView.style.display = 'block';
       toolViews.forEach(v => v.classList.remove('active'));
+      renderRecentTools();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
       if (hubView) hubView.style.display = 'none';
@@ -462,6 +541,7 @@ function initRouter() {
       const activeToolView = document.getElementById(`view-${hash}`);
       if (activeToolView) {
         activeToolView.classList.add('active');
+        recordRecentTool(hash);
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
         window.location.hash = '#home';

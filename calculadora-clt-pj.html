@@ -337,6 +337,15 @@
       });
 
       runCalc();
+
+      // Gravar nos recentes do navegador
+      try {
+        const k = 'caixadodev_recent_tools';
+        let r = JSON.parse(localStorage.getItem(k) || '[]').filter(id => id !== 'clt-pj');
+        r.unshift('clt-pj');
+        if (r.length > 6) r = r.slice(0, 6);
+        localStorage.setItem(k, JSON.stringify(r));
+      } catch(e) {}
     });
   </script>
 </body>

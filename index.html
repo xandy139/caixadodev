@@ -120,7 +120,18 @@
           <button class="category-btn" data-category="formatadores">Código, TypeScript, SQL & Web</button>
           <button class="category-btn" data-category="seguranca">Criptografia & Auth</button>
           <button class="category-btn" data-category="conversores">Design, Redes & Calculadoras</button>
+      </div>
+
+      <!-- Seção de Ferramentas Recentes (Carregada via localStorage) -->
+      <div id="recent-tools-section" class="recent-tools-section" style="display: none;">
+        <div class="recent-tools-header">
+          <div class="recent-tools-title">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            <span>Utilizadas Recentemente</span>
+          </div>
+          <button id="btn-clear-recents" class="recent-clear-btn" title="Limpar histórico recente">Limpar Recentes</button>
         </div>
+        <div id="recent-tools-grid" class="recent-tools-grid"></div>
       </div>
 
       <div id="tools-grid" class="tools-grid">

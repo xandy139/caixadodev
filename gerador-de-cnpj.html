@@ -315,6 +315,15 @@ Se Resto < 2 então DV2 = 0 senão DV2 = 11 - Resto</pre>
 
       // Geração inicial
       generate();
+
+      // Gravar nos recentes do navegador
+      try {
+        const k = 'caixadodev_recent_tools';
+        let r = JSON.parse(localStorage.getItem(k) || '[]').filter(id => id !== 'cpf-cnpj');
+        r.unshift('cpf-cnpj');
+        if (r.length > 6) r = r.slice(0, 6);
+        localStorage.setItem(k, JSON.stringify(r));
+      } catch(e) {}
     });
   </script>
 </body>
