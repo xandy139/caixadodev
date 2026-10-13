@@ -1857,16 +1857,16 @@ function initToolEvents() {
       btnSearchCep.textContent = 'Buscar Endereço';
 
       if (!res.success) {
-        cepSearchResult.innerHTML = `<div class="alert-box alert-danger">${res.message}</div>`;
+        cepSearchResult.innerHTML = `<div class="alert-box alert-danger">${escapeHtml(res.message || '')}</div>`;
       } else {
         const d = res.data;
         cepSearchResult.innerHTML = `
           <div class="result-box" style="margin-top: 10px; font-size: 0.92rem; line-height: 1.6;">
-            <div><strong>CEP:</strong> ${d.cep}</div>
-            <div><strong>Logradouro:</strong> ${d.logradouro}</div>
-            <div><strong>Bairro:</strong> ${d.bairro}</div>
-            <div><strong>Cidade/UF:</strong> ${d.localidade} - ${d.uf}</div>
-            <div><strong>DDD:</strong> ${d.ddd} | <strong>IBGE:</strong> ${d.ibge}</div>
+            <div><strong>CEP:</strong> ${escapeHtml(d.cep || '')}</div>
+            <div><strong>Logradouro:</strong> ${escapeHtml(d.logradouro || '')}</div>
+            <div><strong>Bairro:</strong> ${escapeHtml(d.bairro || '')}</div>
+            <div><strong>Cidade/UF:</strong> ${escapeHtml(d.localidade || '')} - ${escapeHtml(d.uf || '')}</div>
+            <div><strong>DDD:</strong> ${escapeHtml(d.ddd || '')} | <strong>IBGE:</strong> ${escapeHtml(d.ibge || '')}</div>
             ${res.isOfflineFallback ? '<div style="color: var(--accent-amber); font-size: 0.8rem; margin-top: 6px;">* Modo offline de faixas postais ativado.</div>' : ''}
           </div>
         `;
@@ -2204,7 +2204,22 @@ function initToolEvents() {
 
   if (svgInput && svgOutput) {
     const updateSvgPreview = (code) => {
-      if (svgPreviewBox) svgPreviewBox.innerHTML = code || svgInput.value;
+      if (!svgPreviewBox) return;
+      const content = (code || svgInput.value || '').trim();
+      if (!content) {
+        svgPreviewBox.innerHTML = '';
+        return;
+      }
+      const sanitized = content
+        .replace(/<script[\s\S]*?<\/script>/gi, '')
+        .replace(/\son[a-z]+=(["'][^"']*["']|[^\s>]+)/gi, '')
+        .replace(/href=["']javascript:[^"']*["']/gi, 'href="#"');
+      try {
+        const b64 = btoa(unescape(encodeURIComponent(sanitized)));
+        svgPreviewBox.innerHTML = `<img src="data:image/svg+xml;base64,${b64}" alt="Preview SVG Seguro" style="max-width: 100%; max-height: 100px; object-fit: contain;">`;
+      } catch (e) {
+        svgPreviewBox.textContent = 'Erro ao processar visualização.';
+      }
     };
 
     if (btnSvgOpt) {

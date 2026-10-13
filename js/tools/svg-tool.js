@@ -11,6 +11,8 @@ const SVG_TOOL = {
   optimize(svgString) {
     if (!svgString) return '';
     return svgString
+      .replace(/<script[\s\S]*?<\/script>/gi, '') // remove scripts maliciosos (XSS)
+      .replace(/\son[a-z]+=(["'][^"']*["']|[^\s>]+)/gi, '') // remove handlers inline on*
       .replace(/<\?xml[\s\S]*?\?>/i, '') // remove declaração xml
       .replace(/<!DOCTYPE[\s\S]*?>/i, '') // remove doctype
       .replace(/<!--[\s\S]*?-->/g, '')     // remove comentários

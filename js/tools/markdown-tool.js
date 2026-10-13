@@ -78,8 +78,13 @@ saudar('Dev');
     // Unordered Lists (- item ou * item)
     html = html.replace(/^[\*\-] (?!<input)(.*$)/gim, '<li>$1</li>');
 
-    // Links: [text](url)
-    html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="md-link">$1</a>');
+    // Links seguros: [text](url) - Sanitização rigorosa contra javascript: e data: URI XSS
+    html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (match, text, url) => {
+      const cleanUrl = url.trim();
+      const isSafe = /^(https?:\/\/|mailto:|[#/])/i.test(cleanUrl);
+      const safeHref = isSafe ? cleanUrl : '#';
+      return `<a href="${safeHref}" target="_blank" rel="noopener noreferrer" class="md-link">${text}</a>`;
+    });
 
     // Tabelas simples (| a | b |)
     html = html.replace(/^\|(.+)\|$/gim, (match) => {
