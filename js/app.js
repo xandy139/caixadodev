@@ -1334,7 +1334,7 @@ function initToolEvents() {
 
   if (btnGenQr && qrcodeCanvas) {
     const renderQr = () => {
-      const text = qrcodeInput.value.trim() || 'https://caixadodev.com.br';
+      const text = qrcodeInput.value.trim() || 'https://www.caixadodev.com.br';
       QRCODE_TOOL.generate(qrcodeCanvas, text, 240);
     };
     btnGenQr.addEventListener('click', renderQr);
