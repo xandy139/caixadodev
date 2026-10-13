@@ -161,7 +161,10 @@
 
       <div class="cpf-result-display" style="margin-top: 16px;">
         <span id="cnpj-display-value" class="cpf-value">00.000.000/0001-00</span>
-        <button id="btn-copy-cnpj" class="btn btn-secondary btn-sm">📋 Copiar CNPJ</button>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; justify-content: center;">
+          <button id="btn-gen-display-num" class="btn btn-primary btn-sm">🔄 Gerar Novo</button>
+          <button id="btn-copy-cnpj" class="btn btn-secondary btn-sm">📋 Copiar CNPJ</button>
+        </div>
       </div>
 
       <hr style="border: none; border-top: 1px solid var(--border-subtle); margin: 36px 0 28px;">
@@ -273,7 +276,7 @@ Se Resto < 2 então DV2 = 0 senão DV2 = 11 - Resto</pre>
   <div id="toast" class="toast"></div>
 
   <!-- Scripts -->
-  <script src="js/tools/cpf-cnpj.js"></script>
+  <script src="js/tools/cpf-cnpj.js?v=20261013c"></script>
   <script>
     function showToast(msg) {
       const t = document.getElementById('toast');
@@ -299,6 +302,7 @@ Se Resto < 2 então DV2 = 0 senão DV2 = 11 - Resto</pre>
 
     document.addEventListener('DOMContentLoaded', () => {
       const btnGen = document.getElementById('btn-gen-cnpj');
+      const btnGenDisplayNum = document.getElementById('btn-gen-display-num');
       const checkFormat = document.getElementById('check-cnpj-format');
       const displayVal = document.getElementById('cnpj-display-value');
       const btnCopy = document.getElementById('btn-copy-cnpj');
@@ -309,9 +313,16 @@ Se Resto < 2 então DV2 = 0 senão DV2 = 11 - Resto</pre>
       const generate = () => {
         const formatted = checkFormat ? checkFormat.checked : true;
         displayVal.textContent = CPF_CNPJ_TOOL.generateCNPJ(formatted);
+        try {
+          displayVal.animate([
+            { transform: 'scale(0.96)', opacity: 0.5 },
+            { transform: 'scale(1)', opacity: 1 }
+          ], { duration: 180, easing: 'ease-out' });
+        } catch(e) {}
       };
 
       if (btnGen) btnGen.addEventListener('click', generate);
+      if (btnGenDisplayNum) btnGenDisplayNum.addEventListener('click', generate);
       if (checkFormat) checkFormat.addEventListener('change', generate);
       if (btnCopy) btnCopy.addEventListener('click', () => copyToClipboard(displayVal.textContent));
 
