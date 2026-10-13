@@ -104,7 +104,7 @@
         </div>
         <div class="brand-text">
           <span class="brand-name">Caixa do Dev</span>
-          <span class="brand-badge">40 Ferramentas</span>
+          <span class="brand-badge">42 Ferramentas</span>
         </div>
       </a>
 
@@ -162,9 +162,17 @@
           <input type="number" id="calc-faturamento-pj" class="form-control" value="13000" placeholder="Ex: 13000">
         </div>
         <div class="form-group">
-          <label class="form-label" for="calc-contador-pj">Custo Mensal de Contabilidade Online (R$)</label>
-          <input type="number" id="calc-contador-pj" class="form-control" value="150" placeholder="Ex: 150">
+          <label class="form-label" for="calc-regime-pj">Regime Tributário PJ</label>
+          <select id="calc-regime-pj" class="form-control">
+            <option value="anexo3" selected>Simples Nacional - Anexo III c/ Fator R (6% - Padrão TI/Devs)</option>
+            <option value="anexo5">Simples Nacional - Anexo V s/ Fator R (15,5%)</option>
+          </select>
         </div>
+      </div>
+
+      <div class="form-group" style="margin-bottom: 16px;">
+        <label class="form-label" for="calc-contador-pj">Custo Mensal de Contabilidade Online (R$)</label>
+        <input type="number" id="calc-contador-pj" class="form-control" value="150" placeholder="Ex: 150">
       </div>
 
       <div id="clt-pj-verdict" class="verdict-banner" style="margin-top: 10px;"></div>
@@ -179,19 +187,26 @@
           <div class="metric-row"><span>Salário Líquido Mensal:</span><strong id="m-clt-liq">R$ 0,00</strong></div>
           <div class="metric-row"><span>Desconto INSS (Tabela):</span><span id="m-clt-inss" style="color: var(--accent-rose);">R$ 0,00</span></div>
           <div class="metric-row"><span>Desconto IRPF:</span><span id="m-clt-irpf" style="color: var(--accent-rose);">R$ 0,00</span></div>
-          <div class="metric-row"><span>Depósito FGTS (8%):</span><span id="m-clt-fgts" style="color: var(--accent-emerald);">R$ 0,00/mês</span></div>
-          <div class="metric-row total-row"><span>Total Anual Real (c/ 13º e Férias):</span><strong id="m-clt-anual" style="color: var(--accent-cyan);">R$ 0,00</strong></div>
+          <div class="metric-row"><span>Depósito FGTS (8% pago p/ empresa):</span><span id="m-clt-fgts" style="color: var(--accent-emerald);">R$ 0,00/mês</span></div>
+          <div class="metric-row"><span>13º Salário Líquido Estimado:</span><span id="m-clt-13">R$ 0,00</span></div>
+          <div class="metric-row"><span>1/3 Férias Constitucional Líquido:</span><span id="m-clt-ferias">R$ 0,00</span></div>
+          <div class="metric-row"><span>Média Mensal Real (Anual / 12):</span><span id="m-clt-media-mensal" style="font-weight: 700; color: var(--accent-cyan);">R$ 0,00</span></div>
+          <div class="metric-row total-row"><span>Total Anual Real (c/ 13º, Férias e FGTS):</span><strong id="m-clt-anual" style="color: var(--accent-cyan);">R$ 0,00</strong></div>
         </div>
 
         <!-- Coluna PJ -->
         <div class="pj-column">
           <h3 style="color: var(--accent-emerald); display: flex; align-items: center; justify-content: space-between;">
             <span>Pessoa Jurídica (PJ)</span>
-            <span class="tool-card-badge" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-emerald);">Simples Nacional</span>
+            <span id="badge-pj-regime" class="tool-card-badge" style="background: rgba(16, 185, 129, 0.15); color: var(--accent-emerald);">Simples Nacional</span>
           </h3>
           <div class="metric-row"><span>Líquido Mensal em Mãos:</span><strong id="m-pj-liq">R$ 0,00</strong></div>
-          <div class="metric-row"><span>Imposto DAS (Anexo III 6%):</span><span id="m-pj-simples" style="color: var(--accent-rose);">R$ 0,00</span></div>
-          <div class="metric-row"><span>Pró-Labore Recomendado:</span><span id="m-pj-prolabore">R$ 0,00</span></div>
+          <div class="metric-row"><span>Imposto DAS (Guia Única Simples):</span><span id="m-pj-simples" style="color: var(--accent-rose);">R$ 0,00</span></div>
+          <div class="metric-row"><span>Pró-Labore Bruto do Sócio:</span><span id="m-pj-prolabore">R$ 0,00</span></div>
+          <div class="metric-row"><span>INSS Pró-Labore (11% limitado ao Teto):</span><span id="m-pj-inss" style="color: var(--accent-rose);">R$ 0,00</span></div>
+          <div class="metric-row"><span>IRPF Pró-Labore (se houver):</span><span id="m-pj-irpf" style="color: var(--accent-rose);">R$ 0,00</span></div>
+          <div class="metric-row"><span>Lucro Isento Distribuído (Art. 10 Lei 9.249):</span><span id="m-pj-lucro" style="color: var(--accent-emerald); font-weight: 700;">R$ 0,00</span></div>
+          <div class="metric-row"><span>Custo Contabilidade Online:</span><span id="m-pj-contador">R$ 0,00</span></div>
           <div class="metric-row total-row"><span>Total Anual PJ:</span><strong id="m-pj-anual" style="color: var(--accent-emerald);">R$ 0,00</strong></div>
         </div>
       </div>

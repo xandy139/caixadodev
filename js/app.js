@@ -2096,17 +2096,26 @@ function initToolEvents() {
   const inputBeneficiosClt = document.getElementById('calc-beneficios-clt');
   const inputFatPj = document.getElementById('calc-faturamento-pj');
   const inputContadorPj = document.getElementById('calc-contador-pj');
+  const inputRegimePj = document.getElementById('calc-regime-pj');
   const btnCalcCltPj = document.getElementById('btn-calc-clt-pj');
 
   const cltLiqEl = document.getElementById('m-clt-liq');
   const cltInssEl = document.getElementById('m-clt-inss');
   const cltIrpfEl = document.getElementById('m-clt-irpf');
   const cltFgtsEl = document.getElementById('m-clt-fgts');
+  const clt13El = document.getElementById('m-clt-13');
+  const cltFeriasEl = document.getElementById('m-clt-ferias');
+  const cltMediaMensalEl = document.getElementById('m-clt-media-mensal');
   const cltAnualEl = document.getElementById('m-clt-anual');
 
   const pjLiqEl = document.getElementById('m-pj-liq');
   const pjSimplesEl = document.getElementById('m-pj-simples');
   const pjProLaboreEl = document.getElementById('m-pj-prolabore');
+  const pjInssEl = document.getElementById('m-pj-inss');
+  const pjIrpfEl = document.getElementById('m-pj-irpf');
+  const pjLucroEl = document.getElementById('m-pj-lucro');
+  const pjContadorEl = document.getElementById('m-pj-contador');
+  const badgePjRegime = document.getElementById('badge-pj-regime');
   const pjAnualEl = document.getElementById('m-pj-anual');
   const verdictBanner = document.getElementById('clt-pj-verdict');
 
@@ -2120,19 +2129,30 @@ function initToolEvents() {
 
       const cPj = parseFloat(inputContadorPj ? inputContadorPj.value : 150) || 150;
 
-      const res = CLT_PJ_CALCULATOR.calculate(sClt, bClt, fPj, cPj);
+      const rPj = inputRegimePj ? inputRegimePj.value : 'anexo3';
+      const res = CLT_PJ_CALCULATOR.calculate(sClt, bClt, fPj, cPj, rPj);
 
       const fmt = (v) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
       if (cltLiqEl) cltLiqEl.textContent = fmt(res.clt.liquidoMensal);
       if (cltInssEl) cltInssEl.textContent = fmt(res.clt.inss);
       if (cltIrpfEl) cltIrpfEl.textContent = fmt(res.clt.irpf);
-      if (cltFgtsEl) cltFgtsEl.textContent = fmt(res.clt.fgtsMensal);
+      if (cltFgtsEl) cltFgtsEl.textContent = `${fmt(res.clt.fgtsMensal)}/mês`;
+      if (clt13El) clt13El.textContent = fmt(res.clt.decimoTerceiroLiquido);
+      if (cltFeriasEl) cltFeriasEl.textContent = fmt(res.clt.tercoFeriasLiquido);
+      if (cltMediaMensalEl) cltMediaMensalEl.textContent = fmt(res.clt.mediaMensalReal);
       if (cltAnualEl) cltAnualEl.textContent = fmt(res.clt.totalAnual);
 
       if (pjLiqEl) pjLiqEl.textContent = fmt(res.pj.liquidoMensal);
-      if (pjSimplesEl) pjSimplesEl.textContent = fmt(res.pj.impostoSimples);
+      if (badgePjRegime) {
+        badgePjRegime.textContent = rPj === 'anexo5' ? 'Simples Nacional (Anexo V - 15,5%)' : 'Simples Nacional (Anexo III - 6%)';
+      }
+      if (pjSimplesEl) pjSimplesEl.textContent = `${fmt(res.pj.impostoSimples)} (${res.pj.aliquotaDAS}%)`;
       if (pjProLaboreEl) pjProLaboreEl.textContent = fmt(res.pj.proLabore);
+      if (pjInssEl) pjInssEl.textContent = fmt(res.pj.inssProLabore);
+      if (pjIrpfEl) pjIrpfEl.textContent = fmt(res.pj.irpfProLabore);
+      if (pjLucroEl) pjLucroEl.textContent = `${fmt(res.pj.lucroDistribuidoIsento)} (Isento)`;
+      if (pjContadorEl) pjContadorEl.textContent = fmt(res.pj.contador);
       if (pjAnualEl) pjAnualEl.textContent = fmt(res.pj.totalAnual);
 
       if (verdictBanner) {
@@ -2140,9 +2160,9 @@ function initToolEvents() {
         const melhor = res.comparativo.vantagem;
         verdictBanner.innerHTML = `
           <div>
-            <strong style="color: var(--accent-emerald); font-size: 1.1rem;">Veredito: Opção ${melhor} é financeiramente mais vantajosa</strong>
+            <strong style="color: ${melhor === 'PJ' ? 'var(--accent-emerald)' : 'var(--accent-cyan)'}; font-size: 1.15rem;">Veredito: Opção ${melhor} oferece maior retorno anual consolidado</strong>
             <p style="margin-top: 4px; font-size: 0.9rem; color: var(--text-secondary);">
-              Diferença estimada de <strong>${fmt(diff)}</strong> a mais por ano (${fmt(diff / 12)}/mês). Para igualar a proposta CLT, o faturamento PJ ideal seria de aproximadamente <strong>${fmt(res.comparativo.pjEquivalente)}/mês</strong>.
+              Diferença estimada de <strong>${fmt(diff)}</strong> a mais por ano (${fmt(diff / 12)}/mês de vantagem). Para empatar financeiramente com a média mensal real da CLT (considerando 13º líquido, 1/3 de férias e FGTS acumulado), o faturamento bruto PJ ideal deve ser de aproximadamente <strong>${fmt(res.comparativo.pjEquivalente)}/mês</strong> (multiplicador de <strong>${res.comparativo.multiplicadorMercado}x</strong> sobre o salário CLT).
             </p>
           </div>
         `;
@@ -2150,6 +2170,7 @@ function initToolEvents() {
     };
 
     btnCalcCltPj.addEventListener('click', runCltPjCalc);
+    if (inputRegimePj) inputRegimePj.addEventListener('change', runCltPjCalc);
     runCltPjCalc();
   }
 
