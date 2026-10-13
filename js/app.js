@@ -6,6 +6,21 @@
 // Catálogo Oficial de 40 Ferramentas - Ordenado por Frequência de Uso e Volume de Busca no Brasil
 const TOOLS_CATALOG = [
   // ==========================================
+  // NOVO PADRÃO DA RECEITA FEDERAL (2026)
+  // ==========================================
+  {
+    id: 'cnpj-alfanumerico',
+    url: '/gerador-de-cnpj-alfanumerico',
+    name: 'Gerador de CNPJ Alfanumérico (2026)',
+    category: 'geradores',
+    categoryLabel: 'Documentos & Fiscais',
+    desc: 'Gere e valide o novo padrão oficial de CNPJ Alfanumérico da Receita Federal (IN nº 2.229/2024) com cálculo ASCII-48, Módulo 11 e modo em lote para testes.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><polyline points="7 12 10 15 17 9"/></svg>`,
+    color: 'var(--accent-primary)',
+    badge: '⚡ Novo RFB 2026',
+    isPopular: true
+  },
+  // ==========================================
   // TIER 1: AS MAIS UTILIZADAS NO DIA A DIA (TOP 12)
   // ==========================================
   {
