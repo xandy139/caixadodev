@@ -385,6 +385,18 @@ const TOOLS_CATALOG = [
     badge: 'Design Tokens'
   },
   {
+    id: 'image-color-picker',
+    url: '/seletor-de-cores-imagem',
+    name: 'Seletor de Cores de Imagem (Conta-Gotas)',
+    category: 'conversores',
+    categoryLabel: 'Design & Imagens',
+    desc: 'Capture a cor de qualquer pixel em imagens com zoom lupa em tempo real, conta-gotas EyeDropper e extração de paleta dominante.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 22l1-1 4-4-2-2 4-4 2 2 5-5a2.83 2.83 0 0 1 4 4l-5 5 2 2-4 4-2-2-4 4-1 1z"/></svg>`,
+    color: 'var(--accent-primary)',
+    badge: '🎨 Pixel Loupe',
+    isPopular: true
+  },
+  {
     id: 'svg',
     url: '/otimizador-de-svg',
     name: 'Otimizador de SVG & Data URI',

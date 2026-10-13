@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9HZFENSYKS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-9HZFENSYKS');
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3052162962623831"
+     crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seletor de Cores de Imagem (Conta-Gotas e Extrator de Paleta) | Caixa do Dev</title>
+  <meta name="description" content="Capture a cor exata de qualquer pixel em imagens com zoom lupa em tempo real, conta-gotas EyeDropper, conversão instantânea (HEX, RGB, HSL, CMYK) e extração de paleta dominante. 100% no navegador.">
+  <meta name="keywords" content="seletor de cores de imagem, conta gotas online, pegar cor de imagem, extrator de paleta de imagem, image color picker, pixel color, hex rgb hsl cmyk,eyedropper online">
+  <meta name="author" content="Caixa do Dev">
+  <meta name="robots" content="index, follow">
+
+  <!-- Canonical & Social Meta -->
+  <link rel="canonical" href="https://www.caixadodev.com.br/seletor-de-cores-imagem">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.caixadodev.com.br/seletor-de-cores-imagem">
+  <meta property="og:title" content="Seletor de Cores de Imagem (Conta-Gotas e Extrator de Paleta) | Caixa do Dev">
+  <meta property="og:description" content="Faça upload ou cole uma imagem (Ctrl+V) e capture cores pixel a pixel com lupa de alta precisão, histórico e exportação de paleta.">
+  <meta property="og:image" content="https://www.caixadodev.com.br/assets/og-cover.png">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'><path d='M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/tools.css">
+
+  <style>
+    /* Estilos dedicados ao Seletor de Cores de Imagem */
+    .color-picker-workspace {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 24px;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 992px) {
+      .color-picker-workspace {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .canvas-container-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .toolbar-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .toolbar-left, .toolbar-right {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-input);
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .btn-action:hover {
+      border-color: var(--accent-primary);
+      background: var(--bg-card-hover);
+      transform: translateY(-1px);
+    }
+
+    .btn-action.btn-primary-action {
+      background: linear-gradient(135deg, #6366f1, #4f46e5);
+      border-color: transparent;
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+    }
+
+    .btn-action.btn-primary-action:hover {
+      box-shadow: 0 6px 16px rgba(99, 102, 241, 0.45);
+    }
+
+    .presets-strip {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .btn-preset-chip {
+      padding: 4px 10px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      color: var(--text-secondary);
+      cursor: pointer;
+      font-size: 0.78rem;
+      transition: var(--transition);
+    }
+
+    .btn-preset-chip:hover {
+      color: var(--text-primary);
+      border-color: var(--accent-cyan);
+      background: rgba(6, 182, 212, 0.1);
+    }
+
+    /* Área visual do Canvas */
+    .canvas-viewport-wrapper {
+      position: relative;
+      min-height: 380px;
+      max-height: 540px;
+      overflow: auto;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+      background: #090d16;
+      background-image: 
+        linear-gradient(45deg, #0d121f 25%, transparent 25%), 
+        linear-gradient(-45deg, #0d121f 25%, transparent 25%), 
+        linear-gradient(45deg, transparent 75%, #0d121f 75%), 
+        linear-gradient(-45deg, transparent 75%, #0d121f 75%);
+      background-size: 20px 20px;
+      background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+    }
+
+    .canvas-viewport-wrapper.drag-active {
+      border: 2px dashed var(--accent-primary);
+      background-color: rgba(99, 102, 241, 0.08);
+    }
+
+    #image-canvas {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      cursor: crosshair;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Lupa Flutuante (Loupe) */
+    .floating-loupe-wrapper {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      display: none;
+      background: rgba(17, 24, 39, 0.95);
+      backdrop-filter: blur(8px);
+      border: 2px solid var(--accent-primary);
+      border-radius: 12px;
+      padding: 6px;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.7), 0 0 16px rgba(99, 102, 241, 0.4);
+      width: 132px;
+    }
+
+    .loupe-canvas-box {
+      width: 120px;
+      height: 120px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    #loupe-canvas {
+      width: 120px;
+      height: 120px;
+      image-rendering: pixelated;
+      display: block;
+    }
+
+    .loupe-meta {
+      margin-top: 6px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .loupe-hex {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .loupe-coords {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    /* Inspetor Lateral de Cores */
+    .inspector-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .inspector-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+    }
+
+    .selected-hero-box {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px;
+      border-radius: var(--radius-md);
+      background: var(--bg-input);
+      border: 1px solid var(--border-subtle);
+      margin-bottom: 16px;
+    }
+
+    .selected-swatch-large {
+      width: 64px;
+      height: 64px;
+      border-radius: 12px;
+      border: 2px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+      flex-shrink: 0;
+      transition: background-color 0.15s ease;
+    }
+
+    .selected-meta-title h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 2px;
+    }
+
+    .selected-meta-title p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Inputs de Códigos */
+    .color-code-row {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .code-input-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      background: var(--bg-input);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 4px 8px 4px 12px;
+    }
+
+    .code-input-item:focus-within {
+      border-color: var(--accent-primary);
+    }
+
+    .code-label-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      width: 44px;
+      text-transform: uppercase;
+      font-family: var(--font-mono);
+    }
+
+    .code-value-input {
+      background: transparent;
+      border: none;
+      color: var(--text-primary);
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      width: 100%;
+      outline: none;
+    }
+
+    .btn-copy-code {
+      padding: 4px 8px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-card);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .btn-copy-code:hover {
+      color: #ffffff;
+      background: var(--accent-primary);
+      border-color: var(--accent-primary);
+    }
+
+    /* Card de Contraste WCAG */
+    .wcag-metric-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .wcag-box {
+      padding: 10px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-input);
+      border: 1px solid var(--border-subtle);
+      text-align: center;
+    }
+
+    .wcag-title {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .wcag-ratio {
+      font-size: 1rem;
+      font-weight: 800;
+      font-family: var(--font-mono);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .wcag-pill {
+      font-size: 0.68rem;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+      text-transform: uppercase;
+      display: inline-block;
+    }
+
+    .wcag-pill.pass-aaa { background: rgba(16, 185, 129, 0.2); color: #10b981; border: 1px solid #10b981; }
+    .wcag-pill.pass-aa { background: rgba(59, 130, 246, 0.2); color: #3b82f6; border: 1px solid #3b82f6; }
+    .wcag-pill.pass-aa-lg { background: rgba(245, 158, 11, 0.2); color: #f59e0b; border: 1px solid #f59e0b; }
+    .wcag-pill.fail { background: rgba(244, 63, 94, 0.2); color: #f43f5e; border: 1px solid #f43f5e; }
+
+    /* Paleta Dominante */
+    .dominant-palette-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .dominant-swatch-item {
+      display: flex;
+      flex-direction: column;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      cursor: pointer;
+      transition: var(--transition);
+      background: var(--bg-input);
+    }
+
+    .dominant-swatch-item:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent-primary);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    .dominant-swatch-item .swatch-color {
+      height: 38px;
+      width: 100%;
+    }
+
+    .dominant-swatch-item .swatch-info {
+      padding: 4px 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.68rem;
+      font-family: var(--font-mono);
+    }
+
+    .swatch-hex { font-weight: 600; color: var(--text-primary); }
+    .swatch-pct { color: var(--text-muted); }
+
+    /* Paleta Capturada do Usuário */
+    .captured-palette-box {
+      margin-top: 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+    }
+
+    .captured-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .captured-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .captured-title h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .badge-count {
+      background: var(--accent-primary);
+      color: #ffffff;
+      font-size: 0.72rem;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+    }
+
+    .captured-swatches-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      min-height: 52px;
+      padding: 10px;
+      border-radius: var(--radius-md);
+      background: var(--bg-input);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .captured-swatch-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 8px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: 0.75rem;
+      font-family: var(--font-mono);
+    }
+
+    .captured-swatch-item:hover {
+      border-color: var(--accent-cyan);
+      transform: translateY(-1px);
+    }
+
+    .captured-swatch-item .swatch-box {
+      width: 14px;
+      height: 14px;
+      border-radius: 3px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .empty-palette-state {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      padding: 8px 4px;
+    }
+
+    /* Toast Notification */
+    .app-toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #1e1b4b;
+      color: #e0e7ff;
+      border: 1px solid var(--accent-primary);
+      padding: 10px 18px;
+      border-radius: var(--radius-md);
+      font-size: 0.85rem;
+      font-weight: 600;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+      z-index: 10000;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .app-toast.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+
+  <!-- Schema.org WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Seletor de Cores de Imagem (Conta-Gotas e Extrator de Paleta)",
+    "url": "https://www.caixadodev.com.br/seletor-de-cores-imagem",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript and HTML5 Canvas",
+    "description": "Capture a cor exata de pixels em imagens com zoom lupa em tempo real, conta-gotas EyeDropper, conversão para HEX, RGB, HSL, CMYK e extração de paleta de cores dominante.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "BRL"
+    }
+  }
+  </script>
+</head>
+<body class="standalone-page">
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="/" class="brand" title="Caixa do Dev - Página Inicial">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Caixa do Dev</span>
+          <span class="brand-badge">42 Ferramentas</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="/">Início</a></li>
+          <li><a href="/gerador-de-cpf">CPF</a></li>
+          <li><a href="/gerador-de-cnpj-alfanumerico">CNPJ 2026</a></li>
+          <li><a href="/conversor-de-cores">Conversor HEX</a></li>
+          <li><a href="/calculadora-clt-pj">CLT vs PJ</a></li>
+          <li><a href="/json-para-typescript">JSON &rarr; TS</a></li>
+          <li><a href="pages/sobre.html">Sobre</a></li>
+          <li><a href="pages/contato.html">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Conteúdo Principal -->
+  <main class="container" style="padding-top: 32px; padding-bottom: 60px;">
+    
+    <div class="tool-breadcrumbs">
+      <a href="/">&larr; Início</a> / <a href="/conversor-de-cores">Cores</a> / <span>Seletor de Cores de Imagem (Pixel Color Picker)</span>
+    </div>
+
+    <div class="privacy-badge">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Processamento 100% Client-Side no Navegador (Sua imagem nunca é enviada a servidores)
+    </div>
+
+    <!-- Header da Ferramenta -->
+    <div class="tool-header-area" style="margin-top: 14px; margin-bottom: 20px;">
+      <div class="tool-title-group">
+        <h1 style="font-size: 2rem; font-weight: 800; color: var(--text-primary); margin-bottom: 6px;">Seletor de Cores de Imagem (Conta-Gotas e Extrator de Paleta)</h1>
+        <p style="color: var(--text-secondary); font-size: 0.95rem;">Faça upload, arraste ou cole uma imagem (<kbd style="background: var(--bg-card); padding: 2px 6px; border-radius: 4px; border: 1px solid var(--border-subtle); font-family: var(--font-mono); font-size: 0.8rem;">Ctrl+V</kbd>) para capturar o código exato de qualquer pixel com lupa de zoom em tempo real.</p>
+      </div>
+    </div>
+
+    <!-- Layout Workspace Principal -->
+    <div class="color-picker-workspace">
+      
+      <!-- Coluna Esquerda: Canvas e Toolbar -->
+      <div class="canvas-container-card">
+        
+        <div class="toolbar-actions">
+          <div class="toolbar-left">
+            <input type="file" id="image-file-input" accept="image/*" style="display: none;">
+            <button id="btn-upload-trigger" class="btn-action btn-primary-action">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              Carregar Imagem
+            </button>
+
+            <button id="btn-eyedropper-native" class="btn-action" style="display: none;" title="Conta-gotas da tela nativo do navegador">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 22l1-1 4-4-2-2 4-4 2 2 5-5a2.83 2.83 0 0 1 4 4l-5 5 2 2-4 4-2-2-4 4-1 1z"/></svg>
+              Conta-gotas da Tela
+            </button>
+
+            <span id="image-dimensions-badge" class="badge-status badge-neutral" style="font-family: var(--font-mono); font-size: 0.75rem;">740 × 420 px</span>
+          </div>
+
+          <div class="toolbar-right">
+            <div class="presets-strip">
+              <span>Exemplos:</span>
+              <button class="btn-preset-chip" data-preset="ui">UI Mockup</button>
+              <button class="btn-preset-chip" data-preset="sunset">Pôr do Sol</button>
+              <button class="btn-preset-chip" data-preset="neon">Neon Cyberpunk</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Viewport do Canvas com Drag and Drop -->
+        <div id="canvas-drop-zone" class="canvas-viewport-wrapper">
+          <canvas id="image-canvas" width="740" height="420"></canvas>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: var(--text-muted);">
+          <span>💡 Dica: Clique ou toque para fixar uma cor. Passe o cursor para inspecionar com a lupa.</span>
+          <span>Suporta PNG, JPG, WEBP, SVG, GIF, AVIF e Ctrl+V</span>
+        </div>
+
+      </div>
+
+      <!-- Coluna Direita: Inspetor de Cores -->
+      <div class="inspector-sidebar">
+        
+        <div class="inspector-card">
+          <div class="selected-hero-box">
+            <div id="preview-selected-color" class="selected-swatch-large" style="background-color: #6366f1;"></div>
+            <div class="selected-meta-title">
+              <h2 id="selected-color-name">Roxo / Índigo</h2>
+              <p>Pixel selecionado na imagem</p>
+            </div>
+          </div>
+
+          <!-- Campos de Códigos -->
+          <div class="color-code-row">
+            <div class="code-input-item">
+              <span class="code-label-tag">HEX</span>
+              <input type="text" id="input-color-hex" class="code-value-input" value="#6366F1" readonly>
+              <button class="btn-copy-code" onclick="copyText(document.getElementById('input-color-hex').value)">Copiar</button>
+            </div>
+
+            <div class="code-input-item">
+              <span class="code-label-tag">RGB</span>
+              <input type="text" id="input-color-rgb" class="code-value-input" value="rgb(99, 102, 241)" readonly>
+              <button class="btn-copy-code" onclick="copyText(document.getElementById('input-color-rgb').value)">Copiar</button>
+            </div>
+
+            <div class="code-input-item">
+              <span class="code-label-tag">HSL</span>
+              <input type="text" id="input-color-hsl" class="code-value-input" value="hsl(239, 84%, 67%)" readonly>
+              <button class="btn-copy-code" onclick="copyText(document.getElementById('input-color-hsl').value)">Copiar</button>
+            </div>
+
+            <div class="code-input-item">
+              <span class="code-label-tag">CMYK</span>
+              <input type="text" id="input-color-cmyk" class="code-value-input" value="cmyk(59%, 58%, 0%, 5%)" readonly>
+              <button class="btn-copy-code" onclick="copyText(document.getElementById('input-color-cmyk').value)">Copiar</button>
+            </div>
+
+            <div class="code-input-item">
+              <span class="code-label-tag">CSS</span>
+              <input type="text" id="input-color-cssvar" class="code-value-input" value="--picked-color: #6366F1;" readonly>
+              <button class="btn-copy-code" onclick="copyText(document.getElementById('input-color-cssvar').value)">Copiar</button>
+            </div>
+          </div>
+
+          <!-- Avaliação de Contraste WCAG -->
+          <div class="wcag-metric-grid">
+            <div class="wcag-box">
+              <span class="wcag-title">Texto Branco</span>
+              <span id="wcag-white-ratio" class="wcag-ratio">4.8:1</span>
+              <span id="wcag-white-badge" class="wcag-pill pass-aa">AA Pass</span>
+            </div>
+            <div class="wcag-box">
+              <span class="wcag-title">Texto Preto</span>
+              <span id="wcag-black-ratio" class="wcag-ratio">5.2:1</span>
+              <span id="wcag-black-badge" class="wcag-pill pass-aa">AA Pass</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Paleta Dominante da Imagem -->
+        <div class="inspector-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <h3 style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary);">Paleta Dominante</h3>
+            <span style="font-size: 0.72rem; color: var(--text-muted);">Top 8 Cores</span>
+          </div>
+          <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 8px;">Cores mais frequentes detectadas na imagem:</p>
+          
+          <div id="dominant-palette-container" class="dominant-palette-grid">
+            <!-- Gerado via JavaScript -->
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Minhas Cores Capturadas (Paleta Personalizada) -->
+    <div class="captured-palette-box">
+      <div class="captured-header">
+        <div class="captured-title">
+          <h3>Cores Capturadas pelo Usuário</h3>
+          <span id="captured-palette-count" class="badge-count">0</span>
+        </div>
+
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <button id="btn-copy-all-hex" class="btn-action" style="font-size: 0.78rem;">
+            Copiar Todos HEX
+          </button>
+          <button id="btn-export-css" class="btn-action" style="font-size: 0.78rem;">
+            Exportar :root CSS
+          </button>
+          <button id="btn-export-json" class="btn-action" style="font-size: 0.78rem;">
+            Exportar JSON
+          </button>
+          <button id="btn-clear-palette" class="btn-action" style="font-size: 0.78rem; color: var(--accent-rose);">
+            Limpar
+          </button>
+        </div>
+      </div>
+
+      <div id="captured-palette-container" class="captured-swatches-strip">
+        <div class="empty-palette-state">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span>Passe o mouse ou toque na imagem para capturar cores de pixels.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lupa Flutuante (Renderizada dinamicamente com Canvas) -->
+    <div id="floating-loupe-wrapper" class="floating-loupe-wrapper">
+      <div class="loupe-canvas-box">
+        <canvas id="loupe-canvas" width="120" height="120"></canvas>
+      </div>
+      <div class="loupe-meta">
+        <span id="loupe-hex" class="loupe-hex">#6366F1</span>
+        <span id="loupe-coords" class="loupe-coords">X: 140 Y: 160</span>
+      </div>
+    </div>
+
+    <!-- Artigo SEO Técnico e FAQ -->
+    <article class="tool-seo-guide" style="margin-top: 40px;">
+      <h2>Como Funciona a Captura de Cores de Imagem por Pixel (Pixel Color Picker)</h2>
+      <p>No design de interfaces digitais, desenvolvimento frontend e edição gráfica, a capacidade de identificar o valor cromático exato de um elemento visual a partir de um print, mockup do Figma, banner ou fotografia é indispensável. O <strong>Seletor de Cores de Imagem da Caixa do Dev</strong> combina a precisão da <strong>HTML5 Canvas API</strong> com a moderna <strong>W3C EyeDropper API</strong> nativa para permitir a amostragem imediata de qualquer coordenada com zoom lupa ampliado.</p>
+
+      <h3>1. Arquitetura 100% Client-Side e Privacidade Absoluta</h3>
+      <p>Diferente de serviços convencionais que realizam o upload de imagens para servidores remotos para processamento em backend, nossa ferramenta executa <strong>todo o pipeline de decodificação e amostragem na memória RAM do seu navegador</strong> via <code>FileReader</code> e <code>CanvasRenderingContext2D.getImageData()</code>:</p>
+      <ul>
+        <li><strong>Segurança para Mockups Confidenciais:</strong> Telas de aplicativos em desenvolvimento, dados fiscais, capturas de dashboards internos e peças publicitárias nunca saem da sua máquina.</li>
+        <li><strong>Velocidade Instantânea:</strong> Zero latência de rede. Ao carregar ou colar uma imagem (<kbd>Ctrl+V</kbd>), o Canvas é renderizado em milissegundos.</li>
+        <li><strong>Funcionamento Offline:</strong> A ferramenta continua operando integralmente mesmo sem conexão com a internet após o carregamento inicial.</li>
+      </ul>
+
+      <h3>2. Como Funciona a Lupa de Zoom (Pixel Magnifier Loupe)</h3>
+      <p>Em imagens de alta densidade (como telas Retina ou 4K), capturar um pixel específico de 1px de espessura (como uma borda ou fio de cabelo) apenas com a mira padrão do mouse pode ser desafiador. Para solucionar esse problema, nossa lupa realiza:</p>
+      <ol>
+        <li><strong>Amostragem de Vizinhança (11×11 pixels):</strong> O algoritmo lê a matriz de pixels centrada na posição atual do cursor.</li>
+        <li><strong>Interpolação Nearest-Neighbor (Sem Blur):</strong> Os pixels são desenhados com a propriedade <code>image-rendering: pixelated</code>, evitando qualquer suavização artificial (anti-aliasing) que altere a cor real.</li>
+        <li><strong>Mira Central de Alta Precisão:</strong> O pixel central exato é destacado com uma retícula contrastante em preto e branco, garantindo visibilidade tanto em fundos escuros quanto claros.</li>
+      </ol>
+
+      <h3>3. Extração Automática de Paleta Dominante por Quantização</h3>
+      <p>Além de selecionar pixels individuais, a ferramenta analisa a imagem completa e agrupa cores semelhantes em <em>bins</em> cromáticos através de amostragem quantizada. Esse algoritmo identifica as <strong>8 cores dominantes</strong> que compõem a harmonia da peça gráfica e calcula a porcentagem estimada de ocupação visual de cada tom, permitindo que desenvolvedores criem paletas temáticas consistentes para seus sites em segundos.</p>
+
+      <h3>4. Comparativo dos Espaços de Cor Suportados</h3>
+      <table style="width: 100%; border-collapse: collapse; margin-top: 14px; margin-bottom: 20px; font-size: 0.9rem;">
+        <thead>
+          <tr style="background: var(--bg-card); text-align: left; border-bottom: 2px solid var(--border-subtle);">
+            <th style="padding: 10px;">Formato</th>
+            <th style="padding: 10px;">Exemplo</th>
+            <th style="padding: 10px;">Uso Principal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border-subtle);">
+            <td style="padding: 10px; font-weight: 600;">HEX</td>
+            <td style="padding: 10px; font-family: var(--font-mono); color: var(--accent-cyan);">#6366F1</td>
+            <td style="padding: 10px;">Tokens CSS, Figma, Tailwind CSS e propriedades estáticas.</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border-subtle);">
+            <td style="padding: 10px; font-weight: 600;">RGB / RGBA</td>
+            <td style="padding: 10px; font-family: var(--font-mono); color: var(--accent-cyan);">rgb(99, 102, 241)</td>
+            <td style="padding: 10px;">Síntese aditiva de monitores e transparências com canal Alfa.</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border-subtle);">
+            <td style="padding: 10px; font-weight: 600;">HSL</td>
+            <td style="padding: 10px; font-family: var(--font-mono); color: var(--accent-cyan);">hsl(239, 84%, 67%)</td>
+            <td style="padding: 10px;">Criação de temas dinâmicos e variações de Luminosidade (Dark Mode).</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border-subtle);">
+            <td style="padding: 10px; font-weight: 600;">CMYK</td>
+            <td style="padding: 10px; font-family: var(--font-mono); color: var(--accent-cyan);">cmyk(59%, 58%, 0%, 5%)</td>
+            <td style="padding: 10px;">Artes gráficas impressas (Ciano, Magenta, Amarelo e Preto).</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Perguntas Frequentes (FAQ)</h3>
+      <div class="faq-list" style="margin-top: 16px;">
+        <div class="faq-item">
+          <div class="faq-question"><span>Posso colar uma captura de tela direto pelo teclado (Ctrl + V)?</span><span>+</span></div>
+          <div class="faq-answer">Sim! Basta pressionar PrintScreen no teclado (ou Win + Shift + S no Windows / Cmd + Shift + 4 no Mac) e pressionar <strong>Ctrl + V</strong> em qualquer lugar da tela. A imagem será carregada instantaneamente no Canvas.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question"><span>O que é o botão "Conta-gotas da Tela"?</span><span>+</span></div>
+          <div class="faq-answer">Esse botão aciona a moderna <strong>EyeDropper API</strong> nativa dos navegadores baseados em Chromium (Google Chrome, Microsoft Edge, Opera, Brave). Ela permite que você mova a mira para fora da aba do navegador e capture a cor de qualquer janela aberta no seu monitor.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question"><span>Minhas imagens são salvas em algum servidor?</span><span>+</span></div>
+          <div class="faq-answer">Não. A Caixa do Dev opera sob o princípio de <strong>Processamento 100% Client-Side</strong>. Nenhum byte da sua imagem é enviado para a nuvem; o processamento ocorre exclusivamente na memória do seu navegador.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question"><span>Como exportar as cores capturadas para o meu projeto?</span><span>+</span></div>
+          <div class="faq-answer">Na seção "Cores Capturadas pelo Usuário", você pode clicar em "Copiar Todos HEX", "Exportar :root CSS" (para colar no seu arquivo style.css ou design tokens) ou "Exportar JSON" para integração com scripts automatizados.</div>
+        </div>
+      </div>
+    </article>
+
+  </main>
+
+  <!-- Rodapé -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <span class="brand-name">Caixa do Dev</span>
+        <p>42 ferramentas gratuitas, rápidas e 100% client-side para desenvolvedores brasileiros.</p>
+      </div>
+      <div class="footer-links">
+        <a href="/pages/privacidade.html">Privacidade</a>
+        <a href="/pages/termos.html">Termos de Uso</a>
+        <a href="/pages/sobre.html">Sobre</a>
+        <a href="/pages/contato.html">Contato</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script da Ferramenta -->
+  <script src="js/tools/image-color-picker.js?v=20261013"></script>
+</body>
+</html>
