@@ -1008,6 +1008,8 @@ function initSearchModal() {
 
   const openModal = () => {
     modalOverlay.classList.add('open');
+    modalOverlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
     searchInput.value = '';
     renderModalResults('');
     setTimeout(() => searchInput.focus(), 50);
@@ -1015,6 +1017,8 @@ function initSearchModal() {
 
   const closeModal = () => {
     modalOverlay.classList.remove('open');
+    modalOverlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
   };
 
   if (trigger) trigger.addEventListener('click', openModal);
@@ -1035,11 +1039,13 @@ function initSearchModal() {
 
   function renderModalResults(query) {
     const q = query.toLowerCase().trim();
-    const filtered = TOOLS_CATALOG.filter(t => 
-      t.name.toLowerCase().includes(q) || 
-      t.desc.toLowerCase().includes(q) ||
-      t.category.toLowerCase().includes(q) ||
-      t.categoryLabel.toLowerCase().includes(q)
+    const isEn = document.documentElement.lang === 'en';
+    const catalog = (typeof getEffectiveCatalog === 'function') ? getEffectiveCatalog() : TOOLS_CATALOG;
+    const filtered = catalog.filter(t => 
+      (t.name && t.name.toLowerCase().includes(q)) || 
+      (t.desc && t.desc.toLowerCase().includes(q)) ||
+      (t.category && t.category.toLowerCase().includes(q)) ||
+      (t.categoryLabel && t.categoryLabel.toLowerCase().includes(q))
     );
 
     if (filtered.length === 0) {
@@ -1052,12 +1058,12 @@ function initSearchModal() {
     }
 
     resultsContainer.innerHTML = filtered.map((t, idx) => `
-      <a href="${t.url || '#' + t.id}" class="modal-result-item ${idx === 0 ? 'selected' : ''}" onclick="document.getElementById('search-modal-overlay').classList.remove('open')">
+      <a href="${t.url || '#' + t.id}" class="modal-result-item ${idx === 0 ? 'selected' : ''}" onclick="document.body.style.overflow='';document.getElementById('search-modal-overlay').classList.remove('open')">
         <div class="modal-result-info">
           <span class="modal-result-title">${t.name}</span>
           <span class="modal-result-desc">${t.desc}</span>
         </div>
-        <span class="tool-card-badge">${t.categoryLabel}</span>
+        <span class="tool-card-badge">${t.categoryLabel || ''}</span>
       </a>
     `).join('');
   }

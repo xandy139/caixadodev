@@ -106,14 +106,11 @@
           <ul class="nav-links">
             <li><a href="/en/" class="active">Home</a></li>
             <li><a href="/en/json-to-typescript">JSON &rarr; TS</a></li>
-            <li><a href="/en/uuid-generator">UUID</a></li>
             <li><a href="/en/image-color-picker">Color Picker</a></li>
-            <li><a href="/en/hash-generator">Hashes</a></li>
+            <li><a href="/en/uuid-generator">UUID</a></li>
             <li><a href="/en/base64-converter">Base64</a></li>
-            <li><a href="/en/regex-tester">Regex</a></li>
             <li><a href="/artigos">Articles</a></li>
             <li><a href="/pages/sobre.html">About</a></li>
-            <li><a href="/pages/contato.html">Contact</a></li>
           </ul>
         </nav>
         <div class="lang-switch" aria-label="Idioma / Language">
@@ -217,7 +214,7 @@
   </main>
 
   <!-- Search Modal (Ctrl+K) -->
-  <div id="search-modal-overlay" class="search-modal-overlay" aria-hidden="true">
+  <div id="search-modal-overlay" class="modal-overlay search-modal-overlay" aria-hidden="true">
     <div class="search-modal">
       <div class="search-modal-header">
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
@@ -227,7 +224,7 @@
         <input type="text" id="modal-search-input" placeholder="Type a tool name, format, or keyword (e.g. JSON, UUID, Hash, CPF)..." autocomplete="off">
         <kbd class="modal-esc-hint">ESC</kbd>
       </div>
-      <div id="modal-results" class="search-modal-results"></div>
+      <div id="modal-results" class="modal-results search-modal-results"></div>
     </div>
   </div>
 
