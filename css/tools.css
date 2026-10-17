@@ -1184,10 +1184,102 @@ textarea.form-control {
   font-size: 0.85rem;
   transition: transform 0.2s;
 }
-
 .recent-tool-chip:hover .recent-chip-arrow {
   color: var(--accent-cyan);
   transform: translateX(3px);
+}
+
+/* ==========================================
+   MOBILE & RESPONSIVE POLISH (< 768px & < 480px)
+   ========================================== */
+@media (max-width: 768px) {
+  .tool-interface-card {
+    padding: 20px 16px;
+    border-radius: var(--radius-md);
+    margin-bottom: 20px;
+  }
+
+  .tool-header-area {
+    margin-bottom: 18px;
+    padding-bottom: 16px;
+    gap: 12px;
+  }
+
+  .tool-title-group h1 {
+    font-size: 1.5rem;
+    line-height: 1.3;
+  }
+
+  .tool-title-group p {
+    font-size: 0.88rem;
+  }
+
+  .tool-actions-bar {
+    width: 100%;
+    gap: 8px;
+  }
+
+  .case-results-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .http-status-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .subnet-table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .subnet-table td {
+    padding: 8px 10px;
+    font-size: 0.84rem;
+  }
+
+  .subnet-table td:first-child {
+    width: 45%;
+  }
+
+  .form-options-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .form-options-row select,
+  .form-options-row input[type="text"] {
+    width: 100% !important;
+  }
+
+  .result-box {
+    padding: 12px 14px;
+    font-size: 0.88rem;
+    min-height: 48px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tool-interface-card {
+    padding: 16px 12px;
+  }
+
+  .tool-title-group h1 {
+    font-size: 1.3rem;
+  }
+
+  .tool-actions-bar .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .tool-actions-bar .btn-sm {
+    width: auto;
+  }
 }
 
 

@@ -955,11 +955,13 @@ function initToolsHub() {
 
   function renderTools(filterCategory = 'all') {
     grid.innerHTML = '';
+    const isEn = document.documentElement.lang === 'en';
+    const catalog = (typeof getEffectiveCatalog === 'function') ? getEffectiveCatalog() : TOOLS_CATALOG;
     const filtered = filterCategory === 'all' 
-      ? TOOLS_CATALOG 
+      ? catalog 
       : filterCategory === 'populares'
-        ? TOOLS_CATALOG.filter(t => t.isPopular)
-        : TOOLS_CATALOG.filter(t => t.category === filterCategory);
+        ? catalog.filter(t => t.isPopular)
+        : catalog.filter(t => t.category === filterCategory);
 
     filtered.forEach(tool => {
       const card = document.createElement('a');

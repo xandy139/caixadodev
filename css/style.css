@@ -917,14 +917,28 @@ body {
   .hero h1 { font-size: 2.2rem; }
   .footer-content { grid-template-columns: 1fr 1fr; gap: 30px; }
   .nav-links { display: none; }
+  .nav-container { gap: 12px; }
 }
 
 @media (max-width: 640px) {
-  .hero h1 { font-size: 1.8rem; }
-  .tools-grid { grid-template-columns: 1fr; }
-  .footer-content { grid-template-columns: 1fr; }
+  .container { padding: 0 16px; }
+  .hero { padding: 40px 0 24px; }
+  .hero h1 { font-size: 1.75rem; }
+  .hero p { font-size: 0.95rem; }
+  .categories-filter { gap: 6px; margin-bottom: 28px; }
+  .category-btn { font-size: 0.8rem; padding: 6px 12px; }
+  .tools-grid { grid-template-columns: 1fr; gap: 12px; }
+  .tool-card { padding: 18px 16px; }
+  .footer-content { grid-template-columns: 1fr; gap: 24px; }
   .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
-  .tool-seo-guide { padding: 20px; }
+  .tool-seo-guide { padding: 18px 16px; }
+}
+
+@media (max-width: 480px) {
+  .brand-badge { display: none; }
+  .brand-name { font-size: 1.15rem; }
+  .search-trigger { padding: 7px 10px; }
+  .lang-btn { font-size: 0.78rem; padding: 4px 7px; }
 }
 
 /* Cookie Consent Banner (LGPD / Google AdSense) */
