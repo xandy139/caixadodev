@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9HZFENSYKS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-9HZFENSYKS');
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3052162962623831"
+     crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caixa do Dev | 42 Free, Fast & 100% Client-Side Developer Tools</title>
+  <meta name="description" content="The ultimate Swiss Army knife of developer tools: JSON to TypeScript, UUID v4/v7, Color Converter, Regex Tester, SQL Formatter, Hashes, Base64, Mock Data and Brazil testing utilities. 100% in-browser, zero cloud telemetry.">
+  <meta name="keywords" content="developer tools, online dev tools, json to typescript, uuid generator, base64 encoder, regex tester, sql formatter, hash generator, mock data generator, color picker">
+  <meta name="author" content="Alexandre Marcelino">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Canonical, Hreflang & Open Graph -->
+  <link rel="canonical" href="https://www.caixadodev.com.br/en/">
+  <link rel="alternate" hreflang="pt-BR" href="https://www.caixadodev.com.br/">
+  <link rel="alternate" hreflang="en" href="https://www.caixadodev.com.br/en/">
+  <link rel="alternate" hreflang="x-default" href="https://www.caixadodev.com.br/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.caixadodev.com.br/en/">
+  <meta property="og:title" content="Caixa do Dev | 42 Free, Fast & 100% Client-Side Developer Tools">
+  <meta property="og:description" content="Generate realistic mock data, format code, compute cryptographic hashes, and convert data formats with maximum privacy and speed.">
+  <meta property="og:image" content="https://www.caixadodev.com.br/assets/og-cover.png">
+  
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'><path d='M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4'/></svg>">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "Caixa do Dev",
+        "url": "https://www.caixadodev.com.br/en/",
+        "description": "42 free, instantaneous, and 100% client-side developer utility tools.",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "name": "Caixa do Dev",
+        "url": "https://www.caixadodev.com.br/en/",
+        "author": {
+          "@type": "Person",
+          "name": "Alexandre Marcelino"
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/tools.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="/en/" class="brand" title="Caixa do Dev - Home">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Caixa do Dev</span>
+          <span class="brand-badge">42 Tools</span>
+        </div>
+      </a>
+
+      <div class="nav-actions">
+        <button id="search-trigger" class="search-trigger" title="Search tools (Ctrl+K)">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <span>Search tools...</span>
+          <span class="search-kbd">Ctrl K</span>
+        </button>
+
+        <nav>
+          <ul class="nav-links">
+            <li><a href="/en/" class="active">Home</a></li>
+            <li><a href="/en/json-to-typescript">JSON &rarr; TS</a></li>
+            <li><a href="/en/uuid-generator">UUID</a></li>
+            <li><a href="/en/image-color-picker">Color Picker</a></li>
+            <li><a href="/en/hash-generator">Hashes</a></li>
+            <li><a href="/en/base64-converter">Base64</a></li>
+            <li><a href="/en/regex-tester">Regex</a></li>
+            <li><a href="/artigos">Articles</a></li>
+            <li><a href="/pages/sobre.html">About</a></li>
+            <li><a href="/pages/contato.html">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="lang-switch" aria-label="Idioma / Language">
+          <a href="/" class="lang-btn" title="Versão em Português">🇧🇷 PT</a>
+          <span class="lang-sep">/</span>
+          <span class="lang-btn active" title="English Version">🇺🇸 EN</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="container">
+
+    <!-- MAIN HUB (42 TOOLS SHOWCASE) -->
+    <section id="hub-view">
+      <div class="hero">
+        <div class="hero-pill">
+          <span class="hero-pill-dot"></span>
+          <span>42 Tools • 100% Client-Side • Absolute Privacy</span>
+        </div>
+        <h1>The Premier Online Developer Suite for <span class="gradient">Software Engineers</span></h1>
+        <p>Mock test data generation, TypeScript interface synthesis, database query beautification, cryptography, networking tools, and dev career calculators. 100% in-browser, instantaneous, private.</p>
+
+        <!-- Category Filter -->
+        <div class="categories-filter">
+          <button class="category-btn active" data-category="all">All 42 Tools</button>
+          <button class="category-btn" data-category="populares">🔥 Most Popular (Top 12)</button>
+          <button class="category-btn" data-category="geradores">Test Data & QA</button>
+          <button class="category-btn" data-category="formatadores">Code, TypeScript & SQL</button>
+          <button class="category-btn" data-category="seguranca">Cryptography & Auth</button>
+          <button class="category-btn" data-category="conversores">Design, Networks & Utilities</button>
+        </div>
+      </div>
+
+      <!-- Recent Tools Section (localStorage) -->
+      <div id="recent-tools-section" class="recent-tools-section" style="display: none;">
+        <div class="recent-tools-header">
+          <div class="recent-tools-title">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            <span>Recently Used Tools</span>
+          </div>
+          <button id="btn-clear-recents" class="recent-clear-btn" title="Clear recent history">Clear History</button>
+        </div>
+        <div id="recent-tools-grid" class="recent-tools-grid"></div>
+      </div>
+
+      <!-- Official Tools Grid (Rendered via app.js) -->
+      <div id="tools-grid" class="tools-grid">
+        <!-- Dynamically rendered via app.js with English catalog -->
+      </div>
+    </section>
+
+    <!-- Technical Engineering Articles (E-E-A-T Editorial Authority) -->
+    <section id="artigos" style="margin: 60px 0 40px;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 16px; margin-bottom: 24px;">
+        <div>
+          <span style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--accent-cyan); letter-spacing: 0.08em;">Engineering & Deep Dives</span>
+          <h2 style="font-size: 1.8rem; font-weight: 800; color: var(--text-primary); margin-top: 4px;">Technical Guides for Developers</h2>
+        </div>
+        <a href="/artigos" class="btn btn-secondary btn-sm" style="display: inline-flex; align-items: center; gap: 8px;">
+          View All 8 Articles &rarr;
+        </a>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px;">
+        <!-- Article 1: UUID v4 vs v7 -->
+        <article class="tool-card" style="display: flex; flex-direction: column;">
+          <div style="font-size: 0.76rem; color: var(--accent-cyan); font-weight: 600; margin-bottom: 8px;">DATABASES & RFC 9562</div>
+          <h3 style="font-size: 1.15rem; margin-bottom: 8px;"><a href="/artigos/uuid-v4-vs-uuid-v7-banco-de-dados" style="color: var(--text-primary); text-decoration: none;">UUID v4 vs UUID v7: Why the New Standard Revolutionizes Databases</a></h3>
+          <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5; flex-grow: 1;">How UUID v7 eliminates severe page fragmentation in B-Tree indices by preserving millisecond time locality alongside high entropy.</p>
+          <a href="/artigos/uuid-v4-vs-uuid-v7-banco-de-dados" style="color: var(--accent-cyan); font-size: 0.88rem; font-weight: 600; text-decoration: none; margin-top: 14px;">Read Guide &rarr;</a>
+        </article>
+
+        <!-- Article 2: ReDoS -->
+        <article class="tool-card" style="display: flex; flex-direction: column;">
+          <div style="font-size: 0.76rem; color: var(--accent-amber); font-weight: 600; margin-bottom: 8px;">SECURITY & CWE-1333</div>
+          <h3 style="font-size: 1.15rem; margin-bottom: 8px;"><a href="/artigos/redos-vulnerabilidade-regex-catastrofica" style="color: var(--text-primary); text-decoration: none;">ReDoS Vulnerabilities: How Insecure Regex Locks Node.js Event Loops</a></h3>
+          <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5; flex-grow: 1;">Non-deterministic finite automata (NFA) theory, O(2^n) catastrophic backtracking, Cloudflare outage post-mortems, and linear regex engines.</p>
+          <a href="/artigos/redos-vulnerabilidade-regex-catastrofica" style="color: var(--accent-amber); font-size: 0.88rem; font-weight: 600; text-decoration: none; margin-top: 14px;">Read Guide &rarr;</a>
+        </article>
+
+        <!-- Article 3: CIDR Subnets -->
+        <article class="tool-card" style="display: flex; flex-direction: column;">
+          <div style="font-size: 0.76rem; color: var(--accent-purple); font-weight: 600; margin-bottom: 8px;">DEVOPS & NETWORKING</div>
+          <h3 style="font-size: 1.15rem; margin-bottom: 8px;"><a href="/artigos/calculo-sub-redes-cidr-ipv4" style="color: var(--text-primary); text-decoration: none;">CIDR Subnet Calculation: IPv4 Partitioning for Cloud and DevOps</a></h3>
+          <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5; flex-grow: 1;">Bitwise math, prefix reference tables, and the critical rule of 5 reserved addresses in AWS VPC and GCP cloud subnets.</p>
+          <a href="/artigos/calculo-sub-redes-cidr-ipv4" style="color: var(--accent-purple); font-size: 0.88rem; font-weight: 600; text-decoration: none; margin-top: 14px;">Read Guide &rarr;</a>
+        </article>
+
+        <!-- Article 4: Base64 Overhead -->
+        <article class="tool-card" style="display: flex; flex-direction: column;">
+          <div style="font-size: 0.76rem; color: var(--accent-emerald); font-weight: 600; margin-bottom: 8px;">WEB PERFORMANCE & RFC 4648</div>
+          <h3 style="font-size: 1.15rem; margin-bottom: 8px;"><a href="/artigos/base64-encoding-data-uri-web-performance" style="color: var(--text-primary); text-decoration: none;">Base64 Encoding & Data URIs: The Real Impact of 33% Payload Overhead</a></h3>
+          <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5; flex-grow: 1;">6-bit conversion mechanics, First Contentful Paint (FCP) blocking risks, browser cache destruction, and real architectural trade-offs.</p>
+          <a href="/artigos/base64-encoding-data-uri-web-performance" style="color: var(--accent-emerald); font-size: 0.88rem; font-weight: 600; text-decoration: none; margin-top: 14px;">Read Guide &rarr;</a>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Search Modal (Ctrl+K) -->
+  <div id="search-modal-overlay" class="search-modal-overlay" aria-hidden="true">
+    <div class="search-modal">
+      <div class="search-modal-header">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="modal-search-input" placeholder="Type a tool name, format, or keyword (e.g. JSON, UUID, Hash, CPF)..." autocomplete="off">
+        <kbd class="modal-esc-hint">ESC</kbd>
+      </div>
+      <div id="modal-results" class="search-modal-results"></div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-grid">
+        <div class="footer-col footer-col-wide">
+          <div class="footer-brand">
+            <span class="footer-brand-title">Caixa do Dev</span>
+            <span class="footer-badge">100% Client-Side</span>
+          </div>
+          <p>The premier free, fast, and privacy-first utility toolkit for developers, QA engineers, and DevOps professionals worldwide. Zero cloud storage; 100% in-browser processing.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Top Universal Tools</h4>
+          <ul>
+            <li><a href="/en/json-to-typescript">JSON to TypeScript</a></li>
+            <li><a href="/en/json-formatter">JSON Formatter</a></li>
+            <li><a href="/en/uuid-generator">UUID v4 & v7 Generator</a></li>
+            <li><a href="/en/image-color-picker">Image Color Picker</a></li>
+            <li><a href="/en/color-converter">Color Converter</a></li>
+            <li><a href="/en/hash-generator">Hash Generator (SHA-256)</a></li>
+            <li><a href="/en/base64-converter">Base64 Encoder/Decoder</a></li>
+            <li><a href="/en/regex-tester">Regex Tester</a></li>
+            <li><a href="/en/timestamp-converter">Unix Timestamp Converter</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Brazil Test Data (QA)</h4>
+          <ul>
+            <li><a href="/en/brazilian-cpf-generator">Brazilian CPF Generator</a></li>
+            <li><a href="/en/brazilian-cnpj-generator">Brazilian CNPJ Generator</a></li>
+            <li><a href="/en/brazilian-alphanumeric-cnpj-generator">Alphanumeric CNPJ (2026)</a></li>
+            <li><a href="/en/brazilian-person-generator">Mock Person Generator</a></li>
+            <li><a href="/en/brazilian-cep-generator">Brazilian CEP Lookup</a></li>
+            <li><a href="/en/brazilian-bank-account-generator">Bank Account Generator</a></li>
+            <li><a href="/en/brazil-clt-vs-pj-calculator">CLT vs PJ Calculator</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Institutional</h4>
+          <ul>
+            <li><a href="/artigos">Engineering Articles</a></li>
+            <li><a href="/pages/sobre.html">About the Author</a></li>
+            <li><a href="/pages/contato.html">Contact Us</a></li>
+            <li><a href="/pages/privacidade.html">Privacy Policy</a></li>
+            <li><a href="/pages/termos.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 Caixa do Dev • Built and maintained by Alexandre Marcelino.</span>
+        <span>High-performance local client-side processing in strict compliance with data privacy standards.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cookie Consent Banner -->
+  <aside id="cookie-consent-banner" class="cookie-consent-banner" aria-label="Cookie Consent">
+    <div class="cookie-consent-text">
+      <strong>🍪 We value your privacy:</strong> We use cookies strictly for UI preferences and contextual partner ads in full compliance with GDPR and LGPD. Learn more in our <a href="/pages/privacidade.html">Privacy Policy</a>.
+    </div>
+    <div class="cookie-consent-actions">
+      <button id="btn-cookie-essential" class="btn btn-secondary btn-sm">Essential Only</button>
+      <button id="btn-cookie-accept-all" class="btn btn-primary btn-sm">Accept All</button>
+    </div>
+  </aside>
+
+  <!-- Main Hub Script -->
+  <script src="/js/app.js"></script>
+</body>
+</html>

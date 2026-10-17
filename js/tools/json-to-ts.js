@@ -5,15 +5,16 @@
 
 const JSON_TO_TS = {
   convert(jsonString, rootName = 'RootObject', useType = false) {
+    const isEn = typeof document !== 'undefined' && document.documentElement.lang === 'en';
     if (!jsonString || !jsonString.trim()) {
-      return { success: false, error: 'Insira um código JSON válido.' };
+      return { success: false, error: isEn ? 'Please enter valid JSON code.' : 'Insira um código JSON válido.' };
     }
 
     let parsed;
     try {
       parsed = JSON.parse(jsonString);
     } catch (err) {
-      return { success: false, error: 'JSON inválido: ' + err.message };
+      return { success: false, error: (isEn ? 'Invalid JSON: ' : 'JSON inválido: ') + err.message };
     }
 
     const interfaces = new Map();
@@ -48,7 +49,8 @@ const JSON_TO_TS = {
       const fields = [];
       for (const [key, val] of Object.entries(obj)) {
         const type = getType(val, key);
-        fields.push(`  ${key}: ${type};`);
+        const safeKey = /^[a-zA-Z_$][a-zA-Z0-9_$]*$/.test(key) ? key : `"${key}"`;
+        fields.push(`  ${safeKey}: ${type};`);
       }
 
       const declaration = useType
@@ -75,24 +77,53 @@ const JSON_TO_TS = {
   },
 
   getSample() {
+    const isEn = typeof document !== 'undefined' && document.documentElement.lang === 'en';
+    if (isEn) {
+      return JSON.stringify({
+        userId: 1042,
+        name: "Alexandre Marcelino",
+        email: "alexandre@example.com",
+        isActive: true,
+        profile: {
+          title: "Principal Software Engineer",
+          skills: ["JavaScript", "TypeScript", "Node.js", "Python"],
+          yearsOfExperience: 8
+        },
+        projects: [
+          {
+            id: "proj-01",
+            name: "Caixa do Dev",
+            version: "2.0",
+            isOpenSource: true
+          }
+        ]
+      }, null, 2);
+    }
+
     return JSON.stringify({
-      id: 1042,
-      nome: "Alexandre Silva",
+      usuario_id: 1042,
+      nome: "Alexandre Marcelino",
+      email: "alexandre@exemplo.com",
       ativo: true,
       perfil: {
-        cargo: "Tech Lead",
-        salario: 14500.50,
-        tags: ["TypeScript", "Node.js", "Docker"]
+        cargo: "Engenheiro de Software",
+        skills: ["JavaScript", "TypeScript", "Node.js", "Python"],
+        anos_experiencia: 8
       },
       projetos: [
         {
-          id: "proj-1",
-          titulo: "Caixa do Dev",
-          concluido: false
+          id: "proj-01",
+          nome: "Caixa do Dev",
+          versao: "2.0"
         }
       ]
     }, null, 2);
   }
 };
 
-window.JSON_TO_TS = JSON_TO_TS;
+if (typeof window !== 'undefined') {
+  window.JSON_TO_TS = JSON_TO_TS;
+}
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = JSON_TO_TS;
+}

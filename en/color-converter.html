@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9HZFENSYKS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-9HZFENSYKS');
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3052162962623831"
+     crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Converter (HEX, RGB, HSL) & WCAG Contrast Checker | Caixa do Dev</title>
+  <meta name="description" content="Convert colors instantly between HEX, RGB, and HSL formats with interactive visual picker, one-click copy, and WCAG accessibility contrast ratio analysis. 100% client-side.">
+  <meta name="keywords" content="color converter, hex to rgb, rgb to hsl, color picker online, wcag contrast checker, hex rgb hsl css">
+  <meta name="author" content="Caixa do Dev">
+  <meta name="robots" content="index, follow">
+
+  <!-- Canonical & Social Meta -->
+  <link rel="canonical" href="https://www.caixadodev.com.br/en/color-converter">
+  <link rel="alternate" hreflang="pt-BR" href="https://www.caixadodev.com.br/conversor-de-cores">
+  <link rel="alternate" hreflang="en" href="https://www.caixadodev.com.br/en/color-converter">
+  <link rel="alternate" hreflang="x-default" href="https://www.caixadodev.com.br/conversor-de-cores">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.caixadodev.com.br/en/color-converter">
+  <meta property="og:title" content="Color Converter (HEX, RGB, HSL) & WCAG Contrast Checker | Caixa do Dev">
+  <meta property="og:description" content="Convert colors between HEX, RGB, and HSL with visual swatch, native palette picker and WCAG contrast ratio scoring.">
+  <meta property="og:image" content="https://www.caixadodev.com.br/assets/og-cover.png">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'><path d='M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/tools.css">
+
+  <!-- Schema.org WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Color Converter (HEX, RGB, HSL) & WCAG Contrast Checker",
+    "url": "https://www.caixadodev.com.br/en/color-converter",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript",
+    "description": "Convert color codes between HEX, RGB and HSL with visual picker and WCAG accessibility contrast ratio check.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+</head>
+<body class="standalone-page">
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="/en/" class="brand" title="Caixa do Dev - Home">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Caixa do Dev</span>
+          <span class="brand-badge">42 Tools</span>
+        </div>
+      </a>
+
+      <div class="nav-actions">
+        <nav>
+          <ul class="nav-links">
+            <li><a href="/en/">Home</a></li>
+            <li><a href="/en/color-converter" class="active">Color Converter</a></li>
+            <li><a href="/en/image-color-picker">Image Eyedropper</a></li>
+            <li><a href="/en/json-to-typescript">JSON &rarr; TS</a></li>
+            <li><a href="/en/uuid-generator">UUID</a></li>
+            <li><a href="/pages/sobre.html">About</a></li>
+            <li><a href="/pages/contato.html">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="lang-switch" aria-label="Idioma / Language">
+          <a href="/conversor-de-cores" class="lang-btn" title="Versão em Português">🇧🇷 PT</a>
+          <span class="lang-sep">/</span>
+          <span class="lang-btn active" title="English Version">🇺🇸 EN</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container" style="padding-top: 32px; padding-bottom: 60px;">
+    
+    <div class="tool-breadcrumbs">
+      <a href="/en/">&larr; Home</a> / <span>Color Converter (HEX, RGB, HSL) & WCAG Contrast</span>
+    </div>
+
+    <div class="privacy-badge">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      100% Client-Side In-Browser Processing (Zero server transmission)
+    </div>
+
+    <!-- Tool Content -->
+    <section class="tool-view standalone-active" data-tool-id="color">
+      
+      <!-- Callout: Image Color Picker -->
+      <div style="margin-bottom: 20px; padding: 14px 18px; border-radius: var(--radius-md); background: rgba(99, 102, 241, 0.08); border: 1px solid rgba(99, 102, 241, 0.3); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="font-size: 1.4rem;">🎨</div>
+          <div>
+            <strong style="color: var(--text-primary); font-size: 0.95rem;">Looking to pick colors directly from photos?</strong>
+            <p style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">Upload or paste an image (Ctrl+V) into our Pixel Image Color Picker with real-time magnifying loupe and palette extractor.</p>
+          </div>
+        </div>
+        <a href="/en/image-color-picker" class="btn-primary" style="padding: 8px 16px; font-size: 0.85rem; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+          Open Image Eyedropper &rarr;
+        </a>
+      </div>
+
+      <div class="tool-interface-card">
+        <div class="tool-header-area">
+          <div class="tool-title-group">
+            <h1>Color Converter (HEX, RGB, HSL)</h1>
+            <p>Convert color codes seamlessly with interactive visual palette and luminance contrast analysis.</p>
+          </div>
+        </div>
+
+        <div class="color-preview-hero">
+          <div id="color-swatch-box" class="color-swatch-box" style="background-color: #6366f1;"><input type="color" id="color-picker-native" value="#6366f1"></div>
+          <div><span style="font-size: 0.85rem; color: var(--text-muted); display: block; margin-bottom: 4px;">Click color swatch to open native color picker:</span><span id="badge-color-contrast" class="badge-status badge-neutral">Dark Background</span></div>
+        </div>
+
+        <div class="color-inputs-grid">
+          <div class="form-group"><label class="form-label" for="input-color-hex"><span>HEX:</span><span class="tool-card-action" style="cursor: pointer; font-size: 0.75rem;" onclick="copyToClipboard(document.getElementById('input-color-hex').value)">Copy</span></label><input type="text" id="input-color-hex" class="form-control" value="#6366f1"></div>
+          <div class="form-group"><label class="form-label" for="input-color-rgb"><span>RGB:</span><span class="tool-card-action" style="cursor: pointer; font-size: 0.75rem;" onclick="copyToClipboard(document.getElementById('input-color-rgb').value)">Copy</span></label><input type="text" id="input-color-rgb" class="form-control" value="rgb(99, 102, 241)"></div>
+          <div class="form-group"><label class="form-label" for="input-color-hsl"><span>HSL:</span><span class="tool-card-action" style="cursor: pointer; font-size: 0.75rem;" onclick="copyToClipboard(document.getElementById('input-color-hsl').value)">Copy</span></label><input type="text" id="input-color-hsl" class="form-control" value="hsl(239, 84%, 67%)"></div>
+        </div>
+      </div>
+
+      <article class="tool-seo-guide">
+        <h2>Web Color Models: Demystifying HEX, RGB, HSL, and Modern CSS Colors</h2>
+        <p>The visual representation of colors across web applications and UI design systems has evolved radically from early 16-color monitors. While displays emit additive light channels (Red, Green, Blue), the W3C <strong>CSS Color Module Level 4 and 5</strong> specifications introduced ergonomic color spaces that empower intuitive theme construction, dark mode variations, and accessible design tokens.</p>
+
+        <h3>1. Color Model Deep Dive</h3>
+        <ul>
+          <li><strong>HEX (#RRGGBB / #RRGGBBAA):</strong> Compact 6-digit (or 8-digit with alpha) hexadecimal notation. Universally favored in Figma, design systems, and static CSS variables.</li>
+          <li><strong>RGB / RGBA (rgb(r, g, b)):</strong> Defines channel intensity on a scale from 0 to 255. Directly controls display hardware pixel sub-emitters.</li>
+          <li><strong>HSL (hsl(hue, saturation, lightness)):</strong> Highly ergonomic for developers. Hue represents a 0°–360° color wheel, while Saturation and Lightness are percentage values (0%–100%). Modifying lightness from <code>hsl(220, 90%, 50%)</code> to <code>hsl(220, 90%, 15%)</code> instantly yields an authentic dark mode shade of your primary brand tone.</li>
+        </ul>
+
+        <h3>2. Web Accessibility & WCAG 2.1 Contrast Standards</h3>
+        <p>The <strong>Web Content Accessibility Guidelines (WCAG 2.1)</strong> mandate minimum contrast ratios between foreground text and background surfaces to guarantee readability for individuals with low vision or color blindness:</p>
+        <ul>
+          <li><strong>Level AA (Standard Compliance):</strong> Contrast ratio of at least <strong>4.5:1</strong> for body text and <strong>3:1</strong> for large text (18pt+ or bold 14pt+).</li>
+          <li><strong>Level AAA (Enhanced Compliance):</strong> Contrast ratio of at least <strong>7:1</strong> for body copy.</li>
+        </ul>
+
+        <h3>Frequently Asked Questions (FAQ)</h3>
+        <div class="faq-list" style="margin-top: 16px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>What is Wide Gamut (e.g. Display P3)?</span><span>+</span></div>
+            <div class="faq-answer">Traditional sRGB only covers a fraction of colors visible to the human eye. Modern OLED and Retina screens support Display P3, rendering greens, magentas, and cyans up to 50% more vibrant than legacy sRGB monitors.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Why is HSL preferred for design tokens?</span><span>+</span></div>
+            <div class="faq-answer">Because HSL separates color identity (hue) from surface illumination (lightness). You can establish state variants (hover, active, focus) and theme toggles merely by adjusting lightness percentages without altering your core branding hue.</div>
+          </div>
+        </div>
+      </article>
+    
+    </section>
+
+    <!-- More Recommended Tools -->
+    <section style="margin-top: 60px;">
+      <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 20px; color: var(--text-primary);">Explore More Design & Dev Tools</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px;">
+        <a href="/en/image-color-picker" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Image Color Picker</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Extract pixel colors from images with magnifying loupe and palette exporter.</p>
+        </a>
+        <a href="/en/box-shadow-generator" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">CSS Box Shadow Generator</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Design layered box shadows, neumorphic elevations, and neon glows.</p>
+        </a>
+        <a href="/en/svg-optimizer" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">SVG Optimizer</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Minify vector SVG code, strip unwanted metadata, and reduce payload size.</p>
+        </a>
+        <a href="/en/json-to-typescript" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">JSON to TypeScript</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Convert JSON API payloads into strongly typed TypeScript interfaces.</p>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-grid">
+        <div class="footer-col footer-col-wide">
+          <div class="footer-brand">
+            <span class="footer-brand-title">Caixa do Dev</span>
+            <span class="footer-badge">100% Client-Side</span>
+          </div>
+          <p>The premier free, fast, and privacy-first utility toolkit for developers, designers, and tech professionals worldwide.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Institutional</h4>
+          <ul>
+            <li><a href="/artigos">Engineering Articles</a></li>
+            <li><a href="/pages/sobre.html">About the Author</a></li>
+            <li><a href="/pages/contato.html">Contact Us</a></li>
+            <li><a href="/pages/privacidade.html">Privacy Policy</a></li>
+            <li><a href="/pages/termos.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Caixa do Dev • Built and maintained by Alexandre Marcelino.</span>
+        <span>High-performance local client-side processing in strict compliance with data privacy standards.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
+  <!-- Scripts -->
+  <script src="/js/tools/color-converter.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>

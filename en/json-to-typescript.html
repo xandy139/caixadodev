@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9HZFENSYKS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-9HZFENSYKS');
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3052162962623831"
+     crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON to TypeScript Converter - Generate Interfaces and Types Online | Caixa do Dev</title>
+  <meta name="description" content="Free online JSON to TypeScript converter. Paste any JSON API response and automatically generate strongly typed interfaces or type aliases with nested objects. 100% in-browser, zero cloud telemetry.">
+  <meta name="keywords" content="json to typescript, json to ts, convert json to interface, json to ts online, typescript interfaces from json, json type generator">
+  <meta name="author" content="Caixa do Dev">
+  <meta name="robots" content="index, follow">
+
+  <!-- Canonical & Social Meta -->
+  <link rel="canonical" href="https://www.caixadodev.com.br/en/json-to-typescript">
+  <link rel="alternate" hreflang="pt-BR" href="https://www.caixadodev.com.br/json-para-typescript">
+  <link rel="alternate" hreflang="en" href="https://www.caixadodev.com.br/en/json-to-typescript">
+  <link rel="alternate" hreflang="x-default" href="https://www.caixadodev.com.br/json-para-typescript">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.caixadodev.com.br/en/json-to-typescript">
+  <meta property="og:title" content="JSON to TypeScript Converter - Generate Interfaces and Types Online | Caixa do Dev">
+  <meta property="og:description" content="Paste any JSON payload and instantly synthesize TypeScript interfaces or types with 100% in-browser local privacy.">
+  <meta property="og:image" content="https://www.caixadodev.com.br/assets/og-cover.png">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'><path d='M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/tools.css">
+
+  <!-- Schema.org: WebApplication & FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "JSON to TypeScript Converter - Caixa do Dev",
+        "url": "https://www.caixadodev.com.br/en/json-to-typescript",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript",
+        "description": "Convert JSON payloads and API responses into strongly typed TypeScript interfaces or type aliases in real time.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How does the JSON to TypeScript converter work?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The tool parses the JSON syntax tree, detects primitive types (string, number, boolean, null), and recursively generates PascalCase sub-interfaces for nested objects and arrays."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Should I use 'interface' or 'type' in TypeScript?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "For modeling API responses and backend domain DTOs, interfaces are standard due to declaration merging, inheritance with 'extends', and compiler optimization in tsc."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are my JSON payloads sent to any remote server?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. All conversion computations run 100% locally inside your browser's V8 engine. Zero bytes ever leave your device."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="/en/" class="brand" title="Caixa do Dev - Home">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Caixa do Dev</span>
+          <span class="brand-badge">42 Tools</span>
+        </div>
+      </a>
+
+      <div class="nav-actions">
+        <nav>
+          <ul class="nav-links">
+            <li><a href="/en/">Home</a></li>
+            <li><a href="/en/json-to-typescript" class="active">JSON &rarr; TS</a></li>
+            <li><a href="/en/uuid-generator">UUID</a></li>
+            <li><a href="/en/image-color-picker">Color Picker</a></li>
+            <li><a href="/en/hash-generator">Hashes</a></li>
+            <li><a href="/en/base64-converter">Base64</a></li>
+            <li><a href="/pages/sobre.html">About</a></li>
+            <li><a href="/pages/contato.html">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="lang-switch" aria-label="Idioma / Language">
+          <a href="/json-para-typescript" class="lang-btn" title="Versão em Português">🇧🇷 PT</a>
+          <span class="lang-sep">/</span>
+          <span class="lang-btn active" title="English Version">🇺🇸 EN</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container" style="padding-top: 32px; padding-bottom: 60px;">
+    
+    <div class="tool-breadcrumbs">
+      <a href="/en/">&larr; Home</a> / <span>JSON to TypeScript Converter</span>
+    </div>
+
+    <div class="privacy-badge">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      100% Client-Side In-Browser Processing (Your JSON payloads never leave your computer)
+    </div>
+
+    <!-- JSON to TS Tool Card -->
+    <div class="tool-interface-card">
+      <div class="tool-header-area">
+        <div class="tool-title-group">
+          <h1>JSON to TypeScript Converter</h1>
+          <p>Paste any JSON payload or API response to instantly synthesize strongly typed TypeScript interfaces or type aliases with automatic nested decomposition.</p>
+        </div>
+        <div class="tool-actions-bar">
+          <button id="btn-sample-json-ts" class="btn btn-secondary">Load Sample</button>
+          <button id="btn-convert-json-ts" class="btn btn-primary">Generate TypeScript</button>
+        </div>
+      </div>
+
+      <div class="form-options-row">
+        <div class="form-group" style="margin-bottom: 0;">
+          <label class="form-label" for="json-ts-root">Root Interface Name:</label>
+          <input type="text" id="json-ts-root" class="form-control" value="ApiResponse" style="width: 180px; padding: 8px 12px;">
+        </div>
+
+        <label class="checkbox-label" style="margin-top: 24px;">
+          <input type="checkbox" id="check-ts-type">
+          <span>Generate as <code>type</code> alias (default is <code>interface</code>)</span>
+        </label>
+      </div>
+
+      <div class="split-grid" style="margin-top: 20px;">
+        <div class="pane">
+          <span class="pane-title" style="margin-bottom: 8px;">Input JSON</span>
+          <textarea id="json-ts-input" class="form-control" style="min-height: 380px; font-family: 'JetBrains Mono', monospace; font-size: 0.88rem;" placeholder='{\n  "id": 1,\n  "name": "Alexandre",\n  "active": true\n}'></textarea>
+        </div>
+
+        <div class="pane">
+          <div class="pane-header">
+            <span class="pane-title">Generated TypeScript</span>
+            <button id="btn-copy-json-ts" class="btn btn-secondary btn-sm">📋 Copy TypeScript</button>
+          </div>
+          <pre id="json-ts-output" class="result-box large" style="min-height: 380px; margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 0.88rem;">// Generated TypeScript interfaces will appear here...</pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- Technical SEO Guide & Best Practices -->
+    <article class="tool-seo-guide" style="margin-top: 40px;">
+      <h2>Type Inference: Converting Arbitrary JSON into Strongly Typed TypeScript</h2>
+      <p>The widespread adoption of <strong>TypeScript</strong> in modern frontend and backend software engineering has elevated software stability by enforcing compile-time type safety. However, integrating third-party REST APIs or microservices that emit large, deeply nested JSON payloads requires developers to draft dozens of interface definitions by hand — an error-prone, tedious task.</p>
+
+      <h3>1. Principles of Automated Type Synthesis</h3>
+      <p>Caixa do Dev analyzes the recursive Abstract Syntax Tree (AST) of your JSON document, inferring appropriate types and structuring modular interfaces:</p>
+      <ul>
+        <li><strong>Primitives:</strong> Strings, numeric floats/integers, and booleans map to standard <code>string</code>, <code>number</code>, and <code>boolean</code> types.</li>
+        <li><strong>Arrays:</strong> Homogeneous and heterogeneous lists infer types like <code>string[]</code> or specialized interface arrays (<code>Item[]</code>).</li>
+        <li><strong>Sub-Objects:</strong> Nested records spawn distinct PascalCase child interfaces to maximize code reusability across your codebase.</li>
+        <li><strong>Key Sanitization:</strong> Non-identifier object keys (e.g. <code>user-id</code>, <code>@timestamp</code>) are automatically wrapped in quotes (e.g. <code>"user-id": string;</code>).</li>
+      </ul>
+
+      <h3>2. Interfaces vs Types: Which Should You Use?</h3>
+      <div style="margin: 16px 0; overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+          <thead>
+            <tr style="background: rgba(255, 255, 255, 0.05); border-bottom: 1px solid var(--border-subtle); text-align: left;">
+              <th style="padding: 10px 14px; color: var(--accent-cyan);">Criterion</th>
+              <th style="padding: 10px 14px; color: var(--accent-cyan);">Interface (interface User)</th>
+              <th style="padding: 10px 14px; color: var(--accent-cyan);">Type Alias (type User =)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+              <td style="padding: 10px 14px; font-weight: 600;">Extensibility</td>
+              <td style="padding: 10px 14px;">Supports inheritance via <code>extends</code> and Declaration Merging.</td>
+              <td style="padding: 10px 14px;">Utilizes intersection operators (<code>&amp;</code>) and unions (<code>|</code>).</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+              <td style="padding: 10px 14px; font-weight: 600;">Optimal Use Cases</td>
+              <td style="padding: 10px 14px;">API DTOs, data contracts, state representations, and domain entities.</td>
+              <td style="padding: 10px 14px;">Primitives, tuples, utility types, and discriminated unions.</td>
+            </tr>
+            <tr>
+              <td style="padding: 10px 14px; font-weight: 600;">Compiler Performance</td>
+              <td style="padding: 10px 14px; color: var(--accent-emerald);">Optimized type caching within the <code>tsc</code> compiler.</td>
+              <td style="padding: 10px 14px;">Can incur overhead with deeply nested complex unions.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Frequently Asked Questions (FAQ)</h3>
+      <div class="faq-list" style="margin-top: 16px;">
+        <div class="faq-item">
+          <div class="faq-question"><span>Does this tool transmit my JSON payload to any server?</span><span>+</span></div>
+          <div class="faq-answer">No. All computations occur exclusively within your browser's local memory using client-side JavaScript. Proprietary company data, production payloads, and API tokens remain 100% confidential.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question"><span>Can I generate TypeScript 'type' declarations instead of 'interface'?</span><span>+</span></div>
+          <div class="faq-answer">Yes! Simply check the "Generate as type alias" option above to format output as <code>export type Name = { ... };</code>.</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- More Recommended Tools -->
+    <section style="margin-top: 60px;">
+      <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 20px; color: var(--text-primary);">Explore More Essential Developer Tools</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px;">
+        <a href="/en/uuid-generator" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">UUID v4 & v7 Generator</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Generate cryptographically random UUIDs and time-ordered UUID v7 keys.</p>
+        </a>
+        <a href="/en/image-color-picker" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Image Color Picker</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Extract pixel colors from images with magnifying loupe and palette exporter.</p>
+        </a>
+        <a href="/en/hash-generator" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Cryptographic Hash Generator</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Compute SHA-256, MD5, and SHA-512 hashes instantly in client memory.</p>
+        </a>
+        <a href="/en/base64-converter" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Base64 Encoder & Decoder</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Encode and decode text, files, and images to RFC 4648 Base64.</p>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-grid">
+        <div class="footer-col footer-col-wide">
+          <div class="footer-brand">
+            <span class="footer-brand-title">Caixa do Dev</span>
+            <span class="footer-badge">100% Client-Side</span>
+          </div>
+          <p>The premier free, fast, and privacy-first utility toolkit for developers, QA engineers, and DevOps professionals worldwide.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Institutional</h4>
+          <ul>
+            <li><a href="/artigos">Engineering Articles</a></li>
+            <li><a href="/pages/sobre.html">About the Author</a></li>
+            <li><a href="/pages/contato.html">Contact Us</a></li>
+            <li><a href="/pages/privacidade.html">Privacy Policy</a></li>
+            <li><a href="/pages/termos.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Caixa do Dev • Built and maintained by Alexandre Marcelino.</span>
+        <span>High-performance local client-side processing in strict compliance with data privacy standards.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
+  <!-- Scripts -->
+  <script src="/js/tools/json-to-ts.js"></script>
+  <script>
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      if (!t) return;
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    function copyToClipboard(text) {
+      if (!navigator.clipboard) {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+      } else {
+        navigator.clipboard.writeText(text);
+      }
+      showToast('Copied to clipboard! 📋');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const jsonTsInput = document.getElementById('json-ts-input');
+      const jsonTsOutput = document.getElementById('json-ts-output');
+      const jsonTsRoot = document.getElementById('json-ts-root');
+      const checkTsType = document.getElementById('check-ts-type');
+      const btnConvertJsonTs = document.getElementById('btn-convert-json-ts');
+      const btnSampleJsonTs = document.getElementById('btn-sample-json-ts');
+      const btnCopyJsonTs = document.getElementById('btn-copy-json-ts');
+
+      const sampleJson = window.JSON_TO_TS ? window.JSON_TO_TS.getSample() : '{\n  "userId": 1042,\n  "name": "Alexandre Marcelino",\n  "isActive": true\n}';
+
+      const runConvert = () => {
+        if (!window.JSON_TO_TS) return;
+        const val = jsonTsInput.value.trim();
+        if (!val) {
+          jsonTsOutput.textContent = '// Paste JSON in the input box and click "Generate TypeScript"';
+          return;
+        }
+        const root = jsonTsRoot?.value.trim() || 'ApiResponse';
+        const useType = checkTsType ? checkTsType.checked : false;
+        const res = JSON_TO_TS.convert(val, root, useType);
+        if (res.success) {
+          jsonTsOutput.textContent = res.code;
+        } else {
+          jsonTsOutput.textContent = `// ${res.error}`;
+        }
+      };
+
+      if (btnConvertJsonTs) btnConvertJsonTs.addEventListener('click', runConvert);
+      if (checkTsType) checkTsType.addEventListener('change', runConvert);
+      if (jsonTsRoot) jsonTsRoot.addEventListener('input', runConvert);
+
+      if (btnSampleJsonTs) {
+        btnSampleJsonTs.addEventListener('click', () => {
+          jsonTsInput.value = sampleJson;
+          runConvert();
+          showToast('Sample loaded!');
+        });
+      }
+
+      if (btnCopyJsonTs) {
+        btnCopyJsonTs.addEventListener('click', () => {
+          if (jsonTsOutput.textContent) {
+            copyToClipboard(jsonTsOutput.textContent);
+          }
+        });
+      }
+
+      // Initialize with sample
+      jsonTsInput.value = sampleJson;
+      runConvert();
+
+      // Save to recent tools
+      try {
+        const k = 'caixadodev_recent_tools';
+        let r = JSON.parse(localStorage.getItem(k) || '[]').filter(id => id !== 'json-ts');
+        r.unshift('json-ts');
+        if (r.length > 6) r = r.slice(0, 6);
+        localStorage.setItem(k, JSON.stringify(r));
+      } catch(e) {}
+    });
+  </script>
+</body>
+</html>

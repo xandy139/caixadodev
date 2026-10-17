@@ -3,6 +3,324 @@
  * Roteamento por hash, busca rápida (Ctrl+K), catálogo de 27 ferramentas e eventos
  */
 
+
+// ==========================================
+// INTERNATIONALIZATION (i18n) CATALOG (EN)
+// ==========================================
+const I18N_TOOLS_EN = {
+  'cnpj-alfanumerico': {
+    url: '/en/brazilian-alphanumeric-cnpj-generator',
+    name: 'Brazilian Alphanumeric CNPJ Generator (2026)',
+    desc: 'Generate and validate the official Brazilian Alphanumeric CNPJ standard (RFB IN 2.229/2024) with ASCII-48 Modulo 11 check digits.',
+    badge: '⚡ New RFB 2026',
+    categoryLabel: 'Fiscal & Document Testing'
+  },
+  'cpf-cnpj': {
+    url: '/en/brazilian-cpf-generator',
+    name: 'Brazilian CPF & CNPJ Generator',
+    desc: 'Generate and validate authentic Brazilian CPF and CNPJ documents with official Modulo 11 verification and state tags.',
+    badge: '🔥 #1 Most Used',
+    categoryLabel: 'Fiscal & Document Testing'
+  },
+  'pessoas': {
+    url: '/en/brazilian-person-generator',
+    name: 'Brazilian Mock Person Generator',
+    desc: 'Generate complete realistic Brazilian test profiles: Name, CPF, RG, Age, Gender, Blood type, Email, Phone and Address.',
+    badge: '⭐ Mock Data',
+    categoryLabel: 'Mock Test Data'
+  },
+  'json': {
+    url: '/en/json-formatter',
+    name: 'JSON Formatter & Validator',
+    desc: 'Prettify, validate, minify and analyze JSON payloads with syntax error detection and real-time statistics.',
+    badge: '⚡ Daily Essential',
+    categoryLabel: 'Code & APIs'
+  },
+  'json-ts': {
+    url: '/en/json-to-typescript',
+    name: 'JSON to TypeScript Converter',
+    desc: 'Convert any API JSON response into clean, strongly typed TypeScript interfaces or type aliases.',
+    badge: '💎 TypeScript',
+    categoryLabel: 'TypeScript & Frontend'
+  },
+  'clt-pj': {
+    url: '/en/brazil-clt-vs-pj-calculator',
+    name: 'Brazil CLT vs PJ Tax Calculator',
+    desc: 'Compare Brazil employment vs contracting: Net income, Progressive INSS, IRPF, 13th salary, FGTS and Simples Nacional Factor R.',
+    badge: '💰 Brazil Taxes',
+    categoryLabel: 'Career & Brazil Taxes'
+  },
+  'sql': {
+    url: '/en/sql-formatter',
+    name: 'SQL Formatter & Beautifier',
+    desc: 'Beautify complex SQL queries (SELECT, JOINs, subqueries) or minify into a single clean line.',
+    badge: '🗄️ SQL',
+    categoryLabel: 'Databases & SQL'
+  },
+  'curl': {
+    url: '/en/curl-converter',
+    name: 'cURL Command Converter',
+    desc: 'Parse cURL commands into JavaScript Fetch, Axios, Python Requests, Node.js and PHP code snippets.',
+    badge: '🌐 APIs',
+    categoryLabel: 'APIs & Requests'
+  },
+  'regex': {
+    url: '/en/regex-tester',
+    name: 'Regex Tester & Explainer',
+    desc: 'Test regular expressions with real-time match highlighting, capture groups, flags and ReDoS protection.',
+    badge: '🔍 Regex',
+    categoryLabel: 'Code & Logic'
+  },
+  'cartao': {
+    url: '/en/credit-card-generator',
+    name: 'Credit Card Test Data Generator',
+    desc: 'Generate valid test credit card numbers (Visa, Mastercard, Amex, Elo) using the Luhn Algorithm (Mod 10). For QA only.',
+    badge: '💳 Test Cards',
+    categoryLabel: 'Payment Testing'
+  },
+  'cron': {
+    url: '/en/cron-generator',
+    name: 'Cron Expression Generator & Explainer',
+    desc: 'Build and explain Cron schedule expressions in plain English with next run timestamps and common presets.',
+    badge: '⏱️ DevOps',
+    categoryLabel: 'DevOps & Automation'
+  },
+  'empresa': {
+    url: '/en/brazilian-company-generator',
+    name: 'Brazilian Test Company Generator',
+    desc: 'Generate fictitious Brazilian corporate records with CNPJ, Trade Name, Legal Name, State Tax ID (IE), and Capital.',
+    badge: '🏢 Corporate',
+    categoryLabel: 'Fiscal & Document Testing'
+  },
+  'mock-data': {
+    url: '/en/mock-data-generator',
+    name: 'Mock Data Generator (JSON, CSV, SQL)',
+    desc: 'Generate structured mock datasets with custom schema fields, repeatable seeds and export in JSON, CSV or SQL.',
+    badge: '📦 Mock Datasets',
+    categoryLabel: 'Mock Test Data'
+  },
+  'markdown': {
+    url: '/en/markdown-editor',
+    name: 'Markdown Live Editor & Previewer',
+    desc: 'Write Markdown with real-time preview, HTML export, word counter and GitHub Flavored Markdown (GFM) support.',
+    badge: '📝 Markdown',
+    categoryLabel: 'Documentation'
+  },
+  'diff': {
+    url: '/en/text-diff-checker',
+    name: 'Text Diff Checker & Comparator',
+    desc: 'Compare two text snippets side-by-side with color-coded additions, deletions and inline character-level changes.',
+    badge: '🔀 Diff Tool',
+    categoryLabel: 'Code Inspection'
+  },
+  'jwt': {
+    url: '/en/jwt-decoder',
+    name: 'JWT Decoder & Token Inspector',
+    desc: 'Decode and inspect JSON Web Tokens (JWT) headers, payloads, claims and signature validity in 100% local memory.',
+    badge: '🔒 Security',
+    categoryLabel: 'Security & Auth'
+  },
+  'hashes': {
+    url: '/en/hash-generator',
+    name: 'Cryptographic Hash Generator',
+    desc: 'Calculate MD5, SHA-1, SHA-256 and SHA-512 cryptographic checksums instantly with zero server transmission.',
+    badge: '🔑 Hashes',
+    categoryLabel: 'Security & Hashes'
+  },
+  'base64': {
+    url: '/en/base64-converter',
+    name: 'Base64 Encoder & Decoder',
+    desc: 'Encode and decode text, binary files and images to Base64 with Data URI generator and RFC 4648 compliance.',
+    badge: '🔄 Encoding',
+    categoryLabel: 'Encodings & Data'
+  },
+  'uuid': {
+    url: '/en/uuid-generator',
+    name: 'UUID v4 & UUID v7 Generator',
+    desc: 'Generate cryptographically random UUID v4 and millisecond time-ordered UUID v7 (RFC 9562) in bulk.',
+    badge: '🆔 Identifiers',
+    categoryLabel: 'Identifiers'
+  },
+  'cep': {
+    url: '/en/brazilian-cep-generator',
+    name: 'Brazilian CEP Postal Code Lookup & Generator',
+    desc: 'Generate valid Brazilian postal codes (CEP) by state and query real street addresses via ViaCEP API.',
+    badge: '📍 Postal Codes',
+    categoryLabel: 'Mock Test Data'
+  },
+  'rg': {
+    url: '/en/brazilian-rg-generator',
+    name: 'Brazilian RG ID Generator',
+    desc: 'Generate formatted and unformatted Brazilian General Registry (RG) identity numbers for QA testing.',
+    badge: '🪪 Identity',
+    categoryLabel: 'Fiscal & Document Testing'
+  },
+  'bancos': {
+    url: '/en/brazilian-bank-account-generator',
+    name: 'Brazilian Bank Account Generator',
+    desc: 'Generate valid test checking accounts and branch numbers for major Brazilian banks (Nubank, Itaú, Bradesco, BB, Caixa).',
+    badge: '🏦 Banking QA',
+    categoryLabel: 'Payment Testing'
+  },
+  'css-generator': {
+    url: '/en/box-shadow-generator',
+    name: 'CSS Box Shadow & Glow Generator',
+    desc: 'Design modern multi-layered CSS box shadows, neumorphic elevations and neon glows with instant CSS code copy.',
+    badge: '🎨 CSS',
+    categoryLabel: 'Design & CSS'
+  },
+  'code-beautifier': {
+    url: '/en/html-css-beautifier',
+    name: 'HTML, CSS & JS Code Beautifier',
+    desc: 'Format, unminify, re-indent and clean up messy HTML markup, stylesheets and JavaScript bundles.',
+    badge: '✨ Beautifier',
+    categoryLabel: 'Formatters'
+  },
+  'url-parser': {
+    url: '/en/url-parser',
+    name: 'URL Parser & Query String Inspector',
+    desc: 'Parse URLs into protocol, host, port, path, URLSearchParams table and hash with quick param builder.',
+    badge: '🔗 URLs',
+    categoryLabel: 'Network & Web'
+  },
+  'timestamp': {
+    url: '/en/timestamp-converter',
+    name: 'Unix Timestamp & Epoch Converter',
+    desc: 'Convert Unix epoch timestamps (seconds and milliseconds) to human dates, UTC, ISO 8601 and local timezones.',
+    badge: '🕒 Timestamps',
+    categoryLabel: 'Date & Time'
+  },
+  'json-csv': {
+    url: '/en/json-to-csv',
+    name: 'JSON to CSV / CSV to JSON Converter',
+    desc: 'Bidirectional converter between tabular CSV data and JSON objects/arrays with custom delimiters and headers.',
+    badge: '📊 Data Tables',
+    categoryLabel: 'Data & Formats'
+  },
+  'storage': {
+    url: '/en/storage-converter',
+    name: 'Digital Storage Units Converter',
+    desc: 'Convert between Bits, Bytes, KB, MB, GB, TB, PB with Decimal (1000) vs Binary IEC (1024 KiB/MiB) toggle.',
+    badge: '💾 Storage Units',
+    categoryLabel: 'Math & Storage'
+  },
+  'cnh': {
+    url: '/en/brazilian-cnh-generator',
+    name: 'Brazilian CNH Driver License Generator',
+    desc: 'Generate valid Brazilian National Driver License (CNH) document numbers with dual Modulo 11 check digits.',
+    badge: '🚗 Driver License',
+    categoryLabel: 'Fiscal & Document Testing'
+  },
+  'subnet': {
+    url: '/en/subnet-calculator',
+    name: 'CIDR Subnet Calculator (IPv4)',
+    desc: 'Calculate subnet masks, network address, broadcast, usable host range, wildcard and CIDR prefix slash notations.',
+    badge: '🌐 Networking',
+    categoryLabel: 'Networks & DevOps'
+  },
+  'http-status': {
+    url: '/en/http-status-codes',
+    name: 'HTTP Status Codes Reference & Catalog',
+    desc: 'Comprehensive guide to HTTP response codes (1xx, 2xx, 3xx, 4xx, 5xx) with RFC specifications and browser behaviors.',
+    badge: '📡 HTTP Reference',
+    categoryLabel: 'HTTP & APIs'
+  },
+  'color': {
+    url: '/en/color-converter',
+    name: 'Color Converter & Harmony Palette',
+    desc: 'Convert colors instantly between HEX, RGB, HSL, HSV, CMYK with alpha channel, WCAG contrast and harmony schemes.',
+    badge: '🎨 Colors',
+    categoryLabel: 'Design & Colors'
+  },
+  'image-color-picker': {
+    url: '/en/image-color-picker',
+    name: 'Image Color Picker (Pixel EyeDropper)',
+    desc: 'Extract pixel colors from images with magnifying loupe, browser EyeDropper API and dominant palette generator.',
+    badge: '🔍 Pixel Picker',
+    categoryLabel: 'Design & Colors'
+  },
+  'svg': {
+    url: '/en/svg-optimizer',
+    name: 'SVG Optimizer & Code Minifier',
+    desc: 'Clean, minify and optimize SVG vector assets: remove metadata, inline styles, round numbers and compress byte size.',
+    badge: '⚡ SVG Minifier',
+    categoryLabel: 'Design & Assets'
+  },
+  'senhas': {
+    url: '/en/password-generator',
+    name: 'Strong Password Generator',
+    desc: 'Generate cryptographically strong passwords with custom lengths, symbols, numbers, and zxcvbn entropy meter.',
+    badge: '🛡️ Passwords',
+    categoryLabel: 'Security & Auth'
+  },
+  'case': {
+    url: '/en/case-converter',
+    name: 'String Case Converter',
+    desc: 'Convert text between camelCase, PascalCase, snake_case, kebab-case, CONSTANT_CASE, Title Case and dot.case.',
+    badge: '🔡 Case Converter',
+    categoryLabel: 'Text & Code'
+  },
+  'qrcode': {
+    url: '/en/qrcode-generator',
+    name: 'QR Code Generator',
+    desc: 'Generate customizable QR Codes for URLs, plain text, Wi-Fi networks and vCards with high-resolution PNG/SVG download.',
+    badge: '📱 QR Code',
+    categoryLabel: 'Assets & Mobile'
+  },
+  'veiculos': {
+    url: '/en/brazilian-license-plate-renavam-generator',
+    name: 'Brazilian License Plate & RENAVAM Generator',
+    desc: 'Generate valid Mercosul and legacy Brazilian vehicle plates and RENAVAM registration numbers for QA systems.',
+    badge: '🚙 Vehicles',
+    categoryLabel: 'Fiscal & Document Testing'
+  },
+  'certidao': {
+    url: '/en/brazilian-certificate-generator',
+    name: 'Brazilian Registry Certificate Generator',
+    desc: 'Generate 32-digit Brazilian civil registration certificate numbers (Birth, Marriage, Death) under CNJ rules.',
+    badge: '📜 Certificates',
+    categoryLabel: 'Fiscal & Document Testing'
+  },
+  'pis': {
+    url: '/en/brazilian-pis-generator',
+    name: 'Brazilian PIS / PASEP Generator',
+    desc: 'Generate and validate Brazilian Social Integration Program (PIS/PASEP/NIT) numbers with Modulo 11 check digit.',
+    badge: '📑 Labor IDs',
+    categoryLabel: 'Fiscal & Document Testing'
+  },
+  'titulo': {
+    url: '/en/brazilian-voter-id-generator',
+    name: 'Brazilian Voter ID Generator',
+    desc: 'Generate authentic Brazilian Voter ID (Título de Eleitor) numbers with 12 digits, state code and dual verification.',
+    badge: '🗳️ Voter ID',
+    categoryLabel: 'Fiscal & Document Testing'
+  },
+  'texto': {
+    url: '/en/lorem-ipsum-generator',
+    name: 'Lorem Ipsum & Dummy Text Generator',
+    desc: 'Generate placeholder dummy text by words, sentences or paragraphs with Latin, Tech Jargon or Dev Humor flavors.',
+    badge: '📄 Dummy Text',
+    categoryLabel: 'Content & Mockup'
+  }
+};
+
+function getEffectiveCatalog() {
+  const isEn = document.documentElement.lang === 'en';
+  if (!isEn) return TOOLS_CATALOG;
+  return TOOLS_CATALOG.map(t => {
+    const en = I18N_TOOLS_EN[t.id];
+    if (!en) return t;
+    return {
+      ...t,
+      name: en.name || t.name,
+      desc: en.desc || t.desc,
+      url: en.url || t.url,
+      badge: en.badge || t.badge,
+      categoryLabel: en.categoryLabel || t.categoryLabel
+    };
+  });
+}
+
 // Catálogo Oficial de 40 Ferramentas - Ordenado por Frequência de Uso e Volume de Busca no Brasil
 const TOOLS_CATALOG = [
   // ==========================================
@@ -658,7 +976,7 @@ function initToolsHub() {
         <p>${tool.desc}</p>
         <div class="tool-card-footer">
           <span>${tool.categoryLabel}</span>
-          <span class="tool-card-action">Abrir Ferramenta &rarr;</span>
+          <span class="tool-card-action">${isEn ? 'Open Tool &rarr;' : 'Abrir Ferramenta &rarr;'}</span>
         </div>
       `;
       grid.appendChild(card);
@@ -727,7 +1045,7 @@ function initSearchModal() {
     if (filtered.length === 0) {
       resultsContainer.innerHTML = `
         <div style="padding: 24px; text-align: center; color: var(--text-muted); font-size: 0.9rem;">
-          Nenhuma ferramenta encontrada para "<strong>${escapeHtml(query)}</strong>"
+          ${isEn ? 'No tools found for' : 'Nenhuma ferramenta encontrada para'} "<strong>${escapeHtml(query)}</strong>"
         </div>
       `;
       return;
@@ -1628,7 +1946,8 @@ function initToolEvents() {
     if (inputColorRgb && document.activeElement !== inputColorRgb) inputColorRgb.value = outputs.rgb;
     if (inputColorHsl && document.activeElement !== inputColorHsl) inputColorHsl.value = outputs.hsl;
     if (badgeColorContrast) {
-      badgeColorContrast.textContent = outputs.isDark ? 'Fundo Escuro' : 'Fundo Claro';
+      const isEn = document.documentElement.lang === 'en';
+      badgeColorContrast.textContent = outputs.isDark ? (isEn ? 'Dark Background' : 'Fundo Escuro') : (isEn ? 'Light Background' : 'Fundo Claro');
       badgeColorContrast.className = 'badge-status ' + (outputs.isDark ? 'badge-neutral' : 'badge-valid');
     }
   };
@@ -1754,10 +2073,10 @@ function initToolEvents() {
   const btnUrlDecode = document.getElementById('btn-url-decode');
   const btnCopyBase64 = document.getElementById('btn-copy-base64');
 
-  if (btnBase64Encode) btnBase64Encode.addEventListener('click', () => { base64Output.value = BASE64_TOOL.encodeBase64(base64Input.value); showToast('Codificado!'); });
-  if (btnBase64Decode) btnBase64Decode.addEventListener('click', () => { try { base64Output.value = BASE64_TOOL.decodeBase64(base64Input.value); showToast('Decodificado!'); } catch (e) { base64Output.value = e.message; } });
-  if (btnUrlEncode) btnUrlEncode.addEventListener('click', () => { base64Output.value = BASE64_TOOL.encodeUrl(base64Input.value); showToast('URL Codificada!'); });
-  if (btnUrlDecode) btnUrlDecode.addEventListener('click', () => { try { base64Output.value = BASE64_TOOL.decodeUrl(base64Input.value); showToast('URL Decodificada!'); } catch (e) { base64Output.value = e.message; } });
+  if (btnBase64Encode) btnBase64Encode.addEventListener('click', () => { const isEn = document.documentElement.lang === 'en'; base64Output.value = BASE64_TOOL.encodeBase64(base64Input.value); showToast(isEn ? 'Encoded!' : 'Codificado!'); });
+  if (btnBase64Decode) btnBase64Decode.addEventListener('click', () => { const isEn = document.documentElement.lang === 'en'; try { base64Output.value = BASE64_TOOL.decodeBase64(base64Input.value); showToast(isEn ? 'Decoded!' : 'Decodificado!'); } catch (e) { base64Output.value = e.message; } });
+  if (btnUrlEncode) btnUrlEncode.addEventListener('click', () => { const isEn = document.documentElement.lang === 'en'; base64Output.value = BASE64_TOOL.encodeUrl(base64Input.value); showToast(isEn ? 'URL Encoded!' : 'URL Codificada!'); });
+  if (btnUrlDecode) btnUrlDecode.addEventListener('click', () => { const isEn = document.documentElement.lang === 'en'; try { base64Output.value = BASE64_TOOL.decodeUrl(base64Input.value); showToast(isEn ? 'URL Decoded!' : 'URL Decodificada!'); } catch (e) { base64Output.value = e.message; } });
   if (btnCopyBase64) btnCopyBase64.addEventListener('click', () => copyToClipboard(base64Output.value));
 
   // 28. RG TOOL
