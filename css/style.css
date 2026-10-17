@@ -698,43 +698,62 @@ body {
 
 .modal-input-wrap,
 .search-modal-header {
-  display: flex;
-  align-items: center;
-  padding: 16px 20px;
-  border-bottom: 1px solid var(--border-subtle);
-  gap: 12px;
-  background: rgba(255, 255, 255, 0.02);
+  display: flex !important;
+  align-items: center !important;
+  padding: 16px 20px !important;
+  border-bottom: 1px solid var(--border-subtle) !important;
+  gap: 12px !important;
+  background: rgba(255, 255, 255, 0.02) !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
 }
 
 .modal-input-wrap svg,
 .search-modal-header svg {
-  color: var(--accent-cyan);
-  width: 20px;
-  height: 20px;
-  flex-shrink: 0;
+  color: var(--accent-cyan) !important;
+  width: 20px !important;
+  height: 20px !important;
+  flex-shrink: 0 !important;
 }
 
 .modal-search-input,
-.search-modal-header input {
-  width: 100%;
-  background: transparent;
-  border: none;
-  outline: none;
-  color: var(--text-primary);
-  font-size: 1.05rem;
-  font-family: var(--font-sans);
+.modal-input-wrap input,
+.search-modal-header input,
+#modal-search-input {
+  flex: 1 1 auto !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  color: var(--text-primary) !important;
+  font-size: 1.05rem !important;
+  font-family: var(--font-sans) !important;
+  padding: 4px 0 !important;
+  line-height: 1.4 !important;
+}
+
+.modal-search-input::placeholder,
+.modal-input-wrap input::placeholder,
+.search-modal-header input::placeholder,
+#modal-search-input::placeholder {
+  color: var(--text-muted) !important;
+  opacity: 0.75 !important;
 }
 
 .modal-esc-hint {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: var(--text-muted);
-  font-size: 0.72rem;
-  font-family: var(--font-mono);
-  padding: 2px 7px;
-  border-radius: 4px;
-  user-select: none;
-  flex-shrink: 0;
+  display: inline-flex !important;
+  align-items: center !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  color: var(--text-muted) !important;
+  font-size: 0.72rem !important;
+  font-family: var(--font-mono) !important;
+  padding: 3px 8px !important;
+  border-radius: 4px !important;
+  user-select: none !important;
+  flex-shrink: 0 !important;
 }
 
 .modal-results,

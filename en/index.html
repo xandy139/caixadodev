@@ -70,8 +70,8 @@
   }
   </script>
 
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/css/tools.css">
+  <link rel="stylesheet" href="/css/style.css?v=20261017c">
+  <link rel="stylesheet" href="/css/tools.css?v=20261017c">
 </head>
 <body>
 
@@ -216,12 +216,12 @@
   <!-- Search Modal (Ctrl+K) -->
   <div id="search-modal-overlay" class="modal-overlay search-modal-overlay" aria-hidden="true">
     <div class="search-modal">
-      <div class="search-modal-header">
+      <div class="modal-input-wrap search-modal-header">
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="11" cy="11" r="8"></circle>
           <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
         </svg>
-        <input type="text" id="modal-search-input" placeholder="Type a tool name, format, or keyword (e.g. JSON, UUID, Hash, CPF)..." autocomplete="off">
+        <input type="text" id="modal-search-input" class="modal-search-input" placeholder="Search 42 developer tools (e.g. JSON, UUID, SQL, Regex, Base64)..." autocomplete="off" spellcheck="false" style="flex: 1 1 auto; width: 100%; min-width: 0; background: transparent; border: none; outline: none; color: #f8fafc; font-size: 1.05rem;">
         <kbd class="modal-esc-hint">ESC</kbd>
       </div>
       <div id="modal-results" class="modal-results search-modal-results"></div>
@@ -299,6 +299,6 @@
   </aside>
 
   <!-- Main Hub Script -->
-  <script src="/js/app.js"></script>
+  <script src="/js/app.js?v=20261017c"></script>
 </body>
 </html>

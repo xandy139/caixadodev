@@ -70,8 +70,8 @@
   }
   </script>
 
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/tools.css">
+  <link rel="stylesheet" href="css/style.css?v=20261017c">
+  <link rel="stylesheet" href="css/tools.css?v=20261017c">
 </head>
 <body>
 
@@ -267,13 +267,14 @@
   </main>
 
   <!-- Modal de Busca Rápida (Ctrl+K) -->
-  <div id="search-modal-overlay" class="modal-overlay">
+  <div id="search-modal-overlay" class="modal-overlay search-modal-overlay">
     <div class="search-modal">
-      <div class="modal-input-wrap">
+      <div class="modal-input-wrap search-modal-header">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-        <input type="text" id="modal-search-input" class="modal-search-input" placeholder="Buscar entre as 40 ferramentas (ex: pessoas, empresa, clt pj, markdown, curl, rg, cep, sql, ts, regex)...">
+        <input type="text" id="modal-search-input" class="modal-search-input" placeholder="Buscar entre as 40 ferramentas (ex: pessoas, empresa, clt pj, markdown, curl, rg, cep, sql, ts, regex)..." autocomplete="off" spellcheck="false" style="flex: 1 1 auto; width: 100%; min-width: 0; background: transparent; border: none; outline: none; color: #f8fafc; font-size: 1.05rem;">
+        <kbd class="modal-esc-hint">ESC</kbd>
       </div>
-      <div id="modal-results" class="modal-results"></div>
+      <div id="modal-results" class="modal-results search-modal-results"></div>
     </div>
   </div>
 
@@ -364,6 +365,6 @@
   </aside>
 
   <!-- Script Principal do Hub -->
-  <script src="js/app.js"></script>
+  <script src="js/app.js?v=20261017c"></script>
 </body>
 </html>
