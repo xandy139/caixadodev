@@ -5,8 +5,9 @@
 
 const JSON_CSV_TOOL = {
   jsonToCsv(jsonString, delimiter = ',') {
+    const isEn = typeof document !== 'undefined' && document.documentElement.lang === 'en';
     if (!jsonString || !jsonString.trim()) {
-      return { success: false, error: 'Insira um JSON válido.' };
+      return { success: false, error: isEn ? 'Please insert valid JSON data.' : 'Insira um JSON válido.' };
     }
 
     try {
@@ -15,7 +16,7 @@ const JSON_CSV_TOOL = {
         if (typeof data === 'object' && data !== null) {
           data = [data]; // Objeto único vira array de 1 linha
         } else {
-          return { success: false, error: 'O JSON deve ser um array de objetos para ser convertido em CSV.' };
+          return { success: false, error: isEn ? 'JSON must be an array of objects to convert into CSV.' : 'O JSON deve ser um array de objetos para ser convertido em CSV.' };
         }
       }
 
@@ -42,19 +43,20 @@ const JSON_CSV_TOOL = {
 
       return { success: true, csv: rows.join('\n') };
     } catch (err) {
-      return { success: false, error: 'Erro ao converter JSON para CSV: ' + err.message };
+      return { success: false, error: (isEn ? 'Error converting JSON to CSV: ' : 'Erro ao converter JSON para CSV: ') + err.message };
     }
   },
 
   csvToJson(csvString, delimiter = ',') {
+    const isEn = typeof document !== 'undefined' && document.documentElement.lang === 'en';
     if (!csvString || !csvString.trim()) {
-      return { success: false, error: 'Insira um texto CSV válido.' };
+      return { success: false, error: isEn ? 'Please insert valid CSV text.' : 'Insira um texto CSV válido.' };
     }
 
     try {
       const lines = csvString.trim().split(/\r?\n/);
       if (lines.length < 2) {
-        return { success: false, error: 'O CSV precisa ter pelo menos 1 linha de cabeçalho e 1 linha de dados.' };
+        return { success: false, error: isEn ? 'CSV must contain at least 1 header line and 1 data row.' : 'O CSV precisa ter pelo menos 1 linha de cabeçalho e 1 linha de dados.' };
       }
 
       // Parser simples de linha CSV respeitando aspas
@@ -98,11 +100,19 @@ const JSON_CSV_TOOL = {
 
       return { success: true, json: JSON.stringify(jsonList, null, 2) };
     } catch (err) {
-      return { success: false, error: 'Erro ao converter CSV para JSON: ' + err.message };
+      return { success: false, error: (isEn ? 'Error converting CSV to JSON: ' : 'Erro ao converter CSV para JSON: ') + err.message };
     }
   },
 
   getSampleJson() {
+    const isEn = typeof document !== 'undefined' && document.documentElement.lang === 'en';
+    if (isEn) {
+      return JSON.stringify([
+        { id: 1, name: "Alice Smith", role: "Frontend Developer", department: "Engineering", active: true },
+        { id: 2, name: "Bob Johnson", role: "DevOps Engineer", department: "Infrastructure", active: true },
+        { id: 3, name: "Claire Davis", role: "Product Manager", department: "Product", active: false }
+      ], null, 2);
+    }
     return JSON.stringify([
       { id: 1, nome: "Ana Santos", cargo: "Desenvolvedora Frontend", salario: 8500 },
       { id: 2, nome: "Carlos Lima", cargo: "Engenheiro DevOps", salario: 12000 },

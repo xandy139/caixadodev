@@ -62,12 +62,13 @@ const PASSWORD_GENERATOR = {
   },
 
   evaluateStrength(password, poolSize) {
+    const isEn = typeof document !== 'undefined' && document.documentElement.lang === 'en';
     const entropy = Math.round(password.length * Math.log2(poolSize || 26));
 
-    if (entropy < 40) return { label: 'Fraca', color: '#f43f5e', percent: 25 };
-    if (entropy < 60) return { label: 'Razoável', color: '#f59e0b', percent: 50 };
-    if (entropy < 85) return { label: 'Forte', color: '#10b981', percent: 80 };
-    return { label: 'Muito Forte (Imbatível)', color: '#38bdf8', percent: 100 };
+    if (entropy < 40) return { label: isEn ? 'Weak' : 'Fraca', color: '#f43f5e', percent: 25 };
+    if (entropy < 60) return { label: isEn ? 'Moderate' : 'Razoável', color: '#f59e0b', percent: 50 };
+    if (entropy < 85) return { label: isEn ? 'Strong' : 'Forte', color: '#10b981', percent: 80 };
+    return { label: isEn ? 'Very Strong (Unbreakable)' : 'Muito Forte (Imbatível)', color: '#38bdf8', percent: 100 };
   }
 };
 

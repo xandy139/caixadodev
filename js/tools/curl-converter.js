@@ -4,10 +4,19 @@
  */
 
 const CURL_CONVERTER = {
-  SAMPLE: `curl -X POST https://api.exemplo.com/v1/usuarios \\
+  get SAMPLE() {
+    const isEn = typeof document !== 'undefined' && document.documentElement.lang === 'en';
+    if (isEn) {
+      return `curl -X POST https://api.example.com/v1/users \\
+  -H "Authorization: Bearer secret_token_123" \\
+  -H "Content-Type: application/json" \\
+  -d '{"name": "John Doe", "email": "john@example.com", "active": true}'`;
+    }
+    return `curl -X POST https://api.exemplo.com/v1/usuarios \\
   -H "Authorization: Bearer token_secreto_123" \\
   -H "Content-Type: application/json" \\
-  -d '{"nome": "João Silva", "email": "joao@email.com", "ativo": true}'`,
+  -d '{"nome": "João Silva", "email": "joao@email.com", "ativo": true}'`;
+  },
 
   parse(curlString) {
     if (!curlString) return null;

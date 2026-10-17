@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9HZFENSYKS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-9HZFENSYKS');
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3052162962623831"
+     crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JWT Decoder & Token Inspector (JSON Web Token Debugger) | Caixa do Dev</title>
+  <meta name="description" content="Decode, inspect, and debug JSON Web Tokens (JWT) in real time. View Header algorithms, Payload claims, and expiration timestamps in 100% local client memory without leaking secrets.">
+  <meta name="keywords" content="jwt decoder, jwt debugger online, json web token inspector, decode jwt, jwt expiration checker, jwt claims exp iat sub, rfc 7519 debugger">
+  <meta name="author" content="Alexandre Marcelino">
+  <meta name="robots" content="index, follow">
+
+  <!-- Canonical, Hreflang & Open Graph -->
+  <link rel="canonical" href="https://www.caixadodev.com.br/en/jwt-decoder">
+  <link rel="alternate" hreflang="pt-BR" href="https://www.caixadodev.com.br/decodificador-de-jwt">
+  <link rel="alternate" hreflang="en" href="https://www.caixadodev.com.br/en/jwt-decoder">
+  <link rel="alternate" hreflang="x-default" href="https://www.caixadodev.com.br/decodificador-de-jwt">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.caixadodev.com.br/en/jwt-decoder">
+  <meta property="og:title" content="JWT Decoder & Token Inspector (JSON Web Token Debugger) | Caixa do Dev">
+  <meta property="og:description" content="Inspect JWT Headers, Payloads and verify expiration timestamps securely in your browser. Zero server transmission.">
+  <meta property="og:image" content="https://www.caixadodev.com.br/assets/og-cover.png">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'><path d='M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/css/style.css?v=20261017c">
+  <link rel="stylesheet" href="/css/tools.css?v=20261017c">
+
+  <!-- Schema.org WebApplication & FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "JWT Decoder & Token Inspector",
+        "url": "https://www.caixadodev.com.br/en/jwt-decoder",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript",
+        "description": "Decode and inspect JSON Web Tokens (JWT) locally with real-time claims and expiration date diagnosis.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is it safe to paste confidential production JWTs into this debugger?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, 100% safe. This debugger executes entirely in your browser's local JavaScript runtime using Base64Url parsing. No headers, tokens, secret signatures, or payload values are ever transmitted to any remote backend server."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does decoding a JWT verify that the signature is authentic?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Decoding unpacks and displays the Base64Url-encoded Header and Payload claims. Cryptographic signature verification requires the asymmetric public key (RS256/ES256) or symmetric shared secret (HS256) strictly stored inside your authentication authority or backend microservices."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why are JWT tokens encoded and not encrypted by default?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Standard JWTs (RFC 7519) are digitally signed, not encrypted (JWE). This means anyone in possession of the token can read the payload claims. Because of this, sensitive information such as database passwords, API secret keys, or credit card numbers must never be placed inside a JWT payload."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="standalone-page">
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="/en/" class="brand" title="Caixa do Dev - Home">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Caixa do Dev</span>
+          <span class="brand-badge">42 Tools</span>
+        </div>
+      </a>
+
+      <div class="nav-actions">
+        <nav>
+          <ul class="nav-links">
+            <li><a href="/en/">Home</a></li>
+            <li><a href="/en/jwt-decoder" class="active">JWT</a></li>
+            <li><a href="/en/json-formatter">JSON</a></li>
+            <li><a href="/en/regex-tester">Regex</a></li>
+            <li><a href="/en/sql-formatter">SQL</a></li>
+            <li><a href="/en/hash-generator">Hash</a></li>
+            <li><a href="/artigos">Articles</a></li>
+            <li><a href="/pages/sobre.html">About</a></li>
+          </ul>
+        </nav>
+        <div class="lang-switch" aria-label="Idioma / Language">
+          <a href="/decodificador-de-jwt" class="lang-btn" title="Versão em Português">🇧🇷 PT</a>
+          <span class="lang-sep">/</span>
+          <span class="lang-btn active" title="English Version">🇺🇸 EN</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container" style="padding-top: 32px; padding-bottom: 60px;">
+    
+    <div class="tool-breadcrumbs">
+      <a href="/en/">&larr; Home</a> / <span>JWT Decoder & Token Inspector</span>
+    </div>
+
+    <div class="privacy-badge">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      100% Client-Side In-Browser Processing (Your auth tokens never touch any server)
+    </div>
+
+    <!-- Tool Interface -->
+    <section class="tool-view standalone-active" data-tool-id="jwt">
+      
+      <div class="tool-interface-card">
+        <div class="tool-header-area">
+          <div class="tool-title-group">
+            <h1>JWT Decoder & Token Inspector</h1>
+            <p>Inspect Header algorithms, Payload claims, and expiration timestamps safely in local memory.</p>
+          </div>
+          <div class="tool-actions-bar">
+            <button id="btn-sample-jwt" class="btn btn-secondary">Load Sample</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="jwt-input">
+            <span>Encoded JWT Token:</span>
+            <span id="jwt-status-badge" class="badge-status badge-neutral">No Token</span>
+          </label>
+          <textarea id="jwt-input" class="form-control" style="min-height: 90px;" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIn0..."></textarea>
+          <span id="jwt-exp-detail" style="font-size: 0.84rem; color: var(--accent-cyan); margin-top: 6px; display: block;"></span>
+        </div>
+
+        <div class="jwt-segments-grid">
+          <div class="jwt-block">
+            <div class="jwt-block-header"><span class="jwt-header-color">Header (Algorithm & Token Type)</span></div>
+            <pre id="jwt-header-output">// Awaiting token...</pre>
+          </div>
+          <div class="jwt-block">
+            <div class="jwt-block-header"><span class="jwt-payload-color">Payload (Data Claims & Identity)</span></div>
+            <pre id="jwt-payload-output">// Awaiting token...</pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- Technical SEO Guide -->
+      <article class="tool-seo-guide">
+        <h2>Understanding JSON Web Token (JWT) Architecture & RFC 7519</h2>
+        <p>A <strong>JSON Web Token (JWT)</strong> is an open, industry-standard RFC 7519 method for securely transmitting information between parties as a compact, URL-safe JSON object. In modern cloud architecture, microservices, OAuth 2.0, and OpenID Connect (OIDC), JWTs serve as stateless access tokens carrying authentication claims and authorization roles.</p>
+
+        <h3>1. Anatomy of the Three Segments</h3>
+        <p>A standard JWT string consists of three parts separated by periods (<code>header.payload.signature</code>):</p>
+        <ul>
+          <li><strong>Header:</strong> Specifies the cryptographic algorithm (e.g., <code>HS256</code> HMAC-SHA256, <code>RS256</code> RSA Signature, or <code>ES256</code> ECDSA) and token type (<code>JWT</code>).</li>
+          <li><strong>Payload:</strong> Contains standard and custom claims (statements about an entity, usually the authenticated user) along with metadata like timestamps. The payload is Base64Url encoded, meaning it is readable by anyone with access to the raw string.</li>
+          <li><strong>Signature:</strong> Generated by hashing the encoded header, encoded payload, and a secret key or private key. This ensures the token cannot be tampered with or forged in transit.</li>
+        </ul>
+
+        <h3>2. Standard Registered Claims Reference</h3>
+        <div style="margin: 16px 0; overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+            <thead>
+              <tr style="background: rgba(255, 255, 255, 0.05); border-bottom: 1px solid var(--border-subtle); text-align: left;">
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">Claim</th>
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">Full Name</th>
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">Technical Purpose</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-family: var(--font-mono); color: var(--accent-cyan);">sub</td>
+                <td style="padding: 10px 14px;">Subject</td>
+                <td style="padding: 10px 14px;">Unique principal identifier (e.g., user UUID or database ID).</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-family: var(--font-mono); color: var(--accent-cyan);">exp</td>
+                <td style="padding: 10px 14px;">Expiration Time</td>
+                <td style="padding: 10px 14px;">Unix timestamp (seconds) identifying when the token expires and must be rejected.</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-family: var(--font-mono); color: var(--accent-cyan);">iat</td>
+                <td style="padding: 10px 14px;">Issued At</td>
+                <td style="padding: 10px 14px;">Unix epoch seconds marking the exact instant the token was minted.</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-family: var(--font-mono); color: var(--accent-cyan);">iss</td>
+                <td style="padding: 10px 14px;">Issuer</td>
+                <td style="padding: 10px 14px;">Identity of the authorization server that generated the token (e.g., Auth0, Firebase, Keycloak).</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px 14px; font-family: var(--font-mono); color: var(--accent-cyan);">aud</td>
+                <td style="padding: 10px 14px;">Audience</td>
+                <td style="padding: 10px 14px;">Identifies the intended recipients or backend API resource servers for this token.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Frequently Asked Questions (FAQ)</h3>
+        <div class="faq-list" style="margin-top: 16px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>Is it safe to paste confidential production JWTs into this debugger?</span><span>+</span></div>
+            <div class="faq-answer">Yes, 100% safe. This debugger executes entirely in your browser's local JavaScript runtime using Base64Url parsing. No headers, tokens, secret signatures, or payload values are ever transmitted to any remote backend server.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Does decoding a JWT verify that the signature is authentic?</span><span>+</span></div>
+            <div class="faq-answer">No. Decoding unpacks and displays the Base64Url-encoded Header and Payload claims. Cryptographic signature verification requires the asymmetric public key (RS256/ES256) or symmetric shared secret (HS256) strictly stored inside your authentication authority or backend microservices.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Why are JWT tokens encoded and not encrypted by default?</span><span>+</span></div>
+            <div class="faq-answer">Standard JWTs (RFC 7519) are digitally signed, not encrypted (JWE). This means anyone in possession of the token can read the payload claims. Because of this, sensitive information such as database passwords, API secret keys, or credit card numbers must never be placed inside a JWT payload.</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Popular Developer Tools -->
+      <section style="margin-top: 60px;">
+        <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 20px; color: var(--text-primary);">Explore More Developer Tools</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px;">
+          <a href="/en/hash-generator" class="tool-card" style="text-decoration: none;">
+            <h4 style="color: var(--text-primary); margin-bottom: 6px;">Hash Generator</h4>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Instant client-side MD5, SHA-256, and SHA-512 cryptographic checksums.</p>
+          </a>
+          <a href="/en/base64-converter" class="tool-card" style="text-decoration: none;">
+            <h4 style="color: var(--text-primary); margin-bottom: 6px;">Base64 Converter</h4>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Encode and decode text, files, and images into RFC 4648 format.</p>
+          </a>
+          <a href="/en/timestamp-converter" class="tool-card" style="text-decoration: none;">
+            <h4 style="color: var(--text-primary); margin-bottom: 6px;">Timestamp Converter</h4>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Convert between Unix epoch seconds/ms and UTC / ISO 8601 timestamps.</p>
+          </a>
+          <a href="/en/json-formatter" class="tool-card" style="text-decoration: none;">
+            <h4 style="color: var(--text-primary); margin-bottom: 6px;">JSON Formatter</h4>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Beautify, validate, diagnose syntax errors, and minify JSON payloads.</p>
+          </a>
+        </div>
+      </section>
+
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-grid">
+        <div class="footer-col footer-col-wide">
+          <div class="footer-brand">
+            <span class="footer-brand-title">Caixa do Dev</span>
+            <span class="footer-badge">100% Client-Side</span>
+          </div>
+          <p>The premier free, fast, and privacy-first utility toolkit for developers, QA engineers, and DevOps professionals worldwide.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Universal Tools</h4>
+          <ul>
+            <li><a href="/en/jwt-decoder">JWT Decoder</a></li>
+            <li><a href="/en/json-formatter">JSON Formatter</a></li>
+            <li><a href="/en/regex-tester">Regex Tester</a></li>
+            <li><a href="/en/sql-formatter">SQL Formatter</a></li>
+            <li><a href="/en/hash-generator">Hash Generator</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Institutional</h4>
+          <ul>
+            <li><a href="/artigos">Engineering Articles</a></li>
+            <li><a href="/pages/sobre.html">About the Project</a></li>
+            <li><a href="/pages/contato.html">Contact Us</a></li>
+            <li><a href="/pages/privacidade.html">Privacy Policy</a></li>
+            <li><a href="/pages/termos.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Caixa do Dev • Built and maintained by Alexandre Marcelino.</span>
+        <span>High-performance local client-side processing in strict compliance with data privacy standards.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
+  <!-- Scripts -->
+  <script src="/js/tools/jwt-tool.js?v=20261017c"></script>
+  <script src="/js/app.js?v=20261017c"></script>
+</body>
+</html>

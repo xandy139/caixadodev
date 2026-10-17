@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9HZFENSYKS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-9HZFENSYKS');
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3052162962623831"
+     crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Text Diff Checker & Code Comparator (Side-by-Side) | Caixa do Dev</title>
+  <meta name="description" content="Compare two text files, code snippets, or strings line-by-line in real time. Visual color-coded diff highlighting additions (+), deletions (-), and unchanged blocks. 100% private in-browser tool.">
+  <meta name="keywords" content="diff checker, online text compare, code diff tool, compare two text files, line by line diff, side by side code comparison, myers diff algorithm online">
+  <meta name="author" content="Alexandre Marcelino">
+  <meta name="robots" content="index, follow">
+
+  <!-- Canonical, Hreflang & Open Graph -->
+  <link rel="canonical" href="https://www.caixadodev.com.br/en/text-diff-checker">
+  <link rel="alternate" hreflang="pt-BR" href="https://www.caixadodev.com.br/comparador-de-texto-diff">
+  <link rel="alternate" hreflang="en" href="https://www.caixadodev.com.br/en/text-diff-checker">
+  <link rel="alternate" hreflang="x-default" href="https://www.caixadodev.com.br/comparador-de-texto-diff">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.caixadodev.com.br/en/text-diff-checker">
+  <meta property="og:title" content="Online Text Diff Checker & Code Comparator | Caixa do Dev">
+  <meta property="og:description" content="Compare two texts or source files side-by-side with color-coded additions, removals, and line numbering. Zero cloud upload.">
+  <meta property="og:image" content="https://www.caixadodev.com.br/assets/og-cover.png">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'><path d='M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/css/style.css?v=20261017c">
+  <link rel="stylesheet" href="/css/tools.css?v=20261017c">
+
+  <!-- Schema.org WebApplication & FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "Text Diff Checker & Code Comparator",
+        "url": "https://www.caixadodev.com.br/en/text-diff-checker",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript",
+        "description": "Compare two texts or source files line-by-line with visual color-coded additions, removals, and change metrics.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How does this diff tool determine which lines were added or removed?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The tool uses a variant of the Myers Diff Algorithm (the foundation of Git diff). It computes the Shortest Edit Script (SES) between the original text (A) and modified text (B), identifying lines that were inserted (+), removed (-), or left unmodified."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is my proprietary code or confidential document uploaded anywhere?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Never. All diff calculations, line comparisons, and HTML rendering occur entirely within your browser's local sandbox memory. Zero data is sent to external servers."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I compare code from any programming language (JavaScript, Python, Go)?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. The comparator treats all content as UTF-8 text lines, making it ideal for source code in any language, SQL queries, JSON payloads, Markdown documents, and configuration files (YAML, INI, ENV)."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="standalone-page">
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="/en/" class="brand" title="Caixa do Dev - Home">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Caixa do Dev</span>
+          <span class="brand-badge">42 Tools</span>
+        </div>
+      </a>
+
+      <div class="nav-actions">
+        <nav>
+          <ul class="nav-links">
+            <li><a href="/en/">Home</a></li>
+            <li><a href="/en/text-diff-checker" class="active">Diff</a></li>
+            <li><a href="/en/regex-tester">Regex</a></li>
+            <li><a href="/en/sql-formatter">SQL</a></li>
+            <li><a href="/en/json-formatter">JSON</a></li>
+            <li><a href="/en/jwt-decoder">JWT</a></li>
+            <li><a href="/artigos">Articles</a></li>
+            <li><a href="/pages/sobre.html">About</a></li>
+          </ul>
+        </nav>
+        <div class="lang-switch" aria-label="Idioma / Language">
+          <a href="/comparador-de-texto-diff" class="lang-btn" title="Versão em Português">🇧🇷 PT</a>
+          <span class="lang-sep">/</span>
+          <span class="lang-btn active" title="English Version">🇺🇸 EN</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container" style="padding-top: 32px; padding-bottom: 60px;">
+    
+    <div class="tool-breadcrumbs">
+      <a href="/en/">&larr; Home</a> / <span>Online Text Diff Checker & Code Comparator</span>
+    </div>
+
+    <div class="privacy-badge">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      100% Client-Side In-Browser Processing (Your code snippets never leave your computer)
+    </div>
+
+    <!-- Tool Interface -->
+    <section class="tool-view standalone-active" data-tool-id="diff">
+      
+      <div class="tool-interface-card">
+        <div class="tool-header-area">
+          <div class="tool-title-group">
+            <h1>Online Text Diff Checker & Code Comparator</h1>
+            <p>Compare two versions of text or code side-by-side with color-coded additions (+) and deletions (-).</p>
+          </div>
+          <div class="tool-actions-bar">
+            <button id="btn-run-diff" class="btn btn-primary">Compare Texts</button>
+            <button id="btn-sample-diff" class="btn btn-secondary">Load Sample</button>
+            <button id="btn-clear-diff" class="btn btn-danger btn-sm">Clear</button>
+          </div>
+        </div>
+
+        <div class="split-grid">
+          <div class="pane">
+            <span class="pane-title" style="margin-bottom: 8px;">Original Text (A)</span>
+            <textarea id="diff-input-a" class="form-control" style="min-height: 140px;" placeholder="Paste original text here..."></textarea>
+          </div>
+          <div class="pane">
+            <span class="pane-title" style="margin-bottom: 8px;">Modified Text (B)</span>
+            <textarea id="diff-input-b" class="form-control" style="min-height: 140px;" placeholder="Paste modified text here..."></textarea>
+          </div>
+        </div>
+
+        <div class="diff-container">
+          <div id="diff-stats-area" class="diff-header-stats"><span style="color: var(--text-muted);">Awaiting comparison...</span></div>
+          <div id="diff-container"><div style="padding: 24px; color: var(--text-muted); text-align: center;">Click "Compare Texts".</div></div>
+        </div>
+      </div>
+
+      <!-- Technical SEO Guide -->
+      <article class="tool-seo-guide">
+        <h2>The Science of Code Diffs: Understanding the Myers Difference Algorithm</h2>
+        <p>Identifying subtle differences between versions of text, scripts, and source files is the cornerstone of modern version control (<strong>Git, Mercurial</strong>) and peer code review workflows (GitHub Pull Requests, GitLab Merge Requests). The original <code>diff</code> utility was developed in 1974 by Douglas McIlroy and James W. Hunt at Bell Labs. In 1986, Eugene W. Myers published his landmark paper, <em>"An O(ND) Difference Algorithm and Its Variations"</em>, establishing the mathematical foundation for modern delta compression and visual diff tools.</p>
+
+        <h3>1. The Shortest Edit Script (SES) Problem</h3>
+        <p>Myers modeled the diff problem as a directed acyclic graph (DAG) search across a two-dimensional grid, where each coordinate represents an index comparison between Text A and Text B. The algorithm computes the <strong>Shortest Edit Script (SES)</strong>—the minimal number of operations required to transform Text A into Text B using only:</p>
+        <ul>
+          <li><strong>Insertions (Additions):</strong> Lines present in Text B that did not exist in Text A (highlighted with a green background and a <code>+</code> marker).</li>
+          <li><strong>Deletions (Removals):</strong> Lines present in Text A that were removed in Text B (highlighted with a soft red background and a <code>-</code> marker).</li>
+          <li><strong>Unchanged Context:</strong> Identical lines preserved in both texts that serve as reading anchors.</li>
+        </ul>
+
+        <h3>2. Best Practices for Clean Code Reviews</h3>
+        <ul>
+          <li><strong>Maintain Consistent Line Endings:</strong> Mixing CRLF (Windows) and LF (Linux/macOS) in the same project can cause diff checkers to flag every single line as modified. Configure <code>.gitattributes</code> with <code>* text=auto</code>.</li>
+          <li><strong>Avoid Unnecessary Whitespace Formatting:</strong> Running automatic code formatters across an entire repository inside feature branches creates noisy diffs that obscure functional code changes. Keep refactoring PRs separate from feature commits.</li>
+        </ul>
+
+        <h3>Frequently Asked Questions (FAQ)</h3>
+        <div class="faq-list" style="margin-top: 16px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>How does this diff tool determine which lines were added or removed?</span><span>+</span></div>
+            <div class="faq-answer">The tool uses a variant of the Myers Diff Algorithm (the foundation of Git diff). It computes the Shortest Edit Script (SES) between the original text (A) and modified text (B), identifying lines that were inserted (+), removed (-), or left unmodified.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Is my proprietary code or confidential document uploaded anywhere?</span><span>+</span></div>
+            <div class="faq-answer">Never. All diff calculations, line comparisons, and HTML rendering occur entirely within your browser's local sandbox memory. Zero data is sent to external servers.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Can I compare code from any programming language (JavaScript, Python, Go)?</span><span>+</span></div>
+            <div class="faq-answer">Yes. The comparator treats all content as UTF-8 text lines, making it ideal for source code in any language, SQL queries, JSON payloads, Markdown documents, and configuration files (YAML, INI, ENV).</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Popular Developer Tools -->
+      <section style="margin-top: 60px;">
+        <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 20px; color: var(--text-primary);">Explore More Developer Tools</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px;">
+          <a href="/en/regex-tester" class="tool-card" style="text-decoration: none;">
+            <h4 style="color: var(--text-primary); margin-bottom: 6px;">Regex Tester</h4>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Test regular expressions with real-time match highlighting and presets.</p>
+          </a>
+          <a href="/en/sql-formatter" class="tool-card" style="text-decoration: none;">
+            <h4 style="color: var(--text-primary); margin-bottom: 6px;">SQL Formatter</h4>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Clean up and beautify complex database queries in seconds.</p>
+          </a>
+          <a href="/en/json-formatter" class="tool-card" style="text-decoration: none;">
+            <h4 style="color: var(--text-primary); margin-bottom: 6px;">JSON Formatter</h4>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Beautify, validate, diagnose syntax errors, and minify JSON payloads.</p>
+          </a>
+          <a href="/en/jwt-decoder" class="tool-card" style="text-decoration: none;">
+            <h4 style="color: var(--text-primary); margin-bottom: 6px;">JWT Decoder</h4>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Inspect Header and Payload claims in local memory safely.</p>
+          </a>
+        </div>
+      </section>
+
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-grid">
+        <div class="footer-col footer-col-wide">
+          <div class="footer-brand">
+            <span class="footer-brand-title">Caixa do Dev</span>
+            <span class="footer-badge">100% Client-Side</span>
+          </div>
+          <p>The premier free, fast, and privacy-first utility toolkit for developers, QA engineers, and DevOps professionals worldwide.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Universal Tools</h4>
+          <ul>
+            <li><a href="/en/text-diff-checker">Text Diff Checker</a></li>
+            <li><a href="/en/regex-tester">Regex Tester</a></li>
+            <li><a href="/en/json-formatter">JSON Formatter</a></li>
+            <li><a href="/en/sql-formatter">SQL Formatter</a></li>
+            <li><a href="/en/jwt-decoder">JWT Decoder</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Institutional</h4>
+          <ul>
+            <li><a href="/artigos">Engineering Articles</a></li>
+            <li><a href="/pages/sobre.html">About the Project</a></li>
+            <li><a href="/pages/contato.html">Contact Us</a></li>
+            <li><a href="/pages/privacidade.html">Privacy Policy</a></li>
+            <li><a href="/pages/termos.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Caixa do Dev • Built and maintained by Alexandre Marcelino.</span>
+        <span>High-performance local client-side processing in strict compliance with data privacy standards.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
+  <!-- Scripts -->
+  <script src="/js/tools/diff-checker.js?v=20261017c"></script>
+  <script src="/js/app.js?v=20261017c"></script>
+</body>
+</html>

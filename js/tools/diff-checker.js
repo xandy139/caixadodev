@@ -60,6 +60,28 @@ const DIFF_CHECKER = {
   },
 
   getSample() {
+    const isEn = typeof document !== 'undefined' && document.documentElement.lang === 'en';
+    if (isEn) {
+      return {
+        textA: `function calculateDiscount(price) {
+  // Version 1.0
+  const rate = 0.05;
+  return price * (1 - rate);
+}
+
+console.log(calculateDiscount(100));`,
+        textB: `function calculateDiscount(price, coupon = false) {
+  // Version 2.0 with special coupon support
+  let rate = 0.05;
+  if (coupon) {
+    rate = 0.15;
+  }
+  return price * (1 - rate);
+}
+
+console.log(calculateDiscount(100, true));`
+      };
+    }
     return {
       textA: `function calcularDesconto(valor) {
   // Versão 1.0

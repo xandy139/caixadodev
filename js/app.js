@@ -1378,10 +1378,11 @@ function initToolEvents() {
 
   if (btnJsonToCsv) {
     btnJsonToCsv.addEventListener('click', () => {
+      const isEn = document.documentElement.lang === 'en';
       const res = JSON_CSV_TOOL.jsonToCsv(jsonCsvInput.value);
       if (res.success) {
         jsonCsvOutput.value = res.csv;
-        showToast('JSON convertido para CSV!');
+        showToast(isEn ? 'JSON converted to CSV!' : 'JSON convertido para CSV!');
       } else {
         jsonCsvOutput.value = res.error;
       }
@@ -1390,10 +1391,11 @@ function initToolEvents() {
 
   if (btnCsvToJson) {
     btnCsvToJson.addEventListener('click', () => {
+      const isEn = document.documentElement.lang === 'en';
       const res = JSON_CSV_TOOL.csvToJson(jsonCsvInput.value);
       if (res.success) {
         jsonCsvOutput.value = res.json;
-        showToast('CSV convertido para JSON!');
+        showToast(isEn ? 'CSV converted to JSON!' : 'CSV convertido para JSON!');
       } else {
         jsonCsvOutput.value = res.error;
       }
@@ -1633,7 +1635,8 @@ function initToolEvents() {
         passStrengthFill.style.backgroundColor = res.strength.color;
       }
       if (passStrengthLabel) {
-        passStrengthLabel.textContent = `Força: ${res.strength.label}`;
+        const isEn = document.documentElement.lang === 'en';
+        passStrengthLabel.textContent = isEn ? `Strength: ${res.strength.label}` : `Força: ${res.strength.label}`;
         passStrengthLabel.style.color = res.strength.color;
       }
     };
@@ -1883,8 +1886,13 @@ function initToolEvents() {
 
   if (btnRunDiff) {
     const runDiffProcess = () => {
+      const isEn = document.documentElement.lang === 'en';
       const res = DIFF_CHECKER.compare(diffInputA.value, diffInputB.value);
-      diffStatsArea.innerHTML = `
+      diffStatsArea.innerHTML = isEn ? `
+        <span class="diff-stat-item" style="color: #6ee7b7;">+ ${res.stats.added} additions</span>
+        <span class="diff-stat-item" style="color: #fda4af;">- ${res.stats.removed} deletions</span>
+        <span class="diff-stat-item" style="color: var(--text-muted);">= ${res.stats.unchanged} unchanged</span>
+      ` : `
         <span class="diff-stat-item" style="color: #6ee7b7;">+ ${res.stats.added} adições</span>
         <span class="diff-stat-item" style="color: #fda4af;">- ${res.stats.removed} remoções</span>
         <span class="diff-stat-item" style="color: var(--text-muted);">= ${res.stats.unchanged} inalteradas</span>
@@ -1919,9 +1927,10 @@ function initToolEvents() {
 
   if (btnClearDiff) {
     btnClearDiff.addEventListener('click', () => {
+      const isEn = document.documentElement.lang === 'en';
       diffInputA.value = '';
       diffInputB.value = '';
-      diffContainer.innerHTML = '<div style="padding: 20px; color: var(--text-muted); text-align: center;">Clique em "Comparar Textos".</div>';
+      diffContainer.innerHTML = `<div style="padding: 20px; color: var(--text-muted); text-align: center;">${isEn ? 'Click "Compare Texts".' : 'Clique em "Comparar Textos".'}</div>`;
       diffStatsArea.innerHTML = '';
     });
   }
@@ -1985,12 +1994,13 @@ function initToolEvents() {
   const btnSampleJwt = document.getElementById('btn-sample-jwt');
 
   const decodeJwtProcess = () => {
+    const isEn = document.documentElement.lang === 'en';
     const val = jwtInput.value.trim();
     if (!val) {
-      jwtHeaderOutput.textContent = '// Aguardando token...';
-      jwtPayloadOutput.textContent = '// Aguardando token...';
+      jwtHeaderOutput.textContent = isEn ? '// Awaiting token...' : '// Aguardando token...';
+      jwtPayloadOutput.textContent = isEn ? '// Awaiting token...' : '// Aguardando token...';
       jwtStatusBadge.className = 'badge-status badge-neutral';
-      jwtStatusBadge.textContent = 'Sem Token';
+      jwtStatusBadge.textContent = isEn ? 'No Token' : 'Sem Token';
       jwtExpDetail.textContent = '';
       return;
     }
@@ -2002,17 +2012,17 @@ function initToolEvents() {
       if (res.expiration.hasExp) {
         jwtStatusBadge.className = res.expiration.isExpired ? 'badge-status badge-invalid' : 'badge-status badge-valid';
         jwtStatusBadge.textContent = res.expiration.statusLabel;
-        jwtExpDetail.textContent = `Expiração: ${res.expiration.expDateFormatted}`;
+        jwtExpDetail.textContent = isEn ? `Expiration: ${res.expiration.expDateFormatted}` : `Expiração: ${res.expiration.expDateFormatted}`;
       } else {
         jwtStatusBadge.className = 'badge-status badge-neutral';
-        jwtStatusBadge.textContent = 'Sem expiração';
+        jwtStatusBadge.textContent = isEn ? 'No Expiration' : 'Sem expiração';
         jwtExpDetail.textContent = '';
       }
     } else {
-      jwtHeaderOutput.textContent = '// Erro';
+      jwtHeaderOutput.textContent = isEn ? '// Error' : '// Erro';
       jwtPayloadOutput.textContent = `// ${res.error}`;
       jwtStatusBadge.className = 'badge-status badge-invalid';
-      jwtStatusBadge.textContent = 'Token Inválido';
+      jwtStatusBadge.textContent = isEn ? 'Invalid Token' : 'Token Inválido';
       jwtExpDetail.textContent = res.error;
     }
   };
@@ -2292,9 +2302,10 @@ function initToolEvents() {
   if (curlInput && curlCodeOutput) {
     let currentParsed = null;
     const runCurlConvert = () => {
+      const isEn = document.documentElement.lang === 'en';
       currentParsed = CURL_CONVERTER.parse(curlInput.value || CURL_CONVERTER.SAMPLE);
       if (!currentParsed) {
-        curlCodeOutput.textContent = '// Comando cURL inválido ou vazio';
+        curlCodeOutput.textContent = isEn ? '// Invalid or empty cURL command' : '// Comando cURL inválido ou vazio';
         return;
       }
       renderCurlCode();

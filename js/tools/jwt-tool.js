@@ -5,15 +5,18 @@
 
 const JWT_TOOL = {
   decode(token) {
+    const isEn = typeof document !== 'undefined' && document.documentElement.lang === 'en';
     if (!token || !token.trim()) {
-      return { success: false, error: 'Cole um token JWT para decodificar.' };
+      return { success: false, error: isEn ? 'Paste a JWT token to decode.' : 'Cole um token JWT para decodificar.' };
     }
 
     const parts = token.trim().split('.');
     if (parts.length !== 3) {
       return { 
         success: false, 
-        error: `Estrutura de token inválida. Um JWT deve conter exatamente 3 partes separadas por ponto (Header.Payload.Signature). Foram encontradas ${parts.length} partes.` 
+        error: isEn 
+          ? `Invalid token structure. A JWT must contain exactly 3 dot-separated parts (Header.Payload.Signature). Found ${parts.length} parts.`
+          : `Estrutura de token inválida. Um JWT deve conter exatamente 3 partes separadas por ponto (Header.Payload.Signature). Foram encontradas ${parts.length} partes.` 
       };
     }
 
@@ -34,7 +37,7 @@ const JWT_TOOL = {
         expiration: expInfo
       };
     } catch (err) {
-      return { success: false, error: `Falha ao decodificar partes do token: ${err.message}` };
+      return { success: false, error: (isEn ? 'Failed to decode token parts: ' : 'Falha ao decodificar partes do token: ') + err.message };
     }
   },
 
@@ -53,6 +56,7 @@ const JWT_TOOL = {
   checkExpiration(payload) {
     if (!payload.exp) return { hasExp: false };
 
+    const isEn = typeof document !== 'undefined' && document.documentElement.lang === 'en';
     const expDate = new Date(payload.exp * 1000);
     const now = new Date();
     const isExpired = now > expDate;
@@ -60,14 +64,19 @@ const JWT_TOOL = {
     return {
       hasExp: true,
       expTimestamp: payload.exp,
-      expDateFormatted: expDate.toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' }),
+      expDateFormatted: expDate.toLocaleString(isEn ? 'en-US' : 'pt-BR', { timeZone: isEn ? 'UTC' : 'America/Sao_Paulo' }) + (isEn ? ' UTC' : ' (Brasília)'),
       expUtcFormatted: expDate.toUTCString(),
       isExpired,
-      statusLabel: isExpired ? 'Expirado' : 'Ativo e Válido'
+      statusLabel: isExpired ? (isEn ? 'Expired' : 'Expirado') : (isEn ? 'Active & Valid' : 'Ativo e Válido')
     };
   },
 
   getSample() {
+    const isEn = typeof document !== 'undefined' && document.documentElement.lang === 'en';
+    if (isEn) {
+      // alg: HS256, typ: JWT with English claims
+      return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwicm9sZSI6ImRldmVsb3BlciIsImVtYWlsIjoiZGV2QGNhaXhhZG9kZXYuY29tLmJyIiwiaWF0IjoxNzA0MTUzNjAwLCJleHAiOjIwODM4NDk2MDB9.iG0rL_Uq5a6s_1q5-O4jS0qUeB8fE6zMh4L-uI_aR90";
+    }
     // Token de exemplo (alg: HS256, typ: JWT)
     return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibm9tZSI6IlJvZHJpZ28gU2lsdmEiLCJyb2xlIjoiZGV2ZWxvcGVyIiwiZW1haWwiOiJkZXZAY2FpeGFkb2Rldi5jb20uYnIiLCJpYXQiOjE3MDQxNTM2MDAsImV4cCI6MjA4Mzg0OTYwMH0.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
   }
