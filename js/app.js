@@ -1427,19 +1427,20 @@ function initToolEvents() {
       const cidr = inputSubnetCidr?.value || '24';
       const res = SUBNET_CALCULATOR.calculate(ip, cidr);
 
+      const isEn = document.documentElement.lang === 'en';
       if (res.success) {
         subnetResultContainer.innerHTML = `
           <table class="subnet-table">
             <tbody>
-              <tr><td>Notação CIDR:</td><td>${res.cidr}</td></tr>
-              <tr><td>Máscara de Sub-rede:</td><td>${res.netmask}</td></tr>
-              <tr><td>Máscara Binária:</td><td>${res.binaryMask}</td></tr>
-              <tr><td>Endereço da Rede:</td><td>${res.network}</td></tr>
-              <tr><td>Primeiro Host Útil:</td><td>${res.firstHost}</td></tr>
-              <tr><td>Último Host Útil:</td><td>${res.lastHost}</td></tr>
-              <tr><td>Endereço de Broadcast:</td><td>${res.broadcast}</td></tr>
-              <tr><td>Hosts Utilizáveis:</td><td>${res.usableHosts} IPs</td></tr>
-              <tr><td>Total de Endereços:</td><td>${res.totalAddresses} IPs</td></tr>
+              <tr><td>${isEn ? 'CIDR Notation:' : 'Notação CIDR:'}</td><td>${res.cidr}</td></tr>
+              <tr><td>${isEn ? 'Subnet Mask:' : 'Máscara de Sub-rede:'}</td><td>${res.netmask}</td></tr>
+              <tr><td>${isEn ? 'Binary Netmask:' : 'Máscara Binária:'}</td><td>${res.binaryMask}</td></tr>
+              <tr><td>${isEn ? 'Network Address:' : 'Endereço da Rede:'}</td><td>${res.network}</td></tr>
+              <tr><td>${isEn ? 'First Usable Host:' : 'Primeiro Host Útil:'}</td><td>${res.firstHost}</td></tr>
+              <tr><td>${isEn ? 'Last Usable Host:' : 'Último Host Útil:'}</td><td>${res.lastHost}</td></tr>
+              <tr><td>${isEn ? 'Broadcast Address:' : 'Endereço de Broadcast:'}</td><td>${res.broadcast}</td></tr>
+              <tr><td>${isEn ? 'Usable Hosts:' : 'Hosts Utilizáveis:'}</td><td>${res.usableHosts} IPs</td></tr>
+              <tr><td>${isEn ? 'Total Addresses:' : 'Total de Endereços:'}</td><td>${res.totalAddresses} IPs</td></tr>
             </tbody>
           </table>
         `;

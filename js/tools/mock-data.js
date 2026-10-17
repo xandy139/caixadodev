@@ -104,7 +104,7 @@ const MOCK_DATA_TOOL = {
         const cols = Object.keys(records[0]).join(', ');
         const inserts = records.map(r => {
           const vals = Object.values(r).map(v => typeof v === 'number' ? v : `'${v}'`).join(', ');
-          return `INSERT INTO ${tableName} (${cols}) VALUES (${vals});`;
+          return `INSERT INTO ${finalTable} (${cols}) VALUES (${vals});`;
         });
         return inserts.join('\n');
       }
