@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9HZFENSYKS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-9HZFENSYKS');
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3052162962623831"
+     crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Regex Tester & Debugger (Regular Expressions) | Caixa do Dev</title>
+  <meta name="description" content="Test, debug, and validate regular expressions (RegEx) in real-time with live visual match highlighting, capture groups, flags (g, i, m, s, u), and common presets. 100% client-side.">
+  <meta name="keywords" content="regex tester, online regex tester, regular expression debugger, regex match highlighter, javascript regex test, regex presets, redos testing">
+  <meta name="author" content="Alexandre Marcelino">
+  <meta name="robots" content="index, follow">
+
+  <!-- Canonical, Hreflang & Open Graph -->
+  <link rel="canonical" href="https://www.caixadodev.com.br/en/regex-tester">
+  <link rel="alternate" hreflang="pt-BR" href="https://www.caixadodev.com.br/testador-de-regex">
+  <link rel="alternate" hreflang="en" href="https://www.caixadodev.com.br/en/regex-tester">
+  <link rel="alternate" hreflang="x-default" href="https://www.caixadodev.com.br/testador-de-regex">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.caixadodev.com.br/en/regex-tester">
+  <meta property="og:title" content="Online Regex Tester & Debugger | Caixa do Dev">
+  <meta property="og:description" content="Live real-time regular expression evaluation with visual syntax match highlights, instant pattern presets, and ReDoS safety. Zero cloud transmission.">
+  <meta property="og:image" content="https://www.caixadodev.com.br/assets/og-cover.png">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'><path d='M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/css/style.css?v=20261017c">
+  <link rel="stylesheet" href="/css/tools.css?v=20261017c">
+
+  <!-- Schema.org WebApplication & FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "Regex Tester & Debugger",
+        "url": "https://www.caixadodev.com.br/en/regex-tester",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript",
+        "description": "Test and debug regular expressions in real-time with visual match highlighting and ready-to-use presets.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is ReDoS (Regular Expression Denial of Service)?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "ReDoS is an algorithmic complexity vulnerability caused by regular expressions with overlapping nested quantifiers (catastrophic backtracking). When evaluated against non-matching strings, the regex engine evaluates exponential permutations, hanging CPU threads. Always test patterns against edge-case repetitions."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the difference between greedy and lazy quantifiers?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "By default, quantifiers (*, +) are greedy—they consume as much text as possible before matching subsequent tokens. Appending a question mark (*?, +?) makes the match lazy, capturing only the minimum number of characters required."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is regex validation alone sufficient for emails in production?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Full RFC 5322 compliance requires an extraordinarily complex regex. In production web applications, teams use practical regex checks for basic formatting and rely on double opt-in confirmation emails with signed tokens to prove mailbox existence."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="standalone-page">
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="/en/" class="brand" title="Caixa do Dev - Home">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Caixa do Dev</span>
+          <span class="brand-badge">42 Tools</span>
+        </div>
+      </a>
+
+      <div class="nav-actions">
+        <nav>
+          <ul class="nav-links">
+            <li><a href="/en/">Home</a></li>
+            <li><a href="/en/regex-tester" class="active">Regex</a></li>
+            <li><a href="/en/json-to-typescript">JSON &rarr; TS</a></li>
+            <li><a href="/en/uuid-generator">UUID</a></li>
+            <li><a href="/en/image-color-picker">Color Picker</a></li>
+            <li><a href="/en/base64-converter">Base64</a></li>
+            <li><a href="/artigos">Articles</a></li>
+            <li><a href="/pages/sobre.html">About</a></li>
+          </ul>
+        </nav>
+        <div class="lang-switch" aria-label="Idioma / Language">
+          <a href="/testador-de-regex" class="lang-btn" title="Versão em Português">🇧🇷 PT</a>
+          <span class="lang-sep">/</span>
+          <span class="lang-btn active" title="English Version">🇺🇸 EN</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container" style="padding-top: 32px; padding-bottom: 60px;">
+    
+    <div class="tool-breadcrumbs">
+      <a href="/en/">&larr; Home</a> / <span>Online Regex Tester & Debugger</span>
+    </div>
+
+    <div class="privacy-badge">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      100% Client-Side In-Browser Processing (Your test payloads never leave your computer)
+    </div>
+
+    <!-- Tool Interface -->
+    <section class="tool-view standalone-active" data-tool-id="regex">
+      
+      <div class="tool-interface-card">
+        <div class="tool-header-area">
+          <div class="tool-title-group">
+            <h1>Regex Tester & Real-Time Match Highlighter</h1>
+            <p>Evaluate and test regular expressions in real time with visual match highlighting and common presets.</p>
+          </div>
+        </div>
+
+        <!-- Quick Presets -->
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px;">
+          <span style="font-size: 0.85rem; color: var(--text-muted); align-self: center; margin-right: 4px;">Quick Presets:</span>
+          <button class="btn btn-secondary btn-sm btn-regex-preset" data-preset="email" data-label="Email Address">E-mail</button>
+          <button class="btn btn-secondary btn-sm btn-regex-preset" data-pattern="https?:\/\/[^\s/$.?#].[^\s]*" data-flags="gi" data-label="Web URL">URL / Link</button>
+          <button class="btn btn-secondary btn-sm btn-regex-preset" data-pattern="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" data-flags="gi" data-label="UUID v4/v7">UUID / GUID</button>
+          <button class="btn btn-secondary btn-sm btn-regex-preset" data-pattern="\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b" data-flags="g" data-label="IPv4 Address">IPv4</button>
+          <button class="btn btn-secondary btn-sm btn-regex-preset" data-pattern="\d{4}-\d{2}-\d{2}" data-flags="g" data-label="Date (YYYY-MM-DD)">Date (ISO)</button>
+          <button class="btn btn-secondary btn-sm btn-regex-preset" data-pattern="\+?[1-9]\d{1,14}" data-flags="g" data-label="Phone (E.164)">Phone (E.164)</button>
+          <button class="btn btn-secondary btn-sm btn-regex-preset" data-preset="cpf" data-label="Brazil CPF">CPF (BR)</button>
+          <button class="btn btn-secondary btn-sm btn-regex-preset" data-preset="cep" data-label="Brazil CEP">CEP (BR)</button>
+        </div>
+
+        <div class="split-grid" style="grid-template-columns: 3fr 1fr;">
+          <div class="form-group">
+            <label class="form-label" for="regex-pattern">Regular Expression (Pattern):</label>
+            <input type="text" id="regex-pattern" class="form-control" value="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" spellcheck="false">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="regex-flags">Flags (e.g. g, i, m, s):</label>
+            <input type="text" id="regex-flags" class="form-control" value="gi" spellcheck="false">
+          </div>
+        </div>
+
+        <div class="split-grid">
+          <div class="pane">
+            <span class="pane-title" style="margin-bottom: 8px;">Test String Input</span>
+            <textarea id="regex-text" class="form-control" style="min-height: 160px;" spellcheck="false">Contact our engineering team at dev@caixadodev.com.br or contact hello@world.org for API integration questions.</textarea>
+          </div>
+          <div class="pane">
+            <div class="pane-header">
+              <span class="pane-title">Match Results</span>
+              <span id="regex-match-count" style="font-size: 0.8rem; color: var(--accent-cyan); font-weight: 600;">0 match(es) found</span>
+            </div>
+            <div id="regex-highlight-box" class="regex-highlight-box"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Technical Engineering Guide -->
+      <article class="tool-seo-guide">
+        <h2>Complete Guide to Regular Expressions (RegEx) for Software Engineers</h2>
+        <p><strong>Regular Expressions (RegEx)</strong> are formal algebraic character sequences that define search and parsing patterns. Formulated originally by mathematician Stephen Cole Kleene in the 1950s, regex has become one of computer science's most indispensable tools for input sanitization, data extraction, log analysis, and automated code refactoring across virtually every modern programming language.</p>
+
+        <h3>1. Essential Regex Metacharacters Reference</h3>
+        <div style="margin: 16px 0; overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+            <thead>
+              <tr style="background: rgba(255, 255, 255, 0.05); border-bottom: 1px solid var(--border-subtle); text-align: left;">
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">Metacharacter</th>
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">Meaning & Function</th>
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">Matching Example</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-family: var(--font-mono); color: var(--accent-cyan);">^ and $</td>
+                <td style="padding: 10px 14px;">Beginning (^) and End ($) of a line or string.</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">^abc$ &rarr; exactly "abc"</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-family: var(--font-mono); color: var(--accent-cyan);">. (Dot)</td>
+                <td style="padding: 10px 14px;">Any single character except line terminators (\n).</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">c.t &rarr; "cat", "cut", "c0t"</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-family: var(--font-mono); color: var(--accent-cyan);">\d and \D</td>
+                <td style="padding: 10px 14px;">Numeric digit [0-9] vs Non-digit [^0-9].</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">\d{4} &rarr; year "2026"</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-family: var(--font-mono); color: var(--accent-cyan);">\w and \W</td>
+                <td style="padding: 10px 14px;">Word character [a-zA-Z0-9_] vs Non-word character.</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">\w+ &rarr; alphanumeric tokens</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-family: var(--font-mono); color: var(--accent-cyan);">* , + , ?</td>
+                <td style="padding: 10px 14px;">Quantifiers: 0 or more (*), 1 or more (+), optional (?).</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">https? &rarr; "http" or "https"</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px 14px; font-family: var(--font-mono); color: var(--accent-cyan);">{min,max}</td>
+                <td style="padding: 10px 14px;">Explicit repetition boundary range.</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">[0-9]{2,4} &rarr; 2 to 4 digits</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>2. Common Modifier Flags Explained</h3>
+        <ul>
+          <li><strong>g (Global):</strong> Retains index state and finds all matches across the input string rather than stopping at the first occurrence.</li>
+          <li><strong>i (Case Insensitive):</strong> Disregards letter casing distinction (e.g. <code>/token/i</code> matches "Token", "TOKEN", and "token").</li>
+          <li><strong>m (Multiline):</strong> Directs anchors <code>^</code> and <code>$</code> to match the start and end of individual lines rather than solely the entire buffer.</li>
+          <li><strong>s (DotAll):</strong> Allows the dot metacharacter (<code>.</code>) to match newline characters (<code>\n</code>).</li>
+          <li><strong>u (Unicode):</strong> Treats the pattern as a sequence of Unicode code points, supporting emojis and international surrogate pairs.</li>
+        </ul>
+
+        <h3>Frequently Asked Questions (FAQ)</h3>
+        <div class="faq-list" style="margin-top: 16px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>What is ReDoS (Regular Expression Denial of Service)?</span><span>+</span></div>
+            <div class="faq-answer">ReDoS is an algorithmic complexity vulnerability caused by regular expressions containing overlapping nested quantifiers (catastrophic backtracking). When evaluated against specially crafted non-matching strings, the regex engine evaluates exponential permutations, hanging CPU threads. Always test patterns against edge-case repetitions.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>What is the difference between greedy and lazy quantifiers?</span><span>+</span></div>
+            <div class="faq-answer">By default, quantifiers (*, +) are greedy—they consume as much text as possible before matching subsequent tokens. Appending a question mark (*?, +?) makes the match lazy, capturing only the minimum number of characters required to satisfy the expression.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Is regex validation alone sufficient for emails in production?</span><span>+</span></div>
+            <div class="faq-answer">Full RFC 5322 compliance requires an extraordinarily complex regex. In production web applications, teams use practical regex checks for basic formatting and rely on double opt-in confirmation emails with signed tokens to prove mailbox existence.</div>
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- Related Popular Tools -->
+    <section style="margin-top: 60px;">
+      <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 20px; color: var(--text-primary);">Explore More Developer Tools</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px;">
+        <a href="/en/json-to-typescript" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">JSON to TypeScript</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Convert JSON responses into clean, typed TypeScript interfaces.</p>
+        </a>
+        <a href="/en/uuid-generator" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">UUID Generator</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Generate cryptographically secure UUID v4 & v7 identifiers.</p>
+        </a>
+        <a href="/en/base64-converter" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Base64 Converter</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Encode and decode binary files, text, and Data URIs.</p>
+        </a>
+        <a href="/en/image-color-picker" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Image Color Picker</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Extract pixel colors with loupe and EyeDropper API.</p>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-grid">
+        <div class="footer-col footer-col-wide">
+          <div class="footer-brand">
+            <span class="footer-brand-title">Caixa do Dev</span>
+            <span class="footer-badge">100% Client-Side</span>
+          </div>
+          <p>The premier free, fast, and privacy-first utility toolkit for developers, QA engineers, and DevOps professionals worldwide.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Universal Tools</h4>
+          <ul>
+            <li><a href="/en/json-to-typescript">JSON to TypeScript</a></li>
+            <li><a href="/en/regex-tester">Regex Tester</a></li>
+            <li><a href="/en/uuid-generator">UUID Generator</a></li>
+            <li><a href="/en/base64-converter">Base64 Converter</a></li>
+            <li><a href="/en/color-converter">Color Converter</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Institutional</h4>
+          <ul>
+            <li><a href="/artigos">Engineering Articles</a></li>
+            <li><a href="/pages/sobre.html">About the Project</a></li>
+            <li><a href="/pages/contato.html">Contact Us</a></li>
+            <li><a href="/pages/privacidade.html">Privacy Policy</a></li>
+            <li><a href="/pages/termos.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Caixa do Dev • Built and maintained by Alexandre Marcelino.</span>
+        <span>High-performance local client-side processing in strict compliance with data privacy standards.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
+  <!-- Scripts -->
+  <script src="/js/tools/regex-tester.js"></script>
+  <script src="/js/app.js?v=20261017c"></script>
+</body>
+</html>

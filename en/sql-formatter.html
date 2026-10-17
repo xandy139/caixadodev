@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9HZFENSYKS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-9HZFENSYKS');
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3052162962623831"
+     crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Online SQL Formatter & Beautifier | Caixa do Dev</title>
+  <meta name="description" content="Format, beautify, and minify complex SQL queries online. Standardize uppercase keywords, re-indent subqueries, JOINs, and CTEs. 100% in-browser, instantaneous, private.">
+  <meta name="keywords" content="sql formatter, sql beautifier, format sql query online, sql minifier, postgresql formatter, mysql beautifier, sqlite formatter, sql prettier">
+  <meta name="author" content="Alexandre Marcelino">
+  <meta name="robots" content="index, follow">
+
+  <!-- Canonical, Hreflang & Open Graph -->
+  <link rel="canonical" href="https://www.caixadodev.com.br/en/sql-formatter">
+  <link rel="alternate" hreflang="pt-BR" href="https://www.caixadodev.com.br/formatador-de-sql">
+  <link rel="alternate" hreflang="en" href="https://www.caixadodev.com.br/en/sql-formatter">
+  <link rel="alternate" hreflang="x-default" href="https://www.caixadodev.com.br/formatador-de-sql">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.caixadodev.com.br/en/sql-formatter">
+  <meta property="og:title" content="Free Online SQL Formatter & Beautifier | Caixa do Dev">
+  <meta property="og:description" content="Instant in-browser SQL beautifier and minifier with keyword capitalization, dialect support, and zero server transmission.">
+  <meta property="og:image" content="https://www.caixadodev.com.br/assets/og-cover.png">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'><path d='M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/css/style.css?v=20261017c">
+  <link rel="stylesheet" href="/css/tools.css?v=20261017c">
+
+  <!-- Schema.org WebApplication & FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "SQL Formatter & Beautifier",
+        "url": "https://www.caixadodev.com.br/en/sql-formatter",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript",
+        "description": "Beautify, indent, and format complex SQL statements into clean, readable code with uppercase keyword standardization.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Which SQL dialects are supported by this formatter?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The formatter handles standard ANSI SQL syntax as well as dialect-specific statements for PostgreSQL, MySQL, SQLite, Microsoft SQL Server (T-SQL), Oracle, MariaDB, Snowflake, and Google BigQuery."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are my database queries sent to a backend server?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. All SQL parsing and formatting executes 100% locally in your web browser using client-side JavaScript. Sensitive column names, table schemas, and data remain strictly on your device."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why capitalize SQL keywords?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "While SQL is case-insensitive for standard keywords, writing statements like SELECT, FROM, WHERE, and JOIN in uppercase drastically improves code scanability in code reviews and distinguishes keywords from table/column names."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="standalone-page">
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="/en/" class="brand" title="Caixa do Dev - Home">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Caixa do Dev</span>
+          <span class="brand-badge">42 Tools</span>
+        </div>
+      </a>
+
+      <div class="nav-actions">
+        <nav>
+          <ul class="nav-links">
+            <li><a href="/en/">Home</a></li>
+            <li><a href="/en/sql-formatter" class="active">SQL</a></li>
+            <li><a href="/en/json-to-typescript">JSON &rarr; TS</a></li>
+            <li><a href="/en/regex-tester">Regex</a></li>
+            <li><a href="/en/uuid-generator">UUID</a></li>
+            <li><a href="/en/base64-converter">Base64</a></li>
+            <li><a href="/artigos">Articles</a></li>
+            <li><a href="/pages/sobre.html">About</a></li>
+          </ul>
+        </nav>
+        <div class="lang-switch" aria-label="Idioma / Language">
+          <a href="/formatador-de-sql" class="lang-btn" title="Versão em Português">🇧🇷 PT</a>
+          <span class="lang-sep">/</span>
+          <span class="lang-btn active" title="English Version">🇺🇸 EN</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container" style="padding-top: 32px; padding-bottom: 60px;">
+    
+    <div class="tool-breadcrumbs">
+      <a href="/en/">&larr; Home</a> / <span>SQL Formatter & Beautifier Online</span>
+    </div>
+
+    <div class="privacy-badge">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      100% Client-Side In-Browser Processing (Your database queries are never transmitted to any server)
+    </div>
+
+    <!-- Tool Interface -->
+    <section class="tool-view standalone-active" data-tool-id="sql">
+      
+      <div class="tool-interface-card">
+        <div class="tool-header-area">
+          <div class="tool-title-group">
+            <h1>Online SQL Formatter & Beautifier</h1>
+            <p>Indent complex queries, organize clauses, align JOINs, and standardize keywords into clean uppercase.</p>
+          </div>
+          <div class="tool-actions-bar">
+            <button id="btn-format-sql" class="btn btn-primary">Format SQL</button>
+            <button id="btn-minify-sql" class="btn btn-outline-cyan">Minify</button>
+            <button id="btn-sample-sql" class="btn btn-secondary">Sample Query</button>
+            <button id="btn-clear-sql" class="btn btn-danger btn-sm">Clear</button>
+          </div>
+        </div>
+
+        <div class="form-options-row">
+          <label class="checkbox-label"><input type="checkbox" id="check-sql-upper" checked><span>Standardize Keywords in UPPERCASE</span></label>
+        </div>
+
+        <div class="split-grid">
+          <div class="pane">
+            <span class="pane-title" style="margin-bottom: 8px;">Raw SQL Query Input</span>
+            <textarea id="sql-input" class="form-control" placeholder="select u.id, u.name, o.total, o.created_at from users u inner join orders o on u.id = o.user_id where u.status = 'active' and o.total > 100 group by u.id, u.name, o.total, o.created_at order by o.created_at desc limit 25;" spellcheck="false"></textarea>
+          </div>
+          <div class="pane">
+            <div class="pane-header">
+              <span class="pane-title">Formatted SQL Output</span>
+              <button id="btn-copy-sql" class="btn btn-secondary btn-sm">Copy SQL</button>
+            </div>
+            <pre id="sql-output" class="result-box large"></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- Technical Engineering Guide -->
+      <article class="tool-seo-guide">
+        <h2>SQL Query Formatting Best Practices for Database Engineers & Backend Teams</h2>
+        <p>Writing structured queries in SQL (Structured Query Language) is central to backend development, data engineering, and analytics. However, queries involving multiple table joins (<code>INNER JOIN</code>, <code>LEFT JOIN</code>, <code>CROSS JOIN</code>), subqueries, and compound filter conditions frequently degrade into unreadable "walls of text" when written on a single line or with inconsistent indentation.</p>
+        
+        <p>The <strong>Caixa do Dev Online SQL Formatter</strong> parses and restructures your statements instantaneously in the browser, enforcing consistent indentation across major Relational Database Management Systems (RDBMS) including PostgreSQL, MySQL, SQL Server (T-SQL), SQLite, Oracle, and distributed cloud warehouses like BigQuery and Snowflake.</p>
+
+        <h3>1. Clean SQL Style Guide Rules</h3>
+        <ul>
+          <li><strong>Major Clause Separation:</strong> Every primary clause (<code>SELECT</code>, <code>FROM</code>, <code>WHERE</code>, <code>GROUP BY</code>, <code>HAVING</code>, <code>ORDER BY</code>, <code>LIMIT</code>) should start on its own dedicated line aligned to the left margin.</li>
+          <li><strong>Column Alignment:</strong> Comma-separated column lists in the <code>SELECT</code> clause should break onto indented lines to facilitate diff tracking in Git version control.</li>
+          <li><strong>Join Hierarchy:</strong> Each <code>JOIN</code> clause and its accompanying <code>ON</code> condition should be grouped visually so readers can immediately inspect join constraints.</li>
+          <li><strong>Logical Operators:</strong> Multiple conditions combined via <code>AND</code> and <code>OR</code> within a <code>WHERE</code> clause should each occupy an indented line.</li>
+        </ul>
+
+        <h3>2. Common Database Dialects Supported</h3>
+        <div style="margin: 16px 0; overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+            <thead>
+              <tr style="background: rgba(255, 255, 255, 0.05); border-bottom: 1px solid var(--border-subtle); text-align: left;">
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">Database Dialect</th>
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">Specific Features Handled</th>
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">Common Use Cases</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-weight: 600; color: var(--accent-cyan);">PostgreSQL</td>
+                <td style="padding: 10px 14px;">CTEs (<code>WITH ... AS</code>), JSONB operators (<code>-&gt;</code>, <code>-&gt;&gt;</code>), Window functions (<code>OVER (PARTITION BY ...)</code>).</td>
+                <td style="padding: 10px 14px;">Enterprise applications & microservices.</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-weight: 600; color: var(--accent-cyan);">MySQL & MariaDB</td>
+                <td style="padding: 10px 14px;">Backtick identifiers, <code>ON DUPLICATE KEY UPDATE</code>, <code>STRAIGHT_JOIN</code>.</td>
+                <td style="padding: 10px 14px;">Web hosting, WordPress, SaaS architectures.</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-weight: 600; color: var(--accent-cyan);">SQLite</td>
+                <td style="padding: 10px 14px;">Standard ANSI syntax, lightweight transaction statements (<code>BEGIN IMMEDIATE</code>).</td>
+                <td style="padding: 10px 14px;">Mobile apps, embedded devices, local testing.</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px 14px; font-weight: 600; color: var(--accent-cyan);">Cloud Warehouses</td>
+                <td style="padding: 10px 14px;">Snowflake & BigQuery analytical queries, <code>QUALIFY</code> clauses, nested structs.</td>
+                <td style="padding: 10px 14px;">Data lakes, BI reporting, pipeline ETLs.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Frequently Asked Questions (FAQ)</h3>
+        <div class="faq-list" style="margin-top: 16px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>Which SQL dialects are supported by this formatter?</span><span>+</span></div>
+            <div class="faq-answer">The formatter handles standard ANSI SQL syntax as well as dialect-specific statements for PostgreSQL, MySQL, SQLite, Microsoft SQL Server (T-SQL), Oracle, MariaDB, Snowflake, and Google BigQuery.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Are my database queries sent to a backend server?</span><span>+</span></div>
+            <div class="faq-answer">No. All SQL parsing and formatting executes 100% locally in your web browser using client-side JavaScript. Sensitive column names, table schemas, and data remain strictly on your device.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Why capitalize SQL keywords?</span><span>+</span></div>
+            <div class="faq-answer">While SQL is case-insensitive for standard keywords, writing statements like SELECT, FROM, WHERE, and JOIN in uppercase drastically improves code scanability in code reviews and distinguishes keywords from table/column names.</div>
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- Related Popular Tools -->
+    <section style="margin-top: 60px;">
+      <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 20px; color: var(--text-primary);">Explore More Developer Tools</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px;">
+        <a href="/en/json-to-typescript" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">JSON to TypeScript</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Convert JSON responses into clean, typed TypeScript interfaces.</p>
+        </a>
+        <a href="/en/regex-tester" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Regex Tester</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Real-time regular expression matching and debugging.</p>
+        </a>
+        <a href="/en/uuid-generator" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">UUID Generator</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Generate cryptographically secure UUID v4 & v7 identifiers.</p>
+        </a>
+        <a href="/en/base64-converter" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Base64 Converter</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Encode and decode binary files, text, and Data URIs.</p>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-grid">
+        <div class="footer-col footer-col-wide">
+          <div class="footer-brand">
+            <span class="footer-brand-title">Caixa do Dev</span>
+            <span class="footer-badge">100% Client-Side</span>
+          </div>
+          <p>The premier free, fast, and privacy-first utility toolkit for developers, QA engineers, and DevOps professionals worldwide.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Universal Tools</h4>
+          <ul>
+            <li><a href="/en/json-to-typescript">JSON to TypeScript</a></li>
+            <li><a href="/en/sql-formatter">SQL Formatter</a></li>
+            <li><a href="/en/regex-tester">Regex Tester</a></li>
+            <li><a href="/en/uuid-generator">UUID Generator</a></li>
+            <li><a href="/en/base64-converter">Base64 Converter</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Institutional</h4>
+          <ul>
+            <li><a href="/artigos">Engineering Articles</a></li>
+            <li><a href="/pages/sobre.html">About the Project</a></li>
+            <li><a href="/pages/contato.html">Contact Us</a></li>
+            <li><a href="/pages/privacidade.html">Privacy Policy</a></li>
+            <li><a href="/pages/termos.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Caixa do Dev • Built and maintained by Alexandre Marcelino.</span>
+        <span>High-performance local client-side processing in strict compliance with data privacy standards.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
+  <!-- Scripts -->
+  <script src="/js/tools/sql-formatter.js"></script>
+  <script src="/js/app.js?v=20261017c"></script>
+</body>
+</html>

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9HZFENSYKS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-9HZFENSYKS');
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3052162962623831"
+     crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cryptographic Hash Generator (MD5, SHA-1, SHA-256, SHA-512) | Caixa do Dev</title>
+  <meta name="description" content="Generate MD5, SHA-1, SHA-256, and SHA-512 cryptographic hashes in real-time. 100% client-side in your browser via the native Web Crypto API. Zero cloud transmission.">
+  <meta name="keywords" content="hash generator, sha256 generator, md5 generator online, sha1 generator, sha512 generator, cryptographic hash, web crypto api">
+  <meta name="author" content="Alexandre Marcelino">
+  <meta name="robots" content="index, follow">
+
+  <!-- Canonical, Hreflang & Open Graph -->
+  <link rel="canonical" href="https://www.caixadodev.com.br/en/hash-generator">
+  <link rel="alternate" hreflang="pt-BR" href="https://www.caixadodev.com.br/gerador-de-hash">
+  <link rel="alternate" hreflang="en" href="https://www.caixadodev.com.br/en/hash-generator">
+  <link rel="alternate" hreflang="x-default" href="https://www.caixadodev.com.br/gerador-de-hash">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.caixadodev.com.br/en/hash-generator">
+  <meta property="og:title" content="Cryptographic Hash Generator | Caixa do Dev">
+  <meta property="og:description" content="Compute MD5, SHA-1, SHA-256, and SHA-512 checksums instantly in your browser with hardware-accelerated Web Crypto API.">
+  <meta property="og:image" content="https://www.caixadodev.com.br/assets/og-cover.png">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'><path d='M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/css/style.css?v=20261017c">
+  <link rel="stylesheet" href="/css/tools.css?v=20261017c">
+
+  <!-- Schema.org WebApplication & FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "Cryptographic Hash Generator",
+        "url": "https://www.caixadodev.com.br/en/hash-generator",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript",
+        "description": "Compute cryptographic checksums (MD5, SHA-1, SHA-256, SHA-512) instantaneously in local memory.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is SHA-256 safe for password storage in databases?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Raw SHA-256 alone is not suitable for passwords because modern GPUs can compute billions of SHA-256 hashes per second in brute-force dictionary attacks. For password storage, use adaptive key-stretching functions with built-in salts such as Argon2id, bcrypt, or PBKDF2."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why is MD5 considered insecure?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "MD5 suffers from practical collision vulnerabilities where two distinct inputs produce identical hash outputs in seconds. While it remains useful as an integrity checksum for non-adversarial file transfers, it should never be used for digital certificates or cryptographic authentication."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are my strings sent to any server?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. All hashes are calculated entirely inside your client browser using the native browser Web Crypto API (crypto.subtle) and pure local JavaScript algorithms. Your inputs never touch any server."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="standalone-page">
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="/en/" class="brand" title="Caixa do Dev - Home">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Caixa do Dev</span>
+          <span class="brand-badge">42 Tools</span>
+        </div>
+      </a>
+
+      <div class="nav-actions">
+        <nav>
+          <ul class="nav-links">
+            <li><a href="/en/">Home</a></li>
+            <li><a href="/en/hash-generator" class="active">Hashes</a></li>
+            <li><a href="/en/json-to-typescript">JSON &rarr; TS</a></li>
+            <li><a href="/en/sql-formatter">SQL</a></li>
+            <li><a href="/en/regex-tester">Regex</a></li>
+            <li><a href="/en/uuid-generator">UUID</a></li>
+            <li><a href="/artigos">Articles</a></li>
+            <li><a href="/pages/sobre.html">About</a></li>
+          </ul>
+        </nav>
+        <div class="lang-switch" aria-label="Idioma / Language">
+          <a href="/gerador-de-hash" class="lang-btn" title="Versão em Português">🇧🇷 PT</a>
+          <span class="lang-sep">/</span>
+          <span class="lang-btn active" title="English Version">🇺🇸 EN</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container" style="padding-top: 32px; padding-bottom: 60px;">
+    
+    <div class="tool-breadcrumbs">
+      <a href="/en/">&larr; Home</a> / <span>Cryptographic Hash Generator (MD5, SHA-1, SHA-256, SHA-512)</span>
+    </div>
+
+    <div class="privacy-badge">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      100% Client-Side In-Browser Processing (Your strings and secrets are never sent to any server)
+    </div>
+
+    <!-- Tool Interface -->
+    <section class="tool-view standalone-active" data-tool-id="hashes">
+      
+      <div class="tool-interface-card">
+        <div class="tool-header-area">
+          <div class="tool-title-group">
+            <h1>Cryptographic Hash Generator (MD5, SHA-1, SHA-256, SHA-512)</h1>
+            <p>Compute cryptographic digests for any text or secret instantaneously in your browser via the Web Crypto API.</p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="hash-input">Type or paste any text or string to calculate hashes in real time:</label>
+          <input type="text" id="hash-input" class="form-control" value="Caixa do Dev 2026" placeholder="Type or paste any string..." spellcheck="false">
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 14px; margin-top: 20px;">
+          <div>
+            <div class="pane-header">
+              <span class="pane-title">MD5 (128-bit)</span>
+              <button class="btn btn-secondary btn-sm" onclick="copyToClipboard(document.getElementById('hash-md5').textContent)">Copy</button>
+            </div>
+            <div id="hash-md5" class="result-box">---</div>
+          </div>
+          <div>
+            <div class="pane-header">
+              <span class="pane-title">SHA-1 (160-bit)</span>
+              <button class="btn btn-secondary btn-sm" onclick="copyToClipboard(document.getElementById('hash-sha1').textContent)">Copy</button>
+            </div>
+            <div id="hash-sha1" class="result-box">---</div>
+          </div>
+          <div>
+            <div class="pane-header">
+              <span class="pane-title">SHA-256 (256-bit OWASP / Bitcoin Standard)</span>
+              <button class="btn btn-secondary btn-sm" onclick="copyToClipboard(document.getElementById('hash-sha256').textContent)">Copy</button>
+            </div>
+            <div id="hash-sha256" class="result-box" style="color: var(--accent-emerald);">---</div>
+          </div>
+          <div>
+            <div class="pane-header">
+              <span class="pane-title">SHA-512 (512-bit High Security)</span>
+              <button class="btn btn-secondary btn-sm" onclick="copyToClipboard(document.getElementById('hash-sha512').textContent)">Copy</button>
+            </div>
+            <div id="hash-sha512" class="result-box" style="font-size: 0.8rem;">---</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Technical Engineering Guide -->
+      <article class="tool-seo-guide">
+        <h2>Cryptographic Hash Functions Explained: Principles, Security & Best Practices</h2>
+        <p>A <strong>Cryptographic Hash Function</strong> is a deterministic mathematical algorithm that transforms arbitrary-sized input data (a password, a database record, or a multi-gigabyte disk image) into a fixed-length hexadecimal digest. High-grade cryptographic hashes must satisfy three essential security pillars:</p>
+        
+        <ul>
+          <li><strong>Pre-image Resistance (One-Way Property):</strong> Given a hash output <code>h</code>, it must be computationally infeasible to determine the original input <code>x</code> such that <code>hash(x) = h</code>.</li>
+          <li><strong>Second Pre-image Resistance (Weak Collision Resistance):</strong> Given an input <code>x</code>, it must be infeasible to find another distinct input <code>y</code> such that <code>hash(x) = hash(y)</code>.</li>
+          <li><strong>Collision Resistance (Strong Collision Resistance):</strong> It must be infeasible to find any two arbitrary distinct inputs <code>x</code> and <code>y</code> that produce the exact same hash output.</li>
+          <li><strong>The Avalanche Effect:</strong> Changing a single bit in the input string must alter over 50% of the output digest bits unpredictably.</li>
+        </ul>
+
+        <h3>1. Comparing Common Hash Algorithms</h3>
+        <div style="margin: 16px 0; overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+            <thead>
+              <tr style="background: rgba(255, 255, 255, 0.05); border-bottom: 1px solid var(--border-subtle); text-align: left;">
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">Algorithm</th>
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">Digest Size</th>
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">Security Status</th>
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">Recommended Applications</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-weight: 600; color: var(--accent-cyan);">MD5</td>
+                <td style="padding: 10px 14px;">128 bits (32 hex chars)</td>
+                <td style="padding: 10px 14px; color: var(--accent-rose);">Cryptographically Broken</td>
+                <td style="padding: 10px 14px;">Legacy file checksums, rsync caches, non-adversarial deduplication.</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-weight: 600; color: var(--accent-cyan);">SHA-1</td>
+                <td style="padding: 10px 14px;">160 bits (40 hex chars)</td>
+                <td style="padding: 10px 14px; color: #f59e0b;">Deprecating (SHAttered attack)</td>
+                <td style="padding: 10px 14px;">Git commit references (v1), torrent integrity checks.</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-weight: 600; color: var(--accent-cyan);">SHA-256</td>
+                <td style="padding: 10px 14px;">256 bits (64 hex chars)</td>
+                <td style="padding: 10px 14px; color: var(--accent-emerald);">Secure (FIPS 180-4 Standard)</td>
+                <td style="padding: 10px 14px;">TLS/SSL certificates, Bitcoin proof-of-work, HMAC API verification.</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px 14px; font-weight: 600; color: var(--accent-cyan);">SHA-512</td>
+                <td style="padding: 10px 14px;">512 bits (128 hex chars)</td>
+                <td style="padding: 10px 14px; color: var(--accent-emerald);">Maximum Security</td>
+                <td style="padding: 10px 14px;">Military & financial cryptography, high-collision resistance token signing.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>2. Why Fast Hashes Are Bad for Password Storage</h3>
+        <p>A frequent beginner mistake in software development is storing user passwords as raw SHA-256 digests in SQL databases (e.g. <code>SHA256(password)</code>). Because SHA-256 was engineered for maximum throughput in hardware, contemporary GPUs can test tens of billions of candidate passwords per second. If an attacker gains read access to the database, they can crack unsalted passwords via precomputed Rainbow Tables within minutes.</p>
+        
+        <p>Production authentication architectures require <strong>slow, memory-hard key stretching algorithms</strong> like <strong>Argon2id (Winner of the Password Hashing Competition)</strong>, <strong>bcrypt</strong>, or <strong>scrypt</strong> with individual salts and tunable work factors.</p>
+
+        <h3>Frequently Asked Questions (FAQ)</h3>
+        <div class="faq-list" style="margin-top: 16px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>Is SHA-256 safe for password storage in databases?</span><span>+</span></div>
+            <div class="faq-answer">Raw SHA-256 alone is not suitable for passwords because modern GPUs can compute billions of SHA-256 hashes per second in brute-force dictionary attacks. For password storage, use adaptive key-stretching functions with built-in salts such as Argon2id, bcrypt, or PBKDF2.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Why is MD5 considered insecure?</span><span>+</span></div>
+            <div class="faq-answer">MD5 suffers from practical collision vulnerabilities where two distinct inputs produce identical hash outputs in seconds. While it remains useful as an integrity checksum for non-adversarial file transfers, it should never be used for digital certificates or cryptographic authentication.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Are my strings sent to any server?</span><span>+</span></div>
+            <div class="faq-answer">No. All hashes are calculated entirely inside your client browser using the native browser Web Crypto API (crypto.subtle) and pure local JavaScript algorithms. Your inputs never touch any server.</div>
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- Related Popular Tools -->
+    <section style="margin-top: 60px;">
+      <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 20px; color: var(--text-primary);">Explore More Developer Tools</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px;">
+        <a href="/en/base64-converter" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Base64 Converter</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Encode and decode binary files, text, and Data URIs.</p>
+        </a>
+        <a href="/en/uuid-generator" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">UUID Generator</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Generate cryptographically secure UUID v4 & v7 identifiers.</p>
+        </a>
+        <a href="/en/json-to-typescript" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">JSON to TypeScript</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Convert JSON responses into clean, typed TypeScript interfaces.</p>
+        </a>
+        <a href="/en/regex-tester" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Regex Tester</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Real-time regular expression matching and debugging.</p>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-grid">
+        <div class="footer-col footer-col-wide">
+          <div class="footer-brand">
+            <span class="footer-brand-title">Caixa do Dev</span>
+            <span class="footer-badge">100% Client-Side</span>
+          </div>
+          <p>The premier free, fast, and privacy-first utility toolkit for developers, QA engineers, and DevOps professionals worldwide.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Universal Tools</h4>
+          <ul>
+            <li><a href="/en/hash-generator">Hash Generator</a></li>
+            <li><a href="/en/base64-converter">Base64 Converter</a></li>
+            <li><a href="/en/uuid-generator">UUID Generator</a></li>
+            <li><a href="/en/json-to-typescript">JSON to TypeScript</a></li>
+            <li><a href="/en/sql-formatter">SQL Formatter</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Institutional</h4>
+          <ul>
+            <li><a href="/artigos">Engineering Articles</a></li>
+            <li><a href="/pages/sobre.html">About the Project</a></li>
+            <li><a href="/pages/contato.html">Contact Us</a></li>
+            <li><a href="/pages/privacidade.html">Privacy Policy</a></li>
+            <li><a href="/pages/termos.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Caixa do Dev • Built and maintained by Alexandre Marcelino.</span>
+        <span>High-performance local client-side processing in strict compliance with data privacy standards.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
+  <!-- Scripts -->
+  <script src="/js/tools/hash-generator.js"></script>
+  <script src="/js/app.js?v=20261017c"></script>
+</body>
+</html>

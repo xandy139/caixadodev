@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9HZFENSYKS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-9HZFENSYKS');
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3052162962623831"
+     crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Online JSON Formatter, Validator & Minifier | Caixa do Dev</title>
+  <meta name="description" content="Format, prettify, validate, and minify JSON payloads in real time. Detect syntax errors, compute key counts, and inspect byte size. 100% in-browser, instantaneous, private.">
+  <meta name="keywords" content="json formatter, json validator, json prettifier online, json minifier, format json, json syntax checker, json beautifier">
+  <meta name="author" content="Alexandre Marcelino">
+  <meta name="robots" content="index, follow">
+
+  <!-- Canonical, Hreflang & Open Graph -->
+  <link rel="canonical" href="https://www.caixadodev.com.br/en/json-formatter">
+  <link rel="alternate" hreflang="pt-BR" href="https://www.caixadodev.com.br/formatador-de-json">
+  <link rel="alternate" hreflang="en" href="https://www.caixadodev.com.br/en/json-formatter">
+  <link rel="alternate" hreflang="x-default" href="https://www.caixadodev.com.br/formatador-de-json">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.caixadodev.com.br/en/json-formatter">
+  <meta property="og:title" content="Online JSON Formatter, Validator & Minifier | Caixa do Dev">
+  <meta property="og:description" content="Instant in-browser JSON prettifier, syntax error analyzer, and minifier with 2 or 4 space indentation. Zero cloud transmission.">
+  <meta property="og:image" content="https://www.caixadodev.com.br/assets/og-cover.png">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'><path d='M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/css/style.css?v=20261017c">
+  <link rel="stylesheet" href="/css/tools.css?v=20261017c">
+
+  <!-- Schema.org WebApplication & FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "JSON Formatter, Validator & Minifier",
+        "url": "https://www.caixadodev.com.br/en/json-formatter",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript",
+        "description": "Prettify, validate, format, and minify JSON payloads with syntax error detection and statistics.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Why are single quotes not allowed in JSON?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The official JSON specifications (RFC 8259 and ECMA-404) strictly require double quotes for all string values and object property keys. Single quotes cause an immediate SyntaxError in standards-compliant JSON parsers."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is a trailing comma and why does JSON forbid it?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A trailing comma is a comma immediately following the final element of an object or array (e.g. {'a': 1,}). While allowed in JavaScript object literals, the formal JSON specification strictly forbids trailing commas for unambiguous cross-language serialization."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is my JSON payload sent to a cloud server?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. All formatting, indentation, syntax validation, and minification execute 100% locally in your web browser. Proprietary company payloads, API responses, and credentials remain completely private on your device."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="standalone-page">
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="/en/" class="brand" title="Caixa do Dev - Home">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Caixa do Dev</span>
+          <span class="brand-badge">42 Tools</span>
+        </div>
+      </a>
+
+      <div class="nav-actions">
+        <nav>
+          <ul class="nav-links">
+            <li><a href="/en/">Home</a></li>
+            <li><a href="/en/json-formatter" class="active">JSON</a></li>
+            <li><a href="/en/json-to-typescript">JSON &rarr; TS</a></li>
+            <li><a href="/en/sql-formatter">SQL</a></li>
+            <li><a href="/en/regex-tester">Regex</a></li>
+            <li><a href="/en/uuid-generator">UUID</a></li>
+            <li><a href="/artigos">Articles</a></li>
+            <li><a href="/pages/sobre.html">About</a></li>
+          </ul>
+        </nav>
+        <div class="lang-switch" aria-label="Idioma / Language">
+          <a href="/formatador-de-json" class="lang-btn" title="Versão em Português">🇧🇷 PT</a>
+          <span class="lang-sep">/</span>
+          <span class="lang-btn active" title="English Version">🇺🇸 EN</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container" style="padding-top: 32px; padding-bottom: 60px;">
+    
+    <div class="tool-breadcrumbs">
+      <a href="/en/">&larr; Home</a> / <span>JSON Formatter & Validator Online</span>
+    </div>
+
+    <div class="privacy-badge">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      100% Client-Side In-Browser Processing (Your data is never transmitted to any server)
+    </div>
+
+    <!-- Tool Interface -->
+    <section class="tool-view standalone-active" data-tool-id="json">
+      
+      <div class="tool-interface-card">
+        <div class="tool-header-area">
+          <div class="tool-title-group">
+            <h1>JSON Formatter, Validator & Minifier</h1>
+            <p>Prettify, re-indent, minify, and inspect JSON payloads with real-time syntax error diagnosis.</p>
+          </div>
+          <div class="tool-actions-bar">
+            <select id="json-indent-select" class="form-control" style="width: auto; padding: 8px 12px; font-size: 0.85rem;">
+              <option value="2">2 Spaces</option>
+              <option value="4">4 Spaces</option>
+            </select>
+            <button id="btn-format-json" class="btn btn-primary">Format JSON</button>
+            <button id="btn-minify-json" class="btn btn-outline-cyan">Minify</button>
+            <button id="btn-sample-json" class="btn btn-secondary">Sample JSON</button>
+            <button id="btn-clear-json" class="btn btn-danger btn-sm">Clear</button>
+          </div>
+        </div>
+
+        <div class="split-grid">
+          <div class="pane">
+            <span class="pane-title" style="margin-bottom: 8px;">Raw JSON Input</span>
+            <textarea id="json-input" class="form-control" placeholder='Paste your raw or minified JSON payload here...' spellcheck="false"></textarea>
+          </div>
+          <div class="pane">
+            <div class="pane-header">
+              <span class="pane-title">Formatted JSON Output</span>
+              <div id="json-stats" style="font-size: 0.8rem; color: var(--text-muted);"></div>
+            </div>
+            <div style="position: relative;">
+              <pre id="json-output" class="result-box large"></pre>
+              <button id="btn-copy-json" class="btn btn-secondary btn-sm result-copy-btn">Copy JSON</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Technical Engineering Guide -->
+      <article class="tool-seo-guide">
+        <h2>The JSON Standard (RFC 8259) & Modern Web API Best Practices</h2>
+        <p>The <strong>JSON (JavaScript Object Notation)</strong> format, standardized under <strong>RFC 8259</strong> and <strong>ECMA-404</strong>, is the global language of internet data exchange. It superseded XML as the dominant format for REST, GraphQL, and microservice communication due to its compact syntax, human readability, and seamless deserialization across every modern language.</p>
+
+        <h3>1. Strict Syntactic Rules of RFC 8259 JSON</h3>
+        <p>Unlike loose JavaScript object literals, standard JSON enforces strict rules that every API consumer must respect:</p>
+        <ul>
+          <li><strong>Mandatory Double Quotes:</strong> All object property keys must be surrounded by double quotation marks (<code>"name": "value"</code>). Single quotes (<code>'key'</code>) or unquoted tokens trigger instant syntax errors.</li>
+          <li><strong>No Trailing Commas:</strong> Commas following the final element of an array or object (e.g. <code>{"a": 1, "b": 2,}</code>) are prohibited and will be rejected by standard parsers.</li>
+          <li><strong>Primitive Value Support:</strong> Only six basic types are allowed: Strings, Numbers (integer or floating point), Booleans (<code>true</code> / <code>false</code>), <code>null</code>, Objects (<code>{}</code>), and Arrays (<code>[]</code>). Values such as <code>undefined</code>, <code>NaN</code>, <code>Infinity</code>, or functions cannot be serialized.</li>
+        </ul>
+
+        <h3>2. Common JSON Syntax Errors & How to Fix Them</h3>
+        <div style="margin: 16px 0; overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+            <thead>
+              <tr style="background: rgba(255, 255, 255, 0.05); border-bottom: 1px solid var(--border-subtle); text-align: left;">
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">Syntax Error Message</th>
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">Root Cause</th>
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">Resolution</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-family: var(--font-mono); color: var(--accent-rose);">Unexpected token ' in JSON</td>
+                <td style="padding: 10px 14px;">Single quotes were used instead of double quotes for keys or strings.</td>
+                <td style="padding: 10px 14px;">Replace all single quotes (<code>'</code>) with double quotes (<code>"</code>).</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-family: var(--font-mono); color: var(--accent-rose);">Unexpected token } in JSON</td>
+                <td style="padding: 10px 14px;">A trailing comma was left before the closing curly brace.</td>
+                <td style="padding: 10px 14px;">Remove the comma after the final property.</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-family: var(--font-mono); color: var(--accent-rose);">Unexpected end of JSON input</td>
+                <td style="padding: 10px 14px;">Incomplete payload, missing closing bracket (<code>]</code>) or brace (<code>}</code>).</td>
+                <td style="padding: 10px 14px;">Check hierarchy nesting and close all open structures.</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px 14px; font-family: var(--font-mono); color: var(--accent-rose);">Loss of BigInt Precision</td>
+                <td style="padding: 10px 14px;">64-bit integer IDs larger than <code>2^53 - 1</code> (9,007,199,254,740,991).</td>
+                <td style="padding: 10px 14px;">Serialize 64-bit database IDs as strings in API responses.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Frequently Asked Questions (FAQ)</h3>
+        <div class="faq-list" style="margin-top: 16px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>Why are single quotes not allowed in JSON?</span><span>+</span></div>
+            <div class="faq-answer">The official JSON specifications (RFC 8259 and ECMA-404) strictly require double quotes for all string values and object property keys. Single quotes cause an immediate SyntaxError in standards-compliant JSON parsers.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>What is a trailing comma and why does JSON forbid it?</span><span>+</span></div>
+            <div class="faq-answer">A trailing comma is a comma immediately following the final element of an object or array (e.g. {'a': 1,}). While allowed in JavaScript object literals, the formal JSON specification strictly forbids trailing commas for unambiguous cross-language serialization.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Is my JSON payload sent to a cloud server?</span><span>+</span></div>
+            <div class="faq-answer">No. All formatting, indentation, syntax validation, and minification execute 100% locally in your web browser. Proprietary company payloads, API responses, and credentials remain completely private on your device.</div>
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- Related Popular Tools -->
+    <section style="margin-top: 60px;">
+      <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 20px; color: var(--text-primary);">Explore More Developer Tools</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px;">
+        <a href="/en/json-to-typescript" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">JSON to TypeScript</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Convert JSON responses into clean, typed TypeScript interfaces.</p>
+        </a>
+        <a href="/en/sql-formatter" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">SQL Formatter</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Indent complex database queries and uppercase keywords.</p>
+        </a>
+        <a href="/en/uuid-generator" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">UUID Generator</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Generate cryptographically secure UUID v4 & v7 identifiers.</p>
+        </a>
+        <a href="/en/base64-converter" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Base64 Converter</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Encode and decode binary files, text, and Data URIs.</p>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-grid">
+        <div class="footer-col footer-col-wide">
+          <div class="footer-brand">
+            <span class="footer-brand-title">Caixa do Dev</span>
+            <span class="footer-badge">100% Client-Side</span>
+          </div>
+          <p>The premier free, fast, and privacy-first utility toolkit for developers, QA engineers, and DevOps professionals worldwide.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Universal Tools</h4>
+          <ul>
+            <li><a href="/en/json-formatter">JSON Formatter</a></li>
+            <li><a href="/en/json-to-typescript">JSON to TypeScript</a></li>
+            <li><a href="/en/sql-formatter">SQL Formatter</a></li>
+            <li><a href="/en/regex-tester">Regex Tester</a></li>
+            <li><a href="/en/uuid-generator">UUID Generator</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Institutional</h4>
+          <ul>
+            <li><a href="/artigos">Engineering Articles</a></li>
+            <li><a href="/pages/sobre.html">About the Project</a></li>
+            <li><a href="/pages/contato.html">Contact Us</a></li>
+            <li><a href="/pages/privacidade.html">Privacy Policy</a></li>
+            <li><a href="/pages/termos.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Caixa do Dev • Built and maintained by Alexandre Marcelino.</span>
+        <span>High-performance local client-side processing in strict compliance with data privacy standards.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
+  <!-- Scripts -->
+  <script src="/js/tools/json-tool.js"></script>
+  <script src="/js/app.js?v=20261017c"></script>
+</body>
+</html>

@@ -1338,7 +1338,12 @@ function initToolEvents() {
     if (!regexPattern || !regexText) return;
     const res = REGEX_TESTER.test(regexPattern.value, regexFlags?.value || 'g', regexText.value);
     if (regexHighlightBox) regexHighlightBox.innerHTML = res.html;
-    if (regexMatchCount) regexMatchCount.textContent = `${res.count} ocorrência(s) encontrada(s)`;
+    if (regexMatchCount) {
+      const isEn = document.documentElement.lang === 'en';
+      regexMatchCount.textContent = isEn
+        ? `${res.count} match(es) found`
+        : `${res.count} ocorrência(s) encontrada(s)`;
+    }
   };
 
   if (regexPattern) regexPattern.addEventListener('input', updateRegexUI);
@@ -1349,12 +1354,16 @@ function initToolEvents() {
   document.querySelectorAll('.btn-regex-preset').forEach(btn => {
     btn.addEventListener('click', () => {
       const pKey = btn.dataset.preset;
-      const preset = REGEX_TESTER.presets[pKey];
-      if (preset) {
-        regexPattern.value = preset.pattern;
-        if (regexFlags) regexFlags.value = preset.flags;
+      const preset = (window.REGEX_TESTER && window.REGEX_TESTER.presets) ? window.REGEX_TESTER.presets[pKey] : null;
+      const pattern = btn.dataset.pattern || (preset ? preset.pattern : '');
+      const flags = btn.dataset.flags || (preset ? preset.flags : 'g');
+      const label = btn.dataset.label || (preset ? preset.label : pKey);
+      if (pattern) {
+        regexPattern.value = pattern;
+        if (regexFlags) regexFlags.value = flags;
         updateRegexUI();
-        showToast(`Preset "${preset.label}" carregado!`);
+        const isEn = document.documentElement.lang === 'en';
+        showToast(isEn ? `Loaded "${label}" preset!` : `Preset "${label}" carregado!`);
       }
     });
   });
@@ -1767,28 +1776,30 @@ function initToolEvents() {
 
   if (btnFormatJson) {
     btnFormatJson.addEventListener('click', () => {
+      const isEn = document.documentElement.lang === 'en';
       const indent = parseInt(document.getElementById('json-indent-select')?.value || '2');
       const res = JSON_TOOL.format(jsonInput.value, indent);
       if (res.success) {
         jsonOutput.textContent = res.result;
-        jsonStats.innerHTML = `<span class="badge-status badge-valid">Válido</span> ${res.stats.keys} chaves | ${formatBytes(res.stats.resultSize)}`;
-        showToast('JSON formatado!');
+        jsonStats.innerHTML = `<span class="badge-status badge-valid">${isEn ? 'Valid' : 'Válido'}</span> ${res.stats.keys} ${isEn ? 'keys' : 'chaves'} | ${formatBytes(res.stats.resultSize)}`;
+        showToast(isEn ? 'JSON formatted!' : 'JSON formatado!');
       } else {
-        jsonOutput.textContent = `Erro de Sintaxe:\n${res.error}`;
-        jsonStats.innerHTML = `<span class="badge-status badge-invalid">Inválido</span>`;
+        jsonOutput.textContent = `${isEn ? 'Syntax Error' : 'Erro de Sintaxe'}:\n${res.error}`;
+        jsonStats.innerHTML = `<span class="badge-status badge-invalid">${isEn ? 'Invalid' : 'Inválido'}</span>`;
       }
     });
   }
 
   if (btnMinifyJson) {
     btnMinifyJson.addEventListener('click', () => {
+      const isEn = document.documentElement.lang === 'en';
       const res = JSON_TOOL.minify(jsonInput.value);
       if (res.success) {
         jsonOutput.textContent = res.result;
-        jsonStats.innerHTML = `<span class="badge-status badge-valid">Minificado</span>`;
-        showToast('JSON minificado!');
+        jsonStats.innerHTML = `<span class="badge-status badge-valid">${isEn ? 'Minified' : 'Minificado'}</span>`;
+        showToast(isEn ? 'JSON minified!' : 'JSON minificado!');
       } else {
-        jsonOutput.textContent = `Erro:\n${res.error}`;
+        jsonOutput.textContent = `${isEn ? 'Error' : 'Erro'}:\n${res.error}`;
       }
     });
   }
@@ -1826,16 +1837,18 @@ function initToolEvents() {
 
   if (btnFormatSql) {
     btnFormatSql.addEventListener('click', () => {
+      const isEn = document.documentElement.lang === 'en';
       const uppercase = checkSqlUpper ? checkSqlUpper.checked : true;
       sqlOutput.textContent = SQL_FORMATTER.format(sqlInput.value, { uppercase, indent: '  ' });
-      showToast('SQL formatado!');
+      showToast(isEn ? 'SQL formatted!' : 'SQL formatado!');
     });
   }
 
   if (btnMinifySql) {
     btnMinifySql.addEventListener('click', () => {
+      const isEn = document.documentElement.lang === 'en';
       sqlOutput.textContent = SQL_FORMATTER.minify(sqlInput.value);
-      showToast('SQL minificado!');
+      showToast(isEn ? 'SQL minified!' : 'SQL minificado!');
     });
   }
 
@@ -2025,22 +2038,33 @@ function initToolEvents() {
 
   if (btnEpochToDate) {
     btnEpochToDate.addEventListener('click', () => {
+      const isEn = document.documentElement.lang === 'en';
       const res = TIMESTAMP_TOOL.epochToDate(inputEpoch.value);
       if (res.success) {
-        resultEpochDate.innerHTML = `<strong>Brasília:</strong> ${res.brasilia}<br><strong>UTC:</strong> ${res.utc}<br><strong>ISO:</strong> ${res.iso}`;
+        if (isEn) {
+          const localStr = new Date(res.timestampMilliseconds).toLocaleString('en-US', { dateStyle: 'full', timeStyle: 'medium' });
+          resultEpochDate.innerHTML = `<strong>Local Time:</strong> ${localStr}<br><strong>UTC:</strong> ${res.utc}<br><strong>ISO 8601:</strong> ${res.iso}`;
+        } else {
+          resultEpochDate.innerHTML = `<strong>Brasília:</strong> ${res.brasilia}<br><strong>UTC:</strong> ${res.utc}<br><strong>ISO:</strong> ${res.iso}`;
+        }
       } else {
-        resultEpochDate.innerHTML = `<span style="color: var(--accent-rose);">${res.error}</span>`;
+        resultEpochDate.innerHTML = `<span style="color: var(--accent-rose);">${isEn ? 'Please enter a valid numeric Unix timestamp.' : res.error}</span>`;
       }
     });
   }
 
   if (btnDateToEpoch) {
     btnDateToEpoch.addEventListener('click', () => {
+      const isEn = document.documentElement.lang === 'en';
       const res = TIMESTAMP_TOOL.dateToEpoch(inputDateTime.value);
       if (res.success) {
-        resultDateEpoch.innerHTML = `<strong>Segundos:</strong> ${res.timestampSeconds}<br><strong>Milissegundos:</strong> ${res.timestampMilliseconds}`;
+        if (isEn) {
+          resultDateEpoch.innerHTML = `<strong>Seconds (s):</strong> ${res.timestampSeconds}<br><strong>Milliseconds (ms):</strong> ${res.timestampMilliseconds}`;
+        } else {
+          resultDateEpoch.innerHTML = `<strong>Segundos:</strong> ${res.timestampSeconds}<br><strong>Milissegundos:</strong> ${res.timestampMilliseconds}`;
+        }
       } else {
-        resultDateEpoch.innerHTML = `<span style="color: var(--accent-rose);">${res.error}</span>`;
+        resultDateEpoch.innerHTML = `<span style="color: var(--accent-rose);">${isEn ? 'Please select a valid date and time.' : res.error}</span>`;
       }
     });
   }
