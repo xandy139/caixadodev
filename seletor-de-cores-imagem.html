@@ -21,8 +21,11 @@
   <meta name="author" content="Caixa do Dev">
   <meta name="robots" content="index, follow">
 
-  <!-- Canonical & Social Meta -->
+  <!-- Canonical, Hreflang & Social Meta -->
   <link rel="canonical" href="https://www.caixadodev.com.br/seletor-de-cores-imagem">
+  <link rel="alternate" hreflang="pt-BR" href="https://www.caixadodev.com.br/seletor-de-cores-imagem">
+  <link rel="alternate" hreflang="en" href="https://www.caixadodev.com.br/en/image-color-picker">
+  <link rel="alternate" hreflang="x-default" href="https://www.caixadodev.com.br/seletor-de-cores-imagem">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.caixadodev.com.br/seletor-de-cores-imagem">
   <meta property="og:title" content="Seletor de Cores de Imagem (Conta-Gotas e Extrator de Paleta) | Caixa do Dev">
@@ -566,18 +569,25 @@
         </div>
       </a>
 
-      <nav>
-        <ul class="nav-links">
-          <li><a href="/">Início</a></li>
-          <li><a href="/gerador-de-cpf">CPF</a></li>
-          <li><a href="/gerador-de-cnpj-alfanumerico">CNPJ 2026</a></li>
-          <li><a href="/conversor-de-cores">Conversor HEX</a></li>
-          <li><a href="/calculadora-clt-pj">CLT vs PJ</a></li>
-          <li><a href="/json-para-typescript">JSON &rarr; TS</a></li>
-          <li><a href="pages/sobre.html">Sobre</a></li>
-          <li><a href="pages/contato.html">Contato</a></li>
-        </ul>
-      </nav>
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <nav>
+          <ul class="nav-links">
+            <li><a href="/">Início</a></li>
+            <li><a href="/gerador-de-cpf">CPF</a></li>
+            <li><a href="/gerador-de-cnpj-alfanumerico">CNPJ 2026</a></li>
+            <li><a href="/conversor-de-cores">Conversor HEX</a></li>
+            <li><a href="/calculadora-clt-pj">CLT vs PJ</a></li>
+            <li><a href="/json-para-typescript">JSON &rarr; TS</a></li>
+            <li><a href="/pages/sobre.html">Sobre</a></li>
+            <li><a href="/pages/contato.html">Contato</a></li>
+          </ul>
+        </nav>
+        <div class="lang-switch" aria-label="Idioma / Language">
+          <span class="lang-btn active" title="Português (Brasil)">🇧🇷 PT</span>
+          <span class="lang-sep">/</span>
+          <a href="/en/image-color-picker" class="lang-btn" title="English Version">🇺🇸 EN</a>
+        </div>
+      </div>
     </div>
   </header>
 

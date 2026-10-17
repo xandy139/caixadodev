@@ -6,6 +6,72 @@
 (function () {
   'use strict';
 
+  // Detecção de idioma e dicionário i18n
+  const isEn = (document.documentElement.lang || '').toLowerCase().startsWith('en');
+  const I18N = {
+    pt: {
+      black: 'Preto Profundo',
+      white: 'Branco Puro',
+      darkGray: 'Cinza Escuro',
+      mediumGray: 'Cinza Médio',
+      lightGray: 'Cinza Claro',
+      red: 'Vermelho',
+      orange: 'Laranja',
+      yellow: 'Amarelo',
+      green: 'Verde',
+      cyan: 'Ciano / Turquesa',
+      blue: 'Azul',
+      purple: 'Roxo / Índigo',
+      pink: 'Rosa / Magenta',
+      colorful: 'Colorido',
+      copiedClipboard: 'Copiado para a área de transferência!',
+      copied: 'Copiado!',
+      copiedHex: (hex) => `Copiado: ${hex}`,
+      allHexCopied: 'Todos os códigos HEX copiados!',
+      cssCopied: 'CSS Variables copiadas para a área de transferência!',
+      jsonCopied: 'JSON da paleta copiado!',
+      paletteCleared: 'Paleta limpa com sucesso.',
+      noColorsCaptured: 'Nenhuma cor capturada ainda.',
+      imgLoaded: 'Imagem carregada com sucesso!',
+      imgPasted: 'Imagem colada da área de transferência!',
+      invalidImage: 'Por favor, selecione um arquivo de imagem válido (PNG, JPG, WEBP, SVG).',
+      emptyPalette: 'Passe o mouse ou toque na imagem para capturar cores de pixels.',
+      clickToCopy: 'Clique para copiar',
+      manualCopy: 'Copie o código manualmente:'
+    },
+    en: {
+      black: 'Deep Black',
+      white: 'Pure White',
+      darkGray: 'Dark Gray',
+      mediumGray: 'Medium Gray',
+      lightGray: 'Light Gray',
+      red: 'Red',
+      orange: 'Orange',
+      yellow: 'Yellow',
+      green: 'Green',
+      cyan: 'Cyan / Teal',
+      blue: 'Blue',
+      purple: 'Purple / Indigo',
+      pink: 'Pink / Magenta',
+      colorful: 'Colorful',
+      copiedClipboard: 'Copied to clipboard!',
+      copied: 'Copied!',
+      copiedHex: (hex) => `Copied: ${hex}`,
+      allHexCopied: 'All HEX codes copied!',
+      cssCopied: 'CSS Variables copied to clipboard!',
+      jsonCopied: 'Palette JSON copied to clipboard!',
+      paletteCleared: 'Palette cleared successfully.',
+      noColorsCaptured: 'No colors captured yet.',
+      imgLoaded: 'Image loaded successfully!',
+      imgPasted: 'Image pasted from clipboard!',
+      invalidImage: 'Please select a valid image file (PNG, JPG, WEBP, SVG).',
+      emptyPalette: 'Hover or tap on the image to pick pixel colors.',
+      clickToCopy: 'Click to copy',
+      manualCopy: 'Copy code manually:'
+    }
+  };
+  const t = isEn ? I18N.en : I18N.pt;
+
   // Estado da ferramenta
   const state = {
     img: null,
@@ -248,24 +314,24 @@
     const b = parseInt(hex.slice(5, 7), 16);
     const hsl = rgbToHsl(r, g, b);
 
-    if (hsl.l < 10) return 'Preto Profundo';
-    if (hsl.l > 92 && hsl.s < 10) return 'Branco Puro';
+    if (hsl.l < 10) return t.black;
+    if (hsl.l > 92 && hsl.s < 10) return t.white;
     if (hsl.s < 12) {
-      if (hsl.l < 35) return 'Cinza Escuro';
-      if (hsl.l < 65) return 'Cinza Médio';
-      return 'Cinza Claro';
+      if (hsl.l < 35) return t.darkGray;
+      if (hsl.l < 65) return t.mediumGray;
+      return t.lightGray;
     }
 
     const h = hsl.h;
-    if (h >= 345 || h < 15) return 'Vermelho';
-    if (h >= 15 && h < 45) return 'Laranja';
-    if (h >= 45 && h < 70) return 'Amarelo';
-    if (h >= 70 && h < 160) return 'Verde';
-    if (h >= 160 && h < 195) return 'Ciano / Turquesa';
-    if (h >= 195 && h < 255) return 'Azul';
-    if (h >= 255 && h < 290) return 'Roxo / Índigo';
-    if (h >= 290 && h < 345) return 'Rosa / Magenta';
-    return 'Colorido';
+    if (h >= 345 || h < 15) return t.red;
+    if (h >= 15 && h < 45) return t.orange;
+    if (h >= 45 && h < 70) return t.yellow;
+    if (h >= 70 && h < 160) return t.green;
+    if (h >= 160 && h < 195) return t.cyan;
+    if (h >= 195 && h < 255) return t.blue;
+    if (h >= 255 && h < 290) return t.purple;
+    if (h >= 290 && h < 345) return t.pink;
+    return t.colorful;
   }
 
   // Inicialização no DOM
@@ -362,7 +428,7 @@
         if (item.type.indexOf('image') === 0) {
           const blob = item.getAsFile();
           handleFile(blob);
-          showToast('Imagem colada da área de transferência!');
+          showToast(t.imgPasted);
           break;
         }
       }
@@ -391,25 +457,25 @@
         state.capturedPalette = [];
         saveStoredPalette();
         renderCapturedPalette();
-        showToast('Paleta limpa com sucesso.');
+        showToast(t.paletteCleared);
       });
     }
 
     if (copyAllHexBtn) {
       copyAllHexBtn.addEventListener('click', () => {
         if (!state.capturedPalette.length) {
-          showToast('Nenhuma cor capturada ainda.');
+          showToast(t.noColorsCaptured);
           return;
         }
         const text = state.capturedPalette.map(c => c.hex).join(', ');
-        copyText(text, 'Todos os códigos HEX copiados!');
+        copyText(text, t.allHexCopied);
       });
     }
 
     if (exportCssBtn) {
       exportCssBtn.addEventListener('click', () => {
         if (!state.capturedPalette.length) {
-          showToast('Nenhuma cor capturada ainda.');
+          showToast(t.noColorsCaptured);
           return;
         }
         let css = ':root {\n';
@@ -417,25 +483,25 @@
           css += `  --color-${idx + 1}: ${c.hex}; /* ${c.rgb} */\n`;
         });
         css += '}';
-        copyText(css, 'CSS Variables copiadas para a área de transferência!');
+        copyText(css, t.cssCopied);
       });
     }
 
     if (exportJsonBtn) {
       exportJsonBtn.addEventListener('click', () => {
         if (!state.capturedPalette.length) {
-          showToast('Nenhuma cor capturada ainda.');
+          showToast(t.noColorsCaptured);
           return;
         }
         const json = JSON.stringify(state.capturedPalette, null, 2);
-        copyText(json, 'JSON da paleta copiado!');
+        copyText(json, t.jsonCopied);
       });
     }
   }
 
   function handleFile(file) {
     if (!file || !file.type.startsWith('image/')) {
-      alert('Por favor, selecione um arquivo de imagem válido (PNG, JPG, WEBP, SVG).');
+      alert(t.invalidImage);
       return;
     }
 
@@ -446,7 +512,7 @@
         state.img = img;
         drawImageToCanvas(img);
         extractDominantColors();
-        showToast('Imagem carregada com sucesso!');
+        showToast(t.imgLoaded);
       };
       img.src = e.target.result;
     };
@@ -831,7 +897,7 @@
       container.innerHTML = `
         <div class="empty-palette-state">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-          <span>Passe o mouse ou toque na imagem para capturar cores de pixels.</span>
+          <span>${t.emptyPalette}</span>
         </div>`;
       return;
     }
@@ -839,13 +905,13 @@
     state.capturedPalette.forEach((item, index) => {
       const swatch = document.createElement('div');
       swatch.className = 'captured-swatch-item';
-      swatch.title = `${item.hex} - Clique para copiar`;
+      swatch.title = `${item.hex} - ${t.clickToCopy}`;
       swatch.innerHTML = `
         <div class="swatch-box" style="background-color: ${item.hex};"></div>
         <span class="swatch-label">${item.hex}</span>
       `;
       swatch.addEventListener('click', () => {
-        copyText(item.hex, `Copiado: ${item.hex}`);
+        copyText(item.hex, t.copiedHex(item.hex));
         applyHexColor(item.hex);
       });
       container.appendChild(swatch);
@@ -888,7 +954,7 @@
   function copyText(text, successMsg) {
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(text).then(() => {
-        showToast(successMsg || 'Copiado para a área de transferência!');
+        showToast(successMsg || t.copiedClipboard);
       }).catch(() => fallbackCopy(text, successMsg));
     } else {
       fallbackCopy(text, successMsg);
@@ -904,9 +970,9 @@
     ta.select();
     try {
       document.execCommand('copy');
-      showToast(successMsg || 'Copiado!');
+      showToast(successMsg || t.copied);
     } catch (e) {
-      prompt('Copie o código manualmente:', text);
+      prompt(t.manualCopy, text);
     }
     document.body.removeChild(ta);
   }

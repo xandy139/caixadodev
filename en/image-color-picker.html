@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9HZFENSYKS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-9HZFENSYKS');
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3052162962623831"
+     crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Color Picker (Pixel EyeDropper & Palette Extractor) | Caixa do Dev</title>
+  <meta name="description" content="Pick exact pixel colors from any image with a real-time magnifying loupe, browser EyeDropper API, instant color conversions (HEX, RGB, HSL, CMYK) and dominant palette generator. 100% client-side.">
+  <meta name="keywords" content="image color picker, eyedropper online, extract color from image, pixel color finder, color palette generator, hex rgb hsl cmyk converter, html5 canvas eyedropper, client-side color picker">
+  <meta name="author" content="Caixa do Dev">
+  <meta name="robots" content="index, follow">
+
+  <!-- Canonical, Hreflang & Social Meta -->
+  <link rel="canonical" href="https://www.caixadodev.com.br/en/image-color-picker">
+  <link rel="alternate" hreflang="pt-BR" href="https://www.caixadodev.com.br/seletor-de-cores-imagem">
+  <link rel="alternate" hreflang="en" href="https://www.caixadodev.com.br/en/image-color-picker">
+  <link rel="alternate" hreflang="x-default" href="https://www.caixadodev.com.br/seletor-de-cores-imagem">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.caixadodev.com.br/en/image-color-picker">
+  <meta property="og:title" content="Image Color Picker (Pixel EyeDropper & Palette Extractor) | Caixa do Dev">
+  <meta property="og:description" content="Upload or paste an image (Ctrl+V) and capture pixel-exact colors with high-precision magnifying loupe, color history, and palette export.">
+  <meta property="og:image" content="https://www.caixadodev.com.br/assets/og-cover.png">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'><path d='M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/tools.css">
+
+  <style>
+    /* Dedicated styles for Image Color Picker */
+    .color-picker-workspace {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 24px;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 992px) {
+      .color-picker-workspace {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .canvas-container-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .toolbar-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .toolbar-left, .toolbar-right {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-input);
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .btn-action:hover {
+      border-color: var(--accent-primary);
+      background: var(--bg-card-hover);
+      transform: translateY(-1px);
+    }
+
+    .btn-primary-action {
+      background: linear-gradient(135deg, var(--accent-primary), #4338ca);
+      color: #ffffff;
+      border: none;
+    }
+
+    .btn-primary-action:hover {
+      background: linear-gradient(135deg, #4f46e5, #3730a3);
+      box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
+    }
+
+    .presets-strip {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .btn-preset-chip {
+      background: var(--bg-input);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .btn-preset-chip:hover {
+      border-color: var(--accent-cyan);
+      color: var(--text-primary);
+    }
+
+    /* Canvas Viewport */
+    .canvas-viewport-wrapper {
+      position: relative;
+      background: repeating-conic-gradient(#161f33 0% 25%, #0d121f 0% 50%) 50% / 20px 20px;
+      border: 1px dashed var(--border-subtle);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 420px;
+      cursor: crosshair;
+      transition: border-color 0.2s ease;
+    }
+
+    .canvas-viewport-wrapper.drag-active {
+      border-color: var(--accent-cyan);
+      box-shadow: inset 0 0 24px rgba(6, 182, 212, 0.2);
+    }
+
+    #image-canvas {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      image-rendering: auto;
+    }
+
+    /* Floating Magnifier Loupe */
+    .floating-loupe-wrapper {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -100%);
+      margin-top: -16px;
+      display: none;
+      filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.6));
+    }
+
+    .loupe-canvas-box {
+      width: 124px;
+      height: 124px;
+      border-radius: 50%;
+      border: 3px solid #ffffff;
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+      overflow: hidden;
+      background: #000000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #loupe-canvas {
+      width: 120px;
+      height: 120px;
+      image-rendering: pixelated;
+    }
+
+    .loupe-meta {
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid var(--border-subtle);
+      padding: 4px 8px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      margin-top: 6px;
+      text-align: center;
+    }
+
+    .loupe-hex {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+    }
+
+    .loupe-coords {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--text-muted);
+    }
+
+    /* Inspector Sidebar */
+    .inspector-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .inspector-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .selected-hero-box {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .selected-swatch-large {
+      width: 64px;
+      height: 64px;
+      border-radius: var(--radius-md);
+      border: 2px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.35);
+      flex-shrink: 0;
+      transition: background-color 0.15s ease;
+    }
+
+    .selected-meta-title h2 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text-primary);
+    }
+
+    .selected-meta-title p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .color-code-row {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .code-input-item {
+      display: flex;
+      align-items: center;
+      background: var(--bg-input);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 6px 12px;
+      gap: 10px;
+      transition: var(--transition);
+    }
+
+    .code-input-item:focus-within {
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 0 2px var(--accent-primary-glow);
+    }
+
+    .code-label-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      min-width: 44px;
+      text-transform: uppercase;
+      font-family: var(--font-mono);
+    }
+
+    .code-value-input {
+      background: transparent;
+      border: none;
+      color: var(--text-primary);
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      width: 100%;
+      outline: none;
+    }
+
+    .btn-copy-code {
+      padding: 4px 8px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-card);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .btn-copy-code:hover {
+      color: #ffffff;
+      background: var(--accent-primary);
+      border-color: var(--accent-primary);
+    }
+
+    /* WCAG Contrast */
+    .wcag-metric-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .wcag-box {
+      padding: 10px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-input);
+      border: 1px solid var(--border-subtle);
+      text-align: center;
+    }
+
+    .wcag-title {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .wcag-ratio {
+      font-size: 1rem;
+      font-weight: 800;
+      font-family: var(--font-mono);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .wcag-pill {
+      font-size: 0.68rem;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+      text-transform: uppercase;
+      display: inline-block;
+    }
+
+    .wcag-pill.pass-aaa { background: rgba(16, 185, 129, 0.2); color: #10b981; border: 1px solid #10b981; }
+    .wcag-pill.pass-aa { background: rgba(59, 130, 246, 0.2); color: #3b82f6; border: 1px solid #3b82f6; }
+    .wcag-pill.pass-aa-lg { background: rgba(245, 158, 11, 0.2); color: #f59e0b; border: 1px solid #f59e0b; }
+    .wcag-pill.fail { background: rgba(244, 63, 94, 0.2); color: #f43f5e; border: 1px solid #f43f5e; }
+
+    /* Dominant Palette */
+    .dominant-palette-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .dominant-swatch-item {
+      display: flex;
+      flex-direction: column;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      cursor: pointer;
+      transition: var(--transition);
+      background: var(--bg-input);
+    }
+
+    .dominant-swatch-item:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent-primary);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    .dominant-swatch-item .swatch-color {
+      height: 38px;
+      width: 100%;
+    }
+
+    .dominant-swatch-item .swatch-info {
+      padding: 4px 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.68rem;
+      font-family: var(--font-mono);
+    }
+
+    .swatch-hex { font-weight: 600; color: var(--text-primary); }
+    .swatch-pct { color: var(--text-muted); }
+
+    /* User Captured Palette */
+    .captured-palette-box {
+      margin-top: 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+    }
+
+    .captured-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .captured-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .captured-title h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .badge-count {
+      background: var(--accent-primary);
+      color: #ffffff;
+      font-size: 0.72rem;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+    }
+
+    .captured-swatches-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      min-height: 52px;
+      padding: 10px;
+      border-radius: var(--radius-md);
+      background: var(--bg-input);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .captured-swatch-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 8px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: 0.75rem;
+      font-family: var(--font-mono);
+    }
+
+    .captured-swatch-item:hover {
+      border-color: var(--accent-cyan);
+      transform: translateY(-1px);
+    }
+
+    .captured-swatch-item .swatch-box {
+      width: 14px;
+      height: 14px;
+      border-radius: 3px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .empty-palette-state {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      padding: 8px 4px;
+    }
+
+    /* Toast Notification */
+    .app-toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #1e1b4b;
+      color: #e0e7ff;
+      border: 1px solid var(--accent-primary);
+      padding: 10px 18px;
+      border-radius: var(--radius-md);
+      font-size: 0.85rem;
+      font-weight: 600;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+      z-index: 10000;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .app-toast.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+
+  <!-- Schema.org WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Image Color Picker (Pixel EyeDropper & Palette Extractor)",
+    "url": "https://www.caixadodev.com.br/en/image-color-picker",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript and HTML5 Canvas",
+    "description": "Extract exact pixel colors from any image with a real-time magnifying loupe, EyeDropper API, instant color conversions (HEX, RGB, HSL, CMYK), WCAG contrast checks, and dominant palette extraction. 100% client-side.",
+    "inLanguage": "en-US",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+</head>
+<body class="standalone-page">
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="/" class="brand" title="Caixa do Dev - Free Developer Tools">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Caixa do Dev</span>
+          <span class="brand-badge">42 Dev Tools</span>
+        </div>
+      </a>
+
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <nav>
+          <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/gerador-de-cpf">CPF Generator</a></li>
+            <li><a href="/conversor-de-cores">Color Converter</a></li>
+            <li><a href="/json-para-typescript">JSON &rarr; TS</a></li>
+            <li><a href="/pages/sobre.html">About</a></li>
+            <li><a href="/pages/contato.html">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="lang-switch" aria-label="Idioma / Language">
+          <a href="/seletor-de-cores-imagem" class="lang-btn" title="Versão em Português">🇧🇷 PT</a>
+          <span class="lang-sep">/</span>
+          <span class="lang-btn active" title="English Version">🇺🇸 EN</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container" style="padding-top: 32px; padding-bottom: 60px;">
+    
+    <div class="tool-breadcrumbs">
+      <a href="/">&larr; Home</a> / <a href="/conversor-de-cores">Colors</a> / <span>Image Color Picker (Pixel EyeDropper)</span>
+    </div>
+
+    <div class="privacy-badge">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      100% Client-Side In-Browser Processing (Your images are never sent to any server)
+    </div>
+
+    <!-- Tool Header Area -->
+    <div class="tool-header-area" style="margin-top: 14px; margin-bottom: 20px;">
+      <div class="tool-title-group">
+        <h1 style="font-size: 2rem; font-weight: 800; color: var(--text-primary); margin-bottom: 6px;">Image Color Picker (EyeDropper & Palette Extractor)</h1>
+        <p style="color: var(--text-secondary); font-size: 0.95rem;">Upload, drag &amp; drop, or paste an image (<kbd style="background: var(--bg-card); padding: 2px 6px; border-radius: 4px; border: 1px solid var(--border-subtle); font-family: var(--font-mono); font-size: 0.8rem;">Ctrl+V</kbd>) to sample exact pixel colors with real-time magnifying loupe.</p>
+      </div>
+    </div>
+
+    <!-- Main Workspace Layout -->
+    <div class="color-picker-workspace">
+      
+      <!-- Left Column: Canvas and Toolbar -->
+      <div class="canvas-container-card">
+        
+        <div class="toolbar-actions">
+          <div class="toolbar-left">
+            <input type="file" id="image-file-input" accept="image/*" style="display: none;">
+            <button id="btn-upload-trigger" class="btn-action btn-primary-action">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              Upload Image
+            </button>
+
+            <button id="btn-eyedropper-native" class="btn-action" style="display: none;" title="Sample color from entire screen via native EyeDropper API">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 22l1-1 4-4-2-2 4-4 2 2 5-5a2.83 2.83 0 0 1 4 4l-5 5 2 2-4 4-2-2-4 4-1 1z"/></svg>
+              Screen EyeDropper
+            </button>
+
+            <span id="image-dimensions-badge" class="badge-status badge-neutral" style="font-family: var(--font-mono); font-size: 0.75rem;">740 × 420 px</span>
+          </div>
+
+          <div class="toolbar-right">
+            <div class="presets-strip">
+              <span>Presets:</span>
+              <button class="btn-preset-chip" data-preset="ui">UI Mockup</button>
+              <button class="btn-preset-chip" data-preset="sunset">Sunset Landscape</button>
+              <button class="btn-preset-chip" data-preset="neon">Neon Cyberpunk</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Canvas Viewport with Drag and Drop -->
+        <div id="canvas-drop-zone" class="canvas-viewport-wrapper">
+          <canvas id="image-canvas" width="740" height="420"></canvas>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: var(--text-muted); flex-wrap: wrap; gap: 8px;">
+          <span>💡 Tip: Click or tap to pick a color. Hover to inspect with the magnifying loupe.</span>
+          <span>Supports PNG, JPG, WEBP, SVG, GIF, AVIF and Ctrl+V</span>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Color Inspector -->
+      <div class="inspector-sidebar">
+        
+        <div class="inspector-card">
+          <div class="selected-hero-box">
+            <div id="preview-selected-color" class="selected-swatch-large" style="background-color: #6366f1;"></div>
+            <div class="selected-meta-title">
+              <h2 id="selected-color-name">Purple / Indigo</h2>
+              <p>Inspected pixel from image</p>
+            </div>
+          </div>
+
+          <!-- Color Code Fields -->
+          <div class="color-code-row">
+            <div class="code-input-item">
+              <span class="code-label-tag">HEX</span>
+              <input type="text" id="input-color-hex" class="code-value-input" value="#6366F1" readonly>
+              <button class="btn-copy-code" onclick="copyText(document.getElementById('input-color-hex').value)">Copy</button>
+            </div>
+
+            <div class="code-input-item">
+              <span class="code-label-tag">RGB</span>
+              <input type="text" id="input-color-rgb" class="code-value-input" value="rgb(99, 102, 241)" readonly>
+              <button class="btn-copy-code" onclick="copyText(document.getElementById('input-color-rgb').value)">Copy</button>
+            </div>
+
+            <div class="code-input-item">
+              <span class="code-label-tag">HSL</span>
+              <input type="text" id="input-color-hsl" class="code-value-input" value="hsl(239, 84%, 67%)" readonly>
+              <button class="btn-copy-code" onclick="copyText(document.getElementById('input-color-hsl').value)">Copy</button>
+            </div>
+
+            <div class="code-input-item">
+              <span class="code-label-tag">CMYK</span>
+              <input type="text" id="input-color-cmyk" class="code-value-input" value="cmyk(59%, 58%, 0%, 5%)" readonly>
+              <button class="btn-copy-code" onclick="copyText(document.getElementById('input-color-cmyk').value)">Copy</button>
+            </div>
+
+            <div class="code-input-item">
+              <span class="code-label-tag">CSS</span>
+              <input type="text" id="input-color-cssvar" class="code-value-input" value="--picked-color: #6366F1;" readonly>
+              <button class="btn-copy-code" onclick="copyText(document.getElementById('input-color-cssvar').value)">Copy</button>
+            </div>
+          </div>
+
+          <!-- WCAG Contrast Evaluation -->
+          <div class="wcag-metric-grid">
+            <div class="wcag-box">
+              <span class="wcag-title">White Text</span>
+              <span id="wcag-white-ratio" class="wcag-ratio">4.8:1</span>
+              <span id="wcag-white-badge" class="wcag-pill pass-aa">AA Pass</span>
+            </div>
+            <div class="wcag-box">
+              <span class="wcag-title">Black Text</span>
+              <span id="wcag-black-ratio" class="wcag-ratio">5.2:1</span>
+              <span id="wcag-black-badge" class="wcag-pill pass-aa">AA Pass</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Dominant Palette of Image -->
+        <div class="inspector-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <h3 style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary);">Dominant Palette</h3>
+            <span style="font-size: 0.72rem; color: var(--text-muted);">Top 8 Colors</span>
+          </div>
+          <p style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 8px;">Most frequent color tones detected in image:</p>
+          
+          <div id="dominant-palette-container" class="dominant-palette-grid">
+            <!-- Dynamically populated via JavaScript -->
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- User Captured Palette (History) -->
+    <div class="captured-palette-box">
+      <div class="captured-header">
+        <div class="captured-title">
+          <h3>Captured Palette History</h3>
+          <span id="captured-palette-count" class="badge-count">0</span>
+        </div>
+
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <button id="btn-copy-all-hex" class="btn-action" style="font-size: 0.78rem;">
+            Copy All HEX
+          </button>
+          <button id="btn-export-css" class="btn-action" style="font-size: 0.78rem;">
+            Export :root CSS
+          </button>
+          <button id="btn-export-json" class="btn-action" style="font-size: 0.78rem;">
+            Export JSON
+          </button>
+          <button id="btn-clear-palette" class="btn-action" style="font-size: 0.78rem; color: var(--accent-rose);">
+            Clear
+          </button>
+        </div>
+      </div>
+
+      <div id="captured-palette-container" class="captured-swatches-strip">
+        <div class="empty-palette-state">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/></svg>
+          <span>Hover or tap on the image to pick pixel colors.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating Magnifying Loupe -->
+    <div id="floating-loupe-wrapper" class="floating-loupe-wrapper">
+      <div class="loupe-canvas-box">
+        <canvas id="loupe-canvas" width="120" height="120"></canvas>
+      </div>
+      <div class="loupe-meta">
+        <span id="loupe-hex" class="loupe-hex">#6366F1</span>
+        <span id="loupe-coords" class="loupe-coords">X: 140 Y: 160</span>
+      </div>
+    </div>
+
+    <!-- Technical SEO Article & FAQ -->
+    <article class="tool-seo-guide" style="margin-top: 40px;">
+      <h2>How Pixel-Exact Image Color Picking Works (Online EyeDropper)</h2>
+      <p>In digital product design, frontend web development, and digital graphics, identifying the exact chromatic value of visual elements from screenshots, Figma mockups, logos, or photos is an everyday requirement. <strong>Caixa do Dev's Image Color Picker</strong> pairs the precision of the <strong>HTML5 Canvas API</strong> with the modern <strong>W3C EyeDropper API</strong> to allow instantaneous color sampling with a real-time magnifying loupe.</p>
+
+      <h3>1. 100% Client-Side Architecture &amp; Zero Cloud Uploads</h3>
+      <p>Unlike traditional online color pickers that upload your personal pictures or mockups to remote backend servers for processing, our tool executes <strong>the entire decoding and pixel extraction pipeline directly within your browser's memory</strong> using <code>FileReader</code> and <code>CanvasRenderingContext2D.getImageData()</code>:</p>
+      <ul>
+        <li><strong>Confidential Design Protection:</strong> Unreleased UI mockups, financial dashboards, internal business metrics, and copyrighted assets never leave your computer.</li>
+        <li><strong>Zero Network Latency:</strong> Immediate rendering. When you drag, upload, or paste (<kbd>Ctrl+V</kbd>) an image, the canvas processes pixels in milliseconds.</li>
+        <li><strong>Offline Capability:</strong> Once loaded, the utility remains completely functional even without an active internet connection.</li>
+      </ul>
+
+      <h3>2. How the Pixel Magnifier Loupe Works</h3>
+      <p>On high-density displays (such as Retina, 4K, or OLED screens), inspecting a fine 1px line, border, or text edge with a regular mouse cursor can be tricky. To solve this, our magnifying loupe provides:</p>
+      <ol>
+        <li><strong>Neighborhood Sampling (11×11 pixels):</strong> The algorithm reads the square pixel matrix centered at your cursor coordinates.</li>
+        <li><strong>Nearest-Neighbor Rendering (No Blur):</strong> Pixels are rendered on the loupe with <code>image-rendering: pixelated</code>, avoiding artificial anti-aliasing or smoothing that alters the original color code.</li>
+        <li><strong>Dual-Contrast Reticle:</strong> The center targeted pixel is highlighted with a dual-layer black-and-white border, ensuring high visibility over both light and dark backgrounds.</li>
+      </ol>
+
+      <h3>3. Dominant Color Palette Extraction via Quantization</h3>
+      <p>In addition to picking individual pixel points, this tool analyzes the entire graphic using spatial color quantization. The algorithm groups millions of raw pixels into chromatic clusters to identify the <strong>top 8 dominant colors</strong> and estimates their visual occupancy percentage, allowing designers and developers to construct balanced design tokens and theme palettes in seconds.</p>
+
+      <h3>4. Color Spaces &amp; Formats Comparison</h3>
+      <table style="width: 100%; border-collapse: collapse; margin-top: 14px; margin-bottom: 20px; font-size: 0.9rem;">
+        <thead>
+          <tr style="background: var(--bg-card); text-align: left; border-bottom: 2px solid var(--border-subtle);">
+            <th style="padding: 10px;">Format</th>
+            <th style="padding: 10px;">Example</th>
+            <th style="padding: 10px;">Primary Use Case</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--border-subtle);">
+            <td style="padding: 10px; font-weight: 600;">HEX</td>
+            <td style="padding: 10px; font-family: var(--font-mono); color: var(--accent-cyan);">#6366F1</td>
+            <td style="padding: 10px;">CSS tokens, Figma styles, Tailwind CSS configs, and web UI.</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border-subtle);">
+            <td style="padding: 10px; font-weight: 600;">RGB / RGBA</td>
+            <td style="padding: 10px; font-family: var(--font-mono); color: var(--accent-cyan);">rgb(99, 102, 241)</td>
+            <td style="padding: 10px;">Additive digital displays, canvas drawing, and opacity with alpha channel.</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border-subtle);">
+            <td style="padding: 10px; font-weight: 600;">HSL</td>
+            <td style="padding: 10px; font-family: var(--font-mono); color: var(--accent-cyan);">hsl(239, 84%, 67%)</td>
+            <td style="padding: 10px;">Dynamic theme generation, lightness adjustments, and Dark Mode switching.</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--border-subtle);">
+            <td style="padding: 10px; font-weight: 600;">CMYK</td>
+            <td style="padding: 10px; font-family: var(--font-mono); color: var(--accent-cyan);">cmyk(59%, 58%, 0%, 5%)</td>
+            <td style="padding: 10px;">Subtractive color printing (Cyan, Magenta, Yellow, Key/Black).</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Frequently Asked Questions (FAQ)</h3>
+      <div class="faq-list" style="margin-top: 16px;">
+        <div class="faq-item">
+          <div class="faq-question"><span>Can I paste a screenshot directly from my clipboard (Ctrl + V)?</span><span>+</span></div>
+          <div class="faq-answer">Yes! Simply take a screenshot (PrintScreen, Win + Shift + S on Windows, or Cmd + Shift + 4 on Mac) and press <strong>Ctrl + V</strong> anywhere on the webpage. The image will instantly render onto the canvas.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question"><span>What is the "Screen EyeDropper" button?</span><span>+</span></div>
+          <div class="faq-answer">This button activates the native <strong>EyeDropper API</strong> available on modern Chromium-based browsers (Google Chrome, Microsoft Edge, Opera, Brave). It allows you to move your color picker cursor outside the browser window and sample colors from any application open on your monitor.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question"><span>Are my uploaded images stored or sent to a server?</span><span>+</span></div>
+          <div class="faq-answer">No. Caixa do Dev operates strictly on a <strong>100% Client-Side</strong> principle. Not a single byte of your image is ever transmitted to the cloud; all computations occur strictly within your browser's local RAM.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question"><span>How do I export my picked colors into my project?</span><span>+</span></div>
+          <div class="faq-answer">In the "Captured Palette History" section, click "Copy All HEX", "Export :root CSS" (ready to paste into your style.css or design system tokens), or "Export JSON" for automated programmatic integration.</div>
+        </div>
+      </div>
+    </article>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <span class="brand-name">Caixa do Dev</span>
+        <p>42 free, fast, and 100% client-side utility tools for developers worldwide.</p>
+      </div>
+      <div class="footer-links">
+        <a href="/pages/privacidade.html">Privacy</a>
+        <a href="/pages/termos.html">Terms</a>
+        <a href="/pages/sobre.html">About</a>
+        <a href="/pages/contato.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Tool Script -->
+  <script src="/js/tools/image-color-picker.js?v=20261016"></script>
+</body>
+</html>
