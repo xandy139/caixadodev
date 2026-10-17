@@ -4,10 +4,17 @@
  */
 
 const URL_PARSER = {
-  SAMPLE: 'https://api.lojaexemplo.com.br:8080/v2/produtos/busca?categoria=notebooks&preco_max=4500.50&ordenar=menor_preco&utm_source=google_ads&utm_campaign=black_friday#produtos-lista',
+  get SAMPLE() {
+    const isEn = typeof document !== 'undefined' && document.documentElement.lang === 'en';
+    if (isEn) {
+      return 'https://api.example.com:8080/v2/products/search?category=laptops&max_price=1200&sort=asc&utm_source=google_ads&utm_campaign=summer_sale#results';
+    }
+    return 'https://api.lojaexemplo.com.br:8080/v2/produtos/busca?categoria=notebooks&preco_max=4500.50&ordenar=menor_preco&utm_source=google_ads&utm_campaign=black_friday#produtos-lista';
+  },
 
   parse(urlString) {
     if (!urlString) return null;
+    const isEn = typeof document !== 'undefined' && document.documentElement.lang === 'en';
     try {
       let raw = urlString.trim();
       if (!/^https?:\/\//i.test(raw)) {
@@ -34,7 +41,7 @@ const URL_PARSER = {
     } catch (e) {
       return {
         success: false,
-        message: 'URL inválida. Verifique o formato inserido.'
+        message: isEn ? 'Invalid URL. Please verify the format.' : 'URL inválida. Verifique o formato inserido.'
       };
     }
   },

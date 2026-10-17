@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9HZFENSYKS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-9HZFENSYKS');
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3052162962623831"
+     crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Box-Shadow & Glassmorphism Generator (Live Sliders) | Caixa do Dev</title>
+  <meta name="description" content="Generate smooth CSS box shadows and modern glassmorphism styling with interactive visual sliders for blur, spread, offsets, and opacity. Copy ready-to-use CSS rules.">
+  <meta name="keywords" content="box shadow generator, css shadow generator online, glassmorphism css generator, smooth box shadow, inset shadow css">
+  <meta name="author" content="Alexandre Marcelino">
+  <meta name="robots" content="index, follow">
+
+  <!-- Canonical, Hreflang & Open Graph -->
+  <link rel="canonical" href="https://www.caixadodev.com.br/en/box-shadow-generator">
+  <link rel="alternate" hreflang="pt-BR" href="https://www.caixadodev.com.br/gerador-de-box-shadow">
+  <link rel="alternate" hreflang="en" href="https://www.caixadodev.com.br/en/box-shadow-generator">
+  <link rel="alternate" hreflang="x-default" href="https://www.caixadodev.com.br/gerador-de-box-shadow">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.caixadodev.com.br/en/box-shadow-generator">
+  <meta property="og:title" content="CSS Box-Shadow & Glassmorphism Generator (Live Sliders) | Caixa do Dev">
+  <meta property="og:description" content="Interactive visual generator for smooth CSS elevation, box shadows, and frosted glass effects with clean CSS copy.">
+  <meta property="og:image" content="https://www.caixadodev.com.br/assets/og-cover.png">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'><path d='M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/css/style.css?v=20261017c">
+  <link rel="stylesheet" href="/css/tools.css?v=20261017c">
+
+  <!-- Schema.org WebApplication & FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "CSS Box-Shadow & Glassmorphism Generator",
+        "url": "https://www.caixadodev.com.br/en/box-shadow-generator",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript",
+        "description": "Visual designer for creating realistic layered CSS shadows, elevation profiles, and glassmorphism cards in your browser.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is the difference between box-shadow and drop-shadow in CSS?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The box-shadow property projects a shadow around the rectangular bounding box of an element. The filter: drop-shadow() function casts shadows strictly conforming to the non-transparent contour of internal alpha channels (such as SVG icons or transparent PNGs)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does heavy use of box-shadow impact browser rendering performance?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Large blur radii and spread values force browser engines to execute expensive GPU paint passes during scrolling or continuous DOM transitions. For smooth 60fps animations, prefer animating transform and opacity rather than box-shadow."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How can I achieve more realistic and natural shadows?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Instead of a single high-opacity black shadow, combine two or three subtle layered shadows and tint the shadow color slightly with the background hue rather than using pure black."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="standalone-page">
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="/en/" class="brand" title="Caixa do Dev - Home">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Caixa do Dev</span>
+          <span class="brand-badge">42 Tools</span>
+        </div>
+      </a>
+
+      <div class="nav-actions">
+        <nav>
+          <ul class="nav-links">
+            <li><a href="/en/">Home</a></li>
+            <li><a href="/en/box-shadow-generator" class="active">Box Shadow</a></li>
+            <li><a href="/en/html-css-beautifier">HTML/CSS</a></li>
+            <li><a href="/en/svg-optimizer">SVG</a></li>
+            <li><a href="/en/json-formatter">JSON</a></li>
+            <li><a href="/en/jwt-decoder">JWT</a></li>
+            <li><a href="/artigos">Articles</a></li>
+            <li><a href="/pages/sobre.html">About</a></li>
+          </ul>
+        </nav>
+        <div class="lang-switch" aria-label="Idioma / Language">
+          <a href="/gerador-de-box-shadow" class="lang-btn" title="Versão em Português">🇧🇷 PT</a>
+          <span class="lang-sep">/</span>
+          <span class="lang-btn active" title="English Version">🇺🇸 EN</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container" style="padding-top: 32px; padding-bottom: 60px;">
+    
+    <div class="tool-breadcrumbs">
+      <a href="/en/">&larr; Home</a> / <span>CSS Box Shadow Generator</span>
+    </div>
+
+    <div class="privacy-badge">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      100% Client-Side In-Browser Computation (Zero remote network requests)
+    </div>
+
+    <!-- Tool Interface -->
+    <section class="tool-view standalone-active" data-tool-id="css-generator">
+      
+      <div class="tool-interface-card">
+        <div class="tool-header-area">
+          <div class="tool-title-group">
+            <h1>CSS Box-Shadow &amp; Glassmorphism Generator</h1>
+            <p>Visual control for soft elevation, diffuse shadows, and frosted glass effects with clean CSS output.</p>
+          </div>
+          <div class="tool-actions-bar">
+            <button id="btn-copy-shadow-css" class="btn btn-primary">Copy CSS Code</button>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div>
+            <div class="shadow-preview-box">
+              <div id="shadow-target-el" class="shadow-target-element">Preview Card</div>
+            </div>
+
+            <div class="pane-header">
+              <span class="pane-title">Generated CSS Code</span>
+            </div>
+            <pre class="code-preview"><code id="shadow-css-code" style="color: var(--accent-emerald);">box-shadow: 0px 10px 25px -5px rgba(0, 0, 0, 0.15);</code></pre>
+          </div>
+
+          <div>
+            <div class="form-group">
+              <label class="form-label">Horizontal Offset (X)</label>
+              <input type="range" id="shadow-x" min="-50" max="50" value="0" class="form-control" style="padding: 0;">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Vertical Offset (Y)</label>
+              <input type="range" id="shadow-y" min="-50" max="50" value="10" class="form-control" style="padding: 0;">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Blur Radius</label>
+              <input type="range" id="shadow-blur" min="0" max="100" value="25" class="form-control" style="padding: 0;">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Spread Radius</label>
+              <input type="range" id="shadow-spread" min="-25" max="50" value="-5" class="form-control" style="padding: 0;">
+            </div>
+            <div class="grid-2">
+              <div class="form-group">
+                <label class="form-label">Shadow Color</label>
+                <input type="color" id="shadow-color" value="#000000" class="form-control" style="height: 40px; padding: 2px;">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Opacity</label>
+                <input type="range" id="shadow-opacity" min="0" max="1" step="0.05" value="0.25" class="form-control" style="padding: 0;">
+              </div>
+            </div>
+            <label class="form-checkbox" style="margin-top: 10px;">
+              <input type="checkbox" id="shadow-inset">
+              <span>Inner Shadow (inset)</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <article class="tool-seo-guide">
+        <h2>How the CSS Box-Shadow Property Works &amp; Modern UI Depth</h2>
+        <p>The CSS3 <strong>box-shadow</strong> property casts drop shadows around an element's framing box, creating spatial depth, z-elevation hierarchies, and tactile tactile cues in modern design systems. From Google's Material elevation levels to cutting-edge glassmorphic UI dashboards, fine-tuning shadow parameters is an essential craft in frontend engineering.</p>
+
+        <h3>1. The 5 Core Box-Shadow Arguments</h3>
+        <pre style="background: var(--bg-surface); padding: 14px 18px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); color: #38bdf8; font-family: 'JetBrains Mono', monospace; font-size: 0.88rem;">
+box-shadow: [inset] &lt;offset-x&gt; &lt;offset-y&gt; &lt;blur-radius&gt; &lt;spread-radius&gt; &lt;color&gt;;
+        </pre>
+        <ul>
+          <li><strong>Offset-X:</strong> Horizontal offset. Positive values push the shadow to the right; negative values move it to the left.</li>
+          <li><strong>Offset-Y:</strong> Vertical offset. Positive values cast shadows downward (simulating an overhead light source).</li>
+          <li><strong>Blur Radius:</strong> Higher numbers soften and diffuse the shadow. A radius of 0 creates an uncompromising sharp edge.</li>
+          <li><strong>Spread Radius:</strong> Expands or contracts the shadow's dimensional footprint before blur calculations are computed.</li>
+          <li><strong>Inset:</strong> Optional keyword reversing the shadow orientation inside the element box (useful for recessed inputs and pressed buttons).</li>
+        </ul>
+
+        <h3>2. Crafting Natural, Realistic Shadows</h3>
+        <p>Harsh pure-black shadows (e.g., <code>rgba(0, 0, 0, 0.5)</code>) often make modern dark and light interfaces look artificial and dirty. Professional designers use two foundational techniques:</p>
+        <ol>
+          <li><strong>Layered Multi-Pass Shadows:</strong> Stacking two or three subtle shadows on the same element simulates physical volumetric ambient light dispersal.</li>
+          <li><strong>Hue Matching:</strong> Tinting the shadow with a subtle dark shade of the background canvas color creates cohesive visual harmony.</li>
+        </ol>
+
+        <h3>Frequently Asked Questions (FAQ)</h3>
+        <div class="faq-list" style="margin-top: 16px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>What is the difference between box-shadow and drop-shadow in CSS?</span><span>+</span></div>
+            <div class="faq-answer">The box-shadow property projects a shadow around the rectangular bounding box of an element. The filter: drop-shadow() function casts shadows strictly conforming to the non-transparent contour of internal alpha channels (such as SVG icons or transparent PNGs).</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Does heavy use of box-shadow impact browser rendering performance?</span><span>+</span></div>
+            <div class="faq-answer">Yes. Large blur radii and spread values force browser engines to execute expensive GPU paint passes during scrolling or continuous DOM transitions. For smooth 60fps animations, prefer animating transform and opacity rather than box-shadow.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>How can I achieve more realistic and natural shadows?</span><span>+</span></div>
+            <div class="faq-answer">Instead of a single high-opacity black shadow, combine two or three subtle layered shadows and tint the shadow color slightly with the background hue rather than using pure black.</div>
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- Recommended Tools -->
+    <section style="margin-top: 60px;">
+      <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 20px; color: var(--text-primary);">Explore More Developer Tools</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px;">
+        <a href="/en/html-css-beautifier" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">HTML/CSS Beautifier</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Format and minify HTML documents and CSS stylesheets with 2-space indentation.</p>
+        </a>
+        <a href="/en/svg-optimizer" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">SVG Optimizer</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Minify vector SVGs and convert to safe CSS data URIs or base64 strings.</p>
+        </a>
+        <a href="/en/json-formatter" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">JSON Formatter</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Prettify, validate, and minify complex JSON payloads with syntax highlighting.</p>
+        </a>
+        <a href="/en/markdown-editor" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Markdown Editor</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Split-view Markdown live editor with GFM tables and one-click HTML copy.</p>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-grid">
+        <div class="footer-col footer-col-wide">
+          <div class="footer-brand">
+            <span class="footer-brand-title">Caixa do Dev</span>
+            <span class="footer-badge">100% Client-Side</span>
+          </div>
+          <p>The ultimate free browser-based developer toolbox for engineers, QA analysts, and DevOps worldwide.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Pages</h4>
+          <ul>
+            <li><a href="/pages/sobre.html">About Us</a></li>
+            <li><a href="/pages/contato.html">Contact</a></li>
+            <li><a href="/pages/privacidade.html">Privacy Policy</a></li>
+            <li><a href="/pages/termos.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Caixa do Dev. All rights reserved.</span>
+        <span>High-performance local client-side processing with zero telemetry.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
+  <!-- Scripts -->
+  <script src="/js/tools/css-generator.js?v=20261017c"></script>
+  <script src="/js/app.js?v=20261017c"></script>
+</body>
+</html>

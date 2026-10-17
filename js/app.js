@@ -1460,13 +1460,14 @@ function initToolEvents() {
   if (httpCardsGrid) {
     const renderHttpCodes = (query = '', cat = 'all') => {
       const list = HTTP_STATUS_TOOL.filter(query, cat);
+      const isEn = document.documentElement.lang === 'en';
       httpCardsGrid.innerHTML = list.map(c => `
         <div class="http-status-card">
           <div style="display: flex; justify-content: space-between; align-items: baseline;">
             <span class="http-code-num c${c.category}">${c.code}</span>
             <span class="tool-card-badge">${c.phrase}</span>
           </div>
-          <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;">${c.desc}</p>
+          <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;">${isEn ? (c.descEn || c.desc) : c.desc}</p>
         </div>
       `).join('');
     };
@@ -1518,23 +1519,26 @@ function initToolEvents() {
 
   if (btnCopyCard) {
     btnCopyCard.addEventListener('click', () => {
-      const full = `Número de Teste (Luhn): ${cardPreviewNumber.textContent} (${cardPreviewBrand.textContent})`;
+      const isEn = document.documentElement.lang === 'en';
+      const prefix = isEn ? 'Test Card Number (Luhn)' : 'Número de Teste (Luhn)';
+      const full = `${prefix}: ${cardPreviewNumber.textContent} (${cardPreviewBrand.textContent})`;
       copyToClipboard(full);
     });
   }
 
   if (inputValidateCard) {
     inputValidateCard.addEventListener('input', (e) => {
+      const isEn = document.documentElement.lang === 'en';
       const val = e.target.value.trim();
       if (!val) {
         badgeValidateCard.className = 'badge-status badge-neutral';
-        badgeValidateCard.textContent = 'Aguardando número';
+        badgeValidateCard.textContent = isEn ? 'Awaiting card number' : 'Aguardando número';
         return;
       }
       const res = CREDIT_CARD_TOOL.validate(val);
       if (res.valid) {
         badgeValidateCard.className = 'badge-status badge-valid';
-        badgeValidateCard.textContent = `Válido (${res.brand})`;
+        badgeValidateCard.textContent = isEn ? `Valid (${res.brand})` : `Válido (${res.brand})`;
       } else {
         badgeValidateCard.className = 'badge-status badge-invalid';
         badgeValidateCard.textContent = res.reason;
@@ -1679,7 +1683,8 @@ function initToolEvents() {
       const qty = parseInt(selLoremQty?.value || '3');
       textInputArea.value = TEXT_TOOLS.generateLorem(qty);
       updateTextStats();
-      showToast('Texto Lorem Ipsum gerado!');
+      const isEn = document.documentElement.lang === 'en';
+      showToast(isEn ? 'Lorem Ipsum dummy text generated!' : 'Texto Lorem Ipsum gerado!');
     });
   }
 
@@ -1707,7 +1712,8 @@ function initToolEvents() {
   if (btnDownloadQr && qrcodeCanvas) {
     btnDownloadQr.addEventListener('click', () => {
       QRCODE_TOOL.download(qrcodeCanvas, 'qrcode-caixadodev.png');
-      showToast('Download do QR Code iniciado!');
+      const isEn = document.documentElement.lang === 'en';
+      showToast(isEn ? 'QR Code download started!' : 'Download do QR Code iniciado!');
     });
   }
 
@@ -2245,15 +2251,16 @@ function initToolEvents() {
       cronInput.value = exp;
       cronExplanation.textContent = CRON_TOOL.explain(exp);
       const runs = CRON_TOOL.getNextExecutions(exp, 5);
+      const isEn = document.documentElement.lang === 'en';
       if (runs.length > 0) {
         cronRunsList.innerHTML = runs.map((d, i) => `
           <div class="cron-run-item">
             <span>#${i + 1}</span>
-            <span>${d.toLocaleDateString('pt-BR')} ${d.toLocaleTimeString('pt-BR')}</span>
+            <span>${d.toLocaleDateString(isEn ? 'en-US' : 'pt-BR')} ${d.toLocaleTimeString(isEn ? 'en-US' : 'pt-BR')}</span>
           </div>
         `).join('');
       } else {
-        cronRunsList.innerHTML = `<div style="color: var(--text-muted); font-size: 0.85rem;">Próximas execuções indisponíveis para esta expressão.</div>`;
+        cronRunsList.innerHTML = `<div style="color: var(--text-muted); font-size: 0.85rem;">${isEn ? 'Next executions unavailable for this expression.' : 'Próximas execuções indisponíveis para esta expressão.'}</div>`;
       }
     };
 
@@ -2346,19 +2353,23 @@ function initToolEvents() {
   if (beautifierInput) {
     if (btnFmtHtml) btnFmtHtml.addEventListener('click', () => {
       beautifierInput.value = CODE_BEAUTIFIER.formatHTML(beautifierInput.value);
-      showToast('HTML Formatado!');
+      const isEn = document.documentElement.lang === 'en';
+      showToast(isEn ? 'HTML Formatted!' : 'HTML Formatado!');
     });
     if (btnMinHtml) btnMinHtml.addEventListener('click', () => {
       beautifierInput.value = CODE_BEAUTIFIER.minifyHTML(beautifierInput.value);
-      showToast('HTML Minificado!');
+      const isEn = document.documentElement.lang === 'en';
+      showToast(isEn ? 'HTML Minified!' : 'HTML Minificado!');
     });
     if (btnFmtCss) btnFmtCss.addEventListener('click', () => {
       beautifierInput.value = CODE_BEAUTIFIER.formatCSS(beautifierInput.value);
-      showToast('CSS Formatado!');
+      const isEn = document.documentElement.lang === 'en';
+      showToast(isEn ? 'CSS Formatted!' : 'CSS Formatado!');
     });
     if (btnMinCss) btnMinCss.addEventListener('click', () => {
       beautifierInput.value = CODE_BEAUTIFIER.minifyCSS(beautifierInput.value);
-      showToast('CSS Minificado!');
+      const isEn = document.documentElement.lang === 'en';
+      showToast(isEn ? 'CSS Minified!' : 'CSS Minificado!');
     });
     if (btnSampleHtml) btnSampleHtml.addEventListener('click', () => {
       beautifierInput.value = CODE_BEAUTIFIER.SAMPLE_HTML;
@@ -2382,9 +2393,10 @@ function initToolEvents() {
 
   if (urlInput && btnParseUrl) {
     const runParseUrl = () => {
+      const isEn = document.documentElement.lang === 'en';
       const res = URL_PARSER.parse(urlInput.value || URL_PARSER.SAMPLE);
       if (!res.success) {
-        showToast('URL inválida');
+        showToast(isEn ? 'Invalid URL' : 'URL inválida');
         return;
       }
       if (urlProto) urlProto.textContent = res.protocol;
@@ -2394,7 +2406,7 @@ function initToolEvents() {
 
       if (urlParamsBody) {
         if (res.params.length === 0) {
-          urlParamsBody.innerHTML = `<tr><td colspan="2" style="color: var(--text-muted); text-align: center; padding: 12px;">Nenhum parâmetro de busca (?chave=valor) encontrado.</td></tr>`;
+          urlParamsBody.innerHTML = `<tr><td colspan="2" style="color: var(--text-muted); text-align: center; padding: 12px;">${isEn ? 'No query parameters (?key=value) found.' : 'Nenhum parâmetro de busca (?chave=valor) encontrado.'}</td></tr>`;
         } else {
           urlParamsBody.innerHTML = res.params.map(p => `
             <tr>
@@ -2547,25 +2559,29 @@ function initToolEvents() {
       const val = parseFloat(inputStorageVal.value) || 1;
       const unit = selectStorageUnit.value;
       const speed = parseFloat(inputStorageSpeed ? inputStorageSpeed.value : 100) || 100;
+      const isEn = document.documentElement.lang === 'en';
+      const loc = isEn ? 'en-US' : 'pt-BR';
 
       const conv = STORAGE_CALC.convert(val, unit);
       const time = STORAGE_CALC.calculateTransferTime(val, unit, speed);
 
       if (storageTimeDisplay) {
-        storageTimeDisplay.textContent = `Tempo estimado: ${time.formatted} (a ${speed} Mbps)`;
+        storageTimeDisplay.textContent = isEn 
+          ? `Estimated transfer time: ${time.formatted} (at ${speed} Mbps)`
+          : `Tempo estimado: ${time.formatted} (a ${speed} Mbps)`;
       }
 
       if (storageResultsTbody) {
         storageResultsTbody.innerHTML = `
-          <tr><td>Bytes (B)</td><td>${conv.bytes.toLocaleString('pt-BR')} B</td></tr>
-          <tr><td>Kilobytes (KB - 1000)</td><td>${conv.KB.toLocaleString('pt-BR', { maximumFractionDigits: 3 })} KB</td></tr>
-          <tr><td>Megabytes (MB - 1000)</td><td>${conv.MB.toLocaleString('pt-BR', { maximumFractionDigits: 3 })} MB</td></tr>
-          <tr><td>Gigabytes (GB - 1000)</td><td>${conv.GB.toLocaleString('pt-BR', { maximumFractionDigits: 4 })} GB</td></tr>
-          <tr><td>Terabytes (TB - 1000)</td><td>${conv.TB.toLocaleString('pt-BR', { maximumFractionDigits: 6 })} TB</td></tr>
-          <tr style="border-top: 2px solid var(--border-subtle);"><td>Kibibytes (KiB - 1024)</td><td>${conv.KiB.toLocaleString('pt-BR', { maximumFractionDigits: 3 })} KiB</td></tr>
-          <tr><td>Mebibytes (MiB - 1024)</td><td>${conv.MiB.toLocaleString('pt-BR', { maximumFractionDigits: 3 })} MiB</td></tr>
-          <tr><td>Gibibytes (GiB - 1024)</td><td>${conv.GiB.toLocaleString('pt-BR', { maximumFractionDigits: 4 })} GiB</td></tr>
-          <tr><td>Tebibytes (TiB - 1024)</td><td>${conv.TiB.toLocaleString('pt-BR', { maximumFractionDigits: 6 })} TiB</td></tr>
+          <tr><td>Bytes (B)</td><td>${conv.bytes.toLocaleString(loc)} B</td></tr>
+          <tr><td>Kilobytes (KB - 1000)</td><td>${conv.KB.toLocaleString(loc, { maximumFractionDigits: 3 })} KB</td></tr>
+          <tr><td>Megabytes (MB - 1000)</td><td>${conv.MB.toLocaleString(loc, { maximumFractionDigits: 3 })} MB</td></tr>
+          <tr><td>Gigabytes (GB - 1000)</td><td>${conv.GB.toLocaleString(loc, { maximumFractionDigits: 4 })} GB</td></tr>
+          <tr><td>Terabytes (TB - 1000)</td><td>${conv.TB.toLocaleString(loc, { maximumFractionDigits: 6 })} TB</td></tr>
+          <tr style="border-top: 2px solid var(--border-subtle);"><td>Kibibytes (KiB - 1024)</td><td>${conv.KiB.toLocaleString(loc, { maximumFractionDigits: 3 })} KiB</td></tr>
+          <tr><td>Mebibytes (MiB - 1024)</td><td>${conv.MiB.toLocaleString(loc, { maximumFractionDigits: 3 })} MiB</td></tr>
+          <tr><td>Gibibytes (GiB - 1024)</td><td>${conv.GiB.toLocaleString(loc, { maximumFractionDigits: 4 })} GiB</td></tr>
+          <tr><td>Tebibytes (TiB - 1024)</td><td>${conv.TiB.toLocaleString(loc, { maximumFractionDigits: 6 })} TiB</td></tr>
         `;
       }
     };
@@ -2608,19 +2624,22 @@ function initToolEvents() {
         const opt = SVG_TOOL.optimize(svgInput.value);
         svgOutput.value = opt;
         updateSvgPreview(opt);
-        showToast('SVG Minificado!');
+        const isEn = document.documentElement.lang === 'en';
+        showToast(isEn ? 'SVG Minified & Optimized!' : 'SVG Minificado!');
       });
     }
     if (btnSvgCssUri) {
       btnSvgCssUri.addEventListener('click', () => {
         svgOutput.value = SVG_TOOL.toCssDataUri(svgInput.value);
-        showToast('Data URI CSS gerado!');
+        const isEn = document.documentElement.lang === 'en';
+        showToast(isEn ? 'CSS Data URI generated!' : 'Data URI CSS gerado!');
       });
     }
     if (btnSvgB64) {
       btnSvgB64.addEventListener('click', () => {
         svgOutput.value = SVG_TOOL.toBase64Uri(svgInput.value);
-        showToast('Base64 URI gerado!');
+        const isEn = document.documentElement.lang === 'en';
+        showToast(isEn ? 'Base64 URI generated!' : 'Base64 URI gerado!');
       });
     }
     if (btnCopySvgOutput) {
@@ -2688,10 +2707,11 @@ function initFAQ() {
 // ========================
 function copyToClipboard(text) {
   if (!text) return;
+  const isEn = document.documentElement.lang === 'en';
   navigator.clipboard.writeText(text).then(() => {
-    showToast('Copiado para a área de transferência! ✨');
+    showToast(isEn ? 'Copied to clipboard! ✨' : 'Copiado para a área de transferência! ✨');
   }).catch(() => {
-    showToast('Falha ao copiar texto.');
+    showToast(isEn ? 'Failed to copy text.' : 'Falha ao copiar texto.');
   });
 }
 

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9HZFENSYKS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-9HZFENSYKS');
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3052162962623831"
+     crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cron Expression Generator & Parser (Schedule Translator) | Caixa do Dev</title>
+  <meta name="description" content="Generate, inspect, and translate crontab expressions into plain English. Live schedule calculator computing the next 5 upcoming executions in your browser.">
+  <meta name="keywords" content="cron expression generator, crontab guru online, cron parser, cron schedule calculator, next cron runs, unix cron format">
+  <meta name="author" content="Alexandre Marcelino">
+  <meta name="robots" content="index, follow">
+
+  <!-- Canonical, Hreflang & Open Graph -->
+  <link rel="canonical" href="https://www.caixadodev.com.br/en/cron-generator">
+  <link rel="alternate" hreflang="pt-BR" href="https://www.caixadodev.com.br/gerador-de-cron">
+  <link rel="alternate" hreflang="en" href="https://www.caixadodev.com.br/en/cron-generator">
+  <link rel="alternate" hreflang="x-default" href="https://www.caixadodev.com.br/gerador-de-cron">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.caixadodev.com.br/en/cron-generator">
+  <meta property="og:title" content="Cron Expression Generator & Parser (Schedule Translator) | Caixa do Dev">
+  <meta property="og:description" content="Translate cron schedules into plain English and compute upcoming execution timestamps in real time. 100% client-side.">
+  <meta property="og:image" content="https://www.caixadodev.com.br/assets/og-cover.png">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'><path d='M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/css/style.css?v=20261017c">
+  <link rel="stylesheet" href="/css/tools.css?v=20261017c">
+
+  <!-- Schema.org WebApplication & FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "Cron Expression Generator & Parser",
+        "url": "https://www.caixadodev.com.br/en/cron-generator",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript",
+        "description": "Generate and decode Unix crontab expressions into plain English with instant computation of next execution dates.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Which timezone is used when computing upcoming cron execution timestamps?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Upcoming execution timestamps are calculated in your browser's local timezone. Keep in mind that cloud services like AWS EventBridge, Google Cloud Scheduler, and GitHub Actions typically default to UTC unless explicitly configured with a timezone offset."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the difference between standard 5-field cron and 6-field Quartz cron?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Standard Unix crontab syntax consists of 5 fields (minute, hour, day of month, month, day of week) with a minimum resolution of 1 minute. Quartz and Spring schedulers include a 6th field for seconds at the beginning."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are my cron expressions transmitted to any backend server?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. The parsing and upcoming execution calculation happen 100% inside your browser's JavaScript engine. No data ever leaves your device."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="standalone-page">
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="/en/" class="brand" title="Caixa do Dev - Home">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Caixa do Dev</span>
+          <span class="brand-badge">42 Tools</span>
+        </div>
+      </a>
+
+      <div class="nav-actions">
+        <nav>
+          <ul class="nav-links">
+            <li><a href="/en/">Home</a></li>
+            <li><a href="/en/cron-generator" class="active">Cron</a></li>
+            <li><a href="/en/json-formatter">JSON</a></li>
+            <li><a href="/en/jwt-decoder">JWT</a></li>
+            <li><a href="/en/regex-tester">Regex</a></li>
+            <li><a href="/en/sql-formatter">SQL</a></li>
+            <li><a href="/artigos">Articles</a></li>
+            <li><a href="/pages/sobre.html">About</a></li>
+          </ul>
+        </nav>
+        <div class="lang-switch" aria-label="Idioma / Language">
+          <a href="/gerador-de-cron" class="lang-btn" title="Versão em Português">🇧🇷 PT</a>
+          <span class="lang-sep">/</span>
+          <span class="lang-btn active" title="English Version">🇺🇸 EN</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container" style="padding-top: 32px; padding-bottom: 60px;">
+    
+    <div class="tool-breadcrumbs">
+      <a href="/en/">&larr; Home</a> / <span>Cron Expression Generator & Parser</span>
+    </div>
+
+    <div class="privacy-badge">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      100% Client-Side In-Browser Calculation (Zero telemetry or remote requests)
+    </div>
+
+    <!-- Tool Interface -->
+    <section class="tool-view standalone-active" data-tool-id="cron">
+      
+      <div class="tool-interface-card">
+        <div class="tool-header-area">
+          <div class="tool-title-group">
+            <h1>Cron Expression Generator & Translator</h1>
+            <p>Decode cron expressions into human-readable English and calculate upcoming executions in real time.</p>
+          </div>
+          <div class="tool-actions-bar">
+            <span style="font-size: 0.85rem; color: var(--text-muted);">Presets:</span>
+            <button class="btn btn-secondary btn-sm btn-cron-preset" data-cron="*/5 * * * *">Every 5 min</button>
+            <button class="btn btn-secondary btn-sm btn-cron-preset" data-cron="0 * * * *">Hourly</button>
+            <button class="btn btn-secondary btn-sm btn-cron-preset" data-cron="0 0 * * *">Midnight</button>
+            <button class="btn btn-secondary btn-sm btn-cron-preset" data-cron="0 9 * * 1-5">Weekdays 9 AM</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Cron Expression (Minute Hour Day-of-Month Month Day-of-Week)</label>
+          <input type="text" id="cron-input" class="form-control" style="font-size: 1.3rem; letter-spacing: 2px;" value="*/15 * * * *">
+        </div>
+
+        <div class="grid-2" style="margin-top: 20px;">
+          <div>
+            <span class="pane-title" style="margin-bottom: 8px;">Human-Readable Schedule</span>
+            <div id="cron-explanation" class="result-box" style="font-size: 1.05rem; font-weight: 600; color: var(--accent-cyan); line-height: 1.5;">
+              Runs every 15 minutes, every day.
+            </div>
+          </div>
+          <div>
+            <span class="pane-title" style="margin-bottom: 8px;">Next 5 Upcoming Executions</span>
+            <div id="cron-runs-list" class="cron-runs-list"></div>
+          </div>
+        </div>
+      </div>
+
+      <article class="tool-seo-guide">
+        <h2>How Unix and Cloud Crontab Expressions Work</h2>
+        <p>The <strong>cron</strong> background daemon is one of the oldest and most dependable job scheduling utilities in Unix-like systems. Today, standard crontab expressions are universally used across modern cloud ecosystems — including AWS EventBridge, Google Cloud Scheduler, Kubernetes CronJobs, Vercel Cron, and GitHub Actions — to trigger batch pipelines, cache invalidations, and routine database maintenance at exact intervals.</p>
+
+        <h3>1. Standard 5-Field Anatomy</h3>
+        <pre style="background: var(--bg-surface); padding: 16px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); color: #38bdf8; font-family: 'JetBrains Mono', monospace; font-size: 0.88rem; overflow-x: auto;">
+*    *    *    *    *
+┬    ┬    ┬    ┬    ┬
+│    │    │    │    └──── Day of Week (0 - 7, where 0 &amp; 7 are Sunday)
+│    │    │    └───────── Month of Year (1 - 12)
+│    │    └────────────── Day of Month (1 - 31)
+│    └─────────────────── Hour (0 - 23, 24-hour military format)
+└──────────────────────── Minute (0 - 59)
+        </pre>
+
+        <h3>2. Essential Operators Cheat Sheet</h3>
+        <ul>
+          <li><strong>Asterisk (*):</strong> Matches every possible value for that field (e.g., <code>*</code> in the hour position triggers every hour).</li>
+          <li><strong>Comma (,):</strong> Specifies a discrete list of numbers (e.g., <code>5,15,30</code> in the minute field triggers at minutes 5, 15, and 30).</li>
+          <li><strong>Hyphen (-):</strong> Defines an inclusive range (e.g., <code>1-5</code> in the day-of-week field runs Monday through Friday).</li>
+          <li><strong>Slash (/):</strong> Defines step intervals (e.g., <code>*/10</code> in the minute field runs every 10 minutes).</li>
+        </ul>
+
+        <h3>Frequently Asked Questions (FAQ)</h3>
+        <div class="faq-list" style="margin-top: 16px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>Which timezone is used when computing upcoming cron execution timestamps?</span><span>+</span></div>
+            <div class="faq-answer">Upcoming execution timestamps are calculated in your browser's local timezone. Keep in mind that cloud services like AWS EventBridge, Google Cloud Scheduler, and GitHub Actions typically default to UTC unless explicitly configured with a timezone offset.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>What is the difference between standard 5-field cron and 6-field Quartz cron?</span><span>+</span></div>
+            <div class="faq-answer">Standard Unix crontab syntax consists of 5 fields (minute, hour, day of month, month, day of week) with a minimum resolution of 1 minute. Quartz and Spring schedulers include a 6th field for seconds at the beginning.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Are my cron expressions transmitted to any backend server?</span><span>+</span></div>
+            <div class="faq-answer">No. The parsing and upcoming execution calculation happen 100% inside your browser's JavaScript engine. No data ever leaves your device.</div>
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- Recommended Tools -->
+    <section style="margin-top: 60px;">
+      <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 20px; color: var(--text-primary);">Explore More Developer Tools</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px;">
+        <a href="/en/json-formatter" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">JSON Formatter</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Prettify, validate, and minify complex JSON payloads with syntax highlighting.</p>
+        </a>
+        <a href="/en/jwt-decoder" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">JWT Decoder</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Decode JSON Web Tokens, inspect payload claims, and verify expiry dates locally.</p>
+        </a>
+        <a href="/en/regex-tester" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Regex Tester</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Test regular expressions with real-time match highlighting and capture groups.</p>
+        </a>
+        <a href="/en/sql-formatter" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">SQL Formatter</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Beautify messy SQL queries across PostgreSQL, MySQL, SQLite, and BigQuery dialects.</p>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-grid">
+        <div class="footer-col footer-col-wide">
+          <div class="footer-brand">
+            <span class="footer-brand-title">Caixa do Dev</span>
+            <span class="footer-badge">100% Client-Side</span>
+          </div>
+          <p>The ultimate free browser-based developer toolbox for engineers, QA analysts, and DevOps worldwide.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Pages</h4>
+          <ul>
+            <li><a href="/pages/sobre.html">About Us</a></li>
+            <li><a href="/pages/contato.html">Contact</a></li>
+            <li><a href="/pages/privacidade.html">Privacy Policy</a></li>
+            <li><a href="/pages/termos.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Caixa do Dev. All rights reserved.</span>
+        <span>High-performance local client-side processing with zero telemetry.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
+  <!-- Scripts -->
+  <script src="/js/tools/cron-tool.js?v=20261017c"></script>
+  <script src="/js/app.js?v=20261017c"></script>
+</body>
+</html>

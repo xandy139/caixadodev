@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9HZFENSYKS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-9HZFENSYKS');
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3052162962623831"
+     crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTTP Status Codes Directory & REST API Guide (200, 404, 500) | Caixa do Dev</title>
+  <meta name="description" content="Search and filter comprehensive HTTP status codes (2xx, 3xx, 4xx, 5xx) with RFC 9110 definitions, backend best practices, and REST guidelines.">
+  <meta name="keywords" content="http status codes, http response codes, 404 not found, 401 vs 403, 500 internal server error, rest api status codes, rfc 9110">
+  <meta name="author" content="Caixa do Dev">
+  <meta name="robots" content="index, follow">
+
+  <!-- Canonical, Hreflang & Social Meta -->
+  <link rel="canonical" href="https://www.caixadodev.com.br/en/http-status-codes">
+  <link rel="alternate" hreflang="pt-BR" href="https://www.caixadodev.com.br/catalogo-status-http">
+  <link rel="alternate" hreflang="en" href="https://www.caixadodev.com.br/en/http-status-codes">
+  <link rel="alternate" hreflang="x-default" href="https://www.caixadodev.com.br/catalogo-status-http">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.caixadodev.com.br/en/http-status-codes">
+  <meta property="og:title" content="HTTP Status Codes Directory & REST API Guide (200, 404, 500) | Caixa do Dev">
+  <meta property="og:description" content="Search and filter comprehensive HTTP status codes (2xx, 3xx, 4xx, 5xx) with RFC 9110 definitions and REST best practices.">
+  <meta property="og:image" content="https://www.caixadodev.com.br/assets/og-cover.png">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'><path d='M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/css/style.css?v=20261017c">
+  <link rel="stylesheet" href="/css/tools.css?v=20261017c">
+
+  <!-- Schema.org WebApplication & FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "HTTP Status Codes Directory & REST API Guide",
+        "url": "https://www.caixadodev.com.br/en/http-status-codes",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript",
+        "description": "Interactive reference guide to RFC 9110 HTTP status codes with search, filtering by code class, and backend design guidelines.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is the difference between 401 Unauthorized and 403 Forbidden?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "HTTP 401 Unauthorized indicates missing or invalid authentication credentials (the server does not know who you are). HTTP 403 Forbidden indicates that authentication succeeded, but the authenticated client lacks sufficient authorization permissions to access the resource."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "When should an API return 400 Bad Request vs 422 Unprocessable Entity?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Return 400 Bad Request for malformed requests or unparseable payloads (such as invalid JSON syntax). Return 422 Unprocessable Entity when the syntax is perfectly valid, but the payload fails domain-level validation rules (e.g., negative balance, missing required entity fields)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What does HTTP status 418 I'm a teapot mean?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "HTTP 418 is a classic IETF April Fools' joke defined in RFC 2324 (Hyper Text Coffee Pot Control Protocol) from 1998, humorously indicating that a teapot refuses to brew coffee. It is widely recognized across web frameworks and testing tools."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="standalone-page">
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="/en/" class="brand" title="Caixa do Dev - Home">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Caixa do Dev</span>
+          <span class="brand-badge">42 Tools</span>
+        </div>
+      </a>
+
+      <div class="nav-actions">
+        <nav>
+          <ul class="nav-links">
+            <li><a href="/en/">Home</a></li>
+            <li><a href="/en/http-status-codes" class="active">HTTP Status</a></li>
+            <li><a href="/en/json-formatter">JSON</a></li>
+            <li><a href="/en/base64-converter">Base64</a></li>
+            <li><a href="/en/uuid-generator">UUID</a></li>
+            <li><a href="/en/hash-generator">Hash</a></li>
+            <li><a href="/pages/sobre.html">About</a></li>
+          </ul>
+        </nav>
+        <div class="lang-switch" aria-label="Language Selector">
+          <a href="/catalogo-status-http" class="lang-btn" title="Versão em Português">🇧🇷 PT</a>
+          <span class="lang-btn active" title="English Version">🇺🇸 EN</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container" style="padding-top: 32px; padding-bottom: 60px;">
+    
+    <div class="tool-breadcrumbs">
+      <a href="/en/">&larr; Home</a> / <span>HTTP Status Codes Directory & REST Guide</span>
+    </div>
+
+    <div class="privacy-badge">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      100% Client-Side In-Browser Search (Zero Server Latency & Instant Filtering)
+    </div>
+
+    <!-- Tool View -->
+    <section class="tool-view standalone-active" data-tool-id="http-status">
+      
+      <div class="tool-interface-card">
+        <div class="tool-header-area">
+          <div class="tool-title-group">
+            <h1>HTTP Status Codes Directory & REST API Guide</h1>
+            <p>Look up official RFC definitions, responses classes, and backend architectural best practices.</p>
+          </div>
+        </div>
+
+        <div class="split-grid" style="grid-template-columns: 2fr 3fr; align-items: center;">
+          <input type="text" id="http-search-input" class="form-control" placeholder="Filter by status code or keyword (e.g. 404, unauthorized, json)...">
+          <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+            <button class="category-btn http-cat-btn active" data-cat="all">All</button>
+            <button class="category-btn http-cat-btn" data-cat="2xx">2xx Success</button>
+            <button class="category-btn http-cat-btn" data-cat="3xx">3xx Redirect</button>
+            <button class="category-btn http-cat-btn" data-cat="4xx">4xx Client Error</button>
+            <button class="category-btn http-cat-btn" data-cat="5xx">5xx Server Error</button>
+          </div>
+        </div>
+
+        <div id="http-cards-grid" class="http-status-grid"></div>
+      </div>
+
+      <article class="tool-seo-guide">
+        <h2>Complete Reference Guide to HTTP Status Codes (RFC 9110)</h2>
+        <p><strong>HTTP Status Codes</strong> are 3-digit standardized integer responses established by the <strong>Internet Engineering Task Force (IETF) in RFC 9110</strong> and maintained in the official registry of the <strong>Internet Assigned Numbers Authority (IANA)</strong>. Whenever a client (web browser, mobile application, or backend microservice) issues an HTTP request, the receiving server answers with an HTTP response containing a status code communicating the outcome.</p>
+
+        <h3>1. The Five Canonical Response Classes</h3>
+        <ul>
+          <li><strong>1xx (Informational):</strong> The request was received and the protocol negotiation continues (e.g., <code>101 Switching Protocols</code> during WebSocket upgrades).</li>
+          <li><strong>2xx (Successful):</strong> The client's action was successfully understood, accepted, and processed (e.g., <code>200 OK</code>, <code>201 Created</code> on resource creation, <code>204 No Content</code> on deletions).</li>
+          <li><strong>3xx (Redirection):</strong> Additional action must be taken to complete the request (e.g., <code>301 Moved Permanently</code>, <code>304 Not Modified</code> for cache hits, <code>308 Permanent Redirect</code> preserving HTTP methods).</li>
+          <li><strong>4xx (Client Error):</strong> The request contains erroneous syntax, bad parameters, missing authentication, or points to an absent resource (e.g., <code>400 Bad Request</code>, <code>401 Unauthorized</code>, <code>403 Forbidden</code>, <code>404 Not Found</code>, <code>429 Too Many Requests</code>).</li>
+          <li><strong>5xx (Server Error):</strong> The server encountered an unexpected runtime failure while attempting to fulfill a legitimate request (e.g., <code>500 Internal Server Error</code>, <code>502 Bad Gateway</code>, <code>503 Service Unavailable</code>).</li>
+        </ul>
+
+        <h3>2. Critical Nuances in REST API Design</h3>
+        <p>Common semantic ambiguities that every backend engineer should understand:</p>
+        <ul>
+          <li><strong>401 Unauthorized vs. 403 Forbidden:</strong> Code <code>401</code> indicates missing or invalid authentication ("I don't know who you are; please provide valid credentials"). Code <code>403</code> indicates that authentication succeeded, but the user does not possess administrative or scope-level permissions to read or write the entity ("I know who you are, but you are not permitted here").</li>
+          <li><strong>400 Bad Request vs. 422 Unprocessable Entity:</strong> Code <code>400</code> means the raw request envelope cannot be deserialized (e.g., malformed JSON syntax). Code <code>422</code> indicates syntactically pristine JSON whose payload fails business validation schemas (e.g., negative quantity, invalid date format).</li>
+          <li><strong>301 Moved Permanently vs. 308 Permanent Redirect:</strong> Legacy <code>301</code> allows clients to inappropriately rewrite POST requests to GET upon redirecting. Modern RFC 7538 specifies <code>308 Permanent Redirect</code> to strictly guarantee that the HTTP request verb and body remain intact.</li>
+        </ul>
+
+        <h3>Frequently Asked Questions (FAQ)</h3>
+        <div class="faq-list" style="margin-top: 16px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>What causes a 502 Bad Gateway error?</span><span>+</span></div>
+            <div class="faq-answer">A 502 Bad Gateway occurs when an edge reverse proxy (such as Nginx, Cloudflare, AWS ALB, or Envoy) attempts to forward an incoming request to an upstream application server (e.g., Node.js, Python FastAPI, Go), but the upstream server crashes, times out, or closes the TCP socket abruptly.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>When should an API return 204 No Content?</span><span>+</span></div>
+            <div class="faq-answer">Use HTTP 204 No Content when an action succeeds and no response payload needs to be returned to the client. This is common for DELETE operations, PUT updates where returning the entity is unnecessary, or pre-flight CORS OPTIONS queries.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>What is HTTP status 429 Too Many Requests?</span><span>+</span></div>
+            <div class="faq-answer">HTTP 429 is part of RFC 6585, signaling that the client has exceeded rate limits within a given time window. Servers typically return a 'Retry-After' header indicating the number of seconds the client must wait before making subsequent requests.</div>
+          </div>
+        </div>
+      </article>
+    
+    </section>
+
+    <!-- Popular Tools -->
+    <section style="margin-top: 60px;">
+      <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 20px; color: var(--text-primary);">Popular Developer Tools</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px;">
+        <a href="/en/url-parser" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">URL Parser & Inspector</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Inspect protocols, ports, pathnames, and query parameters.</p>
+        </a>
+        <a href="/en/curl-converter" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">cURL to Code Converter</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Convert curl commands to JavaScript fetch, Python requests, and Go.</p>
+        </a>
+        <a href="/en/subnet-calculator" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">IP Subnet Calculator</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Calculate CIDR ranges, netmasks, broadcast IP, and usable hosts.</p>
+        </a>
+        <a href="/en/json-formatter" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">JSON Formatter</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Format, validate, and beautify JSON payloads client-side.</p>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-grid">
+        <div class="footer-col footer-col-wide">
+          <div class="footer-brand">
+            <span class="footer-brand-title">Caixa do Dev</span>
+            <span class="footer-badge">100% Client-Side</span>
+          </div>
+          <p>The ultimate free developer toolbox. High performance, zero server retention, built for privacy.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="/en/">Home</a></li>
+            <li><a href="/pages/sobre.html">About</a></li>
+            <li><a href="/pages/contato.html">Contact</a></li>
+            <li><a href="/pages/privacidade.html">Privacy Policy</a></li>
+            <li><a href="/pages/termos.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Caixa do Dev. All rights reserved.</span>
+        <span>High-speed client-side execution with zero logging.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
+  <!-- Scripts -->
+  <script src="/js/tools/http-status.js?v=20261017c"></script>
+  <script src="/js/app.js?v=20261017c"></script>
+</body>
+</html>

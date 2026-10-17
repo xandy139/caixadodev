@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9HZFENSYKS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-9HZFENSYKS');
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3052162962623831"
+     crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Storage Unit Converter (Bytes, MB, GB, TB) & Transfer Time | Caixa do Dev</title>
+  <meta name="description" content="Convert between decimal and binary data storage units (KB, MB, GB, TB, KiB, MiB, GiB, TiB) and estimate exact download/upload transfer durations across network speeds.">
+  <meta name="keywords" content="storage unit converter, bytes to gb, mb to gb converter, download time calculator, transfer speed calculator, gib vs gb calculator">
+  <meta name="author" content="Alexandre Marcelino">
+  <meta name="robots" content="index, follow">
+
+  <!-- Canonical, Hreflang & Open Graph -->
+  <link rel="canonical" href="https://www.caixadodev.com.br/en/storage-converter">
+  <link rel="alternate" hreflang="pt-BR" href="https://www.caixadodev.com.br/conversor-de-armazenamento">
+  <link rel="alternate" hreflang="en" href="https://www.caixadodev.com.br/en/storage-converter">
+  <link rel="alternate" hreflang="x-default" href="https://www.caixadodev.com.br/conversor-de-armazenamento">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.caixadodev.com.br/en/storage-converter">
+  <meta property="og:title" content="Data Storage Unit Converter (Bytes, MB, GB, TB) & Transfer Time | Caixa do Dev">
+  <meta property="og:description" content="Convert storage units across SI (1000) and IEC (1024) and calculate download durations instantly in your browser.">
+  <meta property="og:image" content="https://www.caixadodev.com.br/assets/og-cover.png">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'><path d='M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/css/style.css?v=20261017c">
+  <link rel="stylesheet" href="/css/tools.css?v=20261017c">
+
+  <!-- Schema.org WebApplication & FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "Data Storage Unit Converter & Transfer Time Calculator",
+        "url": "https://www.caixadodev.com.br/en/storage-converter",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript",
+        "description": "Convert digital data units between SI decimal and IEC binary standards and calculate network transfer times across bandwidth speeds.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Why does a 1 TB hard drive or SSD display as approximately 931 GB in Windows?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Storage manufacturers measure capacity using the SI decimal standard (1 TB = 1,000,000,000,000 bytes). Microsoft Windows measures file sizes using binary increments of 1,024 bytes (1,024^3 bytes per GiB) while labeling the result with 'GB': 1,000,000,000,000 / (1,024^3) ≈ 931.32 GiB. No physical space is lost."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the difference between Megabits per second (Mbps) and Megabytes per second (MB/s)?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "1 Byte (B) equals 8 bits (b). Internet service providers quote bandwidth speeds in Megabits (Mbps), whereas files and drive downloads are measured in Megabytes (MB). A 100 Mbps internet connection achieves a theoretical download speed of approximately 12.5 MB/s."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the IEC standard for binary prefixes?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The International Electrotechnical Commission (IEC) standardized Kibibyte (KiB = 1,024 bytes), Mebibyte (MiB = 1,048,576 bytes), and Gibibyte (GiB = 1,073,741,824 bytes) in 1998 to eliminate confusion with metric SI powers of 10."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="standalone-page">
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="/en/" class="brand" title="Caixa do Dev - Home">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Caixa do Dev</span>
+          <span class="brand-badge">42 Tools</span>
+        </div>
+      </a>
+
+      <div class="nav-actions">
+        <nav>
+          <ul class="nav-links">
+            <li><a href="/en/">Home</a></li>
+            <li><a href="/en/storage-converter" class="active">Storage</a></li>
+            <li><a href="/en/cron-generator">Cron</a></li>
+            <li><a href="/en/json-formatter">JSON</a></li>
+            <li><a href="/en/jwt-decoder">JWT</a></li>
+            <li><a href="/en/url-parser">URL Parser</a></li>
+            <li><a href="/artigos">Articles</a></li>
+            <li><a href="/pages/sobre.html">About</a></li>
+          </ul>
+        </nav>
+        <div class="lang-switch" aria-label="Idioma / Language">
+          <a href="/conversor-de-armazenamento" class="lang-btn" title="Versão em Português">🇧🇷 PT</a>
+          <span class="lang-sep">/</span>
+          <span class="lang-btn active" title="English Version">🇺🇸 EN</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container" style="padding-top: 32px; padding-bottom: 60px;">
+    
+    <div class="tool-breadcrumbs">
+      <a href="/en/">&larr; Home</a> / <span>Data Storage &amp; Transfer Time Calculator</span>
+    </div>
+
+    <div class="privacy-badge">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      100% Client-Side In-Browser Calculation (Zero remote telemetry or external tracking)
+    </div>
+
+    <!-- Tool Interface -->
+    <section class="tool-view standalone-active" data-tool-id="storage">
+      
+      <div class="tool-interface-card">
+        <div class="tool-header-area">
+          <div class="tool-title-group">
+            <h1>Data Storage Unit Converter &amp; Transfer Time Calculator</h1>
+            <p>Convert bytes, megabytes, and gigabytes across SI and IEC standards and calculate exact transfer durations.</p>
+          </div>
+          <div class="tool-actions-bar">
+            <button id="btn-calc-storage" class="btn btn-primary">Calculate Conversion</button>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="form-group">
+            <label class="form-label">File Size</label>
+            <div style="display: flex; gap: 8px;">
+              <input type="number" id="storage-val" class="form-control" value="50">
+              <select id="storage-unit" class="form-control" style="width: 140px;">
+                <option value="GB" selected>Gigabytes (GB)</option>
+                <option value="MB">Megabytes (MB)</option>
+                <option value="TB">Terabytes (TB)</option>
+                <option value="GiB">Gibibytes (GiB)</option>
+                <option value="MiB">Mebibytes (MiB)</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Bandwidth Speed (Mbps)</label>
+            <input type="number" id="storage-speed" class="form-control" value="300" placeholder="e.g. 100, 300, 1000 Mbps">
+          </div>
+        </div>
+
+        <div class="result-box" style="margin-top: 10px; display: flex; align-items: center; justify-content: space-between;">
+          <span id="storage-time-display" style="font-size: 1.15rem; font-weight: 700; color: var(--accent-cyan);">Estimated transfer time: Calculating...</span>
+        </div>
+
+        <div style="margin-top: 20px;">
+          <span class="pane-title" style="margin-bottom: 8px;">Comparative Units Breakdown</span>
+          <table class="subnet-table">
+            <tbody id="storage-results-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <article class="tool-seo-guide">
+        <h2>Understanding Digital Storage Units: Decimal (SI) vs Binary (IEC) Standards</h2>
+        <p>Quantifying data in computer science involves a dual mathematical framework: the <strong>decimal (base 10)</strong> standard from the International System of Units (SI) and the <strong>binary (base 2)</strong> standard defined by the International Electrotechnical Commission (IEC). Grasping this distinction is critical for software architects configuring database sharding limits, cloud bucket ingress limits, and API multipart upload thresholds.</p>
+
+        <h3>1. SI Decimal (Base 10) vs IEC Binary (Base 2) Comparison</h3>
+        <div style="margin: 16px 0; overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+            <thead>
+              <tr style="background: rgba(255, 255, 255, 0.05); border-bottom: 1px solid var(--border-subtle); text-align: left;">
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">SI Unit (Decimal)</th>
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">Byte Value</th>
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">IEC Unit (Binary)</th>
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">Byte Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-weight: 600;">1 KB (Kilobyte)</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">1,000 bytes (10^3)</td>
+                <td style="padding: 10px 14px; font-weight: 600;">1 KiB (Kibibyte)</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">1,024 bytes (2^10)</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-weight: 600;">1 MB (Megabyte)</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">1,000,000 bytes (10^6)</td>
+                <td style="padding: 10px 14px; font-weight: 600;">1 MiB (Mebibyte)</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">1,048,576 bytes (2^20)</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-weight: 600;">1 GB (Gigabyte)</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">1,000,000,000 bytes (10^9)</td>
+                <td style="padding: 10px 14px; font-weight: 600;">1 GiB (Gibibyte)</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">1,073,741,824 bytes (2^30)</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px 14px; font-weight: 600;">1 TB (Terabyte)</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">10^12 bytes</td>
+                <td style="padding: 10px 14px; font-weight: 600;">1 TiB (Tebibyte)</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">2^40 bytes</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>2. Why Does a 1 TB Drive Show As 931 GB in Windows?</h3>
+        <p>Hard drive and SSD manufacturers manufacture devices using metric base 10 (1 TB = 1,000,000,000,000 bytes). Microsoft Windows measures disk sectors in binary increments of 1,024 bytes (GiB), but displays the metric label 'GB': <code>1,000,000,000,000 / (1,024^3) ≈ 931.32 GiB</code>. The drive contains all promised bytes — only the display unit differs!</p>
+
+        <h3>Frequently Asked Questions (FAQ)</h3>
+        <div class="faq-list" style="margin-top: 16px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>Why does a 1 TB hard drive or SSD display as approximately 931 GB in Windows?</span><span>+</span></div>
+            <div class="faq-answer">Storage manufacturers measure capacity using the SI decimal standard (1 TB = 1,000,000,000,000 bytes). Microsoft Windows measures file sizes using binary increments of 1,024 bytes (1,024^3 bytes per GiB) while labeling the result with 'GB': 1,000,000,000,000 / (1,024^3) ≈ 931.32 GiB. No physical space is lost.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>What is the difference between Megabits per second (Mbps) and Megabytes per second (MB/s)?</span><span>+</span></div>
+            <div class="faq-answer">1 Byte (B) equals 8 bits (b). Internet service providers quote bandwidth speeds in Megabits (Mbps), whereas files and drive downloads are measured in Megabytes (MB). A 100 Mbps internet connection achieves a theoretical download speed of approximately 12.5 MB/s.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>What is the IEC standard for binary prefixes?</span><span>+</span></div>
+            <div class="faq-answer">The International Electrotechnical Commission (IEC) standardized Kibibyte (KiB = 1,024 bytes), Mebibyte (MiB = 1,048,576 bytes), and Gibibyte (GiB = 1,073,741,824 bytes) in 1998 to eliminate confusion with metric SI powers of 10.</div>
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- Recommended Tools -->
+    <section style="margin-top: 60px;">
+      <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 20px; color: var(--text-primary);">Explore More Developer Tools</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px;">
+        <a href="/en/cron-generator" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Cron Generator</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Translate cron schedules into plain English and compute upcoming execution dates.</p>
+        </a>
+        <a href="/en/url-parser" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">URL Parser</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Decompose URLs into protocol, host, path, and query strings visually.</p>
+        </a>
+        <a href="/en/json-formatter" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">JSON Formatter</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Prettify, validate, and minify complex JSON payloads with syntax highlighting.</p>
+        </a>
+        <a href="/en/jwt-decoder" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">JWT Decoder</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Decode JSON Web Tokens, inspect payload claims, and verify expiry dates locally.</p>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-grid">
+        <div class="footer-col footer-col-wide">
+          <div class="footer-brand">
+            <span class="footer-brand-title">Caixa do Dev</span>
+            <span class="footer-badge">100% Client-Side</span>
+          </div>
+          <p>The ultimate free browser-based developer toolbox for engineers, QA analysts, and DevOps worldwide.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Pages</h4>
+          <ul>
+            <li><a href="/pages/sobre.html">About Us</a></li>
+            <li><a href="/pages/contato.html">Contact</a></li>
+            <li><a href="/pages/privacidade.html">Privacy Policy</a></li>
+            <li><a href="/pages/termos.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Caixa do Dev. All rights reserved.</span>
+        <span>High-performance local client-side processing with zero telemetry.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
+  <!-- Scripts -->
+  <script src="/js/tools/storage-calc.js?v=20261017c"></script>
+  <script src="/js/app.js?v=20261017c"></script>
+</body>
+</html>

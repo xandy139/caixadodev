@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9HZFENSYKS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-9HZFENSYKS');
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3052162962623831"
+     crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Converter Online (camelCase, snake_case, PascalCase, kebab-case) | Caixa do Dev</title>
+  <meta name="description" content="Convert text between camelCase, PascalCase, snake_case, kebab-case, CONSTANT_CASE, and Title Case simultaneously in real time. 100% private in-browser tool.">
+  <meta name="keywords" content="case converter, camelcase converter, snake case to camelcase, pascalcase, kebab case converter, text case transform online">
+  <meta name="author" content="Alexandre Marcelino">
+  <meta name="robots" content="index, follow">
+
+  <!-- Canonical, Hreflang & Open Graph -->
+  <link rel="canonical" href="https://www.caixadodev.com.br/en/case-converter">
+  <link rel="alternate" hreflang="pt-BR" href="https://www.caixadodev.com.br/conversor-de-case">
+  <link rel="alternate" hreflang="en" href="https://www.caixadodev.com.br/en/case-converter">
+  <link rel="alternate" hreflang="x-default" href="https://www.caixadodev.com.br/conversor-de-case">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.caixadodev.com.br/en/case-converter">
+  <meta property="og:title" content="Case Converter Online (camelCase, snake_case, PascalCase, kebab-case) | Caixa do Dev">
+  <meta property="og:description" content="Convert identifiers between camelCase, PascalCase, snake_case, and kebab-case instantly in local memory.">
+  <meta property="og:image" content="https://www.caixadodev.com.br/assets/og-cover.png">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'><path d='M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/css/style.css?v=20261017c">
+  <link rel="stylesheet" href="/css/tools.css?v=20261017c">
+
+  <!-- Schema.org WebApplication & FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "Case Converter Online",
+        "url": "https://www.caixadodev.com.br/en/case-converter",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript",
+        "description": "Transform variable names, strings, and programming identifiers across camelCase, PascalCase, snake_case, kebab-case, and CONSTANT_CASE simultaneously.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What naming convention should I use for REST API endpoints?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Industry best practices and REST standards recommend kebab-case in lowercase with plural nouns (e.g., /api/v1/user-profiles and /order-items)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this tool strip special characters and accents?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. When converting to code-compliant formats such as camelCase, snake_case, and kebab-case, diacritics and special punctuation are normalized and sanitized so that the output compiles cleanly in any modern language."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is my input text sent to any external server?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. The string splitting and regex formatting run 100% inside your browser's local JavaScript engine."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="standalone-page">
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="/en/" class="brand" title="Caixa do Dev - Home">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Caixa do Dev</span>
+          <span class="brand-badge">42 Tools</span>
+        </div>
+      </a>
+
+      <div class="nav-actions">
+        <nav>
+          <ul class="nav-links">
+            <li><a href="/en/">Home</a></li>
+            <li><a href="/en/case-converter" class="active">Case</a></li>
+            <li><a href="/en/json-formatter">JSON</a></li>
+            <li><a href="/en/jwt-decoder">JWT</a></li>
+            <li><a href="/en/regex-tester">Regex</a></li>
+            <li><a href="/en/sql-formatter">SQL</a></li>
+            <li><a href="/artigos">Articles</a></li>
+            <li><a href="/pages/sobre.html">About</a></li>
+          </ul>
+        </nav>
+        <div class="lang-switch" aria-label="Idioma / Language">
+          <a href="/conversor-de-case" class="lang-btn" title="Versão em Português">🇧🇷 PT</a>
+          <span class="lang-sep">/</span>
+          <span class="lang-btn active" title="English Version">🇺🇸 EN</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container" style="padding-top: 32px; padding-bottom: 60px;">
+    
+    <div class="tool-breadcrumbs">
+      <a href="/en/">&larr; Home</a> / <span>Text Case Converter</span>
+    </div>
+
+    <div class="privacy-badge">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      100% Client-Side In-Browser Conversion (Zero server communication)
+    </div>
+
+    <!-- Tool Interface -->
+    <section class="tool-view standalone-active" data-tool-id="case">
+      
+      <div class="tool-interface-card">
+        <div class="tool-header-area">
+          <div class="tool-title-group">
+            <h1>Text Case Converter</h1>
+            <p>Type or paste any text to see simultaneous conversions across all popular programming casing conventions.</p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="case-input">Type text to convert:</label>
+          <input type="text" id="case-input" class="form-control" value="example variable in software system">
+        </div>
+
+        <div class="case-results-grid">
+          <div class="case-card" onclick="copyToClipboard(document.getElementById('val-camel').textContent)">
+            <div class="case-card-header"><span class="case-title">camelCase</span><span class="tool-card-action" style="font-size: 0.75rem;">Copy</span></div>
+            <span id="val-camel" class="case-val">exampleVariableInSoftwareSystem</span>
+          </div>
+          <div class="case-card" onclick="copyToClipboard(document.getElementById('val-pascal').textContent)">
+            <div class="case-card-header"><span class="case-title">PascalCase</span><span class="tool-card-action" style="font-size: 0.75rem;">Copy</span></div>
+            <span id="val-pascal" class="case-val">ExampleVariableInSoftwareSystem</span>
+          </div>
+          <div class="case-card" onclick="copyToClipboard(document.getElementById('val-snake').textContent)">
+            <div class="case-card-header"><span class="case-title">snake_case</span><span class="tool-card-action" style="font-size: 0.75rem;">Copy</span></div>
+            <span id="val-snake" class="case-val">example_variable_in_software_system</span>
+          </div>
+          <div class="case-card" onclick="copyToClipboard(document.getElementById('val-kebab').textContent)">
+            <div class="case-card-header"><span class="case-title">kebab-case</span><span class="tool-card-action" style="font-size: 0.75rem;">Copy</span></div>
+            <span id="val-kebab" class="case-val">example-variable-in-software-system</span>
+          </div>
+          <div class="case-card" onclick="copyToClipboard(document.getElementById('val-constant').textContent)">
+            <div class="case-card-header"><span class="case-title">CONSTANT_CASE</span><span class="tool-card-action" style="font-size: 0.75rem;">Copy</span></div>
+            <span id="val-constant" class="case-val">EXAMPLE_VARIABLE_IN_SOFTWARE_SYSTEM</span>
+          </div>
+          <div class="case-card" onclick="copyToClipboard(document.getElementById('val-title').textContent)">
+            <div class="case-card-header"><span class="case-title">Title Case</span><span class="tool-card-action" style="font-size: 0.75rem;">Copy</span></div>
+            <span id="val-title" class="case-val">Example Variable In Software System</span>
+          </div>
+        </div>
+      </div>
+
+      <article class="tool-seo-guide">
+        <h2>Software Engineering Naming Conventions: camelCase, PascalCase, snake_case &amp; kebab-case</h2>
+        <p>Consistent naming conventions across variable names, functions, classes, database columns, and HTTP routes are fundamental for software readability, clean architecture, and maintainable codebases. Different languages, frameworks, and database engines enforce distinct style guides to concatenate multiple words without whitespace.</p>
+
+        <h3>1. The Core Industry Casing Standards</h3>
+        <ul>
+          <li><strong>camelCase:</strong> The first letter is lowercase and each subsequent word starts with an uppercase letter (e.g., <code>fetchUserById</code>). The standard convention for variable and method names in JavaScript, TypeScript, and Java.</li>
+          <li><strong>PascalCase:</strong> Every word starts with an uppercase letter without delimiters (e.g., <code>UserController</code>). Universally used for classes, types, interfaces, and React components.</li>
+          <li><strong>snake_case:</strong> All lowercase letters joined with underscores (e.g., <code>user_id</code>). The idiomatic standard for variables and functions in Python, Ruby, and relational SQL column definitions.</li>
+          <li><strong>SCREAMING_SNAKE_CASE (CONSTANT_CASE):</strong> All uppercase letters separated by underscores (e.g., <code>API_SECRET_KEY</code>). Reserved across virtually all ecosystems for immutable global constants and environment variables.</li>
+          <li><strong>kebab-case:</strong> All lowercase letters separated by hyphens (e.g., <code>user-profile-header</code>). Standard for CSS classes, HTML custom attributes, URL slugs, and npm package names.</li>
+        </ul>
+
+        <h3>2. Why Automated Identifiers Conversion Matters</h3>
+        <p>During system refactorings, database integrations, or building mapping layers (such as converting raw SQL <code>snake_case</code> columns into TypeScript <code>camelCase</code> DTOs), converting identifiers by hand is slow and error-prone. This tool performs high-performance real-time conversion in your browser without transmitting any confidential project source names over the network.</p>
+
+        <h3>Frequently Asked Questions (FAQ)</h3>
+        <div class="faq-list" style="margin-top: 16px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>What naming convention should I use for REST API endpoints?</span><span>+</span></div>
+            <div class="faq-answer">Industry best practices and REST standards recommend kebab-case in lowercase with plural nouns (e.g., /api/v1/user-profiles and /order-items).</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Does this tool strip special characters and accents?</span><span>+</span></div>
+            <div class="faq-answer">Yes. When converting to code-compliant formats such as camelCase, snake_case, and kebab-case, diacritics and special punctuation are normalized and sanitized so that the output compiles cleanly in any modern language.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Is my input text sent to any external server?</span><span>+</span></div>
+            <div class="faq-answer">No. The string splitting and regex formatting run 100% inside your browser's local JavaScript engine.</div>
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- Recommended Tools -->
+    <section style="margin-top: 60px;">
+      <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 20px; color: var(--text-primary);">Explore More Developer Tools</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px;">
+        <a href="/en/json-formatter" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">JSON Formatter</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Prettify, validate, and minify complex JSON payloads with syntax highlighting.</p>
+        </a>
+        <a href="/en/jwt-decoder" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">JWT Decoder</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Decode JSON Web Tokens, inspect payload claims, and verify expiry dates locally.</p>
+        </a>
+        <a href="/en/text-diff-checker" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Text Diff Checker</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Compare text, source code, and configurations side-by-side with color-coded diffing.</p>
+        </a>
+        <a href="/en/cron-generator" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Cron Generator</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Translate cron schedules into plain English and compute upcoming execution dates.</p>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-grid">
+        <div class="footer-col footer-col-wide">
+          <div class="footer-brand">
+            <span class="footer-brand-title">Caixa do Dev</span>
+            <span class="footer-badge">100% Client-Side</span>
+          </div>
+          <p>The ultimate free browser-based developer toolbox for engineers, QA analysts, and DevOps worldwide.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Pages</h4>
+          <ul>
+            <li><a href="/pages/sobre.html">About Us</a></li>
+            <li><a href="/pages/contato.html">Contact</a></li>
+            <li><a href="/pages/privacidade.html">Privacy Policy</a></li>
+            <li><a href="/pages/termos.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Caixa do Dev. All rights reserved.</span>
+        <span>High-performance local client-side processing with zero telemetry.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
+  <!-- Scripts -->
+  <script src="/js/tools/case-converter.js?v=20261017c"></script>
+  <script src="/js/app.js?v=20261017c"></script>
+</body>
+</html>

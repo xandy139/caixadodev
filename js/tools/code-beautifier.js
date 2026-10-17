@@ -4,14 +4,29 @@
  */
 
 const CODE_BEAUTIFIER = {
-  SAMPLE_HTML: `<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><title>Exemplo</title><style>body{margin:0;padding:20px;font-family:sans-serif;background:#0d1117;color:#fff;}.card{background:#161b22;border:1px solid #30363d;border-radius:8px;padding:16px;}</style></head><body><div class="card"><h1>Olá Dev!</h1><p>Código limpo e bem formatado.</p><button id="btn" class="btn-primary">Clique Aqui</button></div></body></html>`,
+  get SAMPLE_HTML() {
+    if (document.documentElement.lang === 'en') {
+      return `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Example</title><style>body{margin:0;padding:20px;font-family:sans-serif;background:#0d1117;color:#fff;}.card{background:#161b22;border:1px solid #30363d;border-radius:8px;padding:16px;}</style></head><body><div class="card"><h1>Hello Developer!</h1><p>Clean, readable, well-formatted code.</p><button id="btn" class="btn-primary">Click Here</button></div></body></html>`;
+    }
+    return `<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><title>Exemplo</title><style>body{margin:0;padding:20px;font-family:sans-serif;background:#0d1117;color:#fff;}.card{background:#161b22;border:1px solid #30363d;border-radius:8px;padding:16px;}</style></head><body><div class="card"><h1>Olá Dev!</h1><p>Código limpo e bem formatado.</p><button id="btn" class="btn-primary">Clique Aqui</button></div></body></html>`;
+  },
 
-  SAMPLE_CSS: `/* Reset e Estilos Globais */
+  get SAMPLE_CSS() {
+    if (document.documentElement.lang === 'en') {
+      return `/* Reset & Global Styles */
 body{margin:0;padding:0;background-color:#0f172a;color:#f8fafc;font-family:'Inter',sans-serif;}
 .container{max-width:1200px;margin:0 auto;padding:0 24px;}
 .header{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid #1e293b;}
 .btn-primary{background:#6366f1;color:#ffffff;padding:8px 16px;border-radius:6px;border:none;cursor:pointer;transition:background 0.2s ease;}
-.btn-primary:hover{background:#4f46e5;}`,
+.btn-primary:hover{background:#4f46e5;}`;
+    }
+    return `/* Reset e Estilos Globais */
+body{margin:0;padding:0;background-color:#0f172a;color:#f8fafc;font-family:'Inter',sans-serif;}
+.container{max-width:1200px;margin:0 auto;padding:0 24px;}
+.header{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-bottom:1px solid #1e293b;}
+.btn-primary{background:#6366f1;color:#ffffff;padding:8px 16px;border-radius:6px;border:none;cursor:pointer;transition:background 0.2s ease;}
+.btn-primary:hover{background:#4f46e5;}`;
+  },
 
   formatHTML(html, indentSize = 2) {
     if (!html) return '';

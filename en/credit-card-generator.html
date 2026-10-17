@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9HZFENSYKS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-9HZFENSYKS');
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3052162962623831"
+     crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luhn Algorithm Simulator & Test Credit Card Generator (Sandbox QA) | Caixa do Dev</title>
+  <meta name="description" content="Technical test number generator and Luhn Algorithm (Mod 10 / ISO/IEC 7812) validator for software engineers and payment gateway sandbox environments.">
+  <meta name="author" content="Alexandre Marcelino">
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Canonical, Hreflang & Social Meta -->
+  <link rel="canonical" href="https://www.caixadodev.com.br/en/credit-card-generator">
+  <link rel="alternate" hreflang="pt-BR" href="https://www.caixadodev.com.br/gerador-de-cartao-de-credito">
+  <link rel="alternate" hreflang="en" href="https://www.caixadodev.com.br/en/credit-card-generator">
+  <link rel="alternate" hreflang="x-default" href="https://www.caixadodev.com.br/gerador-de-cartao-de-credito">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.caixadodev.com.br/en/credit-card-generator">
+  <meta property="og:title" content="Luhn Algorithm Simulator & Test Card Generator (Sandbox QA) | Caixa do Dev">
+  <meta property="og:description" content="Technical test tool for Luhn Algorithm (Modulo 10) validation in checkout forms and payment sandboxes.">
+  <meta property="og:image" content="https://www.caixadodev.com.br/assets/og-cover.png">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'><path d='M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/css/style.css?v=20261017c">
+  <link rel="stylesheet" href="/css/tools.css?v=20261017c">
+</head>
+<body class="standalone-page">
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="/en/" class="brand" title="Caixa do Dev - Home">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Caixa do Dev</span>
+          <span class="brand-badge">42 Tools</span>
+        </div>
+      </a>
+
+      <div class="nav-actions">
+        <nav>
+          <ul class="nav-links">
+            <li><a href="/en/">Home</a></li>
+            <li><a href="/en/credit-card-generator" class="active">Card Sandbox</a></li>
+            <li><a href="/en/json-formatter">JSON</a></li>
+            <li><a href="/en/base64-converter">Base64</a></li>
+            <li><a href="/en/uuid-generator">UUID</a></li>
+            <li><a href="/en/jwt-decoder">JWT</a></li>
+            <li><a href="/pages/sobre.html">About</a></li>
+          </ul>
+        </nav>
+        <div class="lang-switch" aria-label="Language Selector">
+          <a href="/gerador-de-cartao-de-credito" class="lang-btn" title="Versão em Português">🇧🇷 PT</a>
+          <span class="lang-btn active" title="English Version">🇺🇸 EN</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container" style="padding-top: 32px; padding-bottom: 60px;">
+    
+    <div class="tool-breadcrumbs">
+      <a href="/en/">&larr; Home</a> / <span>Luhn Algorithm Simulator (Checkout Sandbox & QA)</span>
+    </div>
+
+    <!-- Warning Banner -->
+    <div style="background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: var(--radius-md); padding: 18px 22px; margin: 20px 0 28px; color: #fca5a5; font-size: 0.9rem; line-height: 1.55;">
+      <div style="display: flex; align-items: center; gap: 8px; font-weight: 700; color: #f87171; font-size: 1rem; margin-bottom: 6px;">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        Software Developer Sandbox & Quality Assurance Environment
+      </div>
+      <p style="margin: 0;">
+        This tool is provided strictly for <strong>software engineers, web developers, and QA automation analysts</strong> testing client-side input masks and mathematical checksum routines of the <strong>Luhn Algorithm (ISO/IEC 7812)</strong> across staging pipelines and payment gateway sandboxes (e.g. Stripe, PayPal, Square).
+      </p>
+      <p style="margin: 8px 0 0; font-size: 0.85rem; color: #fecaca;">
+        <strong>Notice:</strong> The generated numbers only satisfy the Modulo 10 mathematical formula. <strong>They have NO associated financial bank account, NO line of credit, CANNOT process monetary transactions, and hold ZERO real-world value.</strong> Any fraudulent or illicit use is strictly prohibited by law and our Terms of Service.
+      </p>
+    </div>
+
+    <!-- Tool View -->
+    <section class="tool-view standalone-active" data-tool-id="cartao">
+
+      <div class="tool-interface-card">
+        <div class="tool-header-area">
+          <div class="tool-title-group">
+            <h1>Luhn Algorithm Simulator & Mod 10 Checksum Validator</h1>
+            <p>Generate valid mathematical Luhn sequences for staging or validate numbers for ecommerce checkout forms.</p>
+          </div>
+          <div class="tool-actions-bar">
+            <button id="btn-gen-card" class="btn btn-primary">Generate Luhn Sequence</button>
+            <button id="btn-copy-card" class="btn btn-secondary">Copy Parameters</button>
+          </div>
+        </div>
+
+        <div class="form-options-row">
+          <div class="form-group" style="margin-bottom: 0;">
+            <label class="form-label">Network Prefix (IIN/BIN):</label>
+            <select id="sel-card-brand" class="form-control" style="width: 200px; padding: 8px 12px;">
+              <option value="visa">Visa (Prefix 4)</option>
+              <option value="mastercard">Mastercard (Prefixes 51-55)</option>
+              <option value="amex">American Express (34/37)</option>
+              <option value="elo">Elo (Prefixes 5067, 4576)</option>
+              <option value="hipercard">Hipercard (Prefix 6062)</option>
+            </select>
+          </div>
+          <label class="checkbox-label" style="margin-top: 24px;">
+            <input type="checkbox" id="check-card-format" checked>
+            <span>Format with 4-digit blocks</span>
+          </label>
+        </div>
+
+        <!-- Sandbox Technical Panel -->
+        <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 24px; margin-top: 20px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+            <span style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--accent-cyan); letter-spacing: 0.06em;">Sandbox Test Payload (ISO/IEC 7812)</span>
+            <span id="card-preview-brand" style="font-family: var(--font-mono); font-weight: 700; color: var(--text-primary); background: rgba(255, 255, 255, 0.08); padding: 4px 12px; border-radius: 6px; font-size: 0.85rem;">VISA</span>
+          </div>
+
+          <div style="margin-bottom: 20px;">
+            <span style="display: block; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 6px; font-weight: 600;">Mathematical Test Number (Luhn Validated):</span>
+            <div id="card-preview-number" style="font-family: var(--font-mono); font-size: 1.6rem; font-weight: 800; color: var(--accent-cyan); letter-spacing: 0.06em; word-break: break-all;">4000 0000 0000 0000</div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; background: rgba(0, 0, 0, 0.2); padding: 14px; border-radius: var(--radius-sm);">
+            <div>
+              <span style="display: block; font-size: 0.75rem; color: var(--text-muted);">Specification Standard:</span>
+              <span style="font-family: var(--font-mono); font-size: 0.95rem; font-weight: 700; color: var(--accent-cyan);">ISO/IEC 7812</span>
+            </div>
+            <div>
+              <span style="display: block; font-size: 0.75rem; color: var(--text-muted);">Checksum Algorithm:</span>
+              <span style="font-family: var(--font-mono); font-size: 0.95rem; font-weight: 700; color: var(--text-primary);">Modulo 10 (Luhn)</span>
+            </div>
+            <div>
+              <span style="display: block; font-size: 0.75rem; color: var(--text-muted);">Mathematical Integrity:</span>
+              <span style="font-family: var(--font-mono); font-size: 0.95rem; font-weight: 700; color: var(--accent-emerald);">Valid Checksum</span>
+            </div>
+          </div>
+        </div>
+
+        <hr style="border: none; border-top: 1px solid var(--border-subtle); margin: 30px 0;">
+
+        <!-- Luhn Validator Input -->
+        <div class="form-group">
+          <label class="form-label" for="input-validate-card">
+            <span>Validate Luhn Mathematical Consistency on Existing Number:</span>
+            <span id="badge-validate-card" class="badge-status badge-neutral">Awaiting card number</span>
+          </label>
+          <input type="text" id="input-validate-card" class="form-control" placeholder="Paste or type number for instant Luhn mathematical validation..." maxlength="23" style="font-family: var(--font-mono); font-size: 1.05rem;">
+        </div>
+      </div>
+
+      <!-- Technical Guide -->
+      <article class="tool-seo-guide">
+        <h2>Understanding the Luhn Algorithm (Mod 10) & ISO/IEC 7812</h2>
+        <p>Created by IBM computer scientist Hans Peter Luhn in 1954, the <strong>Luhn Algorithm (also known as the Modulo 10 formula)</strong> is a widely adopted checksum algorithm designed to validate a variety of identification numbers, such as credit card numbers, IMEI devices, and national identifiers. Rather than providing cryptographic secrecy, its primary objective is to catch accidental human typing errors such as single-digit mistypes or adjacent digit transpositions.</p>
+        
+        <p>In modern web engineering and payment architectures, client-side Luhn verification executes instantly in the browser. This provides real-time feedback to end users and prevents costly round-trip API requests to payment processing gateways for syntactically invalid input.</p>
+
+        <h3>How the Luhn Algorithm Works Step-by-Step</h3>
+        <ol>
+          <li>Starting from the rightmost check digit and moving left, double the value of every second digit.</li>
+          <li>If doubling a digit yields a two-digit number (e.g. 7 * 2 = 14), sum the individual digits together (1 + 4 = 5) or subtract 9.</li>
+          <li>Sum all processed digits together.</li>
+          <li>If the total modulo 10 equals 0 (i.e. the total ends in 0), the number is mathematically valid according to the Luhn specification.</li>
+        </ol>
+      </article>
+    
+    </section>
+
+    <!-- Popular Tools -->
+    <section style="margin-top: 60px;">
+      <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 20px; color: var(--text-primary);">Popular Developer Tools</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px;">
+        <a href="/en/jwt-decoder" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">JWT Token Decoder</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Decode and inspect header, payload claims, and expiration timestamps.</p>
+        </a>
+        <a href="/en/mock-data-generator" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Mock Data Generator</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Generate synthetic user test batches in JSON, CSV, and SQL.</p>
+        </a>
+        <a href="/en/uuid-generator" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">UUID Generator</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Generate cryptographically secure RFC 4122 v4 UUID tokens.</p>
+        </a>
+        <a href="/en/hash-generator" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Hash Generator</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Calculate SHA-256, MD5, and SHA-512 cryptographic hashes.</p>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-grid">
+        <div class="footer-col footer-col-wide">
+          <div class="footer-brand">
+            <span class="footer-brand-title">Caixa do Dev</span>
+            <span class="footer-badge">100% Client-Side</span>
+          </div>
+          <p>The ultimate free developer toolbox. High performance, zero server retention, built for privacy.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="/en/">Home</a></li>
+            <li><a href="/pages/sobre.html">About</a></li>
+            <li><a href="/pages/contato.html">Contact</a></li>
+            <li><a href="/pages/privacidade.html">Privacy Policy</a></li>
+            <li><a href="/pages/termos.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Caixa do Dev. All rights reserved.</span>
+        <span>High-speed client-side execution with zero logging.</span>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast"></div>
+
+  <!-- Scripts -->
+  <script src="/js/tools/credit-card.js?v=20261017c"></script>
+  <script src="/js/app.js?v=20261017c"></script>
+</body>
+</html>

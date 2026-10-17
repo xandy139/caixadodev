@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9HZFENSYKS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-9HZFENSYKS');
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3052162962623831"
+     crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Markdown Live Editor & HTML Previewer (GFM Supported) | Caixa do Dev</title>
+  <meta name="description" content="Online split-view Markdown editor with real-time HTML preview. Supports GitHub Flavored Markdown (GFM), tables, code blocks, task lists, and one-click HTML export.">
+  <meta name="keywords" content="markdown editor online, markdown live preview, gfm editor, markdown to html, split view markdown editor">
+  <meta name="author" content="Alexandre Marcelino">
+  <meta name="robots" content="index, follow">
+
+  <!-- Canonical, Hreflang & Open Graph -->
+  <link rel="canonical" href="https://www.caixadodev.com.br/en/markdown-editor">
+  <link rel="alternate" hreflang="pt-BR" href="https://www.caixadodev.com.br/editor-de-markdown">
+  <link rel="alternate" hreflang="en" href="https://www.caixadodev.com.br/en/markdown-editor">
+  <link rel="alternate" hreflang="x-default" href="https://www.caixadodev.com.br/editor-de-markdown">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.caixadodev.com.br/en/markdown-editor">
+  <meta property="og:title" content="Markdown Live Editor & HTML Previewer (GFM Supported) | Caixa do Dev">
+  <meta property="og:description" content="Split-view Markdown live previewer with GFM tables, checklist, and syntax styling. 100% private client-side processing.">
+  <meta property="og:image" content="https://www.caixadodev.com.br/assets/og-cover.png">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'><path d='M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/css/style.css?v=20261017c">
+  <link rel="stylesheet" href="/css/tools.css?v=20261017c">
+
+  <!-- Schema.org WebApplication & FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "Markdown Live Editor & HTML Previewer",
+        "url": "https://www.caixadodev.com.br/en/markdown-editor",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript",
+        "description": "Real-time split-screen Markdown editor with instant HTML rendering, GitHub Flavored Markdown support, and local memory privacy.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is CommonMark?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "CommonMark is an unambiguous, strongly defined formal specification for Markdown syntax created in 2014 to eliminate discrepancies between dozens of competing implementations."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I force a line break in Markdown without starting a new paragraph?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "In standard Markdown syntax, normal single newlines are ignored. To trigger an explicit HTML line break (<br>), type two trailing space characters at the end of the line before pressing Enter."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this Markdown editor store or send my documents to any server?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. The parsing and HTML rendering execute 100% inside your browser's local JavaScript sandbox. Your articles, README drafts, and notes remain completely private."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="standalone-page">
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="/en/" class="brand" title="Caixa do Dev - Home">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Caixa do Dev</span>
+          <span class="brand-badge">42 Tools</span>
+        </div>
+      </a>
+
+      <div class="nav-actions">
+        <nav>
+          <ul class="nav-links">
+            <li><a href="/en/">Home</a></li>
+            <li><a href="/en/markdown-editor" class="active">Markdown</a></li>
+            <li><a href="/en/text-diff-checker">Diff</a></li>
+            <li><a href="/en/json-formatter">JSON</a></li>
+            <li><a href="/en/jwt-decoder">JWT</a></li>
+            <li><a href="/en/regex-tester">Regex</a></li>
+            <li><a href="/artigos">Articles</a></li>
+            <li><a href="/pages/sobre.html">About</a></li>
+          </ul>
+        </nav>
+        <div class="lang-switch" aria-label="Idioma / Language">
+          <a href="/editor-de-markdown" class="lang-btn" title="Versão em Português">🇧🇷 PT</a>
+          <span class="lang-sep">/</span>
+          <span class="lang-btn active" title="English Version">🇺🇸 EN</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container" style="padding-top: 32px; padding-bottom: 60px;">
+    
+    <div class="tool-breadcrumbs">
+      <a href="/en/">&larr; Home</a> / <span>Markdown Live Editor & Preview</span>
+    </div>
+
+    <div class="privacy-badge">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      100% Client-Side In-Browser Compilation (Drafts and sensitive docs never leave your device)
+    </div>
+
+    <!-- Tool Interface -->
+    <section class="tool-view standalone-active" data-tool-id="markdown">
+      
+      <div class="tool-interface-card">
+        <div class="tool-header-area">
+          <div class="tool-title-group">
+            <h1>Markdown Live Editor &amp; HTML Previewer</h1>
+            <p>Write documentation with instant live split-screen preview, GitHub Flavored Markdown (GFM) tables, and syntax styling.</p>
+          </div>
+          <div class="tool-actions-bar">
+            <button id="btn-md-sample" class="btn btn-secondary">Load Sample</button>
+            <button id="btn-copy-md-html" class="btn btn-primary">Copy HTML</button>
+          </div>
+        </div>
+
+        <div class="split-grid">
+          <div class="pane">
+            <span class="pane-title" style="margin-bottom: 8px;">Markdown Input</span>
+            <textarea id="markdown-input" class="form-control" style="min-height: 380px;" placeholder="Type your Markdown text here..."></textarea>
+          </div>
+          <div class="pane">
+            <span class="pane-title" style="margin-bottom: 8px;">Rendered HTML Preview</span>
+            <div id="markdown-preview" class="markdown-preview-container" style="min-height: 380px;"></div>
+            <textarea id="markdown-html-output" style="display: none;"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <article class="tool-seo-guide">
+        <h2>The Markdown Standard &amp; GitHub Flavored Markdown (GFM) Specification</h2>
+        <p>Created in 2004 by John Gruber in collaboration with Aaron Swartz, <strong>Markdown</strong> is the universal standard for technical writing, repository README files, developer blogs, and issue trackers. Its defining philosophy is simplicity: allow writers to draft structured documents using human-readable plain text that compiles cleanly into semantic HTML5.</p>
+
+        <h3>1. GFM Syntax Cheat Sheet</h3>
+        <div style="margin: 16px 0; overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+            <thead>
+              <tr style="background: rgba(255, 255, 255, 0.05); border-bottom: 1px solid var(--border-subtle); text-align: left;">
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">Element</th>
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">Markdown Syntax</th>
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">Generated HTML</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-weight: 600;">Headings H1 to H3</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);"># Heading 1, ## Heading 2, ### Heading 3</td>
+                <td style="padding: 10px 14px;">Tags &lt;h1&gt;, &lt;h2&gt;, &lt;h3&gt;</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-weight: 600;">Bold &amp; Italic</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">**bold text** or *italic text*</td>
+                <td style="padding: 10px 14px;">Tags &lt;strong&gt; and &lt;em&gt;</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-weight: 600;">Links &amp; Images</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">[Link](https://...) and ![Alt](image.png)</td>
+                <td style="padding: 10px 14px;">Tags &lt;a href&gt; and &lt;img src&gt;</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-weight: 600;">Fenced Code Blocks</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">&#96;&#96;&#96;typescript ... &#96;&#96;&#96;</td>
+                <td style="padding: 10px 14px;">Tags &lt;pre&gt;&lt;code&gt; syntax highlighted</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-weight: 600;">Task Lists (Checklists)</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">- [x] Done &nbsp; - [ ] Pending</td>
+                <td style="padding: 10px 14px;">GFM interactive checkboxes</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px 14px; font-weight: 600;">Blockquotes</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">&gt; Quoted excerpt text</td>
+                <td style="padding: 10px 14px;">Tag &lt;blockquote&gt; with accent border</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>2. Why Split-Screen Real-Time Previewing Matters</h3>
+        <p>Technical writing demands structural clarity, especially when composing complex markdown tables, nested unordered lists, or inline code snippets. The split-screen editor compiles every keystroke directly in browser memory so you catch syntax issues early and copy clean HTML with a single click.</p>
+
+        <h3>Frequently Asked Questions (FAQ)</h3>
+        <div class="faq-list" style="margin-top: 16px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>What is CommonMark?</span><span>+</span></div>
+            <div class="faq-answer">CommonMark is an unambiguous, strongly defined formal specification for Markdown syntax created in 2014 to eliminate discrepancies between dozens of competing implementations.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>How do I force a line break in Markdown without starting a new paragraph?</span><span>+</span></div>
+            <div class="faq-answer">In standard Markdown syntax, normal single newlines are ignored. To trigger an explicit HTML line break (&lt;br&gt;), type two trailing space characters at the end of the line before pressing Enter.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Does this Markdown editor store or send my documents to any server?</span><span>+</span></div>
+            <div class="faq-answer">No. The parsing and HTML rendering execute 100% inside your browser's local JavaScript sandbox. Your articles, README drafts, and notes remain completely private.</div>
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- Recommended Tools -->
+    <section style="margin-top: 60px;">
+      <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 20px; color: var(--text-primary);">Explore More Developer Tools</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px;">
+        <a href="/en/text-diff-checker" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Text Diff Checker</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Compare text, source code, and configurations side-by-side with color-coded diffing.</p>
+        </a>
+        <a href="/en/case-converter" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Case Converter</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Convert text between camelCase, PascalCase, snake_case, and kebab-case.</p>
+        </a>
+        <a href="/en/json-formatter" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">JSON Formatter</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Prettify, validate, and minify complex JSON payloads with syntax highlighting.</p>
+        </a>
+        <a href="/en/regex-tester" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Regex Tester</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Test regular expressions with real-time match highlighting and capture groups.</p>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-grid">
+        <div class="footer-col footer-col-wide">
+          <div class="footer-brand">
+            <span class="footer-brand-title">Caixa do Dev</span>
+            <span class="footer-badge">100% Client-Side</span>
+          </div>
+          <p>The ultimate free browser-based developer toolbox for engineers, QA analysts, and DevOps worldwide.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Pages</h4>
+          <ul>
+            <li><a href="/pages/sobre.html">About Us</a></li>
+            <li><a href="/pages/contato.html">Contact</a></li>
+            <li><a href="/pages/privacidade.html">Privacy Policy</a></li>
+            <li><a href="/pages/termos.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Caixa do Dev. All rights reserved.</span>
+        <span>High-performance local client-side processing with zero telemetry.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
+  <!-- Scripts -->
+  <script src="/js/tools/markdown-tool.js?v=20261017c"></script>
+  <script src="/js/app.js?v=20261017c"></script>
+</body>
+</html>

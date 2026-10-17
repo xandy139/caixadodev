@@ -21,13 +21,15 @@ const SUBNET_CALCULATOR = {
     const cleanIp = ipStr.trim();
     const prefix = parseInt(cidrPrefix, 10);
 
+    const isEn = document.documentElement.lang === 'en';
+
     if (!/^(\d{1,3}\.){3}\d{1,3}$/.test(cleanIp) || prefix < 0 || prefix > 32) {
-      return { success: false, error: 'Endereço IP ou máscara CIDR inválida.' };
+      return { success: false, error: isEn ? 'Invalid IP address or CIDR prefix.' : 'Endereço IP ou máscara CIDR inválida.' };
     }
 
     const octets = cleanIp.split('.').map(Number);
     if (octets.some(o => o < 0 || o > 255)) {
-      return { success: false, error: 'Octetos do IP devem estar entre 0 e 255.' };
+      return { success: false, error: isEn ? 'IP octets must be between 0 and 255.' : 'Octetos do IP devem estar entre 0 e 255.' };
     }
 
     const ipInt = this.ipToInt(cleanIp);
@@ -58,6 +60,7 @@ const SUBNET_CALCULATOR = {
     }
 
     const totalAddresses = Math.pow(2, 32 - prefix);
+    const loc = isEn ? 'en-US' : 'pt-BR';
 
     return {
       success: true,
@@ -67,8 +70,8 @@ const SUBNET_CALCULATOR = {
       broadcast,
       firstHost,
       lastHost,
-      usableHosts: usableHosts.toLocaleString('pt-BR'),
-      totalAddresses: totalAddresses.toLocaleString('pt-BR'),
+      usableHosts: usableHosts.toLocaleString(loc),
+      totalAddresses: totalAddresses.toLocaleString(loc),
       binaryMask: maskInt.toString(2).padStart(32, '0').match(/.{8}/g).join('.')
     };
   }

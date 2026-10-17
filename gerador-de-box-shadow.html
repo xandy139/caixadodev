@@ -21,8 +21,11 @@
   <meta name="author" content="Caixa do Dev">
   <meta name="robots" content="index, follow">
 
-  <!-- Canonical & Social Meta -->
+  <!-- Canonical, Hreflang & Social Meta -->
   <link rel="canonical" href="https://www.caixadodev.com.br/gerador-de-box-shadow">
+  <link rel="alternate" hreflang="pt-BR" href="https://www.caixadodev.com.br/gerador-de-box-shadow">
+  <link rel="alternate" hreflang="en" href="https://www.caixadodev.com.br/en/box-shadow-generator">
+  <link rel="alternate" hreflang="x-default" href="https://www.caixadodev.com.br/gerador-de-box-shadow">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.caixadodev.com.br/gerador-de-box-shadow">
   <meta property="og:title" content="Gerador de Box-Shadow e Glassmorphism CSS | Caixa do Dev">
@@ -34,8 +37,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/tools.css">
+  <link rel="stylesheet" href="/css/style.css?v=20261017c">
+  <link rel="stylesheet" href="/css/tools.css?v=20261017c">
 
   <!-- Schema.org WebApplication -->
   <script type="application/ld+json">
@@ -71,22 +74,29 @@
         </div>
         <div class="brand-text">
           <span class="brand-name">Caixa do Dev</span>
-          <span class="brand-badge">40 Ferramentas</span>
+          <span class="brand-badge">42 Ferramentas</span>
         </div>
       </a>
 
-      <nav>
-        <ul class="nav-links">
-          <li><a href="/">Início</a></li>
-          <li><a href="/gerador-de-cpf">CPF</a></li>
-          <li><a href="/gerador-de-cnpj">CNPJ</a></li>
-          <li><a href="/gerador-de-pessoas">Pessoas</a></li>
-          <li><a href="/calculadora-clt-pj">CLT vs PJ</a></li>
-          <li><a href="/json-para-typescript">JSON &rarr; TS</a></li>
-          <li><a href="pages/sobre.html">Sobre</a></li>
-          <li><a href="pages/contato.html">Contato</a></li>
-        </ul>
-      </nav>
+      <div class="nav-actions">
+        <nav>
+          <ul class="nav-links">
+            <li><a href="/">Início</a></li>
+            <li><a href="/gerador-de-box-shadow" class="active">Box Shadow</a></li>
+            <li><a href="/gerador-de-cpf">CPF</a></li>
+            <li><a href="/gerador-de-cnpj">CNPJ</a></li>
+            <li><a href="/calculadora-clt-pj">CLT vs PJ</a></li>
+            <li><a href="/json-para-typescript">JSON &rarr; TS</a></li>
+            <li><a href="/artigos">Artigos</a></li>
+            <li><a href="/pages/sobre.html">Sobre</a></li>
+          </ul>
+        </nav>
+        <div class="lang-switch" aria-label="Idioma / Language">
+          <span class="lang-btn active" title="Português (Brasil)">🇧🇷 PT</span>
+          <span class="lang-sep">/</span>
+          <a href="/en/box-shadow-generator" class="lang-btn" title="English Version">🇺🇸 EN</a>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -260,7 +270,7 @@ box-shadow: [inset] &lt;offset-x&gt; &lt;offset-y&gt; &lt;blur-radius&gt; &lt;sp
   <div id="toast" class="toast"></div>
 
   <!-- Scripts -->
-  <script src="js/tools/css-generator.js"></script>
-  <script src="js/app.js"></script>
+  <script src="/js/tools/css-generator.js?v=20261017c"></script>
+  <script src="/js/app.js?v=20261017c"></script>
 </body>
 </html>

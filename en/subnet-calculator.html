@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9HZFENSYKS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-9HZFENSYKS');
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3052162962623831"
+     crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IP Subnet Calculator & CIDR Notation (/24, /16, /28) | Caixa do Dev</title>
+  <meta name="description" content="Calculate subnet masks, network addresses, broadcast IP, usable host range, wildcard mask, and total IP count from CIDR notation. 100% private client-side.">
+  <meta name="keywords" content="subnet calculator, cidr calculator, ip subnet mask, ipv4 calculator, network address, broadcast ip, usable hosts">
+  <meta name="author" content="Caixa do Dev">
+  <meta name="robots" content="index, follow">
+
+  <!-- Canonical, Hreflang & Social Meta -->
+  <link rel="canonical" href="https://www.caixadodev.com.br/en/subnet-calculator">
+  <link rel="alternate" hreflang="pt-BR" href="https://www.caixadodev.com.br/calculadora-de-sub-rede">
+  <link rel="alternate" hreflang="en" href="https://www.caixadodev.com.br/en/subnet-calculator">
+  <link rel="alternate" hreflang="x-default" href="https://www.caixadodev.com.br/calculadora-de-sub-rede">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.caixadodev.com.br/en/subnet-calculator">
+  <meta property="og:title" content="IP Subnet Calculator & CIDR Notation (/24, /16, /28) | Caixa do Dev">
+  <meta property="og:description" content="Calculate subnet mask, network IP, first/last usable host, broadcast, and total addresses from CIDR notation.">
+  <meta property="og:image" content="https://www.caixadodev.com.br/assets/og-cover.png">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'><path d='M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/css/style.css?v=20261017c">
+  <link rel="stylesheet" href="/css/tools.css?v=20261017c">
+
+  <!-- Schema.org WebApplication & FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "IP Subnet Calculator & CIDR Notation (/24, /16, /28)",
+        "url": "https://www.caixadodev.com.br/en/subnet-calculator",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript",
+        "description": "Calculate subnet masks, network addresses, broadcast IP, usable host range, wildcard mask, and total IP count from CIDR notation.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What are the RFC 1918 private IPv4 address ranges?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "There are three private address ranges reserved for local networks that are not routed on the public internet: 10.0.0.0/8 (Class A, 16.7 million IPs), 172.16.0.0/12 (Class B, 1.04 million IPs), and 192.168.0.0/16 (Class C, 65,536 IPs)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why do standard IPv4 subnets lose 2 host addresses?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "In any standard IPv4 subnet (such as /24 or /28), the first address is strictly reserved as the Network Identifier, and the last address is reserved as the Broadcast address for all hosts on that wire. Therefore, usable hosts equal 2^(32 - CIDR) - 2."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is a Wildcard Mask?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A wildcard mask is the exact inverted binary value of a subnet mask, calculated by subtracting each octet from 255 (e.g., a 255.255.255.0 mask yields a 0.0.0.255 wildcard). It is widely used in Cisco router Access Control Lists (ACLs) and OSPF routing configurations."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="standalone-page">
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="/en/" class="brand" title="Caixa do Dev - Home">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Caixa do Dev</span>
+          <span class="brand-badge">42 Tools</span>
+        </div>
+      </a>
+
+      <div class="nav-actions">
+        <nav>
+          <ul class="nav-links">
+            <li><a href="/en/">Home</a></li>
+            <li><a href="/en/subnet-calculator" class="active">Subnet</a></li>
+            <li><a href="/en/json-formatter">JSON</a></li>
+            <li><a href="/en/base64-converter">Base64</a></li>
+            <li><a href="/en/uuid-generator">UUID</a></li>
+            <li><a href="/en/hash-generator">Hash</a></li>
+            <li><a href="/pages/sobre.html">About</a></li>
+          </ul>
+        </nav>
+        <div class="lang-switch" aria-label="Language Selector">
+          <a href="/calculadora-de-sub-rede" class="lang-btn" title="Versão em Português">🇧🇷 PT</a>
+          <span class="lang-btn active" title="English Version">🇺🇸 EN</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container" style="padding-top: 32px; padding-bottom: 60px;">
+    
+    <div class="tool-breadcrumbs">
+      <a href="/en/">&larr; Home</a> / <span>IP Subnet Calculator & CIDR Notation (/24, /16, /28)</span>
+    </div>
+
+    <div class="privacy-badge">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      100% Client-Side In-Browser Calculation (Zero Latency & Total Privacy)
+    </div>
+
+    <!-- Tool View -->
+    <section class="tool-view standalone-active" data-tool-id="subnet">
+      
+      <div class="tool-interface-card">
+        <div class="tool-header-area">
+          <div class="tool-title-group">
+            <h1>IPv4 Subnet Calculator & CIDR Range Inspector</h1>
+            <p>Compute subnet mask, network IP, broadcast, first/last usable host, and total addresses for IPv4 networks.</p>
+          </div>
+          <div class="tool-actions-bar">
+            <button id="btn-calc-subnet" class="btn btn-primary">Calculate Subnet</button>
+          </div>
+        </div>
+
+        <div class="split-grid" style="grid-template-columns: 2fr 1fr; max-width: 500px;">
+          <div class="form-group">
+            <label class="form-label">IP Address:</label>
+            <input type="text" id="input-subnet-ip" class="form-control" value="192.168.1.0" placeholder="e.g. 10.0.0.1">
+          </div>
+          <div class="form-group">
+            <label class="form-label">CIDR Mask:</label>
+            <select id="input-subnet-cidr" class="form-control">
+              <option value="24" selected>/24 (255.255.255.0 - 254 hosts)</option>
+              <option value="16">/16 (255.255.0.0 - 65k hosts)</option>
+              <option value="25">/25 (255.255.255.128 - 126 hosts)</option>
+              <option value="26">/26 (255.255.255.192 - 62 hosts)</option>
+              <option value="27">/27 (255.255.255.224 - 30 hosts)</option>
+              <option value="28">/28 (255.255.255.240 - 14 hosts)</option>
+              <option value="29">/29 (255.255.255.248 - 6 hosts)</option>
+              <option value="30">/30 (255.255.255.252 - 2 hosts)</option>
+              <option value="32">/32 (255.255.255.255 - 1 host)</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="subnet-result-container" style="margin-top: 20px;"></div>
+      </div>
+
+      <article class="tool-seo-guide">
+        <h2>IPv4 Subnetting & CIDR Notation Fundamentals (RFC 4632)</h2>
+        <p>In modern computer networking, <strong>IPv4 addressing</strong> utilizes 32-bit binary integers grouped into four 8-bit octets separated by dots (from <code>0.0.0.0</code> to <code>255.255.255.255</code>). Subnetting and <strong>CIDR (Classless Inter-Domain Routing - RFC 4632)</strong> revolutionized address allocation by eliminating legacy Class A, B, and C rigid boundaries in favor of variable-length prefix masks.</p>
+
+        <h3>1. Anatomy of a Subnet Mask: Network vs Host Bits</h3>
+        <p>Every IPv4 subnet mask divides the 32 bits into two segments:</p>
+        <ul>
+          <li><strong>Network Prefix (CIDR Bits):</strong> The leading contiguous sequence of binary 1s that specifies the network routing prefix. For example, <code>/24</code> means 24 ones followed by 8 zeros, representing dotted decimal <code>255.255.255.0</code>.</li>
+          <li><strong>Host Identifier:</strong> The trailing sequence of binary 0s that uniquely identifies interfaces within that particular sub-network.</li>
+        </ul>
+
+        <h3>2. Frequently Used CIDR Subnet Masks Reference</h3>
+        <div style="margin: 16px 0; overflow-x: auto;">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+            <thead>
+              <tr style="background: rgba(255, 255, 255, 0.05); border-bottom: 1px solid var(--border-subtle); text-align: left;">
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">CIDR</th>
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">Dotted Mask</th>
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">Total IPs</th>
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">Usable Hosts</th>
+                <th style="padding: 10px 14px; color: var(--accent-cyan);">Common Use Case</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-weight: 700; font-family: var(--font-mono);">/30</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">255.255.255.252</td>
+                <td style="padding: 10px 14px;">4</td>
+                <td style="padding: 10px 14px;">2</td>
+                <td style="padding: 10px 14px;">Point-to-point router links</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-weight: 700; font-family: var(--font-mono);">/28</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">255.255.255.240</td>
+                <td style="padding: 10px 14px;">16</td>
+                <td style="padding: 10px 14px;">14</td>
+                <td style="padding: 10px 14px;">Small DMZ or isolated microservice clusters</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.04);">
+                <td style="padding: 10px 14px; font-weight: 700; font-family: var(--font-mono);">/24</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">255.255.255.0</td>
+                <td style="padding: 10px 14px;">256</td>
+                <td style="padding: 10px 14px;">254</td>
+                <td style="padding: 10px 14px;">Standard office LANs and Kubernetes pod subnets</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px 14px; font-weight: 700; font-family: var(--font-mono);">/16</td>
+                <td style="padding: 10px 14px; font-family: var(--font-mono);">255.255.0.0</td>
+                <td style="padding: 10px 14px;">65,536</td>
+                <td style="padding: 10px 14px;">65,534</td>
+                <td style="padding: 10px 14px;">Cloud VPCs (AWS VPC, GCP Virtual Networks)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p><strong>The Two Reserved Addresses Rule:</strong> In standard IPv4 subnets, exactly two addresses cannot be allocated to endpoints: the <em>first IP</em> serves as the Network Wire Address, and the <em>final IP</em> is reserved as the Directed Broadcast Address.</p>
+
+        <h3>Frequently Asked Questions (FAQ)</h3>
+        <div class="faq-list" style="margin-top: 16px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>What are the RFC 1918 private IPv4 address ranges?</span><span>+</span></div>
+            <div class="faq-answer">RFC 1918 reserves three non-routable address spaces for private networking: 10.0.0.0/8 (large enterprises), 172.16.0.0/12 (medium-to-large environments), and 192.168.0.0/16 (home routers and small offices).</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>What is a Wildcard Mask and where is it used?</span><span>+</span></div>
+            <div class="faq-answer">A wildcard mask is the bitwise inverse of a subnet mask (e.g., 255.255.255.0 becomes 0.0.0.255). It is used primarily in routing protocols like OSPF and in Cisco IOS Access Control Lists (ACLs) to specify ranges of IP addresses to match.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Are /31 and /32 subnets usable for host addressing?</span><span>+</span></div>
+            <div class="faq-answer">Under RFC 3021, /31 subnets (which contain 2 IPs) can be used on point-to-point links without wasting network or broadcast addresses. A /32 subnet represents a single host route (255.255.255.255) commonly used for loopback interfaces and firewall rule definitions.</div>
+          </div>
+        </div>
+      </article>
+    
+    </section>
+
+    <!-- Popular Tools -->
+    <section style="margin-top: 60px;">
+      <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 20px; color: var(--text-primary);">Popular Developer Tools</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px;">
+        <a href="/en/url-parser" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">URL Parser & Inspector</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Inspect protocols, ports, pathnames, and query parameters.</p>
+        </a>
+        <a href="/en/http-status-codes" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">HTTP Status Codes</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Comprehensive REST API error code catalog and specs.</p>
+        </a>
+        <a href="/en/cron-generator" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Cron Expression Generator</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Create cron expressions with plain English human translation.</p>
+        </a>
+        <a href="/en/json-formatter" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">JSON Formatter</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Format, validate, and beautify JSON payloads client-side.</p>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-grid">
+        <div class="footer-col footer-col-wide">
+          <div class="footer-brand">
+            <span class="footer-brand-title">Caixa do Dev</span>
+            <span class="footer-badge">100% Client-Side</span>
+          </div>
+          <p>The ultimate free developer toolbox. High performance, zero server retention, built for privacy.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="/en/">Home</a></li>
+            <li><a href="/pages/sobre.html">About</a></li>
+            <li><a href="/pages/contato.html">Contact</a></li>
+            <li><a href="/pages/privacidade.html">Privacy Policy</a></li>
+            <li><a href="/pages/termos.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Caixa do Dev. All rights reserved.</span>
+        <span>High-speed client-side execution with zero logging.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
+  <!-- Scripts -->
+  <script src="/js/tools/subnet-calculator.js?v=20261017c"></script>
+  <script src="/js/app.js?v=20261017c"></script>
+</body>
+</html>

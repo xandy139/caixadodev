@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9HZFENSYKS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-9HZFENSYKS');
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3052162962623831"
+     crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>URL Parser & Query String Inspector (RFC 3986 Debugger) | Caixa do Dev</title>
+  <meta name="description" content="Deconstruct complex URLs into protocol, host, port, path, and interactive query parameters table. Edit, decode percent-encoding, and rebuild URLs safely in your browser.">
+  <meta name="keywords" content="url parser online, query string inspector, url decoder, parse url query params, rfc 3986 debugger, utm parameter inspector">
+  <meta name="author" content="Alexandre Marcelino">
+  <meta name="robots" content="index, follow">
+
+  <!-- Canonical, Hreflang & Open Graph -->
+  <link rel="canonical" href="https://www.caixadodev.com.br/en/url-parser">
+  <link rel="alternate" hreflang="pt-BR" href="https://www.caixadodev.com.br/inspetor-de-url">
+  <link rel="alternate" hreflang="en" href="https://www.caixadodev.com.br/en/url-parser">
+  <link rel="alternate" hreflang="x-default" href="https://www.caixadodev.com.br/inspetor-de-url">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.caixadodev.com.br/en/url-parser">
+  <meta property="og:title" content="URL Parser & Query String Inspector (RFC 3986 Debugger) | Caixa do Dev">
+  <meta property="og:description" content="Deconstruct complex URLs into protocol, host, path, and query strings. 100% private client-side processing.">
+  <meta property="og:image" content="https://www.caixadodev.com.br/assets/og-cover.png">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'><path d='M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/css/style.css?v=20261017c">
+  <link rel="stylesheet" href="/css/tools.css?v=20261017c">
+
+  <!-- Schema.org WebApplication & FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "URL Parser & Query String Inspector",
+        "url": "https://www.caixadodev.com.br/en/url-parser",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript",
+        "description": "Parse URLs into protocol, hostname, port, pathname, query parameters, and hash fragments with in-browser privacy.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is the maximum recommended character length for URLs?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Although the HTTP RFC specification sets no strict limit, web servers and CDNs (Cloudflare, Nginx, Apache) practically cap GET request URLs around 2,048 characters. Larger payloads should always use HTTP POST with JSON bodies."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What are UTM parameters in URLs?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "UTMs (Urchin Tracking Modules) are 5 standardized query string keys (utm_source, utm_medium, utm_campaign, utm_term, and utm_content) used by analytics tools to track campaign traffic attribution."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are URLs or query tokens transmitted to any external server?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. The parsing uses the native URL Web API directly in your browser. Tokens and query keys remain 100% confidential in local memory."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="standalone-page">
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="/en/" class="brand" title="Caixa do Dev - Home">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Caixa do Dev</span>
+          <span class="brand-badge">42 Tools</span>
+        </div>
+      </a>
+
+      <div class="nav-actions">
+        <nav>
+          <ul class="nav-links">
+            <li><a href="/en/">Home</a></li>
+            <li><a href="/en/url-parser" class="active">URL Parser</a></li>
+            <li><a href="/en/curl-converter">cURL</a></li>
+            <li><a href="/en/jwt-decoder">JWT</a></li>
+            <li><a href="/en/json-formatter">JSON</a></li>
+            <li><a href="/en/regex-tester">Regex</a></li>
+            <li><a href="/artigos">Articles</a></li>
+            <li><a href="/pages/sobre.html">About</a></li>
+          </ul>
+        </nav>
+        <div class="lang-switch" aria-label="Idioma / Language">
+          <a href="/inspetor-de-url" class="lang-btn" title="Versão em Português">🇧🇷 PT</a>
+          <span class="lang-sep">/</span>
+          <span class="lang-btn active" title="English Version">🇺🇸 EN</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container" style="padding-top: 32px; padding-bottom: 60px;">
+    
+    <div class="tool-breadcrumbs">
+      <a href="/en/">&larr; Home</a> / <span>URL Parser & Query String Inspector</span>
+    </div>
+
+    <div class="privacy-badge">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      100% Client-Side In-Browser Processing (Sensitive tokens and API keys are never leaked)
+    </div>
+
+    <!-- Tool Interface -->
+    <section class="tool-view standalone-active" data-tool-id="url-parser">
+      
+      <div class="tool-interface-card">
+        <div class="tool-header-area">
+          <div class="tool-title-group">
+            <h1>URL Parser &amp; Query String Inspector</h1>
+            <p>Decompose complex URLs into protocol, host, port, path, and manage query parameters visually.</p>
+          </div>
+          <div class="tool-actions-bar">
+            <button id="btn-parse-url" class="btn btn-primary">Decompose URL</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Full URL for Analysis</label>
+          <input type="text" id="url-parser-input" class="form-control" placeholder="https://api.example.com:8080/v1/search?q=developer+tools&utm_source=github#overview">
+        </div>
+
+        <div class="grid-2" style="margin-top: 20px;">
+          <div>
+            <span class="pane-title" style="margin-bottom: 8px;">URL Components</span>
+            <table class="subnet-table">
+              <tr><td>Protocol:</td><td id="url-part-proto">https:</td></tr>
+              <tr><td>Hostname:</td><td id="url-part-host">api.example.com</td></tr>
+              <tr><td>Port:</td><td id="url-part-port">8080</td></tr>
+              <tr><td>Pathname:</td><td id="url-part-path">/v1/search</td></tr>
+            </table>
+          </div>
+          <div>
+            <span class="pane-title" style="margin-bottom: 8px;">Query Parameters Table (?key=value)</span>
+            <table class="subnet-table">
+              <thead>
+                <tr style="border-bottom: 2px solid var(--border-subtle);"><th style="text-align: left; padding: 8px;">Key</th><th style="text-align: left; padding: 8px;">Value</th></tr>
+              </thead>
+              <tbody id="url-params-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div style="margin-top: 20px;">
+          <div class="pane-header">
+            <span class="pane-title">Rebuilt Canonical URL</span>
+            <button id="btn-copy-rebuilt-url" class="btn btn-secondary btn-sm">Copy URL</button>
+          </div>
+          <div id="url-rebuilt-output" class="result-box" style="font-family: var(--font-mono); color: var(--accent-cyan); word-break: break-all;">-</div>
+        </div>
+      </div>
+
+      <article class="tool-seo-guide">
+        <h2>URL Anatomy and the RFC 3986 URI Specification</h2>
+        <p>A <strong>Uniform Resource Locator (URL)</strong>, defined by the IETF standard <strong>RFC 3986</strong>, is the universal addressing mechanism for web resources. Beyond human-friendly web addresses, URLs encapsulate strict syntax hierarchies with percent-encoding rules to prevent injection attacks and ensure reliable parameter parsing across disparate networks.</p>
+
+        <h3>1. The Core Building Blocks of a URI</h3>
+        <ul>
+          <li><strong>Scheme / Protocol:</strong> Specifies the underlying communications protocol (<code>https://</code>, <code>http://</code>, <code>wss://</code>, <code>ftp://</code>).</li>
+          <li><strong>Host / Domain:</strong> Destination IP address or fully qualified domain name (FQDN, e.g., <code>api.caixadodev.com.br</code>).</li>
+          <li><strong>Port:</strong> Network endpoint connection number (defaults to 80 for HTTP and 443 for HTTPS).</li>
+          <li><strong>Pathname:</strong> Hierarchical routing path to the resource inside the destination application (e.g., <code>/v1/users/profile</code>).</li>
+          <li><strong>Query String:</strong> Key-value pairs introduced by <code>?</code> and delimited by <code>&amp;</code> (e.g., <code>?category=tools&amp;page=2</code>).</li>
+          <li><strong>Fragment / Anchor:</strong> Identified by <code>#</code>, designating a client-side component or section never transmitted to the origin web server in HTTP requests.</li>
+        </ul>
+
+        <h3>2. What is Percent-Encoding (URL Encoding)?</h3>
+        <p>Because characters such as <code>/</code>, <code>?</code>, <code>&amp;</code>, <code>=</code>, and whitespace serve structural functions in URLs, user-supplied data matching these symbols must be percent-encoded into UTF-8 hexadecimal sequences preceded by <code>%</code> (for example, spaces become <code>%20</code> or <code>+</code>, and quotes become <code>%22</code>).</p>
+
+        <h3>Frequently Asked Questions (FAQ)</h3>
+        <div class="faq-list" style="margin-top: 16px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>What is the maximum recommended character length for URLs?</span><span>+</span></div>
+            <div class="faq-answer">Although the HTTP RFC specification sets no strict limit, web servers and CDNs (Cloudflare, Nginx, Apache) practically cap GET request URLs around 2,048 characters. Larger payloads should always use HTTP POST with JSON bodies.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>What are UTM parameters in URLs?</span><span>+</span></div>
+            <div class="faq-answer">UTMs (Urchin Tracking Modules) are 5 standardized query string keys (utm_source, utm_medium, utm_campaign, utm_term, and utm_content) used by analytics tools to track campaign traffic attribution.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Are URLs or query tokens transmitted to any external server?</span><span>+</span></div>
+            <div class="faq-answer">No. The parsing uses the native URL Web API directly in your browser. Tokens and query keys remain 100% confidential in local memory.</div>
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- Recommended Tools -->
+    <section style="margin-top: 60px;">
+      <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 20px; color: var(--text-primary);">Explore More Developer Tools</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px;">
+        <a href="/en/curl-converter" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">cURL Converter</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Convert cURL commands to JavaScript fetch, Python requests, Node.js, and Go code.</p>
+        </a>
+        <a href="/en/jwt-decoder" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">JWT Decoder</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Decode JSON Web Tokens, inspect payload claims, and verify expiry dates locally.</p>
+        </a>
+        <a href="/en/case-converter" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Case Converter</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Convert text between camelCase, PascalCase, snake_case, and kebab-case.</p>
+        </a>
+        <a href="/en/json-formatter" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">JSON Formatter</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Prettify, validate, and minify complex JSON payloads with syntax highlighting.</p>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-grid">
+        <div class="footer-col footer-col-wide">
+          <div class="footer-brand">
+            <span class="footer-brand-title">Caixa do Dev</span>
+            <span class="footer-badge">100% Client-Side</span>
+          </div>
+          <p>The ultimate free browser-based developer toolbox for engineers, QA analysts, and DevOps worldwide.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Pages</h4>
+          <ul>
+            <li><a href="/pages/sobre.html">About Us</a></li>
+            <li><a href="/pages/contato.html">Contact</a></li>
+            <li><a href="/pages/privacidade.html">Privacy Policy</a></li>
+            <li><a href="/pages/termos.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Caixa do Dev. All rights reserved.</span>
+        <span>High-performance local client-side processing with zero telemetry.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
+  <!-- Scripts -->
+  <script src="/js/tools/url-parser.js?v=20261017c"></script>
+  <script src="/js/app.js?v=20261017c"></script>
+</body>
+</html>

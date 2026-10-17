@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9HZFENSYKS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-9HZFENSYKS');
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3052162962623831"
+     crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Batch Mock Data Generator (JSON, CSV, SQL INSERT) | Caixa do Dev</title>
+  <meta name="description" content="Generate realistic dummy data records in bulk for database seeding, QA testing, and frontend prototyping. Export instantly to JSON, CSV, or SQL INSERT statements.">
+  <meta name="keywords" content="mock data generator, dummy data generator, test data generator, sql insert seed generator, batch json dummy records">
+  <meta name="author" content="Caixa do Dev">
+  <meta name="robots" content="index, follow">
+
+  <!-- Canonical, Hreflang & Social Meta -->
+  <link rel="canonical" href="https://www.caixadodev.com.br/en/mock-data-generator">
+  <link rel="alternate" hreflang="pt-BR" href="https://www.caixadodev.com.br/gerador-de-mock-data">
+  <link rel="alternate" hreflang="en" href="https://www.caixadodev.com.br/en/mock-data-generator">
+  <link rel="alternate" hreflang="x-default" href="https://www.caixadodev.com.br/gerador-de-mock-data">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.caixadodev.com.br/en/mock-data-generator">
+  <meta property="og:title" content="Batch Mock Data Generator (JSON, CSV, SQL INSERT) | Caixa do Dev">
+  <meta property="og:description" content="Generate realistic mock data records in bulk. Export instantly to JSON, CSV, or SQL INSERT statements.">
+  <meta property="og:image" content="https://www.caixadodev.com.br/assets/og-cover.png">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'><path d='M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/css/style.css?v=20261017c">
+  <link rel="stylesheet" href="/css/tools.css?v=20261017c">
+
+  <!-- Schema.org WebApplication & FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "Batch Mock Data Generator (JSON, CSV, SQL INSERT)",
+        "url": "https://www.caixadodev.com.br/en/mock-data-generator",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript",
+        "description": "Generate realistic dummy user records in batch for seeding databases, testing REST APIs, and QA automation with JSON, CSV, and SQL outputs.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Does the generated mock data belong to real individuals?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. All generated names, phone numbers, email addresses, and account balances are algorithmically generated pseudo-random strings. They do not correlate to real individuals or corporate entities."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why is mock data crucial for GDPR and CCPA compliance?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Exporting production database snapshots to local development laptops or staging environments exposes companies to strict data privacy violations and breaches. Using synthetic mock data eliminates legal risk while maintaining identical schema structures."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is data transmitted to an external server during generation?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. All record sets, CSV conversions, and SQL INSERT strings are assembled directly inside your browser using client-side JavaScript."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="standalone-page">
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="/en/" class="brand" title="Caixa do Dev - Home">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Caixa do Dev</span>
+          <span class="brand-badge">42 Tools</span>
+        </div>
+      </a>
+
+      <div class="nav-actions">
+        <nav>
+          <ul class="nav-links">
+            <li><a href="/en/">Home</a></li>
+            <li><a href="/en/mock-data-generator" class="active">Mock Data</a></li>
+            <li><a href="/en/json-formatter">JSON</a></li>
+            <li><a href="/en/base64-converter">Base64</a></li>
+            <li><a href="/en/uuid-generator">UUID</a></li>
+            <li><a href="/en/hash-generator">Hash</a></li>
+            <li><a href="/pages/sobre.html">About</a></li>
+          </ul>
+        </nav>
+        <div class="lang-switch" aria-label="Language Selector">
+          <a href="/gerador-de-mock-data" class="lang-btn" title="Versão em Português">🇧🇷 PT</a>
+          <span class="lang-btn active" title="English Version">🇺🇸 EN</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container" style="padding-top: 32px; padding-bottom: 60px;">
+    
+    <div class="tool-breadcrumbs">
+      <a href="/en/">&larr; Home</a> / <span>Batch Mock Data Generator (JSON, CSV, SQL INSERT)</span>
+    </div>
+
+    <div class="privacy-badge">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      100% Client-Side In-Browser Generation (Zero Server Latency & Total Privacy)
+    </div>
+
+    <!-- Tool View -->
+    <section class="tool-view standalone-active" data-tool-id="mock-data">
+      
+      <div class="tool-interface-card">
+        <div class="tool-header-area">
+          <div class="tool-title-group">
+            <h1>Batch Mock Data & Schema Seed Generator</h1>
+            <p>Generate hundreds of synthetic records with Name, Email, Phone, City, and Status in JSON, CSV, or SQL INSERT formats.</p>
+          </div>
+          <div class="tool-actions-bar">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <label style="font-size: 0.85rem; color: var(--text-muted);">Quantity:</label>
+              <select id="mock-qty" class="form-control" style="width: 80px; padding: 6px 10px;">
+                <option value="5">5</option>
+                <option value="10" selected>10</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+              </select>
+            </div>
+            <input type="text" id="mock-table-name" class="form-control" style="width: 140px; padding: 6px 10px;" value="users" placeholder="Table name">
+            <button id="btn-gen-mock" class="btn btn-primary">Generate Records</button>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+          <div class="tool-actions-bar">
+            <button id="btn-mock-json" class="btn btn-secondary btn-sm">JSON</button>
+            <button id="btn-mock-csv" class="btn btn-secondary btn-sm">CSV (Excel)</button>
+            <button id="btn-mock-sql" class="btn btn-secondary btn-sm">SQL INSERT</button>
+          </div>
+          <button id="btn-copy-mock" class="btn btn-secondary btn-sm">Copy All</button>
+        </div>
+
+        <div class="form-group">
+          <textarea id="mock-output-display" class="form-control" style="min-height: 380px; font-size: 0.88rem;" readonly></textarea>
+        </div>
+      </div>
+
+      <article class="tool-seo-guide">
+        <h2>The Power of Synthetic Mock Data in Software Engineering</h2>
+        <p>In modern web engineering and Agile product development, frontend teams frequently construct dynamic data grids, analytical dashboards, and interactive user flows long before backend database migrations or REST APIs are finalized. In this fast-paced paradigm, <strong>Synthetic Mock Data</strong> accelerates delivery, enables reliable local prototyping, and provides deterministic test fixtures for QA suites.</p>
+
+        <h3>1. Strategic Advantages of Client-Side Dummy Data</h3>
+        <ul>
+          <li><strong>Decoupled Development Workflows:</strong> Frontend engineers can simulate loading spinners, empty states, edge cases, and pagination without waiting for cloud backend deployments.</li>
+          <li><strong>DOM Virtualization & Stress Testing:</strong> Generating large mock arrays (100 to 5,000 entities) makes it easy to stress-test virtualized table libraries (e.g., TanStack Table, AG Grid) and detect memory leaks prior to production releases.</li>
+          <li><strong>Strict Privacy Compliance (GDPR & CCPA):</strong> Never clone real production user data onto local developer machines or shared staging buckets. Algorithmic mock data completely neutralizes the liability of sensitive data leakage or regulatory penalties.</li>
+        </ul>
+
+        <h3>2. Versatile Export Formats: JSON, CSV, and SQL</h3>
+        <p>This generator populates complete entity profiles (including ID, full name, email, phone number, city, status, and timestamp) and converts the batch on the fly into three standard formats:</p>
+        <ul>
+          <li><strong>JSON:</strong> Ideal for mocking endpoints with Mirage JS, MSW (Mock Service Worker), or standalone <em>json-server</em> instances.</li>
+          <li><strong>CSV:</strong> Perfect for importing into spreadsheet applications like Microsoft Excel or Google Sheets for business reporting demos.</li>
+          <li><strong>SQL INSERT:</strong> Formatted relational SQL statements ready to be added to database seed files (PostgreSQL, MySQL, SQLite) for immediate testing.</li>
+        </ul>
+
+        <h3>Frequently Asked Questions (FAQ)</h3>
+        <div class="faq-list" style="margin-top: 16px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>Can I customize the SQL table name in the generated queries?</span><span>+</span></div>
+            <div class="faq-answer">Yes. Enter your target table identifier in the 'Table name' field (e.g., 'customers' or 'accounts'), and all generated SQL statements will automatically reflect 'INSERT INTO customers (...) VALUES (...)'.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Does this generator store my records on any server?</span><span>+</span></div>
+            <div class="faq-answer">No. All data generation, string escaping, and syntax assembly happen strictly within client-side JavaScript memory. No data is sent over the network.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>How are phone numbers and email domains formatted?</span><span>+</span></div>
+            <div class="faq-answer">In English mode, phone numbers follow standard North American 10-digit formats (e.g., (555) 123-4567), and email addresses are matched to first and last names with generic domains like @example.org and @gmail.com.</div>
+          </div>
+        </div>
+      </article>
+    
+    </section>
+
+    <!-- Popular Tools -->
+    <section style="margin-top: 60px;">
+      <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 20px; color: var(--text-primary);">Popular Developer Tools</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px;">
+        <a href="/en/json-formatter" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">JSON Formatter</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Validate, format, and inspect JSON payloads with tree views.</p>
+        </a>
+        <a href="/en/case-converter" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Case Converter</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Convert identifiers to camelCase, snake_case, and kebab-case.</p>
+        </a>
+        <a href="/en/uuid-generator" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">UUID Generator</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Generate cryptographically secure RFC 4122 v4 UUID tokens.</p>
+        </a>
+        <a href="/en/lorem-ipsum-generator" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Lorem Ipsum Generator</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Generate dummy placeholder text for UI layouts and designs.</p>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-grid">
+        <div class="footer-col footer-col-wide">
+          <div class="footer-brand">
+            <span class="footer-brand-title">Caixa do Dev</span>
+            <span class="footer-badge">100% Client-Side</span>
+          </div>
+          <p>The ultimate free developer toolbox. High performance, zero server retention, built for privacy.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="/en/">Home</a></li>
+            <li><a href="/pages/sobre.html">About</a></li>
+            <li><a href="/pages/contato.html">Contact</a></li>
+            <li><a href="/pages/privacidade.html">Privacy Policy</a></li>
+            <li><a href="/pages/termos.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Caixa do Dev. All rights reserved.</span>
+        <span>High-speed client-side execution with zero logging.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
+  <!-- Scripts -->
+  <script src="/js/tools/mock-data.js?v=20261017c"></script>
+  <script src="/js/app.js?v=20261017c"></script>
+</body>
+</html>

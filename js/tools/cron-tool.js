@@ -15,11 +15,23 @@ const CRON_TOOL = {
     'monthly_first': { exp: '0 0 1 * *', label: 'No primeiro dia de cada mês' }
   },
 
-  DAYS_OF_WEEK: ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'],
-  MONTHS: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+  get DAYS_OF_WEEK() {
+    const isEn = typeof document !== 'undefined' && document.documentElement.lang === 'en';
+    return isEn 
+      ? ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+      : ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
+  },
+
+  get MONTHS() {
+    const isEn = typeof document !== 'undefined' && document.documentElement.lang === 'en';
+    return isEn
+      ? ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+      : ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+  },
 
   explain(cronStr) {
-    if (!cronStr) return 'Insira uma expressão cron (5 campos: min hora dia mês sem)';
+    const isEn = typeof document !== 'undefined' && document.documentElement.lang === 'en';
+    if (!cronStr) return isEn ? 'Enter a cron expression (5 fields: min hour day month dow)' : 'Insira uma expressão cron (5 campos: min hora dia mês sem)';
     let parts = cronStr.trim().split(/\s+/);
 
     // Aliases comuns
@@ -33,10 +45,38 @@ const CRON_TOOL = {
     }
 
     if (parts.length !== 5) {
-      return 'Expressão inválida. O formato padrão exige 5 campos separados por espaço: minuto hora dia mês dia_da_semana';
+      return isEn
+        ? 'Invalid expression. Standard format requires 5 space-separated fields: minute hour day_of_month month day_of_week'
+        : 'Expressão inválida. O formato padrão exige 5 campos separados por espaço: minuto hora dia mês dia_da_semana';
     }
 
     const [min, hour, dayOfMonth, month, dayOfWeek] = parts;
+
+    if (isEn) {
+      let descMin = min === '*' ? 'every minute' : min.startsWith('*/') ? `every ${min.slice(2)} minutes` : `at minute ${min}`;
+      let descHour = hour === '*' ? 'of every hour' : hour.startsWith('*/') ? `every ${hour.slice(2)} hours` : `at ${hour.padStart(2, '0')}:${min === '*' ? '00' : min.padStart(2, '0')}`;
+      let descDay = dayOfMonth === '*' ? 'every day' : dayOfMonth.startsWith('*/') ? `every ${dayOfMonth.slice(2)} days` : `on day ${dayOfMonth} of the month`;
+      let descMonth = month === '*' ? 'of every month' : month.startsWith('*/') ? `every ${month.slice(2)} months` : `in ${this.MONTHS[parseInt(month, 10) - 1] || 'month ' + month}`;
+      let descDow = '';
+      if (dayOfWeek === '*') descDow = '';
+      else if (dayOfWeek === '1-5') descDow = 'Monday through Friday';
+      else if (dayOfWeek === '0,6' || dayOfWeek === '6,0') descDow = 'on weekends only';
+      else {
+        const dowIdx = parseInt(dayOfWeek, 10) % 7;
+        descDow = `on ${this.DAYS_OF_WEEK[dowIdx] || 'day ' + dayOfWeek}`;
+      }
+
+      if (min.startsWith('*/') && hour === '*' && dayOfMonth === '*' && month === '*' && dayOfWeek === '*') {
+        return `Runs continuously every ${min.slice(2)} minutes, every day.`;
+      }
+      if (min === '0' && hour.startsWith('*/') && dayOfMonth === '*' && month === '*') {
+        return `Runs every ${hour.slice(2)} hours, at minute 0.`;
+      }
+      if (hour !== '*' && !hour.startsWith('*/') && min !== '*' && !min.startsWith('*/')) {
+        return `Runs at ${hour.padStart(2, '0')}:${min.padStart(2, '0')} (${descDay}${descDow ? ', ' + descDow : ''}, ${descMonth}).`;
+      }
+      return `Runs ${descMin}, ${descHour}, ${descDay}${descDow ? ' (' + descDow + ')' : ''}, ${descMonth}.`;
+    }
 
     let descMin = '';
     if (min === '*') descMin = 'a cada minuto';

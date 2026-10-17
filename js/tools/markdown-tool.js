@@ -4,7 +4,42 @@
  */
 
 const MARKDOWN_TOOL = {
-  SAMPLE: `# 🚀 Projeto Exemplo - Caixa do Dev
+  get SAMPLE() {
+    const isEn = typeof document !== 'undefined' && document.documentElement.lang === 'en';
+    if (isEn) {
+      return `# 🚀 Sample Project - Caixa do Dev
+
+Welcome to **Caixa do Dev**, the ultimate toolkit for developers and engineers!
+
+## ✨ Key Features
+- **100% Client-Side**: No test payloads ever leave your browser.
+- **Blazing Fast**: Instant preview with *GitHub Flavored Markdown (GFM)*.
+- [Visit Official Documentation](https://www.caixadodev.com.br/en/)
+
+## 📋 Project Checklist
+- [x] High-performance JSON & SQL formatters
+- [x] Client-side Cryptographic Hashes & UUID v7
+- [ ] Custom dark/light syntax themes
+
+## 📊 Technology Stack
+| Layer | Technology | Performance |
+| :--- | :--- | :--- |
+| Core Logic | Vanilla JavaScript | < 1ms execution |
+| Styling | Modern CSS3 & Variables | 60 FPS |
+| Cryptography | Web Crypto API | Hardware Native |
+
+## 💻 Sample Code
+\`\`\`javascript
+const greet = (name) => {
+  console.log(\`Hello, \${name}! Welcome to Caixa do Dev.\`);
+};
+greet('Developer');
+\`\`\`
+
+> "Simplicity is the ultimate sophistication." — Leonardo da Vinci
+`;
+    }
+    return `# 🚀 Projeto Exemplo - Caixa do Dev
 
 Bem-vindo ao **Caixa do Dev**, a suíte definitiva para desenvolvedores!
 
@@ -34,7 +69,8 @@ saudar('Dev');
 \`\`\`
 
 > "A simplicidade é o último grau de sofisticação." — Leonardo da Vinci
-`,
+`;
+  },
 
   parse(mdText) {
     if (!mdText) return '';

@@ -11,53 +11,85 @@ const MOCK_DATA_TOOL = {
     'Letícia Ramos', 'Gustavo Castro', 'Bruna Monteiro', 'André Rezende', 'Rafaela Duarte'
   ],
 
+  NAMES_EN: [
+    'James Smith', 'Emma Johnson', 'Michael Brown', 'Olivia Davis', 'William Wilson',
+    'Sophia Martinez', 'Alexander Taylor', 'Isabella Anderson', 'Daniel Thomas', 'Mia Jackson',
+    'Benjamin White', 'Charlotte Harris', 'Henry Martin', 'Amelia Thompson', 'Lucas Garcia',
+    'Harper Robinson', 'Elijah Clark', 'Evelyn Rodriguez', 'Liam Lewis', 'Ava Lee'
+  ],
+
   DOMINIOS: ['gmail.com', 'outlook.com', 'empresa.com.br', 'dev.com.br', 'techmail.io'],
+  DOMAINS_EN: ['gmail.com', 'outlook.com', 'company.com', 'devmail.io', 'techcorp.net'],
   CIDADES: ['São Paulo - SP', 'Rio de Janeiro - RJ', 'Belo Horizonte - MG', 'Curitiba - PR', 'Porto Alegre - RS', 'Salvador - BA', 'Brasília - DF', 'Recife - PE', 'Florianópolis - SC', 'Fortaleza - CE'],
+  CITIES_EN: ['New York, NY', 'Los Angeles, CA', 'Chicago, IL', 'Houston, TX', 'Phoenix, AZ', 'San Francisco, CA', 'Seattle, WA', 'Austin, TX', 'Boston, MA', 'Denver, CO'],
   STATUS: ['Ativo', 'Pendente', 'Inativo', 'Cancelado'],
+  STATUS_EN: ['Active', 'Pending', 'Inactive', 'Cancelled'],
 
   generateBatch(count = 10, tableName = 'usuarios') {
     const qty = Math.min(Math.max(1, parseInt(count, 10) || 10), 200);
     const records = [];
+    const isEn = document.documentElement.lang === 'en';
+
+    const namesList = isEn ? this.NAMES_EN : this.NOMES;
+    const domainsList = isEn ? this.DOMAINS_EN : this.DOMINIOS;
+    const citiesList = isEn ? this.CITIES_EN : this.CIDADES;
+    const statusList = isEn ? this.STATUS_EN : this.STATUS;
 
     for (let i = 1; i <= qty; i++) {
-      const nome = this.NOMES[Math.floor(Math.random() * this.NOMES.length)];
+      const nome = namesList[Math.floor(Math.random() * namesList.length)];
       const partes = nome.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").split(' ');
-      const dominio = this.DOMINIOS[Math.floor(Math.random() * this.DOMINIOS.length)];
+      const dominio = domainsList[Math.floor(Math.random() * domainsList.length)];
       const email = `${partes[0]}.${partes[1]}${i}@${dominio}`;
 
-      // CPF gerado válido se a ferramenta estiver carregada
-      let cpf = '000.000.000-00';
-      if (window.CPF_CNPJ_TOOL) {
-        cpf = window.CPF_CNPJ_TOOL.generateCPF(true);
-      } else {
-        cpf = `${String(Math.floor(100+Math.random()*899))}.${String(Math.floor(100+Math.random()*899))}.${String(Math.floor(100+Math.random()*899))}-01`;
-      }
-
-      const ddd = String(Math.floor(11 + Math.random() * 88));
-      const tel = `(${ddd}) 9${Math.floor(1000 + Math.random() * 8999)}-${Math.floor(1000 + Math.random() * 8999)}`;
-      const cidade = this.CIDADES[Math.floor(Math.random() * this.CIDADES.length)];
-      const status = this.STATUS[Math.floor(Math.random() * this.STATUS.length)];
+      const cidade = citiesList[Math.floor(Math.random() * citiesList.length)];
+      const status = statusList[Math.floor(Math.random() * statusList.length)];
       const saldo = (Math.random() * 5000 + 100).toFixed(2);
       
       const d = new Date(Date.now() - Math.floor(Math.random() * 10000000000));
       const criadoEm = d.toISOString().split('T')[0];
 
-      records.push({
-        id: i,
-        nome,
-        email,
-        cpf,
-        telefone: tel,
-        cidade,
-        status,
-        saldo: parseFloat(saldo),
-        criado_em: criadoEm
-      });
+      if (isEn) {
+        const phone = `+1 (555) ${Math.floor(100 + Math.random() * 899)}-${Math.floor(1000 + Math.random() * 8999)}`;
+        records.push({
+          id: i,
+          name: nome,
+          email,
+          phone,
+          city: cidade,
+          status,
+          balance: parseFloat(saldo),
+          created_at: criadoEm
+        });
+      } else {
+        let cpf = '000.000.000-00';
+        if (window.CPF_CNPJ_TOOL) {
+          cpf = window.CPF_CNPJ_TOOL.generateCPF(true);
+        } else {
+          cpf = `${String(Math.floor(100+Math.random()*899))}.${String(Math.floor(100+Math.random()*899))}.${String(Math.floor(100+Math.random()*899))}-01`;
+        }
+        const ddd = String(Math.floor(11 + Math.random() * 88));
+        const tel = `(${ddd}) 9${Math.floor(1000 + Math.random() * 8999)}-${Math.floor(1000 + Math.random() * 8999)}`;
+
+        records.push({
+          id: i,
+          nome,
+          email,
+          cpf,
+          telefone: tel,
+          cidade,
+          status,
+          saldo: parseFloat(saldo),
+          criado_em: criadoEm
+        });
+      }
     }
+
+    const defaultTbl = isEn ? 'users' : 'usuarios';
+    const finalTable = (tableName === 'usuarios' && isEn) ? 'users' : (tableName || defaultTbl);
 
     return {
       records,
-      tableName: tableName || 'usuarios',
+      tableName: finalTable,
       toJSON() {
         return JSON.stringify(records, null, 2);
       },

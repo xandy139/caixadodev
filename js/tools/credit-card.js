@@ -68,9 +68,15 @@ const CREDIT_CARD_TOOL = {
 
   // Validar número de cartão via Algoritmo de Luhn
   validate(cardNumber) {
+    const isEn = document.documentElement.lang === 'en';
     const clean = String(cardNumber).replace(/\D/g, '');
     if (clean.length < 13 || clean.length > 19) {
-      return { valid: false, reason: 'Quantidade de dígitos incompatível (deve ter entre 13 e 19 dígitos).' };
+      return { 
+        valid: false, 
+        reason: isEn 
+          ? 'Incompatible digit count (card numbers must contain between 13 and 19 digits).' 
+          : 'Quantidade de dígitos incompatível (deve ter entre 13 e 19 dígitos).' 
+      };
     }
 
     let sum = 0;
@@ -87,11 +93,16 @@ const CREDIT_CARD_TOOL = {
 
     const isValid = (sum % 10) === 0;
     if (!isValid) {
-      return { valid: false, reason: 'Número rejeitado pelo algoritmo de Luhn (dígito verificador inválido).' };
+      return { 
+        valid: false, 
+        reason: isEn 
+          ? 'Card number rejected by the Luhn algorithm (checksum verification failed).' 
+          : 'Número rejeitado pelo algoritmo de Luhn (dígito verificador inválido).' 
+      };
     }
 
     // Identificar bandeira
-    let detectedBrand = 'Desconhecida';
+    let detectedBrand = isEn ? 'Unknown' : 'Desconhecida';
     if (/^4/.test(clean)) detectedBrand = 'Visa';
     else if (/^(5[1-5]|2[2-7])/.test(clean)) detectedBrand = 'Mastercard';
     else if (/^3[47]/.test(clean)) detectedBrand = 'American Express';
