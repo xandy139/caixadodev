@@ -301,6 +301,13 @@ const I18N_TOOLS_EN = {
     desc: 'Generate placeholder dummy text by words, sentences or paragraphs with Latin, Tech Jargon or Dev Humor flavors.',
     badge: '📄 Dummy Text',
     categoryLabel: 'Content & Mockup'
+  },
+  'image-converter': {
+    url: '/en/image-converter',
+    name: 'Web Image Converter & Compressor',
+    desc: 'Convert and compress images between PNG, JPG, WebP and AVIF with custom quality and resizing in-browser.',
+    badge: '🖼️ WebP & AVIF',
+    categoryLabel: 'Design & Media'
   }
 };
 
@@ -321,7 +328,7 @@ function getEffectiveCatalog() {
   });
 }
 
-// Catálogo Oficial de 40 Ferramentas - Ordenado por Frequência de Uso e Volume de Busca no Brasil
+// Catálogo Oficial de 43 Ferramentas - Ordenado por Frequência de Uso e Volume de Busca no Brasil
 const TOOLS_CATALOG = [
   // ==========================================
   // NOVO PADRÃO DA RECEITA FEDERAL (2026)
@@ -712,6 +719,18 @@ const TOOLS_CATALOG = [
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 22l1-1 4-4-2-2 4-4 2 2 5-5a2.83 2.83 0 0 1 4 4l-5 5 2 2-4 4-2-2-4 4-1 1z"/></svg>`,
     color: 'var(--accent-primary)',
     badge: '🎨 Pixel Loupe',
+    isPopular: true
+  },
+  {
+    id: 'image-converter',
+    url: '/conversor-de-imagem',
+    name: 'Conversor e Compressor de Imagens Web',
+    category: 'conversores',
+    categoryLabel: 'Design & Mídia',
+    desc: 'Converta e comprima imagens entre PNG, JPG, WebP e AVIF com controle de qualidade e redimensionamento 100% no navegador.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>`,
+    color: 'var(--accent-primary)',
+    badge: '🖼️ WebP & AVIF',
     isPopular: true
   },
   {
@@ -2688,6 +2707,153 @@ function initToolEvents() {
     if (btnCopyMock) btnCopyMock.addEventListener('click', () => copyToClipboard(mockOutputDisplay.value));
 
     runGenBatch();
+  }
+
+  // ========================
+  // CONVERSOR E COMPRESSOR DE IMAGENS
+  // ========================
+  const imgDropzone = document.getElementById('img-dropzone');
+  const imgFileInput = document.getElementById('img-file-input');
+  const btnConvertImg = document.getElementById('btn-convert-img');
+  const btnResetImg = document.getElementById('btn-reset-img');
+  const selTargetFormat = document.getElementById('sel-target-format');
+  const rangeImgQuality = document.getElementById('range-img-quality');
+  const badgeQualityVal = document.getElementById('badge-quality-val');
+  const selImgResize = document.getElementById('sel-img-resize');
+  const imgResultPanel = document.getElementById('img-result-panel');
+  const btnDownloadImg = document.getElementById('btn-download-img');
+
+  if (imgDropzone && imgFileInput && btnConvertImg) {
+    let currentFile = null;
+    const isEn = document.documentElement.lang === 'en';
+
+    const handleSelectedFile = (file) => {
+      if (!file || !file.type.startsWith('image/')) {
+        showToast(isEn ? 'Please select a valid image file!' : 'Por favor selecione um arquivo de imagem válido!');
+        return;
+      }
+      currentFile = file;
+      btnConvertImg.disabled = false;
+      imgDropzone.style.borderColor = 'var(--accent-primary)';
+      const headerTitle = imgDropzone.querySelector('h3');
+      if (headerTitle) {
+        headerTitle.textContent = `${file.name} (${IMAGE_CONVERTER.formatBytes(file.size)})`;
+      }
+      showToast(isEn ? `Image selected: ${file.name}` : `Imagem selecionada: ${file.name}`);
+    };
+
+    imgDropzone.addEventListener('click', () => imgFileInput.click());
+    imgFileInput.addEventListener('change', (e) => {
+      if (e.target.files && e.target.files[0]) {
+        handleSelectedFile(e.target.files[0]);
+      }
+    });
+
+    imgDropzone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      imgDropzone.style.background = 'rgba(99, 102, 241, 0.08)';
+      imgDropzone.style.borderColor = 'var(--accent-cyan)';
+    });
+
+    imgDropzone.addEventListener('dragleave', () => {
+      imgDropzone.style.background = 'rgba(99, 102, 241, 0.03)';
+      imgDropzone.style.borderColor = currentFile ? 'var(--accent-primary)' : 'var(--border-hover)';
+    });
+
+    imgDropzone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      imgDropzone.style.background = 'rgba(99, 102, 241, 0.03)';
+      if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+        handleSelectedFile(e.dataTransfer.files[0]);
+      }
+    });
+
+    if (rangeImgQuality && badgeQualityVal) {
+      rangeImgQuality.addEventListener('input', () => {
+        badgeQualityVal.textContent = `${rangeImgQuality.value}%`;
+      });
+    }
+
+    const runConversion = async () => {
+      if (!currentFile || !window.IMAGE_CONVERTER) return;
+      btnConvertImg.disabled = true;
+      btnConvertImg.textContent = isEn ? 'Converting...' : 'Convertendo...';
+
+      try {
+        const quality = parseInt(rangeImgQuality ? rangeImgQuality.value : '85', 10) / 100;
+        const targetFormat = selTargetFormat ? selTargetFormat.value : 'image/webp';
+        const resizeVal = selImgResize ? selImgResize.value : 'original';
+        const maxWidth = resizeVal !== 'original' ? parseInt(resizeVal, 10) : null;
+
+        const res = await window.IMAGE_CONVERTER.convert(currentFile, {
+          targetFormat,
+          quality,
+          maxWidth
+        });
+
+        const resFilename = document.getElementById('res-filename');
+        if (resFilename) resFilename.textContent = res.fileName;
+        const resOrigSize = document.getElementById('res-orig-size');
+        if (resOrigSize) resOrigSize.textContent = IMAGE_CONVERTER.formatBytes(res.originalSize);
+        const resNewSize = document.getElementById('res-new-size');
+        if (resNewSize) resNewSize.textContent = IMAGE_CONVERTER.formatBytes(res.newSize);
+        const resDimensions = document.getElementById('res-dimensions');
+        if (resDimensions) resDimensions.textContent = `${res.width} × ${res.height} px`;
+        const resFormat = document.getElementById('res-format');
+        if (resFormat) resFormat.textContent = res.mimeType.replace('image/', '').toUpperCase();
+
+        const badgeSavings = document.getElementById('badge-savings');
+        if (badgeSavings) {
+          if (res.savingsPercent > 0) {
+            badgeSavings.textContent = `-${res.savingsPercent}%`;
+            badgeSavings.style.color = '#34d399';
+            badgeSavings.style.background = 'rgba(16, 185, 129, 0.15)';
+          } else {
+            badgeSavings.textContent = `+${Math.abs(res.savingsPercent)}%`;
+            badgeSavings.style.color = '#f87171';
+            badgeSavings.style.background = 'rgba(239, 68, 68, 0.15)';
+          }
+        }
+
+        const imgPreview = document.getElementById('img-preview');
+        if (imgPreview) imgPreview.src = res.blobUrl;
+
+        if (btnDownloadImg) {
+          btnDownloadImg.href = res.blobUrl;
+          btnDownloadImg.download = res.fileName;
+        }
+
+        if (imgResultPanel) {
+          imgResultPanel.style.display = 'block';
+          imgResultPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+        showToast(isEn ? 'Image converted successfully!' : 'Imagem convertida com sucesso!');
+      } catch (err) {
+        showToast(isEn ? `Conversion failed: ${err.message}` : `Falha na conversão: ${err.message}`);
+      } finally {
+        btnConvertImg.disabled = false;
+        btnConvertImg.textContent = isEn ? 'Convert Image' : 'Converter Imagem';
+      }
+    };
+
+    btnConvertImg.addEventListener('click', runConversion);
+
+    if (btnResetImg) {
+      btnResetImg.addEventListener('click', () => {
+        currentFile = null;
+        imgFileInput.value = '';
+        btnConvertImg.disabled = true;
+        imgDropzone.style.borderColor = 'var(--border-hover)';
+        const headerTitle = imgDropzone.querySelector('h3');
+        if (headerTitle) {
+          headerTitle.textContent = isEn 
+            ? 'Drag & drop an image here or click to browse'
+            : 'Arraste uma imagem aqui ou clique para selecionar';
+        }
+        if (imgResultPanel) imgResultPanel.style.display = 'none';
+        showToast(isEn ? 'Tool reset' : 'Ferramenta resetada');
+      });
+    }
   }
 }
 
