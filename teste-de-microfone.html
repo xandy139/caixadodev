@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9HZFENSYKS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9HZFENSYKS');
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3052162962623831"
+     crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teste de Microfone Online (Medidor de Volume, Ondas e Gravação) | Caixa do Dev</title>
+  <meta name="description" content="Teste seu microfone online gratuitamente no navegador. Visualize o espectro de voz em tempo real (FFT e Osciloscópio), meça decibéis (dBFS), grave um trecho de teste para ouvir sua voz e verifique ruídos. 100% privado.">
+  <meta name="keywords" content="teste de microfone, testar microfone online, meu microfone funciona, gravar voz teste, medidor de volume microfone, testar headset online">
+  <meta name="author" content="Alexandre Marcelino">
+  <meta name="robots" content="index, follow">
+
+  <!-- Canonical, Hreflang & Social Meta -->
+  <link rel="canonical" href="https://www.caixadodev.com.br/teste-de-microfone">
+  <link rel="alternate" hreflang="pt-BR" href="https://www.caixadodev.com.br/teste-de-microfone">
+  <link rel="alternate" hreflang="en" href="https://www.caixadodev.com.br/en/microphone-test">
+  <link rel="alternate" hreflang="x-default" href="https://www.caixadodev.com.br/teste-de-microfone">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.caixadodev.com.br/teste-de-microfone">
+  <meta property="og:title" content="Teste de Microfone Online (Espectro de Voz, dBFS e Playback) | Caixa do Dev">
+  <meta property="og:description" content="Verifique se o seu microfone está captando som perfeitamente com analisador de espectro 60 FPS, medidor de pico e gravação rápida 100% local.">
+  <meta property="og:image" content="https://www.caixadodev.com.br/assets/og-cover.png">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'><path d='M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/css/style.css?v=20261017c">
+  <link rel="stylesheet" href="/css/tools.css?v=20261017c">
+
+  <!-- Schema.org WebApplication & FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "Teste de Microfone Online e Analisador de Áudio - Caixa do Dev",
+        "url": "https://www.caixadodev.com.br/teste-de-microfone",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript and Web Audio API",
+        "description": "Ferramenta online gratuita para testar microfone e headset com analisador de espectro FFT, osciloscópio de onda, medidor de volume em dBFS e gravação de teste 100% client-side.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "BRL"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "O áudio do meu microfone é enviado ou gravado em servidores externos?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Não! Todo o processamento de áudio (análise de ondas via Web Audio API e gravação temporária de teste via MediaRecorder) ocorre 100% localmente na memória RAM do seu navegador. Seus dados de voz jamais saem do seu computador."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Como ouvir minha própria voz para saber se o microfone está com chiado?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Após iniciar o microfone, clique no botão Gravar Teste de Voz (5s) e fale normalmente. Ao término dos 5 segundos, a ferramenta reproduz automaticamente o trecho gravado para você avaliar a nitidez, presença de ruído de fundo ou eco sem causar microfonia."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "O que são os filtros Echo Cancellation, Noise Suppression e Auto Gain Control?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "São algoritmos nativos de processamento digital de sinais (DSP) presentes nos navegadores modernos para chamadas WebRTC. Eles removem o eco das caixas de som, filtram ruídos constantes (como ventilador ou ar-condicionado) e normalizam o volume da sua voz automaticamente."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="standalone-page">
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="/" class="brand" title="Caixa do Dev - Página Inicial">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Caixa do Dev</span>
+          <span class="brand-badge">45 Ferramentas</span>
+        </div>
+      </a>
+
+      <div class="nav-actions">
+        <nav>
+          <ul class="nav-links">
+            <li><a href="/">Início</a></li>
+            <li><a href="/teste-de-microfone" class="active">Microfone</a></li>
+            <li><a href="/teste-de-camera">Câmera</a></li>
+            <li><a href="/conversor-de-imagem">Imagens</a></li>
+            <li><a href="/gerador-de-cpf">CPF</a></li>
+            <li><a href="/calculadora-clt-pj">CLT vs PJ</a></li>
+            <li><a href="/artigos">Artigos</a></li>
+          </ul>
+        </nav>
+        <div class="lang-switch" aria-label="Idioma / Language">
+          <span class="lang-btn active" title="Português (Brasil)">🇧🇷 PT</span>
+          <span class="lang-sep">/</span>
+          <a href="/en/microphone-test" class="lang-btn" title="English Version">🇺🇸 EN</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Conteúdo Principal -->
+  <main class="container" style="padding-top: 32px; padding-bottom: 60px;">
+    
+    <div class="tool-breadcrumbs">
+      <a href="/">&larr; Início</a> / <span>Teste de Microfone Online e Analisador de Voz</span>
+    </div>
+
+    <div class="privacy-badge">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Processamento 100% Client-Side via Web Audio API (Seu áudio nunca sai do seu dispositivo)
+    </div>
+
+    <section id="mic-test-root" class="tool-view standalone-active" data-tool-id="mic-test">
+      
+      <div class="tool-interface-card">
+        <div class="tool-header-area">
+          <div class="tool-title-group">
+            <h1>Teste de Microfone Online</h1>
+            <p>Analise o volume da sua voz em tempo real, visualize ondas sonoras (FFT e Osciloscópio), grave um trecho de 5 segundos para se ouvir e teste filtros de ruído.</p>
+          </div>
+          <div class="tool-actions-bar">
+            <a href="/teste-de-camera" class="btn btn-outline-cyan" title="Ir para o Teste de Câmera">
+              📷 Testar Câmera &rarr;
+            </a>
+            <button id="btn-mic-stop" class="btn btn-secondary" disabled>Desligar</button>
+            <button id="btn-mic-start" class="btn btn-primary">Iniciar Microfone</button>
+          </div>
+        </div>
+
+        <!-- Alerta de Erro de Permissão / Hardware -->
+        <div id="mic-error-box" style="display: none; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.35); border-radius: var(--radius-md); padding: 14px 18px; margin-bottom: 20px; color: #fca5a5; font-size: 0.9rem;">
+          <strong style="color: #f87171;">⚠️ Não foi possível acessar o microfone:</strong>
+          <span id="mic-error-text" style="display: block; margin-top: 4px;"></span>
+        </div>
+
+        <!-- Seleção de Microfone e Filtros DSP -->
+        <div class="split-grid" style="grid-template-columns: 1.2fr 1fr; gap: 18px; margin-bottom: 20px; align-items: end;">
+          <div class="form-group" style="margin-bottom: 0;">
+            <label class="form-label" for="sel-mic-device">Dispositivo de Entrada de Áudio (Microfone / Headset):</label>
+            <select id="sel-mic-device" class="form-control">
+              <option value="">Microfone Padrão do Sistema</option>
+            </select>
+          </div>
+
+          <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 10px 14px; display: flex; flex-wrap: wrap; gap: 14px; align-items: center;">
+            <span style="font-size: 0.78rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Filtros DSP:</span>
+            <label style="display: inline-flex; align-items: center; gap: 6px; font-size: 0.84rem; color: var(--text-secondary); cursor: pointer;">
+              <input type="checkbox" id="chk-mic-noise" checked style="accent-color: var(--accent-primary);"> Supressão de Ruído
+            </label>
+            <label style="display: inline-flex; align-items: center; gap: 6px; font-size: 0.84rem; color: var(--text-secondary); cursor: pointer;">
+              <input type="checkbox" id="chk-mic-echo" checked style="accent-color: var(--accent-primary);"> Cancelar Eco
+            </label>
+            <label style="display: inline-flex; align-items: center; gap: 6px; font-size: 0.84rem; color: var(--text-secondary); cursor: pointer;">
+              <input type="checkbox" id="chk-mic-agc" checked style="accent-color: var(--accent-primary);"> Auto-Ganho
+            </label>
+          </div>
+        </div>
+
+        <!-- Palco do Visualizador + Telemetria Lateral -->
+        <div class="split-grid" style="grid-template-columns: 1.5fr 1fr; gap: 22px; align-items: start;">
+          
+          <div>
+            <!-- Canvas de Visualização de Áudio -->
+            <div style="position: relative; width: 100%; height: 240px; background: #090d16; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); overflow: hidden;">
+              <canvas id="mic-visualizer-canvas" width="760" height="240" style="width: 100%; height: 100%; display: block;"></canvas>
+
+              <!-- Badge de Status de Sinal -->
+              <div style="position: absolute; top: 12px; left: 14px; right: 14px; display: flex; justify-content: space-between; align-items: center; pointer-events: none;">
+                <span id="mic-signal-badge" style="background: rgba(99, 102, 241, 0.14); border: 1px solid rgba(99, 102, 241, 0.3); color: #a5b4fc; font-size: 0.78rem; font-weight: 700; padding: 4px 12px; border-radius: 999px;">
+                  Aguardando início...
+                </span>
+              </div>
+
+              <!-- Overlay Inicial -->
+              <div id="mic-stage-overlay" style="position: absolute; inset: 0; background: radial-gradient(circle at center, rgba(30, 41, 59, 0.92), rgba(9, 13, 22, 0.98)); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 24px;">
+                <div style="width: 60px; height: 60px; border-radius: 50%; background: rgba(99, 102, 241, 0.14); border: 1px solid rgba(99, 102, 241, 0.35); display: flex; align-items: center; justify-content: center; color: var(--accent-primary); margin-bottom: 12px;">
+                  <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+                </div>
+                <h3 style="font-size: 1.15rem; color: var(--text-primary); margin-bottom: 6px;">Pronto para testar seu microfone</h3>
+                <p style="font-size: 0.86rem; color: var(--text-muted); max-width: 400px; margin-bottom: 16px;">Clique no botão abaixo, permita o acesso ao microfone e fale normalmente para ver as ondas sonoras.</p>
+                <button id="btn-mic-start-hero" class="btn btn-primary" style="padding: 10px 22px; font-weight: 700;">
+                  🎙️ Iniciar Teste de Microfone Agora
+                </button>
+              </div>
+            </div>
+
+            <!-- Barra de Medidor de Volume (VU Meter) -->
+            <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 14px 16px; margin-top: 14px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; font-size: 0.85rem;">
+                <span style="color: var(--text-secondary); font-weight: 600;">Nível de Entrada (Volume Instantâneo):</span>
+                <div style="display: flex; gap: 14px; font-family: var(--font-mono); font-weight: 700;">
+                  <span id="mic-vol-percent" style="color: var(--accent-cyan);">0%</span>
+                  <span id="mic-vol-db" style="color: var(--text-muted);">-60 dBFS</span>
+                  <span style="color: var(--accent-emerald);">Pico: <strong id="mic-peak-percent">0%</strong></span>
+                </div>
+              </div>
+              <div style="width: 100%; height: 12px; background: rgba(255,255,255,0.06); border-radius: 999px; overflow: hidden;">
+                <div id="mic-vol-bar-fill" style="width: 0%; height: 100%; background: var(--accent-primary); transition: width 0.05s linear; border-radius: 999px;"></div>
+              </div>
+            </div>
+
+            <!-- Controles de Modo de Visualização e Gravação de Teste -->
+            <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; justify-content: space-between; align-items: center;">
+              <div style="display: flex; gap: 8px;">
+                <button id="btn-mic-mode-fft" class="btn btn-secondary btn-sm active">
+                  📊 Espectro (FFT)
+                </button>
+                <button id="btn-mic-mode-wave" class="btn btn-secondary btn-sm">
+                  〰️ Osciloscópio (Onda)
+                </button>
+              </div>
+              <button id="btn-mic-record" class="btn btn-primary btn-sm" disabled>
+                ● Gravar Teste de Voz (5s)
+              </button>
+            </div>
+          </div>
+
+          <!-- Painel de Diagnóstico de Áudio -->
+          <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 18px;">
+            <h3 style="font-size: 1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--accent-cyan)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              Diagnóstico Técnico de Áudio
+            </h3>
+            <table class="subnet-table" style="margin-top: 0;">
+              <tbody>
+                <tr>
+                  <td>Status:</td>
+                  <td id="mic-td-status" style="color: var(--text-muted);">Aguardando início</td>
+                </tr>
+                <tr>
+                  <td>Hardware:</td>
+                  <td id="mic-td-device" style="color: var(--text-primary); font-weight: 600;">-</td>
+                </tr>
+                <tr>
+                  <td>Taxa de Amostragem:</td>
+                  <td id="mic-td-samplerate" style="color: var(--accent-cyan); font-weight: 700;">-</td>
+                </tr>
+                <tr>
+                  <td>Canais:</td>
+                  <td id="mic-td-channels">-</td>
+                </tr>
+                <tr>
+                  <td>Latência Estimada:</td>
+                  <td id="mic-td-latency" style="color: var(--accent-emerald);">-</td>
+                </tr>
+                <tr>
+                  <td>Filtros Ativos:</td>
+                  <td id="mic-td-dsp" style="color: var(--accent-purple); font-size: 0.8rem;">-</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+
+        <!-- Painel de Reprodução da Gravação de Teste -->
+        <div id="mic-playback-panel" style="display: none; background: var(--bg-surface); border: 1px solid rgba(16, 185, 129, 0.35); border-radius: var(--radius-md); padding: 18px 20px; margin-top: 22px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;">
+            <div>
+              <h3 style="font-size: 1.02rem; color: #34d399; margin: 0 0 4px;">🎧 Ouça sua Gravação de Teste</h3>
+              <p style="font-size: 0.84rem; color: var(--text-secondary); margin: 0;">Escute o trecho gravado abaixo para conferir se há chiados, interferência estática ou volume baixo.</p>
+            </div>
+            <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+              <audio id="mic-audio-player" controls style="height: 38px;"></audio>
+              <a id="btn-mic-download-audio" class="btn btn-secondary btn-sm" download="teste-microfone.webm" href="#">
+                Baixar Áudio
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Guia Educativo e Solução de Problemas (SEO & AdSense E-E-A-T) -->
+      <article class="tool-seo-guide">
+        <h2>Como Avaliar a Qualidade do Seu Microfone no Navegador</h2>
+        <p>O <strong>Teste de Microfone da Caixa do Dev</strong> processa o sinal de áudio diretamente pela <strong>Web Audio API</strong> nativa a 60 quadros por segundo, decompondo sua voz através da Transformada Rápida de Fourier (<strong>FFT — Fast Fourier Transform</strong>). Isso permite visualizar tanto a energia das frequências graves e agudas da fala quanto a forma de onda pura no osciloscópio.</p>
+
+        <h3>1. Como Interpretar o Medidor de Volume e dBFS</h3>
+        <ul>
+          <li><strong>Faixa Ideal de Conversação (-18 dBFS a -6 dBFS / 25% a 75%):</strong> Sua voz soará clara, presente e natural para todos os participantes da chamada no Meet, Zoom, Teams ou Discord.</li>
+          <li><strong>Sinal Muito Baixo (abaixo de -35 dBFS / &lt; 10%):</strong> Verifique se o microfone do headset não está posicionado muito longe da boca ou se o nível de entrada do sistema operacional está abaixo de 50%.</li>
+          <li><strong>Clipping / Estouro Acima de 90% (0 dBFS):</strong> Quando a onda bate no topo máximo digital, ocorre distorção metálica severa. Reduza o ganho (Boost) nas configurações de som do sistema ou ative o <em>Auto-Ganho</em>.</li>
+        </ul>
+
+        <h3>2. Por Que Usar a Gravação de 5 Segundos em Vez de Monitoramento Direto?</h3>
+        <p>Ativar o retorno da própria voz em tempo real quando você está usando caixas de som abertas gera um loop acústico instantâneo (o famoso apito agudo de <strong>microfonia / feedback</strong>). O recurso de <strong>Gravar Teste de Voz (5s)</strong> captura sua fala em memória e a reproduz imediatamente após o término, permitindo avaliar com precisão absoluta se há ruído de interferência elétrica, sopro (<em>plosivas</em>) ou abafamento.</p>
+
+        <h3>Perguntas Frequentes (FAQ)</h3>
+        <div class="faq-list" style="margin-top: 16px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>O áudio do meu microfone é enviado ou salvo em algum servidor?</span><span>+</span></div>
+            <div class="faq-answer">Não! Toda a análise de espectro e a gravação temporária de 5 segundos acontecem exclusivamente na memória RAM local do seu navegador. Assim que você fecha a aba, tudo é descartado imediatamente.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>O microfone está conectado, mas a linha não se mexe. O que fazer?</span><span>+</span></div>
+            <div class="faq-answer">1) Verifique se há um botão físico de Mute no cabo ou na haste do seu headset; 2) Confira se o dispositivo correto está selecionado na caixa Dispositivo de Entrada de Áudio acima; 3) No Windows, acesse Configurações &rarr; Sistema &rarr; Som e certifique-se de que o volume de entrada não está em 0%.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Para que servem os filtros DSP (Supressão de Ruído e Cancelamento de Eco)?</span><span>+</span></div>
+            <div class="faq-answer">Eles simulam exatamente o comportamento de aplicativos como Google Meet e Discord. Se você for músico ou locutor e quiser testar o som cru do seu microfone condensador sem filtros do navegador, basta desmarcar as três caixas de Filtros DSP.</div>
+          </div>
+        </div>
+      </article>
+
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-grid">
+        <div class="footer-col footer-col-wide">
+          <div class="footer-brand">
+            <span class="footer-brand-title">Caixa do Dev</span>
+            <span class="footer-badge">100% Client-Side</span>
+          </div>
+          <p>O maior canivete suíço gratuito para desenvolvedores, analistas de QA e profissionais de tecnologia do Brasil.</p>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Mídia & Hardware</span>
+          <ul class="footer-links">
+            <li><a href="/teste-de-microfone">Teste de Microfone</a></li>
+            <li><a href="/teste-de-camera">Teste de Câmera</a></li>
+            <li><a href="/conversor-de-imagem">Conversor de Imagens</a></li>
+            <li><a href="/seletor-de-cores-imagem">Conta-Gotas de Imagem</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Institucional</span>
+          <ul class="footer-links">
+            <li><a href="/pages/sobre.html">Sobre o Projeto</a></li>
+            <li><a href="/artigos">Artigos Técnicos</a></li>
+            <li><a href="/pages/privacidade.html">Política de Privacidade</a></li>
+            <li><a href="/pages/termos.html">Termos de Uso</a></li>
+            <li><a href="/pages/contato.html">Fale Conosco</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Caixa do Dev • Criado e mantido por Alexandre Marcelino.</span>
+        <span>Processamento 100% local no navegador.</span>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="/js/tools/media-test.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>

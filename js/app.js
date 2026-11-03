@@ -308,6 +308,20 @@ const I18N_TOOLS_EN = {
     desc: 'Convert and compress images between PNG, JPG, WebP and AVIF with custom quality and resizing in-browser.',
     badge: '🖼️ WebP & AVIF',
     categoryLabel: 'Design & Media'
+  },
+  'webcam-test': {
+    url: '/en/webcam-test',
+    name: 'Online Webcam Test & Diagnostics',
+    desc: 'Test your camera in 1 click: inspect true sensor resolution (720p, 1080p, 4K), live FPS counter, mirror mode and take snapshots.',
+    badge: '📷 Webcam & FPS',
+    categoryLabel: 'Hardware & Media'
+  },
+  'mic-test': {
+    url: '/en/microphone-test',
+    name: 'Online Microphone Test & Audio Analyzer',
+    desc: 'Visualize voice frequencies (60 FPS FFT & Oscilloscope), measure volume in dBFS, and record a 5-second voice playback check.',
+    badge: '🎙️ Audio & FFT',
+    categoryLabel: 'Hardware & Media'
   }
 };
 
@@ -731,6 +745,30 @@ const TOOLS_CATALOG = [
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>`,
     color: 'var(--accent-primary)',
     badge: '🖼️ WebP & AVIF',
+    isPopular: true
+  },
+  {
+    id: 'webcam-test',
+    url: '/teste-de-camera',
+    name: 'Teste de Câmera e Webcam Online',
+    category: 'conversores',
+    categoryLabel: 'Mídia & Hardware',
+    desc: 'Teste sua webcam antes de reuniões: descubra a resolução real do sensor (HD, Full HD, 4K), FPS ao vivo, modo espelho e tire fotos.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>`,
+    color: 'var(--accent-cyan)',
+    badge: '📷 Webcam & FPS',
+    isPopular: true
+  },
+  {
+    id: 'mic-test',
+    url: '/teste-de-microfone',
+    name: 'Teste de Microfone e Analisador de Voz',
+    category: 'conversores',
+    categoryLabel: 'Mídia & Hardware',
+    desc: 'Visualize ondas de voz em 60 FPS (Espectro FFT e Osciloscópio), meça decibéis (dBFS) e grave 5 segundos para ouvir sua qualidade.',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>`,
+    color: 'var(--accent-emerald)',
+    badge: '🎙️ Áudio & FFT',
     isPopular: true
   },
   {

@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9HZFENSYKS"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9HZFENSYKS');
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3052162962623831"
+     crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teste de Câmera e Webcam Online (FPS, Resolução HD/4K e Espelho) | Caixa do Dev</title>
+  <meta name="description" content="Teste sua webcam ou câmera online gratuitamente antes de reuniões no Google Meet, Teams, Zoom ou Discord. Verifique resolução real (720p, 1080p, 4K), FPS em tempo real, modo espelho e tire fotos. 100% privado no navegador.">
+  <meta name="keywords" content="teste de camera, testar webcam online, teste de webcam, minha webcam funciona, testar camera notebook, resolucao da webcam, fps webcam">
+  <meta name="author" content="Alexandre Marcelino">
+  <meta name="robots" content="index, follow">
+
+  <!-- Canonical, Hreflang & Social Meta -->
+  <link rel="canonical" href="https://www.caixadodev.com.br/teste-de-camera">
+  <link rel="alternate" hreflang="pt-BR" href="https://www.caixadodev.com.br/teste-de-camera">
+  <link rel="alternate" hreflang="en" href="https://www.caixadodev.com.br/en/webcam-test">
+  <link rel="alternate" hreflang="x-default" href="https://www.caixadodev.com.br/teste-de-camera">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.caixadodev.com.br/teste-de-camera">
+  <meta property="og:title" content="Teste de Câmera e Webcam Online (Resolução, FPS e Diagnóstico) | Caixa do Dev">
+  <meta property="og:description" content="Teste sua webcam em 1 clique com medição de FPS em tempo real, resolução nativa do sensor (HD, Full HD, 4K), modo espelho e captura de foto 100% local.">
+  <meta property="og:image" content="https://www.caixadodev.com.br/assets/og-cover.png">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'><path d='M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/css/style.css?v=20261017c">
+  <link rel="stylesheet" href="/css/tools.css?v=20261017c">
+
+  <!-- Schema.org WebApplication & FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "Teste de Câmera e Webcam Online - Caixa do Dev",
+        "url": "https://www.caixadodev.com.br/teste-de-camera",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript and WebRTC MediaDevices API",
+        "description": "Ferramenta online gratuita para testar webcam e câmera no navegador com telemetria de resolução real (HD, Full HD, 4K), taxa de quadros (FPS), modo espelho e captura de foto 100% client-side.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "BRL"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "A imagem da minha webcam é enviada para algum servidor?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Não! O teste de câmera da Caixa do Dev funciona 100% localmente na memória do seu próprio navegador através da API nativa WebRTC (navigator.mediaDevices.getUserMedia). Nenhum quadro de vídeo ou foto é transmitido pela internet."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Como saber se minha webcam é realmente Full HD (1080p) ou 4K?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Selecione a opção Full HD (1080p) ou 4K UHD no seletor de resolução e inicie o teste. Na tabela de Diagnóstico Técnico, verifique a linha Resolução Real Entregue: ela mostra os pixels exatos fornecidos pelo sensor físico da câmera sem interpolação."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Por que minha câmera aparece preta ou bloqueada no navegador?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "As causas mais comuns são: permissão negada na barra de endereços do navegador, câmera ocupada por outro programa aberto (como Zoom, Teams, OBS Studio ou Discord) ou chave física de privacidade fechada na lente do notebook."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="standalone-page">
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="/" class="brand" title="Caixa do Dev - Página Inicial">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Caixa do Dev</span>
+          <span class="brand-badge">45 Ferramentas</span>
+        </div>
+      </a>
+
+      <div class="nav-actions">
+        <nav>
+          <ul class="nav-links">
+            <li><a href="/">Início</a></li>
+            <li><a href="/teste-de-camera" class="active">Câmera</a></li>
+            <li><a href="/teste-de-microfone">Microfone</a></li>
+            <li><a href="/conversor-de-imagem">Imagens</a></li>
+            <li><a href="/gerador-de-cpf">CPF</a></li>
+            <li><a href="/calculadora-clt-pj">CLT vs PJ</a></li>
+            <li><a href="/artigos">Artigos</a></li>
+          </ul>
+        </nav>
+        <div class="lang-switch" aria-label="Idioma / Language">
+          <span class="lang-btn active" title="Português (Brasil)">🇧🇷 PT</span>
+          <span class="lang-sep">/</span>
+          <a href="/en/webcam-test" class="lang-btn" title="English Version">🇺🇸 EN</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Conteúdo Principal -->
+  <main class="container" style="padding-top: 32px; padding-bottom: 60px;">
+    
+    <div class="tool-breadcrumbs">
+      <a href="/">&larr; Início</a> / <span>Teste de Câmera e Webcam Online</span>
+    </div>
+
+    <div class="privacy-badge">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Processamento 100% Client-Side no Navegador (Sua imagem nunca sai do seu dispositivo)
+    </div>
+
+    <section id="webcam-test-root" class="tool-view standalone-active" data-tool-id="webcam-test">
+      
+      <div class="tool-interface-card">
+        <div class="tool-header-area">
+          <div class="tool-title-group">
+            <h1>Teste de Câmera e Webcam Online</h1>
+            <p>Verifique sua imagem, enquadramento, resolução real do sensor (HD, Full HD, 4K) e taxa de quadros (FPS) antes de entrar em reuniões ou gravações.</p>
+          </div>
+          <div class="tool-actions-bar">
+            <a href="/teste-de-microfone" class="btn btn-outline-cyan" title="Ir para o Teste de Microfone">
+              🎙️ Testar Microfone &rarr;
+            </a>
+            <button id="btn-webcam-stop" class="btn btn-secondary" disabled>Desligar</button>
+            <button id="btn-webcam-start" class="btn btn-primary">Iniciar Câmera</button>
+          </div>
+        </div>
+
+        <!-- Alerta de Erro de Permissão / Hardware -->
+        <div id="webcam-error-box" style="display: none; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.35); border-radius: var(--radius-md); padding: 14px 18px; margin-bottom: 20px; color: #fca5a5; font-size: 0.9rem;">
+          <strong style="color: #f87171;">⚠️ Não foi possível acessar a câmera:</strong>
+          <span id="webcam-error-text" style="display: block; margin-top: 4px;"></span>
+        </div>
+
+        <!-- Seletores de Dispositivo e Resolução -->
+        <div class="split-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 20px;">
+          <div class="form-group" style="margin-bottom: 0;">
+            <label class="form-label" for="sel-webcam-device">Dispositivo de Vídeo (Webcam):</label>
+            <select id="sel-webcam-device" class="form-control">
+              <option value="">Câmera Padrão do Sistema</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin-bottom: 0;">
+            <label class="form-label" for="sel-webcam-resolution">Resolução Solicitada ao Sensor:</label>
+            <select id="sel-webcam-resolution" class="form-control">
+              <option value="auto" selected>Automática / Máxima Nativa (Ideal Full HD)</option>
+              <option value="4k">4K Ultra HD (3840 × 2160)</option>
+              <option value="1080p">Full HD 1080p (1920 × 1080)</option>
+              <option value="720p">HD 720p (1280 × 720)</option>
+              <option value="480p">VGA / SD 480p (640 × 480)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Palco de Vídeo + Telemetria Lateral -->
+        <div class="split-grid" style="grid-template-columns: 1.5fr 1fr; gap: 22px; align-items: start;">
+          
+          <!-- Monitor de Vídeo -->
+          <div>
+            <div id="webcam-stage" style="position: relative; width: 100%; aspect-ratio: 16 / 9; background: #090d16; border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); overflow: hidden; display: flex; align-items: center; justify-content: center;">
+              
+              <video id="webcam-video" playsinline autoplay muted style="width: 100%; height: 100%; object-fit: contain; transform: scaleX(-1); background: #000;"></video>
+
+              <!-- Grade Regra dos Terços (3x3) -->
+              <div id="webcam-grid-overlay" style="display: none; position: absolute; inset: 0; pointer-events: none; background-image: linear-gradient(to right, rgba(255,255,255,0.22) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.22) 1px, transparent 1px); background-size: 33.333% 33.333%;"></div>
+
+              <!-- Badges Ao Vivo no Topo do Vídeo -->
+              <div style="position: absolute; top: 14px; left: 14px; right: 14px; display: flex; justify-content: space-between; align-items: center; pointer-events: none;">
+                <span id="webcam-live-badge" style="display: none; align-items: center; gap: 6px; background: rgba(16, 185, 129, 0.2); border: 1px solid rgba(16, 185, 129, 0.45); color: #34d399; font-size: 0.76rem; font-weight: 700; padding: 4px 10px; border-radius: 999px; backdrop-filter: blur(8px);">
+                  ● AO VIVO (100% LOCAL)
+                </span>
+                <span id="webcam-live-specs" style="display: none; font-family: var(--font-mono); background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255,255,255,0.12); color: #e2e8f0; font-size: 0.76rem; font-weight: 600; padding: 4px 10px; border-radius: 6px; backdrop-filter: blur(8px);">
+                  1920×1080 • 30 FPS
+                </span>
+              </div>
+
+              <!-- Overlay Inicial (Antes de Ligar) -->
+              <div id="webcam-stage-overlay" style="position: absolute; inset: 0; background: radial-gradient(circle at center, rgba(30, 41, 59, 0.92), rgba(9, 13, 22, 0.98)); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 24px;">
+                <div style="width: 64px; height: 64px; border-radius: 50%; background: rgba(99, 102, 241, 0.14); border: 1px solid rgba(99, 102, 241, 0.35); display: flex; align-items: center; justify-content: center; color: var(--accent-primary); margin-bottom: 14px;">
+                  <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                </div>
+                <h3 style="font-size: 1.18rem; color: var(--text-primary); margin-bottom: 6px;">Pronto para testar sua câmera</h3>
+                <p style="font-size: 0.88rem; color: var(--text-muted); max-width: 400px; margin-bottom: 18px;">Clique no botão abaixo e autorize a permissão do navegador para visualizar sua webcam em tempo real.</p>
+                <button id="btn-webcam-start-hero" class="btn btn-primary" style="padding: 10px 22px; font-weight: 700;">
+                  📷 Iniciar Teste de Câmera Agora
+                </button>
+              </div>
+            </div>
+
+            <!-- Barra de Controles Rápidos do Vídeo -->
+            <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; justify-content: space-between; align-items: center;">
+              <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                <button id="btn-webcam-mirror" class="btn btn-secondary btn-sm active" title="Inverter horizontalmente (Modo Espelho)">
+                  🪞 Espelhar
+                </button>
+                <button id="btn-webcam-grid" class="btn btn-secondary btn-sm" title="Exibir grade de enquadramento 3x3">
+                  # Grade 3×3
+                </button>
+                <button id="btn-webcam-pause" class="btn btn-secondary btn-sm" disabled title="Congelar quadro atual">
+                  Congelar
+                </button>
+                <button id="btn-webcam-fullscreen" class="btn btn-secondary btn-sm" disabled title="Expandir vídeo em tela cheia">
+                  ⛶ Tela Cheia
+                </button>
+              </div>
+              <button id="btn-webcam-snapshot" class="btn btn-primary btn-sm" disabled>
+                📸 Tirar Foto (PNG)
+              </button>
+            </div>
+          </div>
+
+          <!-- Painel de Diagnóstico e Telemetria do Sensor -->
+          <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 18px;">
+            <h3 style="font-size: 1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="var(--accent-cyan)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              Diagnóstico Técnico do Sensor
+            </h3>
+            <table class="subnet-table" style="margin-top: 0;">
+              <tbody>
+                <tr>
+                  <td>Status:</td>
+                  <td id="cam-td-status" style="color: var(--text-muted);">Aguardando início</td>
+                </tr>
+                <tr>
+                  <td>Hardware:</td>
+                  <td id="cam-td-device" style="color: var(--text-primary); font-weight: 600;">-</td>
+                </tr>
+                <tr>
+                  <td>Resolução Real:</td>
+                  <td id="cam-td-res" style="color: var(--accent-cyan); font-weight: 700;">-</td>
+                </tr>
+                <tr>
+                  <td>Classificação:</td>
+                  <td id="cam-td-tier" style="color: var(--accent-emerald); font-weight: 600;">-</td>
+                </tr>
+                <tr>
+                  <td>Proporção:</td>
+                  <td id="cam-td-aspect">-</td>
+                </tr>
+                <tr>
+                  <td>Taxa de Quadros:</td>
+                  <td id="cam-td-fps" style="color: var(--accent-purple); font-weight: 700;">-</td>
+                </tr>
+                <tr>
+                  <td>Megapixels:</td>
+                  <td id="cam-td-mp">-</td>
+                </tr>
+                <tr>
+                  <td>Tipo de Lente:</td>
+                  <td id="cam-td-facing">-</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+
+        <!-- Painel de Foto Capturada (Snapshot) -->
+        <div id="webcam-snapshot-panel" style="display: none; background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 20px; margin-top: 22px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 14px;">
+            <div>
+              <h3 style="font-size: 1.05rem; color: var(--text-primary); margin: 0;">📸 Captura de Tela da Webcam</h3>
+              <span id="webcam-snapshot-meta" style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-cyan);">-</span>
+            </div>
+            <a id="btn-webcam-download-snap" class="btn btn-primary btn-sm" download="webcam-snapshot.png" href="#">
+              Baixar Foto (PNG)
+            </a>
+          </div>
+          <div style="text-align: center; background: #000; border-radius: var(--radius-sm); padding: 12px; border: 1px solid var(--border-subtle);">
+            <img id="webcam-snapshot-img" src="" alt="Foto capturada da webcam" style="max-width: 100%; max-height: 280px; border-radius: 6px; object-fit: contain;">
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Guia Educativo e Solução de Problemas (SEO & AdSense E-E-A-T) -->
+      <article class="tool-seo-guide">
+        <h2>Como Funciona o Teste de Webcam e Diagnóstico de Vídeo no Navegador</h2>
+        <p>O <strong>Teste de Câmera da Caixa do Dev</strong> utiliza a especificação oficial <strong>WebRTC MediaDevices API</strong> do W3C para estabelecer um fluxo de vídeo direto entre o driver da sua câmera USB ou integrada e o elemento de renderização HTML5 do navegador. Diferente de aplicativos pesados de desktop, você pode inspecionar instantaneamente a qualidade óptica, iluminação, enquadramento e estabilidade de quadros por segundo (FPS) antes de entrar em uma entrevista técnica ou reunião executiva.</p>
+
+        <h3>1. Entendendo as Métricas Técnicas da Sua Webcam</h3>
+        <ul>
+          <li><strong>Resolução Real Entregue (Width × Height):</strong> Muitas webcams genéricas anunciam "Full HD 1080p" na embalagem, mas entregam apenas <code>1280 × 720</code> (HD) ou <code>640 × 480</code> (VGA) nativamente. Nosso inspetor lê diretamente as dimensões reais do frame decodificado pelo sensor.</li>
+          <li><strong>Taxa de Quadros (FPS — Frames Per Second):</strong> O padrão para videochamadas fluidas é <strong>30 FPS</strong> ou <strong>60 FPS</strong>. Se a leitura cair para 15 FPS em ambientes escuros, significa que a exposição automática da câmera está aumentando o tempo do obturador para captar mais luz.</li>
+          <li><strong>Modo Espelho (Mirroring):</strong> Aplicativos como Google Meet e Microsoft Teams espelham sua pré-visualização local para que você se movimente naturalmente como em frente a um espelho real, embora os demais participantes vejam a imagem na orientação normal.</li>
+        </ul>
+
+        <h3>2. Solução de Problemas Comuns (Troubleshooting)</h3>
+        <ul>
+          <li><strong>Erro "Câmera em uso por outro aplicativo":</strong> No Windows, apenas um processo pode alocar o driver exclusivo de vídeo por vez (caso não use câmera virtual). Feche completamente o Zoom, Teams, Discord ou OBS Studio na bandeja do sistema.</li>
+          <li><strong>Imagem escura ou granulada:</strong> Posicione uma fonte de luz suave à sua frente (nunca atrás de você / contraluz). Isso reduz o ganho ISO digital do sensor e mantém os 30 FPS estáveis.</li>
+        </ul>
+
+        <h3>Perguntas Frequentes (FAQ)</h3>
+        <div class="faq-list" style="margin-top: 16px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>A imagem da minha webcam é enviada para algum servidor?</span><span>+</span></div>
+            <div class="faq-answer">Não! O teste de câmera da Caixa do Dev funciona 100% localmente na memória do seu próprio navegador através da API nativa WebRTC. Nenhum quadro de vídeo ou foto é transmitido pela internet.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Como saber se minha webcam é realmente Full HD (1080p) ou 4K?</span><span>+</span></div>
+            <div class="faq-answer">Selecione a opção Full HD (1080p) ou 4K UHD no seletor de resolução e inicie o teste. Na tabela de Diagnóstico Técnico, verifique a linha Resolução Real: ela mostra os pixels exatos fornecidos pelo sensor físico da câmera.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Funciona no celular Android e iPhone (iOS)?</span><span>+</span></div>
+            <div class="faq-answer">Sim! Você pode testar tanto a câmera frontal (selfie) quanto a câmera traseira diretamente pelo Chrome no Android ou Safari no iOS.</div>
+          </div>
+        </div>
+      </article>
+
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-grid">
+        <div class="footer-col footer-col-wide">
+          <div class="footer-brand">
+            <span class="footer-brand-title">Caixa do Dev</span>
+            <span class="footer-badge">100% Client-Side</span>
+          </div>
+          <p>O maior canivete suíço gratuito para desenvolvedores, analistas de QA e profissionais de tecnologia do Brasil.</p>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Mídia & Hardware</span>
+          <ul class="footer-links">
+            <li><a href="/teste-de-camera">Teste de Câmera</a></li>
+            <li><a href="/teste-de-microfone">Teste de Microfone</a></li>
+            <li><a href="/conversor-de-imagem">Conversor de Imagens</a></li>
+            <li><a href="/seletor-de-cores-imagem">Conta-Gotas de Imagem</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Institucional</span>
+          <ul class="footer-links">
+            <li><a href="/pages/sobre.html">Sobre o Projeto</a></li>
+            <li><a href="/artigos">Artigos Técnicos</a></li>
+            <li><a href="/pages/privacidade.html">Política de Privacidade</a></li>
+            <li><a href="/pages/termos.html">Termos de Uso</a></li>
+            <li><a href="/pages/contato.html">Fale Conosco</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Caixa do Dev • Criado e mantido por Alexandre Marcelino.</span>
+        <span>Processamento 100% local no navegador.</span>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="/js/tools/media-test.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>
