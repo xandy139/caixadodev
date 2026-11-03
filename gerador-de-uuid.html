@@ -86,8 +86,7 @@
           <li><a href="/gerador-de-pessoas">Pessoas</a></li>
           <li><a href="/calculadora-clt-pj">CLT vs PJ</a></li>
           <li><a href="/json-para-typescript">JSON &rarr; TS</a></li>
-          <li><a href="/pages/sobre.html">Sobre</a></li>
-          <li><a href="/pages/contato.html">Contato</a></li>
+          <li><a href="/artigos">Artigos</a></li>
         </ul>
       </nav>
       <div class="lang-switch" aria-label="Idioma / Language">
@@ -148,6 +147,16 @@
         <h3>2. Probabilidade de Colisão: Quão Seguro É o UUID v4?</h3>
         <p>Para que ocorra uma única chance em um bilhão de colisão (duplicação acidental) em UUIDs versão 4, seria necessário gerar <strong>mais de 1 bilhão de UUIDs por segundo ao longo de 100 anos ininterruptos</strong>. Por esse motivo, sistemas distribuídos globais adotam UUIDs sem necessidade de consultar um servidor central de coordenação para geração de chaves primárias.</p>
 
+        <!-- Banner de Artigo Técnico Relacionado -->
+        <div style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.12), rgba(6, 182, 212, 0.08)); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: var(--radius-md); padding: 22px 24px; margin: 32px 0; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
+          <div style="flex: 1; min-width: 260px;">
+            <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--accent-cyan); letter-spacing: 0.05em;">Artigo Editorial de Engenharia • 8 min de leitura</span>
+            <h3 style="color: var(--text-primary); font-size: 1.15rem; margin: 6px 0 6px;">UUID v4 vs UUID v7 em Bancos de Dados: Por Que a Nova RFC 9562 Muda Tudo</h3>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0; line-height: 1.5;">Veja benchmarks práticos de inserção em PostgreSQL/MySQL, fragmentação de índices B-Tree e como migrar suas chaves primárias.</p>
+          </div>
+          <a href="/artigos/uuid-v4-vs-uuid-v7-banco-de-dados" class="btn btn-primary" style="white-space: nowrap; font-weight: 600;">Ler Artigo Completo &rarr;</a>
+        </div>
+
         <h3>Perguntas Frequentes sobre UUID (FAQ)</h3>
         <div class="faq-list" style="margin-top: 16px;">
           <div class="faq-item">
@@ -157,6 +166,10 @@
           <div class="faq-item">
             <div class="faq-question"><span>Os UUIDs gerados aqui utilizam geradores criptográficos reais?</span><span>+</span></div>
             <div class="faq-answer">Sim! A Caixa do Dev utiliza nativamente a API Web Crypto do navegador (crypto.randomUUID() ou crypto.getRandomValues()), garantindo sementes de entropia de nível criptográfico exigidas pela RFC.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Qual o tipo de coluna ideal para salvar UUID no PostgreSQL e MySQL?</span><span>+</span></div>
+            <div class="faq-answer">No PostgreSQL, use o tipo nativo UUID (ocupa apenas 16 bytes em disco). No MySQL 8.0+, utilize BINARY(16) com as funções UUID_TO_BIN() e BIN_TO_UUID() para otimizar espaço de armazenamento e memória de cache de índices. Evite usar VARCHAR(36) sempre que possível.</div>
           </div>
         </div>
       </article>

@@ -86,8 +86,7 @@
           <li><a href="/gerador-de-pessoas">Pessoas</a></li>
           <li><a href="/calculadora-clt-pj">CLT vs PJ</a></li>
           <li><a href="/json-para-typescript">JSON &rarr; TS</a></li>
-          <li><a href="/pages/sobre.html">Sobre</a></li>
-          <li><a href="/pages/contato.html">Contato</a></li>
+          <li><a href="/artigos">Artigos</a></li>
         </ul>
       </nav>
       <div class="lang-switch" aria-label="Idioma / Language">
@@ -153,6 +152,16 @@
         <h3>2. O Que É o Base64 URL-Safe?</h3>
         <p>Em URLs e tokens JWT, os caracteres <code>+</code> e <code>/</code> do Base64 tradicional causam problemas de parsing e conflito com parâmetros de query string. A variante <strong>Base64Url</strong> substitui o sinal de mais por hífen (<code>+</code> &rarr; <code>-</code>) e a barra por sublinhado (<code>/</code> &rarr; <code>_</code>), além de omitir o preenchimento com <code>=</code>.</p>
 
+        <!-- Banner de Artigo Técnico Relacionado -->
+        <div style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.12), rgba(6, 182, 212, 0.08)); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: var(--radius-md); padding: 22px 24px; margin: 32px 0; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
+          <div style="flex: 1; min-width: 260px;">
+            <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--accent-cyan); letter-spacing: 0.05em;">Artigo Técnico Especializado • 7 min de leitura</span>
+            <h3 style="color: var(--text-primary); font-size: 1.15rem; margin: 6px 0 6px;">Base64 Encoding & Data URI na Prática: Impacto em Performance Web</h3>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0; line-height: 1.5;">Descubra quando embutir imagens em Base64 compensa e quando isso destrói o First Contentful Paint (FCP) e o cache do navegador.</p>
+          </div>
+          <a href="/artigos/base64-encoding-data-uri-web-performance" class="btn btn-primary" style="white-space: nowrap; font-weight: 600;">Ler Artigo Completo &rarr;</a>
+        </div>
+
         <h3>Perguntas Frequentes sobre Base64 (FAQ)</h3>
         <div class="faq-list" style="margin-top: 16px;">
           <div class="faq-item">
@@ -162,6 +171,14 @@
           <div class="faq-item">
             <div class="faq-question"><span>O que é um Data URI em HTML/CSS?</span><span>+</span></div>
             <div class="faq-answer">É uma forma de incorporar pequenas imagens, ícones ou fontes diretamente dentro do código HTML ou folha de estilo CSS sem precisar de requisições HTTP adicionais, no formato: 'data:image/png;base64,iVBORw0KGgo...'.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Por que o Base64 aumenta o tamanho do arquivo em 33%?</span><span>+</span></div>
+            <div class="faq-answer">Porque a codificação divide os dados binários originais em grupos de 6 bits (em vez dos 8 bits normais de um byte). Para representar 3 bytes (24 bits), são necessários 4 caracteres Base64 (4 x 6 bits = 24 bits). Essa razão de 4 para 3 gera exatamente o aumento de 33,33% no volume transferido.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Como lidar com caracteres acentuados (UTF-8) em Base64 no JavaScript?</span><span>+</span></div>
+            <div class="faq-answer">A função nativa btoa() do JavaScript suporta apenas caracteres dentro do intervalo Latin1 (código de 0 a 255). Para codificar caracteres em português (como 'ç', 'ã', 'é'), é necessário converter a string para bytes UTF-8 através da API TextEncoder antes de aplicar a codificação Base64, como nossa ferramenta faz automaticamente.</div>
           </div>
         </div>
       </article>

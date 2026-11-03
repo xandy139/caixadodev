@@ -111,11 +111,12 @@
       <nav>
         <ul class="nav-links">
           <li><a href="/">Início</a></li>
-          <li><a href="/gerador-de-cpf">Gerador de CPF</a></li>
-          <li><a href="/gerador-de-cnpj" class="active">CNPJ Numérico</a></li>
-          <li><a href="/gerador-de-cnpj-alfanumerico" style="color: var(--accent-cyan); font-weight: 700;">⚡ CNPJ Alfanumérico</a></li>
+          <li><a href="/gerador-de-cpf">CPF</a></li>
+          <li><a href="/gerador-de-cnpj" class="active">CNPJ</a></li>
+          <li><a href="/gerador-de-cnpj-alfanumerico" style="color: var(--accent-cyan); font-weight: 700;">CNPJ Alfanumérico</a></li>
           <li><a href="/gerador-de-pessoas">Pessoas</a></li>
           <li><a href="/calculadora-clt-pj">CLT vs PJ</a></li>
+          <li><a href="/artigos">Artigos</a></li>
         </ul>
       </nav>
     </div>
@@ -208,7 +209,28 @@ Soma = somatório dos 13 dígitos (incluindo DV1) multiplicados pelos pesos
 Resto = Soma % 11
 Se Resto < 2 então DV2 = 0 senão DV2 = 11 - Resto</pre>
 
-      <h2>Perguntas Frequentes sobre CNPJ</h2>
+      <h3>Diferença entre Matriz e Filial no CNPJ</h3>
+      <p>O bloco de 4 dígitos localizado após a barra (<code>/YYYY</code>) é tecnicamente conhecido como o <strong>número de ordem do estabelecimento</strong>:</p>
+      <ul>
+        <li><code>/0001</code>: Designa a <strong>Matriz</strong> da sociedade ou empresa individual (sede principal).</li>
+        <li><code>/0002</code>, <code>/0003</code>, etc.: Identificam <strong>Filiais</strong> ou sucursais subordinadas à mesma raiz cadastral de 8 dígitos.</li>
+      </ul>
+      <p>Mesmo compartilhando os 8 dígitos base e a mesma razão social, cada filial possui seu próprio par de dígitos verificadores calculados exclusivamente com o seu número de ordem.</p>
+
+      <!-- Banner de Artigos Relacionados -->
+      <div style="background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(99, 102, 241, 0.08)); border: 1px solid rgba(6, 182, 212, 0.25); border-radius: var(--radius-md); padding: 22px 24px; margin: 32px 0; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
+        <div style="flex: 1; min-width: 260px;">
+          <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--accent-cyan); letter-spacing: 0.05em;">Artigos Técnicos em Destaque</span>
+          <h3 style="color: var(--text-primary); font-size: 1.15rem; margin: 6px 0 6px;">Entenda os Algoritmos Oficiais da Receita Federal</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0; line-height: 1.5;">Confira o código de validação em TypeScript/Python no nosso artigo sobre o <a href="/artigos/algoritmo-modulo-11-cpf-cnpj" style="color: var(--accent-cyan); font-weight: 600;">Algoritmo do Módulo 11</a> e as mudanças da Receita no <a href="/artigos/novo-cnpj-alfanumerico-regras-algoritmo-validacao" style="color: var(--accent-cyan); font-weight: 600;">Novo CNPJ Alfanumérico</a>.</p>
+        </div>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+          <a href="/artigos/algoritmo-modulo-11-cpf-cnpj" class="btn btn-secondary btn-sm">Módulo 11 &rarr;</a>
+          <a href="/artigos/novo-cnpj-alfanumerico-regras-algoritmo-validacao" class="btn btn-primary btn-sm">Regras Alfanumérico &rarr;</a>
+        </div>
+      </div>
+
+      <h2>Perguntas Frequentes sobre CNPJ (FAQ)</h2>
       <div style="display: flex; flex-direction: column; gap: 16px; margin-top: 20px;">
         <div style="background: var(--bg-card); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
           <h4 style="font-size: 1.05rem; color: var(--text-primary); margin-bottom: 8px;">Por que sequências repetidas (ex: 00.000.000/0000-00) são recusadas?</h4>
@@ -218,6 +240,16 @@ Se Resto < 2 então DV2 = 0 senão DV2 = 11 - Resto</pre>
         <div style="background: var(--bg-card); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
           <h4 style="font-size: 1.05rem; color: var(--text-primary); margin-bottom: 8px;">Qual a utilidade desta ferramenta em desenvolvimento de software?</h4>
           <p style="color: var(--text-secondary); margin: 0; font-size: 0.92rem; line-height: 1.6;">Ela permite testar cadastros empresariais, regras de faturamento, validações de formulário B2B, emissão simulada de notas e integrações com ERPs sem utilizar dados reais de empresas existentes.</p>
+        </div>
+
+        <div style="background: var(--bg-card); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+          <h4 style="font-size: 1.05rem; color: var(--text-primary); margin-bottom: 8px;">O uso de geradores de CNPJ é compatível com a LGPD?</h4>
+          <p style="color: var(--text-secondary); margin: 0; font-size: 0.92rem; line-height: 1.6;">Sim! No caso de Microempreendedores Individuais (MEI) e Empresários Individuais (EI), o CNPJ e a razão social contêm dados pessoais do titular (como CPF parcial e nome civil). Por essa razão, a utilização de números sintéticos gerados no navegador é a melhor prática para auditorias e testes de software, prevenindo violações à LGPD (Lei nº 13.709/2018).</p>
+        </div>
+
+        <div style="background: var(--bg-card); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+          <h4 style="font-size: 1.05rem; color: var(--text-primary); margin-bottom: 8px;">A validação de CNPJ deve ocorrer no frontend ou no backend?</h4>
+          <p style="color: var(--text-secondary); margin: 0; font-size: 0.92rem; line-height: 1.6;">Em arquiteturas modernas de software, a validação ocorre em ambas as camadas: no cliente (frontend) via JavaScript para feedback instantâneo ao usuário, e obrigatoriamente na API (backend) para garantir a integridade dos dados e impedir injeções ou contorno de validações.</p>
         </div>
       </div>
     </article>

@@ -111,11 +111,12 @@
       <nav>
         <ul class="nav-links">
           <li><a href="/">Início</a></li>
-          <li><a href="/gerador-de-cpf">Gerador de CPF</a></li>
-          <li><a href="/gerador-de-cnpj">Gerador de CNPJ</a></li>
+          <li><a href="/gerador-de-cpf">CPF</a></li>
+          <li><a href="/gerador-de-cnpj">CNPJ</a></li>
           <li><a href="/gerador-de-pessoas" class="active">Pessoas</a></li>
           <li><a href="/calculadora-clt-pj">CLT vs PJ</a></li>
           <li><a href="/json-para-typescript">JSON &rarr; TS</a></li>
+          <li><a href="/artigos">Artigos</a></li>
         </ul>
       </nav>
     </div>
@@ -254,6 +255,19 @@
         <li><strong>Performance Imbatível:</strong> Toda a massa de dados é computada no seu navegador em milissegundos sem chamadas a servidores externos.</li>
       </ul>
 
+      <h3>Como Usar em Testes Automatizados (E2E & QA)</h3>
+      <p>Em pipelines de Integração Contínua (CI/CD) utilizando ferramentas como <strong>Cypress, Playwright ou Selenium</strong>, o cadastro de novos usuários é frequentemente o primeiro gargalo. A utilização de mocks sintéticos com CPFs e CEPs calculados matematicamente assegura que as validações de máscara no frontend e os hooks de validação no backend passem com sucesso sem poluir o banco de dados de homologação com dados reais de clientes.</p>
+
+      <!-- Banner de Artigo Técnico Relacionado -->
+      <div style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.12), rgba(6, 182, 212, 0.08)); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: var(--radius-md); padding: 22px 24px; margin: 32px 0; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
+        <div style="flex: 1; min-width: 260px;">
+          <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--accent-cyan); letter-spacing: 0.05em;">Artigo Técnico Recomendado</span>
+          <h3 style="color: var(--text-primary); font-size: 1.15rem; margin: 6px 0 6px;">Como Funciona o Algoritmo do Módulo 11 (Validação de Documentos)</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0; line-height: 1.5;">Entenda em detalhes como o cálculo de dígitos verificadores funciona por trás dos panos nos documentos gerados.</p>
+        </div>
+        <a href="/artigos/algoritmo-modulo-11-cpf-cnpj" class="btn btn-primary" style="white-space: nowrap; font-weight: 600;">Ver Algoritmo Completo &rarr;</a>
+      </div>
+
       <h2>Perguntas Frequentes (FAQ)</h2>
       <div style="display: flex; flex-direction: column; gap: 16px; margin-top: 20px;">
         <div style="background: var(--bg-card); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
@@ -264,6 +278,16 @@
         <div style="background: var(--bg-card); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
           <h4 style="font-size: 1.05rem; color: var(--text-primary); margin-bottom: 8px;">Como copiar todos os campos de uma única vez?</h4>
           <p style="color: var(--text-secondary); margin: 0; font-size: 0.92rem; line-height: 1.6;">Basta clicar no botão <strong>"Copiar Todos os Dados"</strong> no topo da ferramenta. Um resumo estruturado contendo Nome, CPF, RG, Endereço, E-mail e Celular será transferido para a sua área de transferência.</p>
+        </div>
+
+        <div style="background: var(--bg-card); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+          <h4 style="font-size: 1.05rem; color: var(--text-primary); margin-bottom: 8px;">Os endereços e CEPs gerados são reais?</h4>
+          <p style="color: var(--text-secondary); margin: 0; font-size: 0.92rem; line-height: 1.6;">Os CEPs e municípios seguem as faixas oficiais de endereçamento dos Correios para o estado selecionado, mas os logradouros, números e nomes de pessoas são gerados aleatoriamente para compor uma massa sintética verossímil sem vincular a cidadãos reais.</p>
+        </div>
+
+        <div style="background: var(--bg-card); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+          <h4 style="font-size: 1.05rem; color: var(--text-primary); margin-bottom: 8px;">Os dados gerados ficam salvos em algum banco de dados?</h4>
+          <p style="color: var(--text-secondary); margin: 0; font-size: 0.92rem; line-height: 1.6;">Nenhum dado é enviado a servidores ou gravado em banco de dados. A geração é executada inteiramente no seu navegador via JavaScript em tempo real.</p>
         </div>
       </div>
     </article>

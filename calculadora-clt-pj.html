@@ -111,11 +111,12 @@
       <nav>
         <ul class="nav-links">
           <li><a href="/">Início</a></li>
-          <li><a href="/gerador-de-cpf">Gerador de CPF</a></li>
-          <li><a href="/gerador-de-cnpj">Gerador de CNPJ</a></li>
+          <li><a href="/gerador-de-cpf">CPF</a></li>
+          <li><a href="/gerador-de-cnpj">CNPJ</a></li>
           <li><a href="/gerador-de-pessoas">Pessoas</a></li>
           <li><a href="/calculadora-clt-pj" class="active">CLT vs PJ</a></li>
           <li><a href="/json-para-typescript">JSON &rarr; TS</a></li>
+          <li><a href="/artigos">Artigos</a></li>
         </ul>
       </nav>
     </div>
@@ -233,16 +234,36 @@
       <h3>3. Regra de Conversão Recomendada (Multiplicador de 1.4x a 1.6x)</h3>
       <p>Para manter o mesmo padrão de vida, custear um plano de saúde próprio e criar uma reserva de segurança para períodos de férias ou rescisão, o valor do contrato PJ deve ser, no mínimo, <strong>40% a 60% superior ao salário bruto CLT</strong>.</p>
 
-      <h2>Perguntas Frequentes (FAQ)</h2>
+      <!-- Banner de Destaque para o Artigo Tributário Aprofundado -->
+      <div style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(99, 102, 241, 0.08)); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: var(--radius-md); padding: 22px 24px; margin: 32px 0; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
+        <div style="flex: 1; min-width: 260px;">
+          <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--accent-emerald); letter-spacing: 0.05em;">Guia Técnico Editorial • 9 min de leitura</span>
+          <h3 style="color: var(--text-primary); font-size: 1.15rem; margin: 6px 0 6px;">Guia Tributário CLT vs PJ para Desenvolvedores: Alíquotas e Fator R</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0; line-height: 1.5;">Entenda a fundo os anexos III e V do Simples Nacional, os CNAEs recomendados de TI, cálculo de pró-labore e o passo a passo para emitir notas fiscais sem pagar imposto a mais.</p>
+        </div>
+        <a href="/artigos/clt-vs-pj-guia-tributario-desenvolvedor" class="btn btn-primary" style="background: var(--accent-emerald); border-color: var(--accent-emerald); white-space: nowrap; font-weight: 600;">Ler Artigo Completo &rarr;</a>
+      </div>
+
+      <h2>Perguntas Frequentes sobre Comparação CLT vs PJ (FAQ)</h2>
       <div style="display: flex; flex-direction: column; gap: 16px; margin-top: 20px;">
         <div style="background: var(--bg-card); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
           <h4 style="font-size: 1.05rem; color: var(--text-primary); margin-bottom: 8px;">Desenvolvedor de software pode ser MEI?</h4>
-          <p style="color: var(--text-secondary); margin: 0; font-size: 0.92rem; line-height: 1.6;">Não. A atividade de programação, desenvolvimento e desenvolvimento web é considerada profissão intelectual regulamentada e não consta na lista de ocupações permitidas para MEI. O caminho legal é abrir uma ME (Microempresa) tributada pelo Simples Nacional.</p>
+          <p style="color: var(--text-secondary); margin: 0; font-size: 0.92rem; line-height: 1.6;">Não. A atividade de programação, desenvolvimento e engenharia de software (CNAE 6201-5/01) é considerada profissão intelectual e regulamentada, sendo vedada para o MEI pelo Comitê Gestor do Simples Nacional. O formato legal correto é abrir uma Microempresa (ME) sob a forma de Sociedade Limitada Unipessoal (SLU).</p>
         </div>
 
         <div style="background: var(--bg-card); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
           <h4 style="font-size: 1.05rem; color: var(--text-primary); margin-bottom: 8px;">O que é Pró-Labore e quanto devo retirar?</h4>
-          <p style="color: var(--text-secondary); margin: 0; font-size: 0.92rem; line-height: 1.6;">Pró-labore é a remuneração pelo trabalho exercido pelo sócio na empresa, sobre a qual incide INSS. Para aproveitar a alíquota reduzida de 6% do Fator R, o pró-labore costuma ser fixado em exatamente 28% do faturamento mensal da empresa.</p>
+          <p style="color: var(--text-secondary); margin: 0; font-size: 0.92rem; line-height: 1.6;">Pró-labore é a remuneração pelo trabalho exercido pelo sócio-administrador na empresa, sobre a qual incide 11% de INSS (e IRPF caso ultrapasse a faixa de isenção). Para garantir o enquadramento na alíquota reduzida de 6% do Fator R (Anexo III), recomenda-se que a folha salarial total (pró-labore + encargos) atinja exatamente 28% do faturamento mensal.</p>
+        </div>
+
+        <div style="background: var(--bg-card); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+          <h4 style="font-size: 1.05rem; color: var(--text-primary); margin-bottom: 8px;">Como funciona a distribuição de lucros isenta no PJ?</h4>
+          <p style="color: var(--text-secondary); margin: 0; font-size: 0.92rem; line-height: 1.6;">Todo o saldo que sobra na conta PJ após o pagamento do imposto unificado (DAS), INSS do pró-labore e honorários do contador pode ser transferido para a sua conta de pessoa física como distribuição de lucros. Conforme o Artigo 10 da Lei Federal nº 9.249/1995, essa distribuição é 100% isenta de IRPF.</p>
+        </div>
+
+        <div style="background: var(--bg-card); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+          <h4 style="font-size: 1.05rem; color: var(--text-primary); margin-bottom: 8px;">Qual a margem segura para aceitar uma proposta PJ?</h4>
+          <p style="color: var(--text-secondary); margin: 0; font-size: 0.92rem; line-height: 1.6;">Para manter o mesmo poder de compra líquido da CLT (considerando 13º salário, 1/3 de férias, FGTS de 8% e benefícios como plano de saúde e previdência), a regra prática de mercado é exigir uma remuneração PJ entre 1,4x e 1,6x o salário bruto CLT.</p>
         </div>
       </div>
     </article>
