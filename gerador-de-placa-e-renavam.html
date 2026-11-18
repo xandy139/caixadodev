@@ -83,8 +83,8 @@
           <li><a href="/gerador-de-pessoas">Pessoas</a></li>
           <li><a href="/calculadora-clt-pj">CLT vs PJ</a></li>
           <li><a href="/json-para-typescript">JSON &rarr; TS</a></li>
-          <li><a href="/pages/sobre.html">Sobre</a></li>
-          <li><a href="/pages/contato.html">Contato</a></li>
+          <li><a href="/pages/sobre">Sobre</a></li>
+          <li><a href="/pages/contato">Contato</a></li>
         </ul>
       </nav>
     </div>
@@ -150,15 +150,22 @@
 
         <p><strong>Aviso de Homologação:</strong> Dados gerados sinteticamente para testes técnicos de software em ambientes de homologação e QA, sem vínculo com veículos reais ou cadastros do Detran.</p>
 
+        <h3>3. Regex para Validação Simultânea (Mercosul e Padrão Antigo)</h3>
+        <p>Ao validar placas veiculares em sistemas de frotas, seguradoras, pedágios e estacionamentos, é fundamental aceitar tanto o formato cinza legado (<code>AAA-9999</code>) quanto o padrão Mercosul (<code>AAA9A99</code>). A expressão regular recomendada sem hífen é <code>/^[A-Z]{3}[0-9][A-Z0-9][0-9]{2}$/i</code>.</p>
+
         <h3>Perguntas Frequentes sobre Veículos (FAQ)</h3>
         <div class="faq-list" style="margin-top: 16px;">
           <div class="faq-item">
             <div class="faq-question"><span>Como diferenciar a categoria do veículo na placa Mercosul?</span><span>+</span></div>
-            <div class="faq-answer">A categoria é indicada pela cor da fonte dos caracteres: preto para veículos particulares, vermelho para veículos comerciais e de aluguel (táxis, ônibus), azul para veículos oficiais e verde para testes de montadoras.</div>
+            <div class="faq-answer">A categoria é indicada pela cor da fonte dos caracteres: preto para veículos particulares, vermelho para veículos comerciais e de aluguel (táxis, ônibus, caminhões), azul para veículos oficiais e verde para testes de montadoras.</div>
           </div>
           <div class="faq-item">
             <div class="faq-question"><span>A ferramenta realiza consultas de multas ou débitos no Detran?</span><span>+</span></div>
-            <div class="faq-answer">Não. Esta é uma ferramenta geradora de dados sintéticos para desenvolvedores testarem máscaras de formulários em sistemas em desenvolvimento. Não realizamos consultas a bases governamentais.</div>
+            <div class="faq-answer">Não. Esta é uma ferramenta geradora de dados sintéticos para desenvolvedores testarem máscaras de formulários e algoritmos de validação Módulo 11 em sistemas em desenvolvimento. Não realizamos consultas a bases governamentais.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Quantos dígitos possui o RENAVAM atual?</span><span>+</span></div>
+            <div class="faq-answer">Desde 2013, o código RENAVAM nacional possui <strong>11 dígitos numéricos</strong> (anteriormente possuía 9 dígitos, sendo acrescidos dois zeros à esquerda nos registros mais antigos).</div>
           </div>
         </div>
       </article>
@@ -204,10 +211,10 @@
         <div class="footer-col">
           <h4>Institucional</h4>
           <ul>
-            <li><a href="/pages/sobre.html">Sobre o Projeto</a></li>
-            <li><a href="/pages/contato.html">Fale Conosco</a></li>
-            <li><a href="/pages/privacidade.html">Política de Privacidade</a></li>
-            <li><a href="/pages/termos.html">Termos de Uso</a></li>
+            <li><a href="/pages/sobre">Sobre o Projeto</a></li>
+            <li><a href="/pages/contato">Fale Conosco</a></li>
+            <li><a href="/pages/privacidade">Política de Privacidade</a></li>
+            <li><a href="/pages/termos">Termos de Uso</a></li>
           </ul>
         </div>
       </div>

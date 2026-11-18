@@ -9,21 +9,21 @@
 // ==========================================
 const I18N_TOOLS_EN = {
   'cnpj-alfanumerico': {
-    url: '/en/brazilian-alphanumeric-cnpj-generator',
+    url: '/gerador-de-cnpj-alfanumerico',
     name: 'Brazilian Alphanumeric CNPJ Generator (2026)',
     desc: 'Generate and validate the official Brazilian Alphanumeric CNPJ standard (RFB IN 2.229/2024) with ASCII-48 Modulo 11 check digits.',
     badge: '⚡ New RFB 2026',
     categoryLabel: 'Fiscal & Document Testing'
   },
   'cpf-cnpj': {
-    url: '/en/brazilian-cpf-generator',
+    url: '/gerador-de-cpf',
     name: 'Brazilian CPF & CNPJ Generator',
     desc: 'Generate and validate authentic Brazilian CPF and CNPJ documents with official Modulo 11 verification and state tags.',
     badge: '🔥 #1 Most Used',
     categoryLabel: 'Fiscal & Document Testing'
   },
   'pessoas': {
-    url: '/en/brazilian-person-generator',
+    url: '/gerador-de-pessoas',
     name: 'Brazilian Mock Person Generator',
     desc: 'Generate complete realistic Brazilian test profiles: Name, CPF, RG, Age, Gender, Blood type, Email, Phone and Address.',
     badge: '⭐ Mock Data',
@@ -44,7 +44,7 @@ const I18N_TOOLS_EN = {
     categoryLabel: 'TypeScript & Frontend'
   },
   'clt-pj': {
-    url: '/en/brazil-clt-vs-pj-calculator',
+    url: '/calculadora-clt-pj',
     name: 'Brazil CLT vs PJ Tax Calculator',
     desc: 'Compare Brazil employment vs contracting: Net income, Progressive INSS, IRPF, 13th salary, FGTS and Simples Nacional Factor R.',
     badge: '💰 Brazil Taxes',
@@ -73,9 +73,9 @@ const I18N_TOOLS_EN = {
   },
   'cartao': {
     url: '/en/credit-card-generator',
-    name: 'Credit Card Test Data Generator',
-    desc: 'Generate valid test credit card numbers (Visa, Mastercard, Amex, Elo) using the Luhn Algorithm (Mod 10). For QA only.',
-    badge: '💳 Test Cards',
+    name: 'Luhn Algorithm Simulator & Validator (ISO 7812)',
+    desc: 'Validate and simulate numeric sequences using the Luhn Algorithm (Modulo 10 — ISO/IEC 7812) for payment gateway sandbox QA testing.',
+    badge: '🧪 Luhn Mod 10',
     categoryLabel: 'Payment Testing'
   },
   'cron': {
@@ -86,7 +86,7 @@ const I18N_TOOLS_EN = {
     categoryLabel: 'DevOps & Automation'
   },
   'empresa': {
-    url: '/en/brazilian-company-generator',
+    url: '/gerador-de-empresa',
     name: 'Brazilian Test Company Generator',
     desc: 'Generate fictitious Brazilian corporate records with CNPJ, Trade Name, Legal Name, State Tax ID (IE), and Capital.',
     badge: '🏢 Corporate',
@@ -142,21 +142,21 @@ const I18N_TOOLS_EN = {
     categoryLabel: 'Identifiers'
   },
   'cep': {
-    url: '/en/brazilian-cep-generator',
+    url: '/gerador-de-cep',
     name: 'Brazilian CEP Postal Code Lookup & Generator',
     desc: 'Generate valid Brazilian postal codes (CEP) by state and query real street addresses via ViaCEP API.',
     badge: '📍 Postal Codes',
     categoryLabel: 'Mock Test Data'
   },
   'rg': {
-    url: '/en/brazilian-rg-generator',
+    url: '/gerador-de-rg',
     name: 'Brazilian RG ID Generator',
     desc: 'Generate formatted and unformatted Brazilian General Registry (RG) identity numbers for QA testing.',
     badge: '🪪 Identity',
     categoryLabel: 'Fiscal & Document Testing'
   },
   'bancos': {
-    url: '/en/brazilian-bank-account-generator',
+    url: '/gerador-de-conta-bancaria',
     name: 'Brazilian Bank Account Generator',
     desc: 'Generate valid test checking accounts and branch numbers for major Brazilian banks (Nubank, Itaú, Bradesco, BB, Caixa).',
     badge: '🏦 Banking QA',
@@ -205,7 +205,7 @@ const I18N_TOOLS_EN = {
     categoryLabel: 'Math & Storage'
   },
   'cnh': {
-    url: '/en/brazilian-cnh-generator',
+    url: '/gerador-de-cnh',
     name: 'Brazilian CNH Driver License Generator',
     desc: 'Generate valid Brazilian National Driver License (CNH) document numbers with dual Modulo 11 check digits.',
     badge: '🚗 Driver License',
@@ -268,28 +268,28 @@ const I18N_TOOLS_EN = {
     categoryLabel: 'Assets & Mobile'
   },
   'veiculos': {
-    url: '/en/brazilian-license-plate-renavam-generator',
+    url: '/gerador-de-placa-e-renavam',
     name: 'Brazilian License Plate & RENAVAM Generator',
     desc: 'Generate valid Mercosul and legacy Brazilian vehicle plates and RENAVAM registration numbers for QA systems.',
     badge: '🚙 Vehicles',
     categoryLabel: 'Fiscal & Document Testing'
   },
   'certidao': {
-    url: '/en/brazilian-certificate-generator',
+    url: '/gerador-de-certidao',
     name: 'Brazilian Registry Certificate Generator',
     desc: 'Generate 32-digit Brazilian civil registration certificate numbers (Birth, Marriage, Death) under CNJ rules.',
     badge: '📜 Certificates',
     categoryLabel: 'Fiscal & Document Testing'
   },
   'pis': {
-    url: '/en/brazilian-pis-generator',
+    url: '/gerador-de-pis',
     name: 'Brazilian PIS / PASEP Generator',
     desc: 'Generate and validate Brazilian Social Integration Program (PIS/PASEP/NIT) numbers with Modulo 11 check digit.',
     badge: '📑 Labor IDs',
     categoryLabel: 'Fiscal & Document Testing'
   },
   'titulo': {
-    url: '/en/brazilian-voter-id-generator',
+    url: '/gerador-de-titulo-de-eleitor',
     name: 'Brazilian Voter ID Generator',
     desc: 'Generate authentic Brazilian Voter ID (Título de Eleitor) numbers with 12 digits, state code and dual verification.',
     badge: '🗳️ Voter ID',
@@ -328,7 +328,7 @@ const I18N_TOOLS_EN = {
 function getEffectiveCatalog() {
   const isEn = document.documentElement.lang === 'en';
   if (!isEn) return TOOLS_CATALOG;
-  return TOOLS_CATALOG.map(t => {
+  const mapped = TOOLS_CATALOG.map(t => {
     const en = I18N_TOOLS_EN[t.id];
     if (!en) return t;
     return {
@@ -339,6 +339,11 @@ function getEffectiveCatalog() {
       badge: en.badge || t.badge,
       categoryLabel: en.categoryLabel || t.categoryLabel
     };
+  });
+  return mapped.sort((a, b) => {
+    const aEn = (a.url && a.url.startsWith('/en/')) ? 0 : 1;
+    const bEn = (b.url && b.url.startsWith('/en/')) ? 0 : 1;
+    return aEn - bEn;
   });
 }
 
@@ -461,14 +466,14 @@ const TOOLS_CATALOG = [
   {
     id: 'cartao',
     url: '/gerador-de-cartao-de-credito',
-    name: 'Gerador e Validador de Cartão de Crédito',
+    name: 'Simulador de Algoritmo de Luhn (ISO 7812)',
     category: 'geradores',
-    categoryLabel: 'Financeiro & E-commerce',
-    desc: 'Gere números válidos para testes de checkout com algoritmo de Luhn (Visa, Mastercard, Amex, Elo, Hipercard) e CVV.',
+    categoryLabel: 'Homologação & Checksum',
+    desc: 'Valide e simule sequências numéricas pelo Algoritmo de Luhn (Módulo 10 — ISO/IEC 7812) para homologação técnica de checkouts em ambiente Sandbox.',
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>`,
     color: 'var(--accent-rose)',
-    badge: '💳 Checkout',
-    isPopular: true
+    badge: '🧪 Luhn Mod 10',
+    isPopular: false
   },
   {
     id: 'cron',

@@ -288,15 +288,101 @@
       </div>
 
       <article class="tool-seo-guide">
-        <h2>How In-Browser Webcam Testing Works</h2>
-        <p>The <strong>Caixa do Dev Webcam Tester</strong> leverages the W3C <strong>WebRTC MediaDevices API</strong> to open a direct hardware video stream inside your browser. It inspects the decoded video frames to report your camera's true pixel dimensions, aspect ratio, and real-time frame rate (FPS) with zero external server communication.</p>
+        <h2>How In-Browser Webcam Testing &amp; Video Diagnostics Work</h2>
+        <p>The <strong>Caixa do Dev Webcam Tester</strong> leverages the official W3C <strong>WebRTC MediaDevices API</strong> (<code>navigator.mediaDevices.getUserMedia</code>) to open a direct hardware video stream between your USB or integrated camera driver and the HTML5 rendering engine. Unlike heavy desktop diagnostic suites, you can inspect optical sharpness, lighting balance, framing, true sensor resolution, and real-time frame rate (FPS) stability in one click before joining a technical interview, daily stand-up, or executive presentation.</p>
+
+        <h3>1. Understanding Your Webcam's Technical Telemetry</h3>
+        <ul>
+          <li><strong>True Delivered Resolution (Width × Height):</strong> Many budget webcams advertise "Full HD 1080p" or "4K UHD" on the box using software interpolation, while natively outputting only <code>1280 × 720</code> (HD) or <code>640 × 480</code> (VGA). Our diagnostic engine inspects the actual decoded video track dimensions (<code>videoWidth</code> and <code>videoHeight</code>) delivered by the physical CMOS sensor.</li>
+          <li><strong>Real-Time Frame Rate (FPS — Frames Per Second):</strong> Smooth video conferencing requires a stable <strong>30 FPS</strong> or <strong>60 FPS</strong> stream. If your reading drops to 15 FPS in a dim room, your camera's auto-exposure firmware is lengthening shutter exposure time to gather more light, which introduces motion blur.</li>
+          <li><strong>Aspect Ratio &amp; Megapixels:</strong> Widescreen modern sensors operate at <code>16:9</code> (e.g., 1920×1080 = 2.07 MP), whereas legacy sensors and some tablet cameras use <code>4:3</code> (e.g., 640×480 = 0.31 MP).</li>
+          <li><strong>Mirror Mode (Horizontal Flip):</strong> Video conferencing platforms such as Google Meet, Zoom, and Microsoft Teams horizontally mirror your local preview so moving left or right feels natural—just like looking into a physical mirror—while remote participants see your normal orientation.</li>
+        </ul>
+
+        <h3>2. Troubleshooting Common Webcam Issues</h3>
+        <ul>
+          <li><strong>"Camera in use by another application" (NotReadableError):</strong> On Windows and macOS, only one process can claim exclusive hardware access to a physical USB video driver at a time. Completely quit Zoom, Microsoft Teams, Discord, Skype, or OBS Studio from your system tray and click <em>Start Webcam Test</em> again.</li>
+          <li><strong>"Permission Denied" (NotAllowedError):</strong> Click the padlock or camera icon on the left side of your browser's address bar, change the Camera permission to <strong>Allow</strong>, and reload the page. On macOS, also verify <em>System Settings &rarr; Privacy &amp; Security &rarr; Camera</em>.</li>
+          <li><strong>Grainy, noisy, or low-FPS video:</strong> Place a soft key light in front of your face rather than behind you. Adequate front lighting allows the sensor to lower digital ISO gain and maintain a locked 30+ FPS shutter speed.</li>
+        </ul>
+
+        <h3>Frequently Asked Questions (FAQ)</h3>
+        <div class="faq-list" style="margin-top: 16px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>Is my webcam video stream uploaded or recorded on any server?</span><span>+</span></div>
+            <div class="faq-answer">No! The Caixa do Dev Webcam Tester runs 100% locally inside your browser's RAM using the native WebRTC API. No video frames, snapshots, or hardware telemetry ever leave your device.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>How do I verify if my webcam is truly Full HD (1080p) or 4K?</span><span>+</span></div>
+            <div class="faq-answer">Select "Full HD (1920×1080)" or "4K UHD (3840×2160)" in the Requested Resolution dropdown and start the test. Check the "True Resolution" row in the Sensor Technical Telemetry table to see the exact pixel dimensions negotiated by your hardware.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Does this webcam test work on Android and iPhone (iOS)?</span><span>+</span></div>
+            <div class="faq-answer">Yes! It works seamlessly on mobile Chrome (Android) and Safari (iOS), allowing you to inspect both front-facing selfie cameras and rear optical lenses.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Where are my captured PNG snapshots saved?</span><span>+</span></div>
+            <div class="faq-answer">Snapshots are rendered onto an off-screen HTML5 Canvas in your browser's memory and only saved to your computer's Downloads folder if you explicitly click "Download Snapshot (PNG)".</div>
+          </div>
+        </div>
       </article>
 
+    </section>
+
+    <!-- Related Popular Tools -->
+    <section style="margin-top: 48px;">
+      <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 20px; color: var(--text-primary);">Explore More Hardware &amp; Media Tools</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px;">
+        <a href="/en/microphone-test" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Online Microphone Test</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Visualize voice frequencies (60 FPS FFT &amp; Oscilloscope), dBFS volume, and 5s audio playback.</p>
+        </a>
+        <a href="/en/image-converter" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Web Image Converter</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Convert and compress PNG, JPG, WebP, and AVIF images 100% locally in your browser.</p>
+        </a>
+        <a href="/en/image-color-picker" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Image Color Picker</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Sample exact pixel HEX/RGB/HSL colors with a real-time magnifying loupe and palette extractor.</p>
+        </a>
+        <a href="/en/qrcode-generator" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">QR Code Generator</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Create high-resolution QR Codes for URLs, Wi-Fi credentials, and text with instant PNG download.</p>
+        </a>
+      </div>
     </section>
   </main>
 
   <footer class="footer">
     <div class="container footer-content">
+      <div class="footer-grid">
+        <div class="footer-col footer-col-wide">
+          <div class="footer-brand">
+            <span class="footer-brand-title">Caixa do Dev</span>
+            <span class="footer-badge">100% Client-Side</span>
+          </div>
+          <p>The premier free, fast, and privacy-first utility toolkit for developers, QA engineers, and tech professionals worldwide.</p>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Media &amp; Hardware</span>
+          <ul class="footer-links">
+            <li><a href="/en/webcam-test">Online Webcam Test</a></li>
+            <li><a href="/en/microphone-test">Online Microphone Test</a></li>
+            <li><a href="/en/image-converter">Image Converter</a></li>
+            <li><a href="/en/image-color-picker">Image Color Picker</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Institutional</span>
+          <ul class="footer-links">
+            <li><a href="/pages/sobre">About the Project</a></li>
+            <li><a href="/artigos">Engineering Articles</a></li>
+            <li><a href="/pages/privacidade">Privacy Policy</a></li>
+            <li><a href="/pages/termos">Terms of Service</a></li>
+            <li><a href="/pages/contato">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
       <div class="footer-bottom">
         <span>&copy; 2026 Caixa do Dev • Built and maintained by Alexandre Marcelino.</span>
         <span>100% local client-side processing.</span>

@@ -86,7 +86,7 @@
             <li><a href="/en/base64-converter">Base64</a></li>
             <li><a href="/en/uuid-generator">UUID</a></li>
             <li><a href="/en/jwt-decoder">JWT</a></li>
-            <li><a href="/pages/sobre.html">About</a></li>
+            <li><a href="/pages/sobre">About</a></li>
           </ul>
         </nav>
         <div class="lang-switch" aria-label="Language Selector">
@@ -219,8 +219,47 @@
 
         <h3>2. Zero-Trust Client-Side Privacy Architecture</h3>
         <p>Standard online converters upload confidential screenshots, personal photos, or corporate assets to remote server queues. With <strong>Caixa do Dev</strong>, all decoding, canvas resampling, bicubic interpolation, and compression happen <strong>strictly inside your local web browser memory</strong> via HTML5 Canvas. Your assets never traverse the network, ensuring complete confidentiality.</p>
+
+        <h3>Frequently Asked Questions (FAQ)</h3>
+        <div class="faq-list" style="margin-top: 16px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>What quality setting should I choose for WebP and AVIF?</span><span>+</span></div>
+            <div class="faq-answer">For hero banners, e-commerce product photography, and technical blog posts, setting quality between <strong>80% and 85%</strong> is the sweet spot: it reduces byte size by up to 70% while remaining visually indistinguishable from the original file.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Is PNG alpha transparency preserved when converting to WebP or AVIF?</span><span>+</span></div>
+            <div class="faq-answer">Yes! Both WebP and AVIF natively support 8-bit alpha channel transparency. Only JPEG flattens transparent pixels against a solid background because the JPEG specification lacks an alpha channel.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Are my images uploaded or cached on any external server?</span><span>+</span></div>
+            <div class="faq-answer">Never. All image decoding, resizing, and encoding execute locally in your browser's RAM via the native <code>HTMLCanvasElement.toBlob()</code> API. Zero bytes leave your device.</div>
+          </div>
+        </div>
       </article>
 
+    </section>
+
+    <!-- Related Popular Tools -->
+    <section style="margin-top: 48px;">
+      <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 20px; color: var(--text-primary);">Explore More Design &amp; Media Tools</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px;">
+        <a href="/en/image-color-picker" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Image Color Picker</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Sample exact pixel HEX, RGB, and HSL colors with a real-time magnifying loupe.</p>
+        </a>
+        <a href="/en/svg-optimizer" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">SVG Optimizer</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Clean, minify, and convert vector SVG files into CSS-ready Data URIs.</p>
+        </a>
+        <a href="/en/base64-converter" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Base64 Converter</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Encode and decode text strings and Data URIs with full UTF-8 compliance.</p>
+        </a>
+        <a href="/en/webcam-test" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Online Webcam Test</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Inspect true camera sensor resolution, live FPS stability, and take PNG snapshots.</p>
+        </a>
+      </div>
     </section>
   </main>
 
@@ -247,11 +286,11 @@
         <div class="footer-col">
           <span class="footer-col-title">About</span>
           <ul class="footer-links">
-            <li><a href="/pages/sobre.html">About the Project</a></li>
+            <li><a href="/pages/sobre">About the Project</a></li>
             <li><a href="/artigos">Engineering Articles</a></li>
-            <li><a href="/pages/privacidade.html">Privacy Policy</a></li>
-            <li><a href="/pages/termos.html">Terms of Service</a></li>
-            <li><a href="/pages/contato.html">Contact Us</a></li>
+            <li><a href="/pages/privacidade">Privacy Policy</a></li>
+            <li><a href="/pages/termos">Terms of Service</a></li>
+            <li><a href="/pages/contato">Contact Us</a></li>
           </ul>
         </div>
       </div>

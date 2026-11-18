@@ -110,7 +110,7 @@
             <li><a href="/en/uuid-generator">UUID</a></li>
             <li><a href="/en/base64-converter">Base64</a></li>
             <li><a href="/artigos">Articles</a></li>
-            <li><a href="/pages/sobre.html">About</a></li>
+            <li><a href="/pages/sobre">About</a></li>
           </ul>
         </nav>
         <div class="lang-switch" aria-label="Idioma / Language">
@@ -208,6 +208,60 @@
           <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5; flex-grow: 1;">6-bit conversion mechanics, First Contentful Paint (FCP) blocking risks, browser cache destruction, and real architectural trade-offs.</p>
           <a href="/artigos/base64-encoding-data-uri-web-performance" style="color: var(--accent-emerald); font-size: 0.88rem; font-weight: 600; text-decoration: none; margin-top: 14px;">Read Guide &rarr;</a>
         </article>
+
+        <!-- Article 5: JWT Security -->
+        <article class="tool-card" style="display: flex; flex-direction: column;">
+          <div style="font-size: 0.76rem; color: var(--accent-primary); font-weight: 600; margin-bottom: 8px;">SECURITY & RFC 7519</div>
+          <h3 style="font-size: 1.15rem; margin-bottom: 8px;"><a href="/artigos/seguranca-jwt-autenticacao-web" style="color: var(--text-primary); text-decoration: none;">JWT Token Anatomy & Security Best Practices in Web Authentication</a></h3>
+          <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5; flex-grow: 1;">Understand Header, Payload, and cryptographic Signatures (HMAC/RSA), algorithm confusion vulnerabilities, and refresh token rotation.</p>
+          <a href="/artigos/seguranca-jwt-autenticacao-web" style="color: var(--accent-primary); font-size: 0.88rem; font-weight: 600; text-decoration: none; margin-top: 14px;">Read Guide &rarr;</a>
+        </article>
+
+        <!-- Article 6: Luhn Algorithm -->
+        <article class="tool-card" style="display: flex; flex-direction: column;">
+          <div style="font-size: 0.76rem; color: var(--accent-rose); font-weight: 600; margin-bottom: 8px;">FINTECH & ISO/IEC 7812</div>
+          <h3 style="font-size: 1.15rem; margin-bottom: 8px;"><a href="/artigos/algoritmo-de-luhn-validacao-cartao" style="color: var(--text-primary); text-decoration: none;">Luhn Algorithm (Modulo 10): Checksum Validation in Payment Gateways</a></h3>
+          <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5; flex-grow: 1;">Explore Hans Peter Luhn's mathematical formula used across checkout pipelines to detect single-digit transcription errors before network calls.</p>
+          <a href="/artigos/algoritmo-de-luhn-validacao-cartao" style="color: var(--accent-rose); font-size: 0.88rem; font-weight: 600; text-decoration: none; margin-top: 14px;">Read Guide &rarr;</a>
+        </article>
+
+        <!-- Article 7: Modulo 11 -->
+        <article class="tool-card" style="display: flex; flex-direction: column;">
+          <div style="font-size: 0.76rem; color: var(--accent-cyan); font-weight: 600; margin-bottom: 8px;">ALGORITHMS & CHECKSUMS</div>
+          <h3 style="font-size: 1.15rem; margin-bottom: 8px;"><a href="/artigos/algoritmo-modulo-11-cpf-cnpj" style="color: var(--text-primary); text-decoration: none;">How Modulo 11 Check Digits Work (Step-by-Step Mathematical Guide)</a></h3>
+          <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5; flex-grow: 1;">Deep dive into weighted positional sums, remainder arithmetic, and check digit verification algorithms with clean JavaScript implementations.</p>
+          <a href="/artigos/algoritmo-modulo-11-cpf-cnpj" style="color: var(--accent-cyan); font-size: 0.88rem; font-weight: 600; text-decoration: none; margin-top: 14px;">Read Guide &rarr;</a>
+        </article>
+
+        <!-- Article 8: Alphanumeric CNPJ -->
+        <article class="tool-card" style="display: flex; flex-direction: column;">
+          <div style="font-size: 0.76rem; color: var(--accent-emerald); font-weight: 600; margin-bottom: 8px;">SYSTEMS ARCHITECTURE & 2026</div>
+          <h3 style="font-size: 1.15rem; margin-bottom: 8px;"><a href="/artigos/novo-cnpj-alfanumerico-regras-algoritmo-validacao" style="color: var(--text-primary); text-decoration: none;">Alphanumeric Tax IDs (2026): ASCII-48 Modulo 11 Migration Guide</a></h3>
+          <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5; flex-grow: 1;">How to prepare database schemas, regex masks, and backend validators for the 2026 alphanumeric corporate registration transition.</p>
+          <a href="/artigos/novo-cnpj-alfanumerico-regras-algoritmo-validacao" style="color: var(--accent-emerald); font-size: 0.88rem; font-weight: 600; text-decoration: none; margin-top: 14px;">Read Guide &rarr;</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- Global Architectural Guide & FAQ -->
+    <section class="tool-seo-guide" style="margin-bottom: 60px;">
+      <h2>Why Software Engineers Choose a 100% Client-Side Developer Toolbox</h2>
+      <p>Modern software development workflows involve inspecting sensitive payloads: production JSON responses, JWT authentication headers, SQL database schemas, regular expressions, and media assets. Sending these artifacts to third-party cloud backends introduces unnecessary data-leakage vectors and compliance friction. <strong>Caixa do Dev</strong> is engineered from the ground up so that every single parser, formatter, encoder, and hardware diagnostic executes locally inside your browser's JavaScript V8/WebKit runtime and Web Crypto / WebRTC APIs.</p>
+
+      <h3>Frequently Asked Questions (FAQ)</h3>
+      <div class="faq-list" style="margin-top: 16px;">
+        <div class="faq-item">
+          <div class="faq-question"><span>Does Caixa do Dev store or transmit my pasted code, tokens, or files?</span><span>+</span></div>
+          <div class="faq-answer">Never. Zero bytes of your JSON payloads, JWT tokens, SQL queries, images, or webcam/microphone streams are ever transmitted to external servers. Every calculation runs strictly inside your browser's local memory (Client-Side).</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question"><span>Are the generated test records and identifiers real?</span><span>+</span></div>
+          <div class="faq-answer">No. All generated datasets, UUIDs, and mathematical checksum sequences are synthetically created in real time strictly for software engineering, automated QA pipelines, and sandbox testing.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question"><span>Can I use these developer utilities for commercial and enterprise projects?</span><span>+</span></div>
+          <div class="faq-answer">Yes! All 45+ utilities on Caixa do Dev are 100% free, require no registration or API keys, and have no usage limits for individual developers, QA analysts, and enterprise engineering teams.</div>
+        </div>
       </div>
     </section>
 
@@ -265,7 +319,7 @@
             <li><a href="/gerador-de-cnpj-alfanumerico">Alphanumeric CNPJ (2026)</a></li>
             <li><a href="/gerador-de-pessoas">Mock Person Generator</a></li>
             <li><a href="/gerador-de-cep">Brazilian CEP Lookup</a></li>
-            <li><a href="/gerador-de-conta-bancaria">Bank Account Generator</a></li>
+            <li><a href="/gerador-de-empresa">Mock Company Generator</a></li>
             <li><a href="/calculadora-clt-pj">CLT vs PJ Calculator</a></li>
           </ul>
         </div>
@@ -274,10 +328,10 @@
           <h4>Institutional</h4>
           <ul>
             <li><a href="/artigos">Engineering Articles</a></li>
-            <li><a href="/pages/sobre.html">About the Author</a></li>
-            <li><a href="/pages/contato.html">Contact Us</a></li>
-            <li><a href="/pages/privacidade.html">Privacy Policy</a></li>
-            <li><a href="/pages/termos.html">Terms of Service</a></li>
+            <li><a href="/pages/sobre">About the Author</a></li>
+            <li><a href="/pages/contato">Contact Us</a></li>
+            <li><a href="/pages/privacidade">Privacy Policy</a></li>
+            <li><a href="/pages/termos">Terms of Service</a></li>
           </ul>
         </div>
       </div>
@@ -292,7 +346,7 @@
   <!-- Cookie Consent Banner -->
   <aside id="cookie-consent-banner" class="cookie-consent-banner" aria-label="Cookie Consent">
     <div class="cookie-consent-text">
-      <strong>🍪 We value your privacy:</strong> We use cookies strictly for UI preferences and contextual partner ads in full compliance with GDPR and LGPD. Learn more in our <a href="/pages/privacidade.html">Privacy Policy</a>.
+      <strong>🍪 We value your privacy:</strong> We use cookies strictly for UI preferences and contextual partner ads in full compliance with GDPR and LGPD. Learn more in our <a href="/pages/privacidade">Privacy Policy</a>.
     </div>
     <div class="cookie-consent-actions">
       <button id="btn-cookie-essential" class="btn btn-secondary btn-sm">Essential Only</button>

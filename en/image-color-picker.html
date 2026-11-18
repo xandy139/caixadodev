@@ -549,7 +549,7 @@
   <!-- Navbar -->
   <header class="navbar">
     <div class="container nav-container">
-      <a href="/" class="brand" title="Caixa do Dev - Free Developer Tools">
+      <a href="/en/" class="brand" title="Caixa do Dev - Free Developer Tools">
         <div class="brand-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
@@ -559,19 +559,19 @@
         </div>
         <div class="brand-text">
           <span class="brand-name">Caixa do Dev</span>
-          <span class="brand-badge">42 Dev Tools</span>
+          <span class="brand-badge">45 Dev Tools</span>
         </div>
       </a>
 
       <div style="display: flex; align-items: center; gap: 16px;">
         <nav>
           <ul class="nav-links">
-            <li><a href="/">Home</a></li>
-            <li><a href="/gerador-de-cpf">CPF Generator</a></li>
-            <li><a href="/conversor-de-cores">Color Converter</a></li>
-            <li><a href="/json-para-typescript">JSON &rarr; TS</a></li>
-            <li><a href="/pages/sobre.html">About</a></li>
-            <li><a href="/pages/contato.html">Contact</a></li>
+            <li><a href="/en/">Home</a></li>
+            <li><a href="/en/color-converter">Color Converter</a></li>
+            <li><a href="/en/image-converter">Image Converter</a></li>
+            <li><a href="/en/json-to-typescript">JSON &rarr; TS</a></li>
+            <li><a href="/pages/sobre">About</a></li>
+            <li><a href="/pages/contato">Contact</a></li>
           </ul>
         </nav>
         <div class="lang-switch" aria-label="Idioma / Language">
@@ -587,7 +587,7 @@
   <main class="container" style="padding-top: 32px; padding-bottom: 60px;">
     
     <div class="tool-breadcrumbs">
-      <a href="/">&larr; Home</a> / <a href="/conversor-de-cores">Colors</a> / <span>Image Color Picker (Pixel EyeDropper)</span>
+      <a href="/en/">&larr; Home</a> / <a href="/en/color-converter">Colors</a> / <span>Image Color Picker (Pixel EyeDropper)</span>
     </div>
 
     <div class="privacy-badge">
@@ -854,20 +854,43 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="container footer-content">
-      <div class="footer-brand">
-        <span class="brand-name">Caixa do Dev</span>
-        <p>42 free, fast, and 100% client-side utility tools for developers worldwide.</p>
+      <div class="footer-grid">
+        <div class="footer-col footer-col-wide">
+          <div class="footer-brand">
+            <span class="footer-brand-title">Caixa do Dev</span>
+            <span class="footer-badge">100% Client-Side</span>
+          </div>
+          <p>The premier free, fast, and privacy-first utility toolkit for developers, QA engineers, and tech professionals worldwide.</p>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Design &amp; Media</span>
+          <ul class="footer-links">
+            <li><a href="/en/image-color-picker">Image Color Picker</a></li>
+            <li><a href="/en/color-converter">Color Converter</a></li>
+            <li><a href="/en/image-converter">Image Converter</a></li>
+            <li><a href="/en/svg-optimizer">SVG Optimizer</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Institutional</span>
+          <ul class="footer-links">
+            <li><a href="/pages/sobre">About the Project</a></li>
+            <li><a href="/artigos">Engineering Articles</a></li>
+            <li><a href="/pages/privacidade">Privacy Policy</a></li>
+            <li><a href="/pages/termos">Terms of Service</a></li>
+            <li><a href="/pages/contato">Contact Us</a></li>
+          </ul>
+        </div>
       </div>
-      <div class="footer-links">
-        <a href="/pages/privacidade.html">Privacy</a>
-        <a href="/pages/termos.html">Terms</a>
-        <a href="/pages/sobre.html">About</a>
-        <a href="/pages/contato.html">Contact</a>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Caixa do Dev • Built and maintained by Alexandre Marcelino.</span>
+        <span>100% local client-side processing.</span>
       </div>
     </div>
   </footer>
 
   <!-- Tool Script -->
   <script src="/js/tools/image-color-picker.js?v=20261016"></script>
+  <script src="/js/app.js"></script>
 </body>
 </html>

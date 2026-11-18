@@ -86,8 +86,8 @@
             <li><a href="/en/json-to-typescript">JSON &rarr; TS</a></li>
             <li><a href="/en/uuid-generator">UUID</a></li>
             <li><a href="/en/hash-generator">Hashes</a></li>
-            <li><a href="/pages/sobre.html">About</a></li>
-            <li><a href="/pages/contato.html">Contact</a></li>
+            <li><a href="/pages/sobre">About</a></li>
+            <li><a href="/pages/contato">Contact</a></li>
           </ul>
         </nav>
         <div class="lang-switch" aria-label="Idioma / Language">
@@ -150,17 +150,24 @@
         <p>As a mathematical consequence of expanding 3 bytes into 4 characters, Base64 encoding imposes approximately <strong>33% payload overhead</strong> compared to raw binary transfer.</p>
 
         <h3>2. What is URL-Safe Base64 (Base64Url)?</h3>
-        <p>In web URLs, query parameters, and JSON Web Tokens (JWT), the traditional <code>+</code> and <code>/</code> characters collide with URL syntax (where <code>+</code> represents a space). The <strong>Base64Url</strong> variant substitutes <code>+</code> with hyphen (<code>-</code>) and <code>/</code> with underscore (<code>_</code>), omitting padding characters.</p>
+        <p>In web URLs, query parameters, and JSON Web Tokens (JWT), the traditional <code>+</code> and <code>/</code> characters collide with URL syntax (where <code>+</code> represents a space). The <strong>Base64Url</strong> variant (defined in RFC 4648 Section 5) substitutes <code>+</code> with hyphen (<code>-</code>) and <code>/</code> with underscore (<code>_</code>), omitting trailing <code>=</code> padding characters so tokens can be safely passed inside HTTP headers and query strings without percent-encoding.</p>
+
+        <h3>3. Handling UTF-8 &amp; Unicode Strings in JavaScript Base64</h3>
+        <p>Native browser functions like <code>window.btoa()</code> and <code>window.atob()</code> historically only accepted single-byte Latin1/ASCII strings, throwing an <code>InvalidCharacterError</code> when encountering emojis or accented characters. Our encoder uses the modern <code>TextEncoder</code> and <code>Uint8Array</code> UTF-8 byte pipeline so multi-byte international strings and symbols encode and decode losslessly.</p>
 
         <h3>Frequently Asked Questions (FAQ)</h3>
         <div class="faq-list" style="margin-top: 16px;">
           <div class="faq-item">
             <div class="faq-question"><span>Is Base64 encryption or security?</span><span>+</span></div>
-            <div class="faq-answer">No. Base64 is strictly a data representation format without keys or secrets. Anyone can reverse Base64 instantly. Never use Base64 alone to protect passwords or confidential data.</div>
+            <div class="faq-answer">No. Base64 is strictly a binary-to-text data representation format without cryptographic keys or secrets. Anyone can reverse Base64 instantly. Never use Base64 alone to protect passwords, API keys, or confidential data.</div>
           </div>
           <div class="faq-item">
             <div class="faq-question"><span>What is a Data URI in web development?</span><span>+</span></div>
-            <div class="faq-answer">Data URIs embed assets directly into HTML markup or CSS stylesheets without triggering extra HTTP roundtrips, formatted as: 'data:image/png;base64,iVBORw0KGgo...'.</div>
+            <div class="faq-answer">Data URIs embed small binary assets directly into HTML markup or CSS stylesheets without triggering extra HTTP requests, formatted as: <code>data:image/png;base64,iVBORw0KGgo...</code>. Read our engineering deep dive on <a href="/artigos/base64-encoding-data-uri-web-performance" style="color: var(--accent-cyan);">Base64 &amp; Data URI Web Performance</a>.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Are my encoded strings transmitted to any external server?</span><span>+</span></div>
+            <div class="faq-answer">Never. All Base64 encoding and decoding executes 100% locally in your browser's memory, ensuring complete privacy for your tokens, credentials, and configuration payloads.</div>
           </div>
         </div>
       </article>
@@ -206,10 +213,10 @@
           <h4>Institutional</h4>
           <ul>
             <li><a href="/artigos">Engineering Articles</a></li>
-            <li><a href="/pages/sobre.html">About the Author</a></li>
-            <li><a href="/pages/contato.html">Contact Us</a></li>
-            <li><a href="/pages/privacidade.html">Privacy Policy</a></li>
-            <li><a href="/pages/termos.html">Terms of Service</a></li>
+            <li><a href="/pages/sobre">About the Author</a></li>
+            <li><a href="/pages/contato">Contact Us</a></li>
+            <li><a href="/pages/privacidade">Privacy Policy</a></li>
+            <li><a href="/pages/termos">Terms of Service</a></li>
           </ul>
         </div>
       </div>

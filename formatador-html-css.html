@@ -88,7 +88,7 @@
             <li><a href="/calculadora-clt-pj">CLT vs PJ</a></li>
             <li><a href="/json-para-typescript">JSON &rarr; TS</a></li>
             <li><a href="/artigos">Artigos</a></li>
-            <li><a href="/pages/sobre.html">Sobre</a></li>
+            <li><a href="/pages/sobre">Sobre</a></li>
           </ul>
         </nav>
         <div class="lang-switch" aria-label="Idioma / Language">
@@ -156,15 +156,22 @@
         <h3>2. Prettify vs Minify: Quando Usar Cada Um?</h3>
         <p>Durante a fase de desenvolvimento local, o código deve ser formatado de forma espaçada e legível (Prettify) para permitir inspeção rápida e revisões em Pull Requests. Já na esteira de deploy e produção (CI/CD), ferramentas de minificação removem quebras de linha, comentários e espaços em branco desnecessários para reduzir os bytes transferidos pela rede e acelerar o tempo de carregamento da página (First Contentful Paint).</p>
 
+        <h3>3. Arquitetura de Folhas de Estilo CSS e Performance de Renderização</h3>
+        <p>Manter declarações CSS bem estruturadas evita especificidades conflitantes, seletores duplicados e bloqueios desnecessários no <em>Critical Rendering Path</em> (CRP) do navegador. Recomenda-se organizar propriedades por grupos funcionais: posicionamento (<code>display</code>, <code>position</code>, <code>grid</code>/<code>flex</code>), modelo de caixa (<code>width</code>, <code>margin</code>, <code>padding</code>), tipografia (<code>font-family</code>, <code>line-height</code>) e estilo visual (<code>background</code>, <code>border</code>, <code>box-shadow</code>).</p>
+
         <h3>Perguntas Frequentes sobre Formatação Web (FAQ)</h3>
         <div class="faq-list" style="margin-top: 16px;">
           <div class="faq-item">
             <div class="faq-question"><span>A ferramenta remove comentários do meu código?</span><span>+</span></div>
-            <div class="faq-answer">No modo de embelezamento e formatação, todos os comentários úteis são rigorosamente preservados. Apenas espaços e quebras de linhas inconsistentes são corrigidos.</div>
+            <div class="faq-answer">No modo de embelezamento e formatação (Prettify), todos os comentários úteis são rigorosamente preservados. Já no modo Minificar, comentários e espaços extras são removidos para gerar o menor pacote possível para produção.</div>
           </div>
           <div class="faq-item">
             <div class="faq-question"><span>O processamento é feito localmente?</span><span>+</span></div>
             <div class="faq-answer">Sim! Toda a análise sintática de HTML e CSS é executada 100% no motor JavaScript do seu próprio navegador, sem enviar nenhuma linha de código aos nossos servidores.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Qual a diferença entre indentação com 2 espaços e 4 espaços?</span><span>+</span></div>
+            <div class="faq-answer">O padrão de 2 espaços é amplamente adotado em projetos Frontend modernos (React, Vue, Angular, Tailwind) por evitar rolagem horizontal em árvores DOM profundamente aninhadas, enquanto 4 espaços oferecem maior separação visual em templates monolíticos.</div>
           </div>
         </div>
       </article>
@@ -210,10 +217,10 @@
         <div class="footer-col">
           <h4>Institucional</h4>
           <ul>
-            <li><a href="/pages/sobre.html">Sobre o Projeto</a></li>
-            <li><a href="/pages/contato.html">Fale Conosco</a></li>
-            <li><a href="/pages/privacidade.html">Política de Privacidade</a></li>
-            <li><a href="/pages/termos.html">Termos de Uso</a></li>
+            <li><a href="/pages/sobre">Sobre o Projeto</a></li>
+            <li><a href="/pages/contato">Fale Conosco</a></li>
+            <li><a href="/pages/privacidade">Política de Privacidade</a></li>
+            <li><a href="/pages/termos">Termos de Uso</a></li>
           </ul>
         </div>
       </div>

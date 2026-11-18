@@ -285,15 +285,103 @@
       </div>
 
       <article class="tool-seo-guide">
-        <h2>How In-Browser Microphone Testing & FFT Analysis Work</h2>
-        <p>The <strong>Caixa do Dev Microphone Tester</strong> processes your audio input stream locally at 60 frames per second using the W3C <strong>Web Audio API</strong> and a 2048-point Fast Fourier Transform (<code>AnalyserNode</code>). You can inspect both frequency energy distribution and time-domain waveforms, measure decibels relative to full scale (dBFS), and record a 5-second sample in RAM to verify clarity.</p>
+        <h2>How In-Browser Microphone Testing &amp; FFT Spectrum Analysis Work</h2>
+        <p>The <strong>Caixa do Dev Microphone Tester</strong> processes your raw audio input stream locally at 60 frames per second using the W3C <strong>Web Audio API</strong> and a 2048-point Fast Fourier Transform (<code>AnalyserNode</code>). This allows you to inspect both frequency energy distribution across the human vocal spectrum and time-domain oscilloscope waveforms, measure decibels relative to full scale (dBFS), and record a 5-second voice sample in RAM to verify acoustic clarity.</p>
+
+        <h3>1. How to Read Volume Levels and dBFS Telemetry</h3>
+        <ul>
+          <li><strong>Optimal Speaking Range (-18 dBFS to -6 dBFS / 25% to 75%):</strong> Your voice will sound clear, full-bodied, and natural across Google Meet, Zoom, Microsoft Teams, Discord, and OBS Studio.</li>
+          <li><strong>Signal Too Low (Below -35 dBFS / &lt; 10%):</strong> Check if your headset boom arm is positioned too far from your mouth, or if your operating system's input gain slider is set below 50%.</li>
+          <li><strong>Digital Clipping / Peak Overload (Above 90% / 0 dBFS):</strong> When the audio waveform hits the 0 dBFS digital ceiling, harsh metallic distortion occurs. Lower your microphone preamp gain or enable the <em>Auto Gain</em> DSP filter.</li>
+        </ul>
+
+        <h3>2. Why Use the 5-Second Voice Recording Instead of Live Monitoring?</h3>
+        <p>Enabling real-time speaker passthrough while using open desktop speakers creates an immediate acoustic feedback loop (a loud, high-pitched squeal). Our <strong>Record Voice Test (5s)</strong> feature captures your speech into temporary browser memory (<code>MediaRecorder</code> Blob) and plays it back cleanly once recording stops. This lets you accurately detect background fan hum, electrical static, plosives (p-pops), or muffled frequency response.</p>
+
+        <h3>3. Understanding WebRTC Audio DSP Filters</h3>
+        <ul>
+          <li><strong>Noise Suppression:</strong> Attenuates steady background noises such as air conditioning, mechanical keyboards, and PC fans.</li>
+          <li><strong>Echo Cancellation:</strong> Prevents audio coming from your speakers from being re-transmitted back into the call.</li>
+          <li><strong>Auto Gain Control (AGC):</strong> Dynamically normalizes your microphone input volume when you move closer to or further from the capsule. Uncheck all three DSP filters if you want to inspect the raw, uncompressed signal of a studio condenser microphone.</li>
+        </ul>
+
+        <h3>Frequently Asked Questions (FAQ)</h3>
+        <div class="faq-list" style="margin-top: 16px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>Is my microphone audio uploaded or stored on any external server?</span><span>+</span></div>
+            <div class="faq-answer">No! Both the 60 FPS FFT spectrum analysis and the temporary 5-second voice recording happen 100% locally inside your browser's volatile RAM. Closing or refreshing the tab immediately purges the audio buffer.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>My microphone is plugged in, but the spectrum bar isn't moving. How do I fix it?</span><span>+</span></div>
+            <div class="faq-answer">1) Check for a physical hardware mute switch on your headset cable or boom arm; 2) Ensure the correct input device is selected in the Audio Input Device dropdown above; 3) Verify in Windows Sound Settings or macOS System Settings that your input volume slider isn't muted.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>What is the difference between FFT Frequency Spectrum and Oscilloscope Waveform?</span><span>+</span></div>
+            <div class="faq-answer">The FFT Frequency Spectrum breaks your voice down into bass, midrange, and treble frequency bars (Hz), making it easy to spot low-end hum or sibilance. The Oscilloscope Waveform plots raw acoustic amplitude over time, ideal for spotting clipping and phase symmetry.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Can I test Bluetooth earbuds (AirPods, Sony, Galaxy Buds) with this tool?</span><span>+</span></div>
+            <div class="faq-answer">Yes! Simply connect your Bluetooth headset, select it from the Audio Input Device dropdown, and check the Sample Rate row in the telemetry panel (Bluetooth Hands-Free Profile typically negotiates 16,000 Hz or 24,000 Hz mono).</div>
+          </div>
+        </div>
       </article>
 
+    </section>
+
+    <!-- Related Popular Tools -->
+    <section style="margin-top: 48px;">
+      <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 20px; color: var(--text-primary);">Explore More Hardware &amp; Media Tools</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px;">
+        <a href="/en/webcam-test" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Online Webcam Test</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Inspect true camera sensor resolution (720p, 1080p, 4K), live FPS stability, and take PNG snapshots.</p>
+        </a>
+        <a href="/en/image-converter" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Web Image Converter</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Convert and compress PNG, JPG, WebP, and AVIF images 100% locally in your browser.</p>
+        </a>
+        <a href="/en/image-color-picker" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Image Color Picker</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Sample exact pixel HEX/RGB/HSL colors with a real-time magnifying loupe and palette extractor.</p>
+        </a>
+        <a href="/en/svg-optimizer" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">SVG Optimizer</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Minify vector SVG files and generate CSS-ready Data URIs instantly.</p>
+        </a>
+      </div>
     </section>
   </main>
 
   <footer class="footer">
     <div class="container footer-content">
+      <div class="footer-grid">
+        <div class="footer-col footer-col-wide">
+          <div class="footer-brand">
+            <span class="footer-brand-title">Caixa do Dev</span>
+            <span class="footer-badge">100% Client-Side</span>
+          </div>
+          <p>The premier free, fast, and privacy-first utility toolkit for developers, QA engineers, and tech professionals worldwide.</p>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Media &amp; Hardware</span>
+          <ul class="footer-links">
+            <li><a href="/en/microphone-test">Online Microphone Test</a></li>
+            <li><a href="/en/webcam-test">Online Webcam Test</a></li>
+            <li><a href="/en/image-converter">Image Converter</a></li>
+            <li><a href="/en/image-color-picker">Image Color Picker</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col-title">Institutional</span>
+          <ul class="footer-links">
+            <li><a href="/pages/sobre">About the Project</a></li>
+            <li><a href="/artigos">Engineering Articles</a></li>
+            <li><a href="/pages/privacidade">Privacy Policy</a></li>
+            <li><a href="/pages/termos">Terms of Service</a></li>
+            <li><a href="/pages/contato">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
       <div class="footer-bottom">
         <span>&copy; 2026 Caixa do Dev • Built and maintained by Alexandre Marcelino.</span>
         <span>100% local client-side processing.</span>

@@ -83,8 +83,8 @@
           <li><a href="/gerador-de-pessoas">Pessoas</a></li>
           <li><a href="/calculadora-clt-pj">CLT vs PJ</a></li>
           <li><a href="/json-para-typescript">JSON &rarr; TS</a></li>
-          <li><a href="/pages/sobre.html">Sobre</a></li>
-          <li><a href="/pages/contato.html">Contato</a></li>
+          <li><a href="/pages/sobre">Sobre</a></li>
+          <li><a href="/pages/contato">Contato</a></li>
         </ul>
       </nav>
     </div>
@@ -157,6 +157,9 @@
         <h3>2. Aviso de Ambiente de Testes Sandbox</h3>
         <p>Esta ferramenta foi construída exclusivamente para <strong>desenvolvedores de software e testadores de sistemas de RH e folha de pagamento</strong> para validação de esteiras e testes de máscaras em formulários. Os números gerados são matematicamente consistentes, mas de caráter estritamente sintético e randômico, sem registro perante a Caixa Econômica ou Ministério do Trabalho.</p>
 
+        <h3>3. Implementação da Validação de PIS em Sistemas eSocial</h3>
+        <p>Em integrações com os leiautes do <strong>eSocial</strong> (como os eventos S-2200 de Cadastramento Inicial do Vínculo e S-1200 de Remuneração), enviar um NIS/PIS com dígito verificador incorreto ou formado por dígitos repetidos (ex.: <code>111.11111.11-1</code>) resulta na rejeição imediata do lote XML pelo webservice governamental. Por isso, validar o checksum Módulo 11 no frontend e no backend antes da transmissão reduz retrabalho operacional no fechamento da folha.</p>
+
         <h3>Perguntas Frequentes sobre PIS (FAQ)</h3>
         <div class="faq-list" style="margin-top: 16px;">
           <div class="faq-item">
@@ -166,6 +169,10 @@
           <div class="faq-item">
             <div class="faq-question"><span>A ferramenta armazena os números gerados?</span><span>+</span></div>
             <div class="faq-answer">Não! A geração e validação de PIS ocorrem 100% no motor JavaScript do seu navegador com respeito absoluto à sua privacidade.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Como tratar números de PIS com zeros à esquerda no banco de dados?</span><span>+</span></div>
+            <div class="faq-answer">Armazene sempre o PIS/NIS como <code>VARCHAR(11)</code> ou <code>CHAR(11)</code> (apenas dígitos, sem pontuação) e nunca como tipo numérico inteiro (<code>BIGINT</code>), garantindo a preservação de eventuais zeros à esquerda.</div>
           </div>
         </div>
       </article>
@@ -211,10 +218,10 @@
         <div class="footer-col">
           <h4>Institucional</h4>
           <ul>
-            <li><a href="/pages/sobre.html">Sobre o Projeto</a></li>
-            <li><a href="/pages/contato.html">Fale Conosco</a></li>
-            <li><a href="/pages/privacidade.html">Política de Privacidade</a></li>
-            <li><a href="/pages/termos.html">Termos de Uso</a></li>
+            <li><a href="/pages/sobre">Sobre o Projeto</a></li>
+            <li><a href="/pages/contato">Fale Conosco</a></li>
+            <li><a href="/pages/privacidade">Política de Privacidade</a></li>
+            <li><a href="/pages/termos">Termos de Uso</a></li>
           </ul>
         </div>
       </div>

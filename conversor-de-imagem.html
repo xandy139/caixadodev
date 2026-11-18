@@ -87,7 +87,7 @@
             <li><a href="/calculadora-clt-pj">CLT vs PJ</a></li>
             <li><a href="/json-para-typescript">JSON &rarr; TS</a></li>
             <li><a href="/artigos">Artigos</a></li>
-            <li><a href="/pages/sobre.html">Sobre</a></li>
+            <li><a href="/pages/sobre">Sobre</a></li>
           </ul>
         </nav>
         <div class="lang-switch" aria-label="Idioma / Language">
@@ -220,8 +220,47 @@
 
         <h3>2. O Diferencial da Privacidade 100% Client-Side</h3>
         <p>A maioria dos conversores de imagem gratuitos na internet faz o upload silencioso de suas fotos pessoais ou capturas de tela confidenciais de sistemas para servidores remotos antes de devolver o arquivo. Na <strong>Caixa do Dev</strong>, toda a decodificação matemática, redimensionamento bicúbico e compressão ocorrem <strong>estritamente dentro da memória do seu próprio navegador</strong> via HTML5 Canvas. Seus arquivos nunca transitam pela rede e seu sigilo é 100% preservado.</p>
+
+        <h3>Perguntas Frequentes (FAQ)</h3>
+        <div class="faq-list" style="margin-top: 16px;">
+          <div class="faq-item">
+            <div class="faq-question"><span>Qual nível de qualidade devo escolher para WebP e AVIF?</span><span>+</span></div>
+            <div class="faq-answer">Para banners, produtos de e-commerce e artigos de blog, a faixa entre <strong>80% e 85%</strong> é o ponto ideal: reduz o tamanho do arquivo em até 70% mantendo nitidez visual indistinguível do original a olho nu.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>A transparência do meu PNG é mantida ao converter para WebP ou AVIF?</span><span>+</span></div>
+            <div class="faq-answer">Sim! Tanto o WebP quanto o AVIF suportam canal alfa completo (transparência de 8 bits). Apenas o formato JPEG substitui áreas transparentes por fundo sólido, pois a especificação JPEG não possui canal alfa.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Minhas imagens ficam salvas em algum servidor da Caixa do Dev?</span><span>+</span></div>
+            <div class="faq-answer">Jamais. A conversão utiliza a API nativa <code>HTMLCanvasElement.toBlob()</code> diretamente na memória RAM do seu dispositivo. Nenhum byte de imagem é enviado pela internet.</div>
+          </div>
+        </div>
       </article>
 
+    </section>
+
+    <!-- Ferramentas Relacionadas -->
+    <section style="margin-top: 48px;">
+      <h3 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 20px; color: var(--text-primary);">Explore Mais Ferramentas de Design e Mídia</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px;">
+        <a href="/seletor-de-cores-imagem" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Seletor de Cores de Imagem</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Capture o código HEX, RGB e HSL exato de qualquer pixel com lupa de zoom em tempo real.</p>
+        </a>
+        <a href="/otimizador-de-svg" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Otimizador de SVG</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Minifique vetores SVG e gere Data URIs prontos para incorporar no CSS.</p>
+        </a>
+        <a href="/conversor-base64" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Codificador Base64</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Converta textos e strings para Base64 com suporte completo a UTF-8.</p>
+        </a>
+        <a href="/teste-de-camera" class="tool-card" style="text-decoration: none;">
+          <h4 style="color: var(--text-primary); margin-bottom: 6px;">Teste de Câmera Online</h4>
+          <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0;">Inspecione resolução real do sensor, taxa de FPS ao vivo e capture fotos em PNG.</p>
+        </a>
+      </div>
     </section>
   </main>
 
@@ -248,11 +287,11 @@
         <div class="footer-col">
           <span class="footer-col-title">Institucional</span>
           <ul class="footer-links">
-            <li><a href="/pages/sobre.html">Sobre o Projeto</a></li>
+            <li><a href="/pages/sobre">Sobre o Projeto</a></li>
             <li><a href="/artigos">Artigos Técnicos</a></li>
-            <li><a href="/pages/privacidade.html">Política de Privacidade</a></li>
-            <li><a href="/pages/termos.html">Termos de Uso</a></li>
-            <li><a href="/pages/contato.html">Fale Conosco</a></li>
+            <li><a href="/pages/privacidade">Política de Privacidade</a></li>
+            <li><a href="/pages/termos">Termos de Uso</a></li>
+            <li><a href="/pages/contato">Fale Conosco</a></li>
           </ul>
         </div>
       </div>
