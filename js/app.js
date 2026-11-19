@@ -325,10 +325,13 @@ const I18N_TOOLS_EN = {
   }
 };
 
+const NOINDEX_TOOL_IDS = new Set(['cartao', 'bancos', 'cnh', 'certidao', 'titulo']);
+
 function getEffectiveCatalog() {
   const isEn = document.documentElement.lang === 'en';
-  if (!isEn) return TOOLS_CATALOG;
-  const mapped = TOOLS_CATALOG.map(t => {
+  const baseCatalog = TOOLS_CATALOG.filter(t => !NOINDEX_TOOL_IDS.has(t.id));
+  if (!isEn) return baseCatalog;
+  const mapped = baseCatalog.map(t => {
     const en = I18N_TOOLS_EN[t.id];
     if (!en) return t;
     return {
@@ -936,8 +939,9 @@ function renderRecentTools() {
     return;
   }
 
+  const activeCatalog = (typeof getEffectiveCatalog === 'function') ? getEffectiveCatalog() : TOOLS_CATALOG;
   const tools = recents
-    .map(id => TOOLS_CATALOG.find(t => t.id === id))
+    .map(id => activeCatalog.find(t => t.id === id))
     .filter(Boolean);
 
   if (tools.length === 0) {

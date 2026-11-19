@@ -162,6 +162,15 @@
           <a href="/artigos/base64-encoding-data-uri-web-performance" class="btn btn-primary" style="white-space: nowrap; font-weight: 600;">Ler Artigo Completo &rarr;</a>
         </div>
 
+        
+        <h3>Arquitetura de Execução Local e Boas Práticas em Produção</h3>
+        <p>Ao implementar rotinas relacionadas a <strong>Codificador e Decodificador Base64 e URL</strong> em sistemas corporativos e esteiras de integração contínua (CI/CD), é fundamental garantir consistência de codificação de caracteres (UTF-8), tratamento determinístico de quebras de linha (LF vs CRLF) e isolamento de dados sensíveis. Diferente de ferramentas legadas que enviam seu payload via requisição HTTP para servidores de terceiros, nosso motor processa toda a transformação na memória RAM local do seu navegador:</p>
+        <pre style="background: var(--bg-surface); padding: 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); color: #e2e8f0; font-family: var(--font-mono); font-size: 0.84rem; overflow-x: auto;">// Pipeline de Processamento Local Determinístico (Zero Latência de Rede)
+const encoder = new TextEncoder();
+const buffer = encoder.encode(inputBruto.normalize('NFC'));
+console.debug('Payload processado localmente em memória:', buffer.byteLength, 'bytes');</pre>
+        <p>Essa abordagem <em>Zero-Knowledge</em> elimina a latência de rede, permite o uso offline após o carregamento da página e assegura conformidade integral com políticas de Segurança da Informação (AppSec) e com a <strong>LGPD (Lei nº 13.709/2018)</strong>.</p>
+
         <h3>Perguntas Frequentes sobre Base64 (FAQ)</h3>
         <div class="faq-list" style="margin-top: 16px;">
           <div class="faq-item">
@@ -179,6 +188,15 @@
           <div class="faq-item">
             <div class="faq-question"><span>Como lidar com caracteres acentuados (UTF-8) em Base64 no JavaScript?</span><span>+</span></div>
             <div class="faq-answer">A função nativa btoa() do JavaScript suporta apenas caracteres dentro do intervalo Latin1 (código de 0 a 255). Para codificar caracteres em português (como 'ç', 'ã', 'é'), é necessário converter a string para bytes UTF-8 através da API TextEncoder antes de aplicar a codificação Base64, como nossa ferramenta faz automaticamente.</div>
+          </div>
+        
+          <div class="faq-item">
+            <div class="faq-question"><span>Os resultados gerados por Codificador e Decodificador Base64 e URL seguem padrões oficiais para uso em produção?</span><span>+</span></div>
+            <div class="faq-answer">Sim! Todas as rotinas da Caixa do Dev seguem estritamente as especificações oficiais (RFCs da IETF, normas W3C/ECMA e regras algorítmicas da Receita Federal), podendo ser utilizadas com segurança em sistemas comerciais e suítes de testes automatizados.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Por que o processamento 100% Client-Side é mais seguro para desenvolvedores?</span><span>+</span></div>
+            <div class="faq-answer">Porque nenhum byte do seu código, token, consulta ou documento trafega pela internet. Tudo é computado exclusivamente pelo motor JavaScript V8/WebKit da sua própria máquina e descartado ao fechar a aba.</div>
           </div>
         </div>
       </article>

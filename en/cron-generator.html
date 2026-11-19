@@ -205,6 +205,13 @@
           <li><strong>Slash (/):</strong> Defines step intervals (e.g., <code>*/10</code> in the minute field runs every 10 minutes).</li>
         </ul>
 
+        
+        <h3>3. Production Crontab Best Practices: Timezones, Idempotency &amp; Overlap Locks</h3>
+        <p>In Linux servers, Docker containers, Kubernetes <code>CronJob</code> manifests, and GitHub Actions workflows, the <code>crond</code> daemon evaluates the 5 positional fields (<code>minute hour day-of-month month day-of-week</code>) against the host's system clock—which defaults to <strong>UTC</strong> in cloud environments. To prevent overlapping executions when a batch job takes longer than its schedule interval, wrap your command with <code>flock</code> and redirect both <code>stdout</code> and <code>stderr</code>:</p>
+        <pre style="background: var(--bg-surface); padding: 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); color: #e2e8f0; font-family: var(--font-mono); font-size: 0.84rem; overflow-x: auto;">CRON_TZ=UTC
+# Run database maintenance every 6 hours with non-blocking file lock (flock)
+0 */6 * * * /usr/bin/flock -n /tmp/db_maint.lock /opt/bin/maint.sh &gt;&gt; /var/log/maint.log 2&gt;&amp;1</pre>
+
         <h3>Frequently Asked Questions (FAQ)</h3>
         <div class="faq-list" style="margin-top: 16px;">
           <div class="faq-item">
@@ -218,6 +225,15 @@
           <div class="faq-item">
             <div class="faq-question"><span>Are my cron expressions transmitted to any backend server?</span><span>+</span></div>
             <div class="faq-answer">No. The parsing and upcoming execution calculation happen 100% inside your browser's JavaScript engine. No data ever leaves your device.</div>
+          </div>
+        
+          <div class="faq-item">
+            <div class="faq-question"><span>How do I prevent overlapping Cron job runs in production?</span><span>+</span></div>
+            <div class="faq-answer">Wrap your command with Linux flock (/usr/bin/flock -n /tmp/job.lock) or set concurrencyPolicy: Forbid in Kubernetes CronJob YAML manifests so a slow run never collides with the next scheduled trigger.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Can standard 5-field POSIX Cron run a task every 30 seconds?</span><span>+</span></div>
+            <div class="faq-answer">No. The finest granularity of standard 5-field POSIX crontab is 1 minute. To run tasks at sub-minute intervals, use a systemd timer with OnUnitActiveSec=30s or a dedicated worker queue.</div>
           </div>
         </div>
       </article>

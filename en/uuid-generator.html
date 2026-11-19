@@ -148,6 +148,13 @@
         <h3>2. Collision Probability: How Safe is UUID v4?</h3>
         <p>To have even a <strong>one-in-a-billion chance</strong> of generating an accidental duplicate UUID v4, an engineering system would need to generate <strong>over 1 billion UUIDs per second for 100 consecutive years</strong>. Because of this astronomical mathematical guarantee, distributed microservice architectures generate primary keys locally without centralized coordination databases.</p>
 
+        
+        <h3>3. Bit-Level Layout: Random UUID v4 vs Time-Ordered UUID v7 (RFC 9562)</h3>
+        <p>In high-throughput relational databases (PostgreSQL, MySQL InnoDB, SQL Server), using random <strong>UUID v4</strong> values as clustered primary keys scatters inserts across random B-Tree leaf pages, triggering severe page splits and buffer pool thrashing. <strong>UUID v7 (RFC 9562)</strong> eliminates this bottleneck by placing a 48-bit big-endian Unix millisecond timestamp in the most significant bits:</p>
+        <pre style="background: var(--bg-surface); padding: 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); color: #e2e8f0; font-family: var(--font-mono); font-size: 0.84rem; overflow-x: auto;">// 128-bit UUID v7 Bit Layout (RFC 9562):
+// [48-bit unix_ts_ms] - [4-bit ver: 0111][12-bit rand_a] - [2-bit var: 10][62-bit rand_b]
+// Example: 018f4a9c-7d20-7a3f-8b12-4c9e1d0a5f82 (Monotonically increasing for B-Tree locality)</pre>
+
         <h3>Frequently Asked Questions (FAQ)</h3>
         <div class="faq-list" style="margin-top: 16px;">
           <div class="faq-item">
@@ -157,6 +164,15 @@
           <div class="faq-item">
             <div class="faq-question"><span>Does this generator use genuine cryptographic entropy?</span><span>+</span></div>
             <div class="faq-answer">Yes. Caixa do Dev leverages the browser's native Web Crypto API (crypto.randomUUID() / crypto.getRandomValues()), guaranteeing OS-level cryptographic entropy compliant with RFC standards.</div>
+          </div>
+        
+          <div class="faq-item">
+            <div class="faq-question"><span>How should I store UUIDs in PostgreSQL and MySQL for optimal index size?</span><span>+</span></div>
+            <div class="faq-answer">In PostgreSQL, always use the native uuid data type (which occupies 16 raw bytes instead of 36 bytes in VARCHAR(36)). In MySQL 8+, store UUIDs in a BINARY(16) column using UUID_TO_BIN() and BIN_TO_UUID().</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>What is the collision probability of CSPRNG-generated UUID v4 identifiers?</span><span>+</span></div>
+            <div class="faq-answer">With 122 bits of cryptographic entropy from window.crypto.getRandomValues(), you would need to generate 1 billion UUIDs per second for roughly 85 years to reach a 50% probability of a single collision.</div>
           </div>
         </div>
       </article>

@@ -226,7 +226,19 @@
         </table>
       </div>
 
-      <h3>Perguntas Frequentes sobre TypeScript (FAQ)</h3>
+      
+        <h3>3. Validação em Runtime vs Tipagem Estática com TypeScript e Zod</h3>
+        <p>As interfaces (<code>interface</code>) e tipos (<code>type</code>) do TypeScript existem apenas em tempo de compilação (<em>Compile-Time</em>) e são completamente removidos após a transpilação para JavaScript. Ao consumir APIs REST externas ou webhooks, combine as interfaces geradas por esta ferramenta com Type Guards ou bibliotecas de validação de schema para garantir segurança também em tempo de execução (<em>Runtime</em>):</p>
+        <pre style="background: var(--bg-surface); padding: 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); color: #e2e8f0; font-family: var(--font-mono); font-size: 0.84rem; overflow-x: auto;">export interface ApiUserResponse {
+  id: string;
+  roles: string[];
+  isActive: boolean;
+}
+export function isApiUser(data: unknown): data is ApiUserResponse {
+  return typeof data === 'object' &amp;&amp; data !== null &amp;&amp; 'id' in data &amp;&amp; Array.isArray((data as ApiUserResponse).roles);
+}</pre>
+
+        <h3>Perguntas Frequentes sobre TypeScript (FAQ)</h3>
       <div class="faq-list" style="margin-top: 16px;">
         <div class="faq-item">
           <div class="faq-question"><span>Como a ferramenta lida com chaves JSON que possuem hifens ou espaços?</span><span>+</span></div>
@@ -236,7 +248,16 @@
           <div class="faq-question"><span>O conversor envia meus dados para servidores remotos?</span><span>+</span></div>
           <div class="faq-answer">Não! A análise estrutural do JSON e a geração do código TypeScript rodam 100% no motor JavaScript do seu próprio navegador web, garantindo total sigilo de payloads corporativos.</div>
         </div>
-      </div>
+      
+          <div class="faq-item">
+            <div class="faq-question"><span>Como a ferramenta trata arrays com objetos de estruturas diferentes (Union Types)?</span><span>+</span></div>
+            <div class="faq-answer">O motor de inferência inspeciona todos os elementos do array e mescla as propriedades encontradas, marcando campos que não aparecem em 100% dos itens como opcionais (?) ou gerando tipos de união (string | number).</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>As interfaces geradas são compatíveis com TypeScript 5+ e modo strictNullChecks?</span><span>+</span></div>
+            <div class="faq-answer">Sim! Valores nulos detectados no JSON de exemplo são tipados explicitamente (ex.: string | null), garantindo total compatibilidade com tsconfig.json configurado com strict: true.</div>
+          </div>
+        </div>
     </article>
 
     <!-- Outras Ferramentas Recomendadas -->

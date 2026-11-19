@@ -255,6 +255,94 @@
 
     </div>
 
+    <!-- Guia Editorial e Metodologia de Engenharia (E-E-A-T) -->
+    <article class="tool-seo-guide" style="margin-top: 56px;">
+      <h2>Metodologia Editorial e Padrões de Engenharia da Caixa do Dev</h2>
+      <p>O portal de <strong>Artigos Técnicos da Caixa do Dev</strong> foi concebido para ir além de tutoriais superficiais: cada publicação documenta com rigor matemático e arquitetural os protocolos, normas governamentais e especificações internacionais que sustentam sistemas distribuídos, bancos de dados relacionais, segurança criptográfica e homologação fiscal no Brasil.</p>
+      <p>Todas as implementações apresentadas em nossos guias são testadas em ambientes reais de execução (Node.js, Python, PostgreSQL e motores V8/WebKit) e refletem exatamente os algoritmos utilizados nas mais de 45 ferramentas 100% <em>Client-Side</em> da plataforma.</p>
+
+      <h3>1. Mapa de Normas Técnicas, RFCs e Especificações Abordadas</h3>
+      <div style="margin: 16px 0 24px; overflow-x: auto;">
+        <table class="subnet-table" style="margin-top: 0;">
+          <thead>
+            <tr>
+              <th>Norma / Especificação</th>
+              <th>Órgão Emissor</th>
+              <th>Domínio Técnico</th>
+              <th>Aplicação Prática na Engenharia</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>IN RFB nº 2.229/2024</strong></td>
+              <td>Receita Federal do Brasil</td>
+              <td>Identificação Fiscal</td>
+              <td>Cálculo ASCII-48 e Módulo 11 do novo CNPJ Alfanumérico (vigência 2026).</td>
+            </tr>
+            <tr>
+              <td><strong>RFC 9562</strong></td>
+              <td>IETF</td>
+              <td>Bancos de Dados</td>
+              <td>Substituição da RFC 4122 com introdução do UUID v7 ordenado por timestamp Unix.</td>
+            </tr>
+            <tr>
+              <td><strong>RFC 7519 (JWS/JWT)</strong></td>
+              <td>IETF</td>
+              <td>Segurança &amp; Auth</td>
+              <td>Estrutura de tokens JSON Web Token, assinatura HMAC/RSA e prevenção de <code>alg: none</code>.</td>
+            </tr>
+            <tr>
+              <td><strong>RFC 4648</strong></td>
+              <td>IETF</td>
+              <td>Serialização &amp; Web</td>
+              <td>Codificação Base64/Base64Url de 6 bits e cálculo do overhead de 33% em Data URIs.</td>
+            </tr>
+            <tr>
+              <td><strong>ISO/IEC 7812-1</strong></td>
+              <td>ISO / IEC</td>
+              <td>Meios de Pagamento</td>
+              <td>Algoritmo de Luhn (Módulo 10) para validação de erros de transcrição em sandboxes.</td>
+            </tr>
+            <tr>
+              <td><strong>CWE-1333 (ReDoS)</strong></td>
+              <td>MITRE / OWASP</td>
+              <td>AppSec &amp; Runtime</td>
+              <td>Prevenção de <em>Catastrophic Backtracking</em> exponencial <code>O(2^n)</code> em autômatos NFA.</td>
+            </tr>
+            <tr>
+              <td><strong>RFC 4632 (CIDR)</strong></td>
+              <td>IETF</td>
+              <td>Redes &amp; Cloud</td>
+              <td>Classless Inter-Domain Routing, máscaras bitwise IPv4 e reservas em AWS VPC / GCP.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>2. Por Que Documentamos Algoritmos Abertos?</h3>
+      <p>Desenvolvedores frequentemente recorrem a bibliotecas externas (<em>npm packages</em>) de caixa-preta para validar um simples CPF/CNPJ, formatar um payload ou calcular uma máscara de sub-rede. Ao compreender a matemática subjacente — como a ponderação posicional do Módulo 11, o deslocamento de bits em endereços IPv4 de 32 bits ou a estrutura de entropia de 128 bits de um UUID —, o engenheiro reduz dependências desnecessárias (<em>dependency bloat</em>), mitiga riscos de cadeia de suprimentos (<em>supply-chain attacks</em>) e escreve código mais enxuto e auditável.</p>
+
+      <h3>Perguntas Frequentes sobre os Artigos Técnicos (FAQ)</h3>
+      <div class="faq-list" style="margin-top: 16px;">
+        <div class="faq-item">
+          <div class="faq-question"><span>Os exemplos de código dos artigos podem ser usados em projetos comerciais?</span><span>+</span></div>
+          <div class="faq-answer">Sim! Todos os algoritmos e trechos de código em JavaScript, TypeScript, Python e SQL publicados em nossos artigos são disponibilizados livremente sob filosofia open-source para uso educacional, acadêmico ou em sistemas corporativos de produção.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question"><span>Com que frequência os guias tributários e fiscais são atualizados?</span><span>+</span></div>
+          <div class="faq-answer">Nossa equipe revisa continuamente as tabelas progressivas de INSS, IRPF, alíquotas do Simples Nacional (Anexos III e V com Fator R) e notas técnicas da Receita Federal (como o CNPJ Alfanumérico 2026) sempre que novas portarias oficiais entram em vigor.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question"><span>Cada artigo possui uma ferramenta interativa correspondente?</span><span>+</span></div>
+          <div class="faq-answer">Sim. Todos os artigos técnicos estão integrados diretamente às ferramentas interativas da Caixa do Dev, permitindo que você teste na prática, em tempo real e 100% no seu navegador, os cálculos explicados na teoria.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question"><span>Como sugerir um novo tema de artigo ou reportar uma errata técnica?</span><span>+</span></div>
+          <div class="faq-answer">Valorizamos o <em>peer review</em> da comunidade de engenharia. Você pode enviar sugestões de pauta ou revisões técnicas diretamente pela nossa página de <a href="/pages/contato" style="color: var(--accent-cyan);">Contato</a> ou pelo GitHub oficial do projeto.</div>
+        </div>
+      </div>
+    </article>
+
     <!-- Seção Sobre o Autor (E-E-A-T) -->
     <section style="margin-top: 60px; padding: 28px; border-radius: var(--radius-md); background: rgba(99, 102, 241, 0.05); border: 1px solid rgba(99, 102, 241, 0.2);">
       <div style="display: flex; gap: 24px; align-items: center; flex-wrap: wrap;">

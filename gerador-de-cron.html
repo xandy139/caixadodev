@@ -174,6 +174,13 @@
           <li><strong>Barra (/):</strong> Especifica passos e intervalos regulares (ex: <code>*/15</code> no campo minuto roda a cada 15 minutos).</li>
         </ul>
 
+        
+        <h3>3. Sintaxe POSIX Crontab e Armadilhas de Fuso Horário (UTC vs BRT)</h3>
+        <p>Em servidores Linux, containers Docker, GitHub Actions e AWS EventBridge, o daemon <code>crond</code> interpreta os 5 campos (<code>minuto hora dia-do-mês mês dia-da-semana</code>) usando o fuso horário configurado no sistema operacional (geralmente <strong>UTC</strong> em clusters Kubernetes). Um job agendado para <code>0 3 * * *</code> (03:00 UTC) executará às <strong>00:00 no Horário de Brasília (BRT, UTC-3)</strong>. Sempre documente o timezone esperado ou declare a variável <code>CRON_TZ=America/Sao_Paulo</code> no topo do arquivo crontab:</p>
+        <pre style="background: var(--bg-surface); padding: 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); color: #e2e8f0; font-family: var(--font-mono); font-size: 0.84rem; overflow-x: auto;">CRON_TZ=America/Sao_Paulo
+# Backup incremental de banco de dados a cada 6 horas com lock contra sobreposição (flock)
+0 */6 * * * /usr/bin/flock -n /tmp/db_backup.lock /opt/scripts/backup.sh &gt;&gt; /var/log/backup.log 2&gt;&amp;1</pre>
+
         <h3>Perguntas Frequentes sobre Cron (FAQ)</h3>
         <div class="faq-list" style="margin-top: 16px;">
           <div class="faq-item">
@@ -183,6 +190,15 @@
           <div class="faq-item">
             <div class="faq-question"><span>Qual a diferença entre cron padrão de 5 campos e cron Quartz de 6 campos?</span><span>+</span></div>
             <div class="faq-answer">O formato cron Unix tradicional possui 5 campos e resolução mínima de 1 minuto. Bibliotecas como Quartz (em Java ou NestJS) e agendadores corporativos suportam 6 ou 7 campos, adicionando um campo extra de segundos no início para disparos com precisão fracionada.</div>
+          </div>
+        
+          <div class="faq-item">
+            <div class="faq-question"><span>Como evitar que duas execuções de um mesmo Cron Job rodem sobrepostas?</span><span>+</span></div>
+            <div class="faq-answer">Utilize o utilitário nativo flock do Linux (/usr/bin/flock -n /tmp/job.lock comando) ou locks distribuídos no Redis para abortar a nova instância caso a anterior ainda não tenha finalizado.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Qual a diferença entre os caracteres especiais *, / e - no Crontab?</span><span>+</span></div>
+            <div class="faq-answer">O asterisco (*) representa todos os valores possíveis; a barra (*/15) define incrementos de passo (a cada 15 unidades); e o hífen (1-5) especifica um intervalo contínuo (de segunda a sexta-feira).</div>
           </div>
         </div>
       </article>

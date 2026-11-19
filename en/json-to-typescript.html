@@ -230,7 +230,19 @@
         </table>
       </div>
 
-      <h3>Frequently Asked Questions (FAQ)</h3>
+      
+        <h3>3. Compile-Time Interfaces vs Runtime Type Guards in TypeScript</h3>
+        <p>TypeScript <code>interface</code> and <code>type</code> declarations provide zero-cost static analysis during compilation, but they are completely erased when transpiled to JavaScript. When consuming untrusted third-party REST APIs or webhooks, pair the generated interfaces with a runtime Type Predicate or schema validator to prevent unexpected <code>TypeError</code> crashes:</p>
+        <pre style="background: var(--bg-surface); padding: 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); color: #e2e8f0; font-family: var(--font-mono); font-size: 0.84rem; overflow-x: auto;">export interface UserPayload {
+  id: string;
+  roles: string[];
+  createdAt: string;
+}
+export function isUserPayload(val: unknown): val is UserPayload {
+  return typeof val === 'object' &amp;&amp; val !== null &amp;&amp; typeof (val as UserPayload).id === 'string';
+}</pre>
+
+        <h3>Frequently Asked Questions (FAQ)</h3>
       <div class="faq-list" style="margin-top: 16px;">
         <div class="faq-item">
           <div class="faq-question"><span>Does this tool transmit my JSON payload to any server?</span><span>+</span></div>
@@ -240,7 +252,16 @@
           <div class="faq-question"><span>Can I generate TypeScript 'type' declarations instead of 'interface'?</span><span>+</span></div>
           <div class="faq-answer">Yes! Simply check the "Generate as type alias" option above to format output as <code>export type Name = { ... };</code>.</div>
         </div>
-      </div>
+      
+          <div class="faq-item">
+            <div class="faq-question"><span>How does the converter handle heterogeneous arrays or nullable fields?</span><span>+</span></div>
+            <div class="faq-answer">Our AST inference engine scans every element inside an array, merges object shapes, marks fields absent in some elements as optional (?), and emits explicit union types (e.g., string | number | null) for strictNullChecks compliance.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Should I prefer interface or type alias for API response contracts?</span><span>+</span></div>
+            <div class="faq-answer">Use interface for standard object hierarchies because TypeScript caches interface relationships in error messages and supports declaration merging. Use type aliases when you need top-level primitives, tuples, or discriminated unions.</div>
+          </div>
+        </div>
     </article>
 
     <!-- More Recommended Tools -->

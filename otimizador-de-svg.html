@@ -166,6 +166,14 @@
         <h3>2. Ganhos de Performance em Core Web Vitals</h3>
         <p>Otimizar SVGs inline ou externos reduz o tamanho do payload em <strong>30% a 70%</strong>. Em páginas ricas em ícones, isso se traduz em menor tempo de download, menor consumo de memória de parsing XML pelo navegador e melhora direta na métrica <strong>Largest Contentful Paint (LCP)</strong> do Google.</p>
 
+        
+        <h3>3. Anatomia do Código SVG e Ganho Real de Performance no DOM</h3>
+        <p>Softwares de design vetorial como Adobe Illustrator, Figma e Inkscape exportam arquivos SVG repletos de metadados proprietários (<code>xmlns:xlink</code>, <code>xml:space</code>, <code>data-name</code>, camadas ocultas e coordenadas com 6 casas decimais). Quando você incorpora um SVG inline no HTML, cada nó desnecessário infla a árvore DOM e atrasa o cálculo de estilo (<em>Recalculate Style</em>) do navegador:</p>
+        <pre style="background: var(--bg-surface); padding: 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); color: #e2e8f0; font-family: var(--font-mono); font-size: 0.84rem; overflow-x: auto;">/* Incorporação direta de SVG otimizado via Data URI UTF-8 no CSS */
+.icon-check {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E");
+}</pre>
+
         <h3>Perguntas Frequentes sobre SVG (FAQ)</h3>
         <div class="faq-list" style="margin-top: 16px;">
           <div class="faq-item">
@@ -175,6 +183,15 @@
           <div class="faq-item">
             <div class="faq-question"><span>Otimizar o SVG pode distorcer a imagem?</span><span>+</span></div>
             <div class="faq-answer">Não. A otimização limpa apenas tags e metadados mortos do XML e simplifica casas decimais imperceptíveis. A integridade visual das curvas e contornos do desenho original permanece 100% idêntica.</div>
+          </div>
+        
+          <div class="faq-item">
+            <div class="faq-question"><span>Por que usar Data URI UTF-8 em vez de Base64 para SVGs no CSS?</span><span>+</span></div>
+            <div class="faq-answer">Como o SVG já é um formato textual baseado em XML, codificá-lo em Base64 adiciona 33% de overhead no tamanho em bytes. Usar Data URI UTF-8 com escape apenas de caracteres reservados (#, <, >) gera folhas de estilo menores e mais compressíveis via Gzip/Brotli.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Remover os atributos width e height prejudica a renderização do SVG?</span><span>+</span></div>
+            <div class="faq-answer">Desde que o atributo viewBox="0 0 W H" seja mantido, o SVG torna-se 100% responsivo e escala perfeitamente de acordo com o container CSS pai sem distorção de proporção.</div>
           </div>
         </div>
       </article>

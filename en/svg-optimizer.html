@@ -197,6 +197,14 @@
         <h3>2. Performance Gains for Google Core Web Vitals</h3>
         <p>Optimizing inline and external SVGs strips <strong>30% to 70%</strong> of file weight. In icon-dense landing pages, this translates to faster document download times, lower browser XML parsing latency, and direct gains on Google's <strong>Largest Contentful Paint (LCP)</strong> performance metric.</p>
 
+        
+        <h3>3. Why URL-Encoded SVG Data URIs Outperform Base64 in CSS</h3>
+        <p>Vector authoring suites like Figma, Adobe Illustrator, and Inkscape export verbose XML containing editor namespaces, hidden groups, and 6-decimal-place coordinates. Stripping redundant nodes and rounding path precision reduces payload size by 40%–70%. Furthermore, embedding cleaned SVG via URL-encoded UTF-8 Data URIs avoids the 33% byte expansion caused by Base64 encoding:</p>
+        <pre style="background: var(--bg-surface); padding: 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); color: #e2e8f0; font-family: var(--font-mono); font-size: 0.84rem; overflow-x: auto;">/* Zero-overhead UTF-8 SVG Data URI in CSS */
+.icon-arrow {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12h14M12 5l7 7-7 7'/%3E%3C/svg%3E");
+}</pre>
+
         <h3>Frequently Asked Questions (FAQ)</h3>
         <div class="faq-list" style="margin-top: 16px;">
           <div class="faq-item">
@@ -210,6 +218,15 @@
           <div class="faq-item">
             <div class="faq-question"><span>Can optimizing an SVG degrade visual quality or warp paths?</span><span>+</span></div>
             <div class="faq-answer">No. The optimizer strips only dead XML overhead, comments, and redundant whitespaces while sanitizing potential script injection tags. Vector curves and fill geometries remain 100% intact.</div>
+          </div>
+        
+          <div class="faq-item">
+            <div class="faq-question"><span>Why should I keep the viewBox attribute when minifying SVGs?</span><span>+</span></div>
+            <div class="faq-answer">The viewBox attribute defines the internal coordinate system and aspect ratio of the vector canvas. Preserving viewBox while removing fixed width/height attributes allows the SVG to scale fluidly inside responsive CSS containers.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Does SVG minification alter the visual appearance of curves or icons?</span><span>+</span></div>
+            <div class="faq-answer">No. Rounding path coordinates to 2 decimal places removes imperceptible sub-pixel fractions while keeping Bezier curves visually identical on Retina and 4K displays.</div>
           </div>
         </div>
       </article>

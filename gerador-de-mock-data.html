@@ -171,6 +171,13 @@
           <li><strong>SQL:</strong> Instruções <code>INSERT INTO</code> formatadas para popular bancos de dados relacionais em scripts de migração (seeds).</li>
         </ul>
 
+        
+        <h3>3. Exemplo de Populamento de Banco de Dados Relacional (Seed SQL e JSON)</h3>
+        <p>Em testes de carga (<em>Load Testing</em> com k6 ou JMeter) e homologação de paginação no Frontend, utilizar registros idênticos mascara gargalos de índice e falhas de truncamento de layout CSS. Com a exportação multi-formato da Caixa do Dev, você pode popular tabelas PostgreSQL/MySQL ou fixtures do Prisma/Jest instantaneamente:</p>
+        <pre style="background: var(--bg-surface); padding: 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); color: #e2e8f0; font-family: var(--font-mono); font-size: 0.84rem; overflow-x: auto;">INSERT INTO usuarios_homologacao (id, nome, email, cpf, ativo) VALUES
+('018f4a9c-7d20-7000-81a2-9f4c1b8e3d10', 'Marina Costa', 'marina.costa@exemplo.com.br', '48291037809', true),
+('018f4a9c-7d21-7000-94b1-2c8d4e1a9f02', 'Rafael Almeida', 'rafael.almeida@exemplo.com.br', '73910482651', true);</pre>
+
         <h3>Perguntas Frequentes sobre Mock Data (FAQ)</h3>
         <div class="faq-list" style="margin-top: 16px;">
           <div class="faq-item">
@@ -180,6 +187,15 @@
           <div class="faq-item">
             <div class="faq-question"><span>A geração é feita no servidor?</span><span>+</span></div>
             <div class="faq-answer">Não! A criação dos lotes de dados é computada 100% no navegador do usuário em JavaScript, garantindo velocidade imediata e privacidade total.</div>
+          </div>
+        
+          <div class="faq-item">
+            <div class="faq-question"><span>Os CPFs gerados na massa em lote possuem dígitos verificadores válidos?</span><span>+</span></div>
+            <div class="faq-answer">Sim! Cada linha gerada executa o algoritmo oficial do Módulo 11 individualmente, garantindo que 100% dos registros passem pelas triggers e constraints de validação do seu sistema.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Como importar o CSV gerado no Excel sem corromper acentos ou zeros à esquerda?</span><span>+</span></div>
+            <div class="faq-answer">O arquivo CSV é codificado em UTF-8. No Excel, utilize a opção Dados -> De Texto/CSV, selecione a origem UTF-8 (65001) e defina a coluna de CPF/CEP como tipo Texto para preservar zeros iniciais.</div>
           </div>
         </div>
       </article>

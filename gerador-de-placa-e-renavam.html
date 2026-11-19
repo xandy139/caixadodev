@@ -153,6 +153,15 @@
         <h3>3. Regex para Validação Simultânea (Mercosul e Padrão Antigo)</h3>
         <p>Ao validar placas veiculares em sistemas de frotas, seguradoras, pedágios e estacionamentos, é fundamental aceitar tanto o formato cinza legado (<code>AAA-9999</code>) quanto o padrão Mercosul (<code>AAA9A99</code>). A expressão regular recomendada sem hífen é <code>/^[A-Z]{3}[0-9][A-Z0-9][0-9]{2}$/i</code>.</p>
 
+        
+        <h3>Arquitetura de Execução Local e Boas Práticas em Produção</h3>
+        <p>Ao implementar rotinas relacionadas a <strong>Gerador de Placa de Veículo e RENAVAM</strong> em sistemas corporativos e esteiras de integração contínua (CI/CD), é fundamental garantir consistência de codificação de caracteres (UTF-8), tratamento determinístico de quebras de linha (LF vs CRLF) e isolamento de dados sensíveis. Diferente de ferramentas legadas que enviam seu payload via requisição HTTP para servidores de terceiros, nosso motor processa toda a transformação na memória RAM local do seu navegador:</p>
+        <pre style="background: var(--bg-surface); padding: 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); color: #e2e8f0; font-family: var(--font-mono); font-size: 0.84rem; overflow-x: auto;">// Pipeline de Processamento Local Determinístico (Zero Latência de Rede)
+const encoder = new TextEncoder();
+const buffer = encoder.encode(inputBruto.normalize('NFC'));
+console.debug('Payload processado localmente em memória:', buffer.byteLength, 'bytes');</pre>
+        <p>Essa abordagem <em>Zero-Knowledge</em> elimina a latência de rede, permite o uso offline após o carregamento da página e assegura conformidade integral com políticas de Segurança da Informação (AppSec) e com a <strong>LGPD (Lei nº 13.709/2018)</strong>.</p>
+
         <h3>Perguntas Frequentes sobre Veículos (FAQ)</h3>
         <div class="faq-list" style="margin-top: 16px;">
           <div class="faq-item">
@@ -166,6 +175,15 @@
           <div class="faq-item">
             <div class="faq-question"><span>Quantos dígitos possui o RENAVAM atual?</span><span>+</span></div>
             <div class="faq-answer">Desde 2013, o código RENAVAM nacional possui <strong>11 dígitos numéricos</strong> (anteriormente possuía 9 dígitos, sendo acrescidos dois zeros à esquerda nos registros mais antigos).</div>
+          </div>
+        
+          <div class="faq-item">
+            <div class="faq-question"><span>Os resultados gerados por Gerador de Placa de Veículo e RENAVAM seguem padrões oficiais para uso em produção?</span><span>+</span></div>
+            <div class="faq-answer">Sim! Todas as rotinas da Caixa do Dev seguem estritamente as especificações oficiais (RFCs da IETF, normas W3C/ECMA e regras algorítmicas da Receita Federal), podendo ser utilizadas com segurança em sistemas comerciais e suítes de testes automatizados.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Por que o processamento 100% Client-Side é mais seguro para desenvolvedores?</span><span>+</span></div>
+            <div class="faq-answer">Porque nenhum byte do seu código, token, consulta ou documento trafega pela internet. Tudo é computado exclusivamente pelo motor JavaScript V8/WebKit da sua própria máquina e descartado ao fechar a aba.</div>
           </div>
         </div>
       </article>

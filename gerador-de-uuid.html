@@ -157,6 +157,13 @@
           <a href="/artigos/uuid-v4-vs-uuid-v7-banco-de-dados" class="btn btn-primary" style="white-space: nowrap; font-weight: 600;">Ler Artigo Completo &rarr;</a>
         </div>
 
+        
+        <h3>3. Anatomia Binária: UUID v4 (Aleatório) vs UUID v7 (Ordenado por Tempo)</h3>
+        <p>Em tabelas relacionais de alto volume (PostgreSQL, MySQL/InnoDB, SQL Server), chaves primárias usando <strong>UUID v4</strong> inserem registros em posições aleatórias da árvore B-Tree, causando <em>Page Splits</em> constantes e alto I/O de disco. O novo padrão <strong>UUID v7 (RFC 9562)</strong> resolve esse gargalo alocando um timestamp Unix de 48 bits em milissegundos nos primeiros 12 caracteres hexadecimais:</p>
+        <pre style="background: var(--bg-surface); padding: 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); color: #e2e8f0; font-family: var(--font-mono); font-size: 0.84rem; overflow-x: auto;">// Estrutura de 128 bits do UUID v7 (RFC 9562):
+// [48 bits: unix_ts_ms] - [4 bits: ver 0111] [12 bits: rand_a] - [2 bits: var 10] [62 bits: rand_b]
+// Exemplo: 018f4a9c-7d20-7a3f-8b12-4c9e1d0a5f82 (Ordenável cronologicamente por índice B-Tree)</pre>
+
         <h3>Perguntas Frequentes sobre UUID (FAQ)</h3>
         <div class="faq-list" style="margin-top: 16px;">
           <div class="faq-item">
@@ -170,6 +177,15 @@
           <div class="faq-item">
             <div class="faq-question"><span>Qual o tipo de coluna ideal para salvar UUID no PostgreSQL e MySQL?</span><span>+</span></div>
             <div class="faq-answer">No PostgreSQL, use o tipo nativo UUID (ocupa apenas 16 bytes em disco). No MySQL 8.0+, utilize BINARY(16) com as funções UUID_TO_BIN() e BIN_TO_UUID() para otimizar espaço de armazenamento e memória de cache de índices. Evite usar VARCHAR(36) sempre que possível.</div>
+          </div>
+        
+          <div class="faq-item">
+            <div class="faq-question"><span>Qual o melhor tipo de coluna para armazenar UUID no PostgreSQL e no MySQL?</span><span>+</span></div>
+            <div class="faq-answer">No PostgreSQL, utilize sempre o tipo nativo UUID (que ocupa apenas 16 bytes binários em vez de 36 bytes de um VARCHAR(36)). No MySQL 8+, utilize BINARY(16) combinado com as funções UUID_TO_BIN(uuid, 1) e BIN_TO_UUID().</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Qual a probabilidade de colisão de dois UUIDs v4 gerados via Web Crypto API?</span><span>+</span></div>
+            <div class="faq-answer">Com 122 bits de entropia pura gerados pelo CSPRNG (crypto.getRandomValues), seriam necessários gerar 1 bilhão de UUIDs por segundo durante 85 anos para atingir 50% de chance de uma única colisão.</div>
           </div>
         </div>
       </article>

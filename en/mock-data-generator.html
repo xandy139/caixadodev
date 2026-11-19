@@ -201,6 +201,13 @@
           <li><strong>SQL INSERT:</strong> Formatted relational SQL statements ready to be added to database seed files (PostgreSQL, MySQL, SQLite) for immediate testing.</li>
         </ul>
 
+        
+        <h3>3. Seeding Relational Databases &amp; Automated E2E Test Fixtures</h3>
+        <p>Testing pagination, search filters, and B-Tree index performance with identical hardcoded rows often hides UI overflow bugs and query planner regressions. By exporting realistic synthetic batches in SQL <code>INSERT</code>, CSV, or JSON formats, you can seed PostgreSQL/MySQL containers or Playwright/Cypress fixtures in seconds:</p>
+        <pre style="background: var(--bg-surface); padding: 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); color: #e2e8f0; font-family: var(--font-mono); font-size: 0.84rem; overflow-x: auto;">INSERT INTO qa_users (id, full_name, email, tax_id, active) VALUES
+('018f4a9c-7d20-7000-81a2-9f4c1b8e3d10', 'Lucas Ferreira', 'lucas.ferreira@example.com', '48291037809', true),
+('018f4a9c-7d21-7000-94b1-2c8d4e1a9f02', 'Helena Souza', 'helena.souza@example.com', '73910482651', true);</pre>
+
         <h3>Frequently Asked Questions (FAQ)</h3>
         <div class="faq-list" style="margin-top: 16px;">
           <div class="faq-item">
@@ -214,6 +221,15 @@
           <div class="faq-item">
             <div class="faq-question"><span>How are phone numbers and email domains formatted?</span><span>+</span></div>
             <div class="faq-answer">In English mode, phone numbers follow standard North American 10-digit formats (e.g., (555) 123-4567), and email addresses are matched to first and last names with generic domains like @example.org and @gmail.com.</div>
+          </div>
+        
+          <div class="faq-item">
+            <div class="faq-question"><span>Do the generated tax IDs in bulk datasets pass Modulo 11 checksum validation?</span><span>+</span></div>
+            <div class="faq-answer">Yes! Every record in the generated batch runs the authentic Modulo 11 check-digit algorithm so your backend validators and database constraints accept the entire dataset without errors.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question"><span>Is it safe to commit these generated mock datasets to public Git repositories?</span><span>+</span></div>
+            <div class="faq-answer">Absolutely. All names, emails, phones, and document numbers are 100% synthetic and randomly generated in-browser, containing zero real personally identifiable information (PII).</div>
           </div>
         </div>
       </article>
